@@ -1,0 +1,125 @@
+#!/bin/bash
+
+# ========================================================================
+# REAL-TIME WEBSITE REFERERS TRACER
+# ========================================================================
+#
+# What?
+#   Real-time website referers tracer is a shell script that lets you
+#   trace your visitors as they come.
+#
+# Why?
+#   Because you cannot do 'tail -f access_log | grep something' and you
+#   really want to grep out most of the stuff that your httpd puts in logs.
+#
+# Requirements:
+#   - website (with not too low and not too high traffic),
+#   - shell account on the server where your website is hosted,
+#   - access to httpd logs that use the COMBINED format.
+#
+# Installation:
+#   - copy anywhere in your home directory,
+#   - make sure the script has execute rights (chmod +x trace-referers).
+#
+# Running:
+#   - just run the script and as a parameter put the full path to logs,
+#     like this:
+#
+#        trace-your-referrers /var/log/www/apache2/access.log
+#
+#
+# Version: 0.3 (2007-01-27)
+# Author: Paul Goscicki, http://paulgoscicki.com
+#
+# No copyright rights. You can do whatever you want with this. You may even
+# claim this scrip has been written by you from the very beggining.
+#
+# If you, however, improve it, send me a copy (paul_AT_paulgoscicki.com).
+#
+# Based heavily on the tgrep script by Ed Morton (morton_at_lsupcaemnt.com):
+# http://unix.derkeiler.com/Newsgroups/comp.unix.shell/2004-01/0818.html
+
+
+# CONFIGURATION
+# =============
+
+# What files to exclude (request for those files won't be shown)
+exclude="\.gif|\.jpg|\.png|\.ico|\.css|\.js|msnbot|Googlebot|Yahoo! Slurp|BecomeBot|Ask Jeeves"
+
+# Width of request and referer columns (set it to match your terminal)
+col_width=35
+
+
+# INIT CHECKS
+# ===========
+if [ -z "$1" ]; then
+	echo "Usage: trace-your-referrers <path_to_httpd_access_log>" >&2
+	exit 3
+else
+	log="$1"
+fi
+
+
+# MAIN SCRIPT
+# ===========
+
+# Check if log file actually exists (and is readable)
+if [ ! -r "${log}" ]; then
+echo "Cannot access log file: $log"
+exit 0
+fi
+
+# After startup we will output few lines
+start=`wc -l < "${log}"`
+start=$(( $start - 30 ))
+if (( ${start} < 0 ))
+then start=$((0))
+fi
+
+# Main loop
+while :
+do
+  end=`wc -l < "${log}"`
+  end="${end##* }"
+  if (( ${end} > ${start} ))
+  then
+    start=$(( $start + 1 ))
+    sed -n "${start},${end}p" "${log}" | egrep -v "${exclude}" | \
+    awk -v col_width=$col_width '{
+
+      # we are only interested in GET/POST requests
+      if ( match($0, /"(GET|POST).*?"/) > 0 )
+      {
+        split($0, fields, "\"")
+
+        # IP_ADDRESS
+        tmp = $1
+        while ( length(tmp) < 15 ) tmp = tmp " "
+        printf "%s", tmp " "
+    
+        # HTTP_REQUEST (GET/POST)
+        tmp = substr(fields[2], 0, index(fields[2], "HTTP/") - 1 )
+        tmp = substr(tmp, index(tmp, " ") + 1, col_width)
+        while ( length(tmp) < col_width ) tmp = tmp " "
+        printf "%s", tmp " "
+    
+        # REFERER (the juice)
+        tmp = fields[4]
+        while ( length(tmp) < col_width ) tmp = tmp " "
+        printf "%s", tmp " "
+    
+        # USER_AGENT
+        printf "%s", fields[6]
+    
+        # new line at the end
+        printf "\n"
+      }
+    }'
+
+    start=${end}
+  fi
+
+  # this is an endless loop that sleeps every second
+  sleep 1
+done
+
