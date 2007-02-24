@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# References
+# http://forum.swsoft.com/printthread.php?s=653a58f80efe9a22143e041a13144846&threadid=26770
+# http://forum3.midphasetalk.com/showthread.php?t=4714
+# http://wiki.rapidvps.com/index.php/UBC
+
+# Current memory allocated
+current_allocated=`cat /proc/user_beancounters | grep privvmpages | awk '{print $2/256}'`
+max_allocated=`cat /proc/user_beancounters | grep privvmpages | awk '{print $3/256}'`
+limit_allocated=`cat /proc/user_beancounters | grep privvmpages | awk '{print $4/256}'`
+
+# Current memory usage (mem+swap)
+current_mem=`cat /proc/user_beancounters | grep oomguarpages | awk '{print $2/256}'`
+max_mem=`cat /proc/user_beancounters | grep oomguarpages | awk '{print $3/256}'`
+limit_held=`cat /proc/user_beancounters | grep oomguarpages | awk '{print $4/256}'`
+
+# Additional memory used (kernel+sockets)
+kernel=`cat /proc/user_beancounters | grep kmemsize | awk '{print $3/1024/1024}'`
+tcpsndbuf=`cat /proc/user_beancounters | grep tcpsndbuf | awk '{print $2/1024/1024}'`
+tcprcvbuf=`cat /proc/user_beancounters | grep tcprcvbuf | awk '{print $2/1024/1024}'`
+othersockbuf=`cat /proc/user_beancounters | grep othersockbuf | awk '{print $2/1024/1024}'`
+dgramrcvbuf=`cat /proc/user_beancounters | grep dgramrcvbuf | awk '{print $2/1024/1024}'`
+additional_mem=$(echo "$kernel + $tcpsndbuf + $tcprcvbuf + $othersockbuf + $dgramrcvbuf" | bc)
+
+current_held=$(echo "$current_mem + $additional_mem" | bc)
+max_held=$(echo "$max_mem + $additional_mem" | bc)
+
+
+printf "Allocated memory: %7.2fMB / %7.2fMB / %7.2fMB (current/max/limit)\n" $current_allocated $max_allocated $limit_allocated
+printf "Used memory:      %7.2fMB / %7.2fMB / %7.2fMB (current/max/limit)\n" $current_held $max_held $limit_held
