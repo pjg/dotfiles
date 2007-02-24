@@ -25,7 +25,6 @@ alias ls='ls -F --color=auto'
 alias irb='/usr/bin/irb1.8'
 alias ll='ls -al'
 alias l='ls -l'
-alias su='su -'
 alias trf='~/bin/trace-your-referrers'
 alias mc='mc -cu'
 
