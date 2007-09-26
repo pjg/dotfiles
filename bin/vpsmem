@@ -27,5 +27,5 @@ current_held=$(echo "$current_mem + $additional_mem" | bc)
 max_held=$(echo "$max_mem + $additional_mem" | bc)
 
 
-printf "Allocated memory: %7.2fMB / %7.2fMB / %7.2fMB (current/max/limit)\n" $current_allocated $max_allocated $limit_allocated
-printf "Used memory:      %7.2fMB / %7.2fMB / %7.2fMB (current/max/limit)\n" $current_held $max_held $limit_held
+printf "Allocated memory: %4.0fMB / %3.0fMB / %7.0fMB (current/max/limit)\n" $current_allocated $max_allocated $limit_allocated
+printf "Used memory:      %4.0fMB / %3.0fMB / %7.0fMB (current/max/limit)\n" $current_held $max_held $limit_held
