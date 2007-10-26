@@ -27,6 +27,8 @@ alias ll='ls -al'
 alias l='ls -l'
 alias trf='~/bin/trace-your-referrers'
 alias mc='mc -cu'
+alias ..='cd ..'
+alias ...='cd ../..'
 
 alias lc="cl"
 function cl() { cd "$@" && l; }
@@ -34,6 +36,9 @@ function cl() { cd "$@" && l; }
 alias diff='colordiff -u'
 
 # Subversion
+alias sup='svn up'
+alias sst='svn st'
+alias sstu='svn st -u'
 alias svndiff='svn diff --diff-cmd=colordiff'
 alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
 
