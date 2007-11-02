@@ -1,0 +1,122 @@
+#!/bin/bash
+
+# classes     - names of all assigned qdisc classes
+# bytes       - read values from /sbin/tc
+# values      - computed values from 'bytes'
+# values_last - values from last iteration
+# deltas      - difference betweent last reading and current reading of 'values'
+# speeds      - average speed for last n readings
+# n           - number of readings needed to calculate average speed (higher gives more average speeds; lower gives more current speeds)
+# m           - read speeds every m seconds (higher values give more accurate ratings)
+#
+# INFO:
+#   combiation of n=4 and m=4 gives results similar to those reported by iptraf
+
+iteration=0
+n=4
+m=4
+
+# set names of qdisc classes
+qdisc=`/sbin/tc -d -s qdisc | grep "qdisc" | awk '{ printf("%s-%s:%s\n",$1, $2, $3) }'`
+j=0
+for q in $qdisc
+do
+    classes[$j]=$q
+    let "j=j+1"
+done
+#echo "Classes:" ${classes[@]}
+
+
+
+while :
+do
+    bytes=`/sbin/tc -s qdisc | grep "Sent" | awk '{ print $2 }'`
+    
+    #clear    
+    
+    # fill n-1 values
+    if [ $iteration -gt 0 ]; then
+        j=0
+        for value in ${values[@]}
+        do
+            values_last[$j]=$value
+	    let "j=j+1"
+        done
+        # echo "All values_last:" ${values_last[@]}
+    fi
+
+    # fill current values
+    j=0
+    for byte in $bytes
+    do
+	values[$j]=$byte
+    	let "j=j+1"
+        # echo $byte
+    done    
+    # echo "All values:" ${values[@]}
+
+
+    if [ $iteration -gt 0 ]; then
+
+        # calculate deltas
+        j=0
+        for value in ${values[@]}
+        do
+	    deltas[$j]=`expr ${values[$j]} - ${values_last[$j]}`
+	    let "j=j+1"
+        done
+        # echo "Deltas:" ${deltas[@]}
+
+        # calculate speeds
+	j=0
+	#echo "Speeds LAST:" ${speeds[@]}
+	for value in ${values[@]}
+	do
+	    speed_last=${speeds[$j]}
+	    #echo "Speed_last:" $speed_last
+	    
+	    delta=${deltas[$j]}
+	    #echo "Delta:" $delta
+	    
+	    # in second iteration we give 100% weight to the running speed
+	    if [ $iteration -eq 1 ]; then
+		new_speed=`( echo "scale=2; (($delta*8/1024)/$m)" | bc )`
+	    else # in interations >2 we increment speeds with weighted deltas (with n parameter)
+    		new_speed=`( echo "scale=2; ($speed_last + (( (($delta*8/1024)/$m)-$speed_last)/$n))" | bc )`
+	    fi
+	    
+	    #echo "New speed:" $new_speed
+	    speeds[$j]=$new_speed
+	    let "j=j+1"
+	done
+
+	# print speeds for each qdisc class on the screen
+	clear
+	echo "Monitored speeds from '/sbin/qdisc -s -d qdisc' for each qdisc class (Average from "$n "readings done every "$m "seconds)."
+	j=0
+	for value in ${values[@]}
+	do
+	    printf "%-20s %7s kbit/s\n" ${classes[$j]} ${speeds[$j]}
+	    let "j=j+1"
+	done
+	#echo "Speeds NEW:" ${speeds[@]}
+	
+    else
+	# set speeds to 0 at first run
+	j=0
+	for value in ${values[@]}
+	do
+	    speeds[$j]=0
+	    let "j=j+1"
+	done
+	
+	clear
+	echo "Analyzing data..."
+
+    fi
+
+    #echo "Iteration:" $iteration
+    let "iteration=iteration+1"
+
+    sleep $m
+done
