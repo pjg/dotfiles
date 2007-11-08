@@ -29,6 +29,7 @@ alias trf='~/bin/trace-your-referrers'
 alias mc='mc -cu'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias sc='script/console'
 
 alias lc="cl"
 function cl() { cd "$@" && l; }
