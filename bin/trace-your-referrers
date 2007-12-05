@@ -46,7 +46,7 @@
 # What files to exclude (request for those files won't be shown)
 exclude="\.gif|\.jpg|\.png|\.ico|\.css|\.js|\.swf|msnbot|Googlebot|Yahoo! Slurp|BecomeBot|Ask Jeeves"
 
-# Width of request and referer columns (set it to match your terminal)
+# Width of request and user_agent columns (set it to match your terminal)
 col_width=35
 
 
@@ -92,26 +92,29 @@ do
       {
         split($0, fields, "\"")
 
+        # HOUR:MINUTE
+        tmp = substr($0, index($0, "[") + 13, 5)
+        printf "%s", tmp " "
+
         # IP_ADDRESS
         tmp = $1
-        while ( length(tmp) < 15 ) tmp = tmp " "
+        while (length(tmp) < 15) tmp = tmp " "
         printf "%s", tmp " "
     
-        # HTTP_REQUEST (GET/POST)
-        tmp = substr(fields[2], 0, index(fields[2], "HTTP/") - 1 )
-        tmp = substr(tmp, index(tmp, " ") + 1, col_width)
-        while ( length(tmp) < col_width ) tmp = tmp " "
-        printf "%s", tmp " "
-    
-        # REFERER (the juice)
-        tmp = fields[4]
-        while ( length(tmp) < col_width ) tmp = tmp " "
+        # HTTP REQUEST (GET/POST) + PATH
+        tmp = substr(fields[2], 0, index(fields[2], "HTTP/") - 1)
+        tmp = substr(tmp, 0, col_width)
+        while (length(tmp) < col_width) tmp = tmp " "
         printf "%s", tmp " "
     
         # USER_AGENT
-        printf "%s", fields[6]
-    
-        # new line at the end
+        tmp = substr(fields[6], 0, col_width)
+        while (length(tmp) < col_width) tmp = tmp " "
+        printf "%s", tmp
+        printf "\n"
+
+        # REFERER (the juice)
+        printf "%s", fields[4]
         printf "\n"
       }
     }'
