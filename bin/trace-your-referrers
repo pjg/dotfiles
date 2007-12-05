@@ -47,7 +47,8 @@
 exclude="\.gif|\.jpg|\.png|\.ico|\.css|\.js|\.swf|msnbot|Googlebot|Yahoo! Slurp|BecomeBot|Ask Jeeves"
 
 # Width of request and user_agent columns (set it to match your terminal)
-col_width=35
+request_col_width=30
+user_agent_col_width=75
 
 
 # INIT CHECKS
@@ -85,7 +86,7 @@ do
   then
     start=$(( $start + 1 ))
     sed -n "${start},${end}p" "${log}" | egrep -v "${exclude}" | \
-    awk -v col_width=$col_width '{
+    awk -v request_col_width=$request_col_width -v user_agent_col_width=$user_agent_col_width '{
 
       # we are only interested in GET/POST requests
       if ( match($0, /"(GET|POST).*?"/) > 0 )
@@ -98,23 +99,23 @@ do
 
         # IP_ADDRESS
         tmp = $1
-        while (length(tmp) < 15) tmp = tmp " "
+        while (length(tmp) < 14) tmp = tmp " "
         printf "%s", tmp " "
     
         # HTTP REQUEST (GET/POST) + PATH
         tmp = substr(fields[2], 0, index(fields[2], "HTTP/") - 1)
-        tmp = substr(tmp, 0, col_width)
-        while (length(tmp) < col_width) tmp = tmp " "
+        tmp = substr(tmp, 0, request_col_width)
+        while (length(tmp) < request_col_width) tmp = tmp " "
         printf "%s", tmp " "
     
         # USER_AGENT
-        tmp = substr(fields[6], 0, col_width)
-        while (length(tmp) < col_width) tmp = tmp " "
+        tmp = substr(fields[6], 0, user_agent_col_width)
+        while (length(tmp) < user_agent_col_width) tmp = tmp " "
         printf "%s", tmp
         printf "\n"
 
         # REFERER (the juice)
-        printf "%s", fields[4]
+        printf " %s", fields[4]
         printf "\n"
       }
     }'
