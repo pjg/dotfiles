@@ -28,7 +28,7 @@
 #        trace-your-referrers /var/log/www/apache2/access.log
 #
 #
-# Version: 0.3 (2007-01-27)
+# Version: 0.4 (2008-04-07)
 # Author: Paul Goscicki, http://paulgoscicki.com
 #
 # No copyright rights. You can do whatever you want with this. You may even
@@ -47,17 +47,17 @@
 exclude="\.gif|\.jpg|\.png|\.ico|\.css|\.js|\.swf|msnbot|Googlebot|Yahoo! Slurp|BecomeBot|Ask Jeeves"
 
 # Width of request and user_agent columns (set it to match your terminal)
-request_col_width=30
-user_agent_col_width=75
+request_col_width=105
+user_agent_col_width=125
 
 
 # INIT CHECKS
 # ===========
 if [ -z "$1" ]; then
-	echo "Usage: trace-your-referrers <path_to_httpd_access_log>" >&2
-	exit 3
+  echo "Usage: trace-your-referrers <path_to_httpd_access_log>" >&2
+  exit 3
 else
-	log="$1"
+  log="$1"
 fi
 
 
@@ -66,15 +66,15 @@ fi
 
 # Check if log file actually exists (and is readable)
 if [ ! -r "${log}" ]; then
-echo "Cannot access log file: $log"
-exit 0
+  echo "Cannot access log file: $log"
+  exit 0
 fi
 
 # After startup we will output few lines
 start=`wc -l < "${log}"`
 start=$(( $start - 30 ))
-if (( ${start} < 0 ))
-then start=$((0))
+if (( ${start} < 0 )); then
+  start=$((0))
 fi
 
 # Main loop
@@ -82,15 +82,13 @@ while :
 do
   end=`wc -l < "${log}"`
   end="${end##* }"
-  if (( ${end} > ${start} ))
-  then
+  if (( ${end} > ${start} )); then
     start=$(( $start + 1 ))
     sed -n "${start},${end}p" "${log}" | egrep -v "${exclude}" | \
     awk -v request_col_width=$request_col_width -v user_agent_col_width=$user_agent_col_width '{
 
       # we are only interested in GET/POST requests
-      if ( match($0, /"(GET|POST).*?"/) > 0 )
-      {
+      if ( match($0, /"(GET|POST).*?"/) > 0 ) {
         split($0, fields, "\"")
 
         # HOUR:MINUTE
@@ -102,20 +100,19 @@ do
         while (length(tmp) < 14) tmp = tmp " "
         printf "%s", tmp " "
     
-        # HTTP REQUEST (GET/POST) + PATH
+        # HTTP REQUEST (GET/POST) and PATH
         tmp = substr(fields[2], 0, index(fields[2], "HTTP/") - 1)
         tmp = substr(tmp, 0, request_col_width)
-        while (length(tmp) < request_col_width) tmp = tmp " "
-        printf "%s", tmp " "
-    
-        # USER_AGENT
-        tmp = substr(fields[6], 0, user_agent_col_width)
-        while (length(tmp) < user_agent_col_width) tmp = tmp " "
         printf "%s", tmp
         printf "\n"
 
         # REFERER (the juice)
-        printf " %s", fields[4]
+        printf "   %s", fields[4]
+        printf "\n"
+ 
+        # USER_AGENT
+        tmp = substr(fields[6], 0, user_agent_col_width)
+        printf "   %s", tmp
         printf "\n"
       }
     }'
@@ -126,4 +123,3 @@ do
   # this is an endless loop that sleeps every second
   sleep 1
 done
-
