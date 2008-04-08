@@ -93,27 +93,32 @@ do
 
         # HOUR:MINUTE
         tmp = substr($0, index($0, "[") + 13, 5)
-        printf "%s", tmp " "
+        printf "\033[0;33m%s\033[0m ", tmp
 
         # IP_ADDRESS
         tmp = $1
-        while (length(tmp) < 14) tmp = tmp " "
-        printf "%s", tmp " "
-    
-        # HTTP REQUEST (GET/POST) and PATH
-        tmp = substr(fields[2], 0, index(fields[2], "HTTP/") - 1)
-        tmp = substr(tmp, 0, request_col_width)
-        printf "%s", tmp
-        printf "\n"
+        while (length(tmp) < 15) tmp = tmp " "
+        printf "\033[0;36m%s \033[0m", tmp
+
+        # HTTP REQUEST (GET/POST)
+        tmp = substr(fields[2], 0, index(fields[2], " ") - 1)
+        if (tmp == "POST") {
+          printf "\033[0;31m%s\033[0m", tmp
+        } else {
+          printf "\033[0;33m%s\033[0m", tmp
+        }
+
+        # HTTP REQUEST PATH
+        tmp = substr(fields[2], index(fields[2], " ") + 1, index(fields[2], "HTTP/") - index(fields[2], " ") - 2)
+        printf "\033[0;32m %s\033[0m\n", tmp
 
         # REFERER (the juice)
         printf "   %s", fields[4]
         printf "\n"
- 
+
         # USER_AGENT
         tmp = substr(fields[6], 0, user_agent_col_width)
-        printf "   %s", tmp
-        printf "\n"
+        printf "\033[1;30m   %s\033[0m\n", tmp
       }
     }'
 
