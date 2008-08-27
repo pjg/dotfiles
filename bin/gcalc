@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+# gcalc <google calculator string> / 26aug2008 chneukirchen / public domain
+require 'open-uri'
+q = ARGV.join(" ").gsub(/./m) { "%%%02X" % $&[0] }
+html = open("http://www.google.com/search?q=#{q}").read
+puts (html[%r{<font size=\+1><b>(.*?)</b></h2>}, 1] || 'not a calculation').
+gsub(%r{\240|<font size=-2> </font>}, "").gsub("×", "x").
+gsub(%r{<sup>(.*?)</sup>}, '^\\1 ')
