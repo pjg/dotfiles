@@ -1,0 +1,32 @@
+#!/usr/bin/ruby
+
+# Update Rails project's selected plugin (assumes GIT based plugins)
+
+require 'rubygems'
+require 'termios'
+
+abort DATA.read if ARGV.length < 1
+
+name = ARGV[0]
+dir = "./vendor/plugins/#{name}"
+
+abort DATA.read if !File.directory?(dir)
+
+IO.popen("cd #{dir} && git remote update") { |f| f.each_line { |l| puts l } }
+IO.popen("cd #{dir} && git merge origin/master") { |f| f.each_line { |l| puts l } }
+IO.popen("git add #{dir}") { |f| f.each_line { |l| puts l } }
+IO.popen("git status") { |f| f.each_line { |l| puts l } }
+
+print "Commit updated plugin with the message: \"Updated #{name} plugin to the latest version.\"? y/n: "
+confirm = STDIN.gets.strip.downcase
+
+if confirm == 'y'
+  IO.popen("git commit -m 'Updated #{name} plugin to the latest version.'") { |f| f.each_line { |l| puts l } }
+end
+
+
+__END__
+Usage: git-plugin-update <plugin-name>
+  <plugin-name> name of the Rails plugin
+
+You must be in project's root directory to use this script.
