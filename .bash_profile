@@ -53,9 +53,9 @@ export PROMPT_COMMAND='history -a'
 # don't put duplicate lines in the history
 export HISTCONTROL=ignoredups
 
-# increase history limit (1MB or 10K entries)
-export HISTFILESIZE=1000000
-export HISTSIZE=10000
+# increase history limit (100KB or 5K entries)
+export HISTFILESIZE=100000
+export HISTSIZE=5000
 
 # Do not bell on TAB completion
 set bell-style none
