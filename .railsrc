@@ -1,0 +1,30 @@
+if rails_env = ENV['RAILS_ENV']
+  rails_root = File.basename(Dir.pwd)
+ 
+  rails_env_string = case rails_env
+  when 'development'
+    'dev'
+  when 'production'
+    'prod'
+  else
+    rails_env
+  end
+ 
+  IRB.conf[:PROMPT] ||= {}
+  IRB.conf[:PROMPT][:RAILS] = {
+    :PROMPT_I => "#{rails_root} #{rails_env_string}>> ",
+    :PROMPT_S => "#{rails_root} #{rails_env_string}* ",
+    :PROMPT_C => "#{rails_root} #{rails_env_string}? ",
+    :RETURN => "=> %s\n"
+  }
+  IRB.conf[:PROMPT_MODE] = :RAILS
+ 
+  # Called after the irb session is initialized and Rails has
+  # been loaded (props: Mike Clark).
+  IRB.conf[:IRB_RC] = Proc.new do
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveRecord::Base.instance_eval { alias :[] :find }
+    alias :r! :reload!
+  end
+ 
+end
