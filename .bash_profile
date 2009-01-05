@@ -29,6 +29,7 @@ alias mc='mc -cu'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias sc='script/console'
+alias ack='ack-grep'
 
 alias lc="cl"
 function cl() { cd "$@" && l; }
