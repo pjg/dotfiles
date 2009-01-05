@@ -1,0 +1,43 @@
+# ~/.inputrc
+
+# be 8 bit clean
+set input-meta on
+set output-meta on
+
+# do not strip 8th bit
+set convert-meta off
+
+# meta okey
+set meta-flag on
+
+# do not bell on TAB completion
+set bell-style none
+
+# disable application keypad (it is enabled in PUTTY and with this set as 'off' it sort of 'just works')
+set enable-keypad off
+
+# ignore case on TAB-completion
+set completion-ignore-case On
+
+# KEYMAPPINGS for xterm mode (PUTTY/ssh)
+$if term=xterm
+  # allow the use of the Home/End keys
+  "\e[1~": beginning-of-line
+  "\e[4~": end-of-line
+
+  # allow the use of the Delete/Insert keys
+  "\e[3~": delete-char
+  "\e[2~": quoted-insert
+
+  # alternate mappings for "page up" and "page down" to search the history (start typing a command and press page-up)
+  "\e[5~": history-search-backward
+  "\e[6~": history-search-forward
+
+  # move by word using alt+left/right-arrow 
+  "\e\e[C": forward-word
+  "\e\e[D": backward-word
+
+  # move by word using ctrl+left/right-arrow
+  "\eOC": forward-word
+  "\eOD": backward-word
+$endif
