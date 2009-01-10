@@ -1,0 +1,16 @@
+#!/bin/bash
+
+github_directory=/crypt/github/
+
+if [ ! -d $github_directory ]; then exit 0; fi
+
+cd $github_directory
+
+for dir in `ls --indicator-style=none`; do
+  if [ -d $dir ]; then
+    cd $dir
+    echo "Updating $dir..."
+    git pull
+    cd ..
+  fi
+done
