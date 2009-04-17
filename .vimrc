@@ -31,7 +31,7 @@ set t_Co=256
 " colorscheme
 colorscheme beautiful256
 
-" enable filetype-specific indenting and plugins
+" enable filetype detection and filetype-specific plugins and indenting
 filetype plugin indent on
 
 " do not wrap lines
@@ -113,7 +113,7 @@ augroup filetypedetect
 augroup END
 
 " 4 spaces for TAB in CSS files
-autocmd FileType css set shiftwidth=4
+autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
 
 
 
@@ -196,7 +196,7 @@ let mapleader = ","
 let localmapleader = "\\"
 
 " for quick opening of :Ack/:grep results
-map <leader>n :cnext<cr>   
+map <leader>n :cnext<cr>
 map <leader>p :cprevious<cr>
 
 " FuzzyFinder
