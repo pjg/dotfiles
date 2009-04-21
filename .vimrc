@@ -207,11 +207,14 @@ map <leader>h :FuzzyFinderMruFile<cr>
 " NERD_tree
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<cr>
 
-" FUNCTIONS (keymappings)
-map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
+" git blame (for visually selected lines)
+vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " rails.vim
 map <leader>rr :.Rake<cr>
+
+" FUNCTIONS (keymappings)
+map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
 
 
 " FUNCTIONS (definitions)
