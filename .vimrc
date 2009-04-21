@@ -210,6 +210,8 @@ map <leader>d :execute 'NERDTreeToggle ' . getcwd()<cr>
 " FUNCTIONS (keymappings)
 map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
 
+" rails.vim
+map <leader>rr :.Rake<cr>
 
 
 " FUNCTIONS (definitions)
