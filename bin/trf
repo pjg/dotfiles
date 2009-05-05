@@ -44,7 +44,7 @@
 # =============
 
 # What files to exclude (request for those files won't be shown)
-exclude="\.gif|\.jpg|\.png|\.ico|\.css|\.js|\.swf|msnbot|Googlebot|Yahoo! Slurp|BecomeBot|Ask Jeeves"
+exclude="\.gif|\.jpg|\.jpeg|\.png|\.ico|\.css|\.js|\.swf|msnbot|Googlebot|Yahoo! Slurp|BecomeBot|Ask Jeeves"
 
 # Width of request and user_agent columns (set it to match your terminal)
 request_col_width=105
