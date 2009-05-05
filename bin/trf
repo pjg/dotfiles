@@ -101,7 +101,7 @@ do
         printf "\033[0;36m%s \033[0m", tmp
 
         # HTTP REQUEST (GET/POST)
-        tmp = substr(fields[2], 0, index(fields[2], " ") - 1)
+        tmp = substr(fields[2], 0, index(fields[2], " "))
         if (tmp == "POST") {
           printf "\033[0;31m%s\033[0m", tmp
         } else {
@@ -110,7 +110,11 @@ do
 
         # HTTP REQUEST PATH
         tmp = substr(fields[2], index(fields[2], " ") + 1, index(fields[2], "HTTP/") - index(fields[2], " ") - 2)
-        printf "\033[0;32m %s\033[0m\n", tmp
+        printf "\033[0;32m %s\033[0m", tmp
+
+        # HTTP STATUS CODE
+        tmp = substr(fields[3], 2, 3)
+        printf " [%s]\n", tmp
 
         # REFERER (the juice)
         printf "   %s", fields[4]
