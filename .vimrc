@@ -3,8 +3,11 @@
 " no vi compatible mode
 set nocompatible
 
-" you can change buffer without saving
+" you can change buffers without saving
 set hidden
+
+" no backup files
+set nobackup nowritebackup
 
 " show line numbers
 set number
@@ -28,8 +31,19 @@ syntax on
 " 256-color VIM
 set t_Co=256
 
-" colorscheme
-colorscheme beautiful256
+" font/colorscheme/encoding
+if has("gui_running")
+  " Windows GUI
+  set guifont=DejaVu_Sans_Mono:h10:cEASTEUROPE
+  set encoding=utf-8
+  " maximize editor window
+  autocmd GUIEnter * simalt ~s
+  " set English language
+  language en
+else
+  " Linux terminal
+  colorscheme beautiful256
+endif
 
 " enable filetype detection and filetype-specific plugins and indenting
 filetype plugin indent on
@@ -74,11 +88,11 @@ set shortmess=atI
 " always show status line
 set laststatus=2
 
-" no blinking
-set novisualbell
-
-" no noise
+" disable visual/audible bells
 set noerrorbells
+set visualbell
+set t_vb=
+autocmd GUIEnter * set vb t_vb=
 
 " time to wait after ESC (default causes an annoying delay)
 set timeoutlen=400
