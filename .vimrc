@@ -172,6 +172,11 @@ let g:fuzzy_matching_limit = 70
 " have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
 noremap Y y$
 
+" <F2> to turn line wrap on/off
+map <F2> :set wrap!<cr>
+imap <F2> <esc><F2>
+vmap <F2> <esc><F2>
+
 " <F8> to temporary turn off the highlight search
 map <F8> :nohlsearch<cr>
 imap <F8> <esc><F8>
