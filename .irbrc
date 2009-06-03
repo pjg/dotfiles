@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'wirble'
+require 'pp'
 Wirble.init
 Wirble.colorize
 
@@ -21,3 +22,18 @@ alias q exit
 
 # load .railsrc when in 'script/console'
 load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV'] 
+
+# keep output manageable
+class Array
+  alias :__orig_inspect :inspect
+  def inspect
+    (length > 20) ? "[ ... #{length} elements ... ]" : __orig_inspect
+  end
+end
+
+class Hash
+  alias :__orig_inspect :inspect
+  def inspect
+    (length > 20) ? "{ ... #{length} keys ... }" : __orig_inspect
+  end
+end
