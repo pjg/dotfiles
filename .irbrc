@@ -27,13 +27,13 @@ load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
 class Array
   alias :__orig_inspect :inspect
   def inspect
-    (length > 20) ? "[ ... #{length} elements ... ]" : __orig_inspect
+    (length > 100) ? "[ ... #{length} elements ... ]" : __orig_inspect
   end
 end
 
 class Hash
   alias :__orig_inspect :inspect
   def inspect
-    (length > 20) ? "{ ... #{length} keys ... }" : __orig_inspect
+    (length > 100) ? "{ ... #{length} keys ... }" : __orig_inspect
   end
 end
