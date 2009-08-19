@@ -97,6 +97,8 @@ autocmd GUIEnter * set vb t_vb=
 " time to wait after ESC (default causes an annoying delay)
 set timeoutlen=400
 
+" set keyword app (Shift+k) to ack
+autocmd BufEnter * setlocal keywordprg=ack-grep
 
 
 " FILE TYPES
@@ -190,6 +192,9 @@ set pastetoggle=<F11>
 
 " <F12> to toggle the display of unvisible characters ($\t)
 nmap <F12> :set list!<bar>set list?<cr>
+
+" Press Shift+P while in visual mode to replace the selection without overwriting the default register
+vmap P p :call setreg('"', getreg('0')) <cr>
 
 " scroll faster & move cursor too
 nnoremap <c-e> 3<c-e>3j

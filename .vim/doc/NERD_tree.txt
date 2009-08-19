@@ -202,13 +202,16 @@ go......Open selected file, but leave cursor in the NERDTree.....|NERDTree-go|
 t.......Open selected node/bookmark in a new tab.................|NERDTree-t|
 T.......Same as 't' but keep the focus on the current tab........|NERDTree-T|
 i.......Open selected file in a split window.....................|NERDTree-i|
-gi......Same as i, but leave the cursor on the NERDTree..........|NERDTree-i|
+gi......Same as i, but leave the cursor on the NERDTree..........|NERDTree-gi|
+s.......Open selected file in a new vsplit.......................|NERDTree-s|
+gs......Same as s, but leave the cursor on the NERDTree..........|NERDTree-gs|
 !.......Execute the current file.................................|NERDTree-!|
 O.......Recursively open the selected directory..................|NERDTree-O|
 x.......Close the current nodes parent...........................|NERDTree-x|
 X.......Recursively close all children of the current node.......|NERDTree-X|
 e.......Edit the current dif.....................................|NERDTree-e|
 
+<CR>...............same as |NERDTree-o|.
 double-click.......same as the |NERDTree-o| map.
 middle-click.......same as |NERDTree-i| for files, same as
                    |NERDTree-e| for dirs.
@@ -219,8 +222,8 @@ P.......Jump to the root node....................................|NERDTree-P|
 p.......Jump to current nodes parent.............................|NERDTree-p|
 K.......Jump up inside directories at the current tree depth.....|NERDTree-K|
 J.......Jump down inside directories at the current tree depth...|NERDTree-J|
-<C-j>...Jump down to the next sibling of the current directory...|NERDTree-c-j|
-<C-k>...Jump up to the previous sibling of the current directory.|NERDTree-c-k|
+<C-J>...Jump down to the next sibling of the current directory...|NERDTree-C-J|
+<C-K>...Jump up to the previous sibling of the current directory.|NERDTree-C-K|
 
 C.......Change the tree root to the selected dir.................|NERDTree-C|
 u.......Move the tree root up one directory......................|NERDTree-u|
@@ -307,6 +310,26 @@ The same as |NERDTree-i| except that the cursor is not moved.
 
 The key combo for this mapping is always "g" + NERDTreeMapOpenSplit (see
 |NERDTree-i|).
+
+------------------------------------------------------------------------------
+                                                                  *NERDTree-s*
+Default key: s
+Map option: NERDTreeMapOpenVSplit
+Applies to: files.
+
+Opens the selected file in a new vertically split window and puts the cursor in
+the new window.
+
+------------------------------------------------------------------------------
+                                                                 *NERDTree-gs*
+Default key: gs
+Map option: None
+Applies to: files.
+
+The same as |NERDTree-s| except that the cursor is not moved.
+
+The key combo for this mapping is always "g" + NERDTreeMapOpenVSplit (see
+|NERDTree-s|).
 
 ------------------------------------------------------------------------------
                                                                   *NERDTree-!*
@@ -408,16 +431,16 @@ If the cursor is already on the last node then do the following:
     * go to the last child of that node
 
 ------------------------------------------------------------------------------
-                                                                *NERDTree-c-j*
-Default key: <C-j>
+                                                                *NERDTree-C-J*
+Default key: <C-J>
 Map option: NERDTreeMapJumpNextSibling
 Applies to: files and directories.
 
 Jump to the next sibling of the selected node.
 
 ------------------------------------------------------------------------------
-                                                                *NERDTree-c-k*
-Default key: <C-k>
+                                                                *NERDTree-C-K*
+Default key: <C-K>
 Map option: NERDTreeMapJumpPrevSibling
 Applies to: files and directories.
 
@@ -474,6 +497,14 @@ Map option: NERDTreeMapFilesystemMenu
 Applies to: files and directories.
 
 Display the filesystem menu. See |NERDTreeFilesysMenu| for details.
+
+------------------------------------------------------------------------------
+                                                                 *NERDTree-cd*
+Default key: cd
+Map option: NERDTreeMapChdir
+Applies to: files and directories.
+
+Change vims current working directory to that of the selected node.
 
 ------------------------------------------------------------------------------
                                                                   *NERDTree-I*
@@ -619,6 +650,8 @@ NERD tree. These options should be set in your vimrc.
 |'NERDTreeSortOrder'|           Tell the NERD tree how to sort the nodes in
                                 the tree.
 
+|'NERDTreeStatusline'|          Set a statusline for NERD tree windows.
+
 |'NERDTreeWinPos'|              Tells the script where to put the NERD tree
                                 window.
 
@@ -655,7 +688,7 @@ If set to 1, the NERD tree window will center around the cursor if it moves to
 within |'NERDTreeAutoCenterThreshold'| lines of the top/bottom of the window.
 
 This is ONLY done in response to tree navigation mappings,
-i.e. |NERDTree-J| |NERDTree-K| |NERDTree-C-J| |NERDTree-c-K| |NERDTree-p|
+i.e. |NERDTree-J| |NERDTree-K| |NERDTree-C-J| |NERDTree-C-K| |NERDTree-p|
 |NERDTree-P|
 
 The centering is done with a |zz| operation.
@@ -718,7 +751,7 @@ Values: 0 or 1.
 Default: 1.
 
 If set to 1, the current cursor line in the NERD tree buffer will be
-highlighted. This is done using the |cursorline| option.
+highlighted. This is done using the |'cursorline'| option.
 
 ------------------------------------------------------------------------------
                                                        *'NERDTreeHijackNetrw'*
@@ -872,6 +905,20 @@ Other examples: >
    backup files will appear last with everything else preceding them.
 
 ------------------------------------------------------------------------------
+                                                        *'NERDTreeStatusline'*
+Values: Any valid statusline setting.
+Default: %{b:NERDTreeRoot.path.strForOS(0)}
+
+Tells the script what to use as the |'statusline'| setting for NERD tree
+windows.
+
+Note that the statusline is set using |:let-&| not |:set| so escaping spaces
+isn't necessary.
+
+Setting this option to -1 will will deactivate it so that your global
+statusline setting is used instead.
+
+------------------------------------------------------------------------------
                                                             *'NERDTreeWinPos'*
 Values: "left" or "right"
 Default: "left".
@@ -879,9 +926,9 @@ Default: "left".
 This option is used to determine where NERD tree window is placed on the
 screen.
 
-This option is makes it possible to use two different explorer type
-plugins simultaneously. For example, you could have the taglist plugin on the
-left of the window and the NERD tree on the right.
+This option makes it possible to use two different explorer plugins
+simultaneously. For example, you could have the taglist plugin on the left of
+the window and the NERD tree on the right.
 
 ------------------------------------------------------------------------------
                                                            *'NERDTreeWinSize'*
@@ -950,6 +997,33 @@ The latest dev versions are on github
 ==============================================================================
 6. Changelog                                               *NERDTreeChangelog*
 
+3.1.1
+    - fix a bug where a non-listed no-name buffer was getting created every
+      time the tree windows was created, thanks to Derek Wyatt and owen1
+    - make <CR> behave the same as the 'o' mapping
+    - some helptag fixes in the doc, thanks strull
+    - fix a bug when using :set nohidden and opening a file where the previous
+      buf was modified. Thanks iElectric
+    - other minor fixes
+
+3.1.0
+    New features:
+    - add mappings to open files in a vsplit, see :help NERDTree-s and :help
+      NERDTree-gs
+    - make the statusline for the nerd tree window default to something
+      hopefully more useful. See :help 'NERDTreeStatusline'
+    Bugfixes:
+    - make the hijack netrw functionality work when vim is started with "vim
+      <some dir>" (thanks to Alf Mikula for the patch).
+    - fix a bug where the CWD wasnt being changed for some operations even when
+      NERDTreeChDirMode==2 (thanks to Lucas S. Buchala)
+    - add -bar to all the nerd tree :commands so they can chain with other
+      :commands (thanks to tpope)
+    - fix bugs when ignorecase was set (thanks to nach)
+    - fix a bug with the relative path code (thanks to nach)
+    - fix a bug where doing a :cd would cause :NERDTreeToggle to fail (thanks nach)
+
+
 3.0.1
     Bugfixes:
     - fix bugs with :NERDTreeToggle and :NERDTreeMirror when 'hidden
@@ -1010,6 +1084,9 @@ just downloaded pr0n instead.
     Tim Pope (tpope)
     James Kanze
     James Vega (jamessan)
+    Frederic Chanal (nach)
+    Alf Mikula
+    Lucas S. Buchala
 
 ==============================================================================
 8. License                                                   *NERDTreeLicense*
