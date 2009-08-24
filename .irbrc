@@ -1,8 +1,10 @@
 require 'rubygems'
 require 'wirble'
 require 'pp'
+require 'hirb'
 Wirble.init
 Wirble.colorize
+Hirb.enable
 
 # .local_methods method for all classes
 class Object
