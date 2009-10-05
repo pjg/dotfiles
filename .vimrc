@@ -100,6 +100,9 @@ set timeoutlen=400
 " set keyword app (Shift+k) to ack
 autocmd BufEnter * setlocal keywordprg=ack-grep
 
+" backspace in gVim
+set bs=2
+
 
 " FILE TYPES
 
