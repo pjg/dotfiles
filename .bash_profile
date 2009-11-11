@@ -31,8 +31,26 @@ alias ls='ls --color=auto'
 alias svndiff='svn diff --diff-cmd=colordiff'
 alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
 
+# auto-correct directory spelling errors
+shopt -s cdspell
+
+# extended pattern matching features enabled
+shopt -s extglob
+
 # make bash append rather than overwrite the history on disk
 shopt -s histappend
+
+# perform hostname completion when a word containing a @ is being completed
+shopt -s hostcomplete
+
+# allow a word beginning with # to cause that word and all remaining characters on that line to be ignored
+shopt -s interactive_comments
+
+# bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line 
+shopt -s no_empty_cmd_completion
+
+# case insensitive matching when performing pathname expansion
+shopt -s nocaseglob
 
 # whenever displaying the prompt, write the previous line to disk
 # so new shell gets the history lines from all previous shells
