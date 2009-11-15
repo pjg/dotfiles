@@ -167,9 +167,9 @@ inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 " PLUGINS
 
 " FuzzyFinder
-let g:fuzzy_ignore = "*.log"
+let g:fuzzy_ignore = "*.log;*.git;*.svn;*.jpg;*.jpeg;*.gif;*.png"
 let g:fuzzy_matching_limit = 70
-
+let g:fuzzy_ceiling = 50000
 
 
 " KEYS
