@@ -8,8 +8,24 @@ Hirb.enable
 
 # .local_methods method for all classes
 class Object
-  def local_methods
-    (methods - Object.instance_methods).sort
+  def local_methods(obj = self)
+    (obj.methods - obj.class.superclass.instance_methods).sort
+  end
+end
+
+# Documentation
+#
+# ri 'Array#pop'
+# Array.ri
+# Array.ri :pop
+# arr.ri :pop
+class Object
+  def ri(method = nil)
+    unless method && method =~ /^[A-Z]/ # if class isn't specified
+      klass = self.kind_of?(Class) ? name : self.class.name
+      method = [klass, method].compact.join('#')
+    end
+    puts `ri '#{method}'`
   end
 end
 
@@ -23,7 +39,7 @@ end
 alias q exit
 
 # load .railsrc when in 'script/console'
-load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV'] 
+load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
 
 # keep output manageable
 class Array
