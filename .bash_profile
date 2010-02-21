@@ -19,6 +19,7 @@ alias ...='cd ../..'
 alias sc='script/console'
 alias ack='ack-grep'
 alias diff='colordiff -u'
+alias r='rails'
 
 alias lc="cl"
 function cl() { cd "$@" && l; }
