@@ -40,6 +40,8 @@ if has("gui_running")
   autocmd GUIEnter * simalt ~s
   " set English language
   language en
+  " On win32, use shellslash
+  set shellslash
 else
   " Linux terminal
   colorscheme beautiful256
