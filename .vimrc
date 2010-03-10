@@ -240,7 +240,7 @@ vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'
 map <leader>rr :.Rake<cr>
 
 " rails: bind control-l to hashrocket
-imap <C-l> <Space>=><Space>"
+imap <C-l> <Space>=><Space>'
 
 " rails: convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
