@@ -170,6 +170,11 @@ let g:fuzzy_ignore = "*.log;*.git;*.svn;*.jpg;*.jpeg;*.gif;*.png"
 let g:fuzzy_matching_limit = 70
 let g:fuzzy_ceiling = 50000
 
+" ragtag
+inoremap <M-o> <Esc>o
+inoremap <C-j> <Down>
+let g:ragtag_global_maps = 1
+
 
 " KEYS
 
