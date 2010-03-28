@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
-# skrypt przekopiuje wybran¹ bazê danych z parametru SRC do parametru DEST
-# skrypt zak³ada, ¿e na obu hostach jest takie samo has³o dostêpu do bazy danych
+# skrypt przekopiuje wybranÄ… bazÄ™ danych z parametru SRC do parametru DEST
+# skrypt zakÅ‚ada, Å¼e na obu hostach jest takie samo hasÅ‚o dostÄ™pu do bazy danych
 
 require 'rubygems'
 require 'termios'
@@ -9,11 +9,9 @@ require 'termios'
 # check params
 abort DATA.read if ARGV.length < 3
 
-
 src = ARGV[0]
 dest = ARGV[1]
 db = ARGV[2]
-
 
 # disable echo
 term = Termios::getattr(STDIN)
@@ -27,14 +25,11 @@ password = STDIN.gets.strip
 term.c_lflag |= (Termios::ECHO | Termios::ICANON)
 Termios::setattr(STDIN, Termios::TCSANOW, term)
 
-puts
-puts "Please wait..."
+puts "\nPlease wait..."
 
 create = (ARGV[3] && ARGV[3] == 'create') ? true : false
 filedate = `date +%Y-%m-%d`.strip
 filename = "#{db}-#{filedate}.sql"
-
-
 
 # fetch remote database to the local file
 src_cmd  = "mysqldump --create-options -c -e -i --single-transaction -h #{src} -u root --password=#{password} --databases #{db} "
@@ -42,14 +37,11 @@ src_cmd += '| grep -v "CREATE DATABASE" ' if !create
 src_cmd += "> #{filename}"
 `#{src_cmd}`
 
-
 # update remote database from the local file
 dest_cmd  = "mysql --default-character-set=UTF8 "
 dest_cmd += "-D #{db} " if !create
 dest_cmd += "-h #{dest} -u root --password=#{password} < #{filename}"
 `#{dest_cmd}`
-
-
 
 __END__
 Usage: clone-mysql-database <src> <dest> <db> [create]
