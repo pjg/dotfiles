@@ -47,7 +47,7 @@ shopt -s hostcomplete
 # allow a word beginning with # to cause that word and all remaining characters on that line to be ignored
 shopt -s interactive_comments
 
-# bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line 
+# bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line
 shopt -s no_empty_cmd_completion
 
 # case insensitive matching when performing pathname expansion
@@ -64,9 +64,9 @@ export HISTCONTROL=ignoredups
 export HISTFILESIZE=100000
 export HISTSIZE=5000
 
-# set crontab editor
-EDITOR=/usr/bin/nano
-VISUAL=/usr/bin/nano
+# set defaul bash editor (for crontab et al.)
+EDITOR=/usr/bin/vim
+VISUAL=/usr/bin/vim
 export EDITOR
 export VISUAL
 
