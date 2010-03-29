@@ -28,6 +28,9 @@ function cl() { cd "$@" && l; }
 eval "`dircolors -b`"
 alias ls='ls --color'
 
+# make less always work with colored input
+alias less='less -R'
+
 # subversion
 alias svndiff='svn diff --diff-cmd=colordiff'
 alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
