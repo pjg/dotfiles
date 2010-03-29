@@ -26,7 +26,7 @@ function cl() { cd "$@" && l; }
 
 # enable colors
 eval "`dircolors -b`"
-alias ls='ls --color=auto'
+alias ls='ls --color'
 
 # subversion
 alias svndiff='svn diff --diff-cmd=colordiff'
