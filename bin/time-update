@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/sbin/ntpdate-debian >/dev/null 2>&1
