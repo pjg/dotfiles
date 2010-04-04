@@ -186,6 +186,11 @@ map <F2> :set wrap!<cr>
 imap <F2> <esc><F2>
 vmap <F2> <esc><F2>
 
+" <F5> to refresh directory contents
+map <F5> :FuzzyFinderTextMateRefreshFiles<cr>
+imap <F5> <esc><F5>
+vmap <F5> <esc><F5>
+
 " <F8> to temporary turn off the highlight search
 map <F8> :nohlsearch<cr>
 imap <F8> <esc><F8>
