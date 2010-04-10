@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'wirble'
 require 'pp'
+require 'ap'
 require 'hirb'
 Wirble.init
 Wirble.colorize
