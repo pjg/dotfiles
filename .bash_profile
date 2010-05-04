@@ -88,16 +88,21 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 
-# PS1
+# PS1 (shell prompt)
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# git branch
-parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+function parse_git_dirty {
+  git diff --quiet HEAD &>/dev/null
+  [[ $? == 1 ]] && echo "⚡"
+}
+
+function parse_git_branch {
+  local branch=$(__git_ps1 "%s")
+  [[ $branch ]] && echo "[$branch$(parse_git_dirty)]"
 }
 
 PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\$(parse_git_branch)\[\033[00m\]\$ "
