@@ -16,13 +16,38 @@ alias l='ls -l'
 alias mc='mc -cu'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias sc='script/console'
 alias ack='ack-grep'
 alias diff='colordiff -u'
-alias r='rails'
 
 alias lc="cl"
 function cl() { cd "$@" && l; }
+
+# rails
+alias r='rails'
+
+function sc {
+  if [ -e script/rails ]; then
+    rails console
+  else
+    script/console --debugger
+  fi
+}
+
+function ss {
+  if [ -e script/rails ]; then
+    rails server
+  else
+    script/server --debugger
+  fi
+}
+
+function sg {
+  if [ -e script/rails ]; then
+    rails generate
+  else
+    script/generate
+  fi
+}
 
 # enable colors
 eval "`dircolors -b`"
