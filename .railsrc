@@ -1,6 +1,6 @@
 if rails_env = ENV['RAILS_ENV']
   rails_root = File.basename(Dir.pwd)
- 
+
   rails_env_string = case rails_env
   when 'development'
     'dev'
@@ -9,7 +9,8 @@ if rails_env = ENV['RAILS_ENV']
   else
     rails_env
   end
- 
+
+  # script/console prompt
   IRB.conf[:PROMPT] ||= {}
   IRB.conf[:PROMPT][:RAILS] = {
     :PROMPT_I => "#{rails_root} #{rails_env_string}>> ",
@@ -18,13 +19,30 @@ if rails_env = ENV['RAILS_ENV']
     :RETURN => "=> %s\n"
   }
   IRB.conf[:PROMPT_MODE] = :RAILS
- 
-  # Called after the irb session is initialized and Rails has
-  # been loaded (props: Mike Clark).
+
+  # Called after the irb session is initialized and Rails has been loaded
   IRB.conf[:IRB_RC] = Proc.new do
+    # Log to screen
     ActiveRecord::Base.logger = Logger.new(STDOUT)
+
+    # [] acts as find()
     ActiveRecord::Base.instance_eval { alias :[] :find }
+
+    # r!
     alias :r! :reload!
   end
- 
+end
+
+# .details method for pretty printing ActiveRecord's objects attributes
+class Object
+  def details
+    if self.respond_to?(:attributes) and self.attributes.any?
+      max = self.attributes.keys.sort_by { |k| k.size }.pop.size + 5
+      puts
+      self.attributes.keys.sort.each do |k|
+        puts sprintf("%-#{max}.#{max}s%s", k, self.try(k))
+      end
+      puts
+    end
+  end
 end
