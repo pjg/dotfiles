@@ -181,10 +181,15 @@ let g:ragtag_global_maps = 1
 " have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
 noremap Y y$
 
-" <F2> to turn line wrap on/off
-map <F2> :set wrap!<cr>
+" <F2> to save current session in tmp/current.vim
+map <F2> :mksession! tmp/current.vim<cr>
 imap <F2> <esc><F2>
 vmap <F2> <esc><F2>
+
+" <F4> to turn line wrap on/off
+map <F4> :set wrap!<cr>
+imap <F4> <esc><F4>
+vmap <F4> <esc><F4>
 
 " <F5> to refresh directory contents
 map <F5> :FuzzyFinderTextMateRefreshFiles<cr>
