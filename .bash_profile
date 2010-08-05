@@ -51,7 +51,7 @@ function sg {
 
 # enable colors
 eval "`dircolors -b`"
-alias ls='ls --color'
+alias ls='ls --color=auto'
 
 # make less always work with colored input
 alias less='less -R'
