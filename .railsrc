@@ -45,4 +45,5 @@ class Object
       puts
     end
   end
+  alias :detailed :details
 end
