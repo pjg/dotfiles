@@ -3,6 +3,7 @@ require 'wirble'
 require 'pp'
 require 'ap'
 require 'hirb'
+require 'interactive_editor'
 Wirble.init
 Wirble.colorize
 Hirb.enable
