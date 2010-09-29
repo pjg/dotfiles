@@ -68,6 +68,9 @@ set iskeyword+=-,_,$,@,#
 " set virtual edit only when in visual block selection mode
 set virtualedit=block
 
+" the /g flag on :s substitutions by default
+set gdefault
+
 " Keep 3 lines (top/bottom) for scope when scrolling
 set scrolloff=3
 set sidescrolloff=3
@@ -219,9 +222,11 @@ nnoremap <c-y> 3<c-y>3k
 vnoremap <c-e> 3<c-e>3j
 vnoremap <c-y> 3<c-y>3k
 
-" switch between buffers
-nmap <c-h> :bp<cr>
-nmap <c-l> :bn<cr>
+" move faster between windows
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
 
 " CTRL+s always saves file
 nmap <c-s> :w<cr>
@@ -259,7 +264,6 @@ imap <C-l> <Space>=><Space>'
 
 " rails: convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
-nmap <C-k> lbi:<Esc>E
 
 " convert file to utf-8 and cleanup whitespace garbage
 map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
