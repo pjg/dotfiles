@@ -178,6 +178,10 @@ inoremap <M-o> <Esc>o
 inoremap <C-j> <Down>
 let g:ragtag_global_maps = 1
 
+" ack.vim
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+
 
 " KEYS
 
