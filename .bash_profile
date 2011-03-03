@@ -37,22 +37,6 @@ function sc {
   fi
 }
 
-function ss {
-  if [ -e script/rails ]; then
-    rails server
-  else
-    script/server --debugger
-  fi
-}
-
-function sg {
-  if [ -e script/rails ]; then
-    rails generate
-  else
-    script/generate
-  fi
-}
-
 # enable colors
 eval "`dircolors -b`"
 alias ls='ls --color=auto'
