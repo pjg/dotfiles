@@ -1,13 +1,13 @@
-if rails_env = ENV['RAILS_ENV']
+if (rails_env = ENV['RAILS_ENV']) || (rails_env = Rails.env)
   rails_root = File.basename(Dir.pwd)
 
   rails_env_string = case rails_env
   when 'development'
-    'dev'
+    '[DEV]'
   when 'production'
-    'prod'
+    '[PROD]'
   else
-    rails_env
+    "[#{rails_env.upcase}]"
   end
 
   # script/console prompt
@@ -22,14 +22,26 @@ if rails_env = ENV['RAILS_ENV']
 
   # Called after the irb session is initialized and Rails has been loaded
   IRB.conf[:IRB_RC] = Proc.new do
-    # Log to screen
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
-
     # [] acts as find()
     ActiveRecord::Base.instance_eval { alias :[] :find }
 
     # r!
     alias :r! :reload!
+  end
+end
+
+# set logging to screen
+if ENV.include?('RAILS_ENV')
+  # Rails 2.x
+  if !Object.const_defined?('RAILS_DEFAULT_LOGGER')
+    require 'logger'
+    Object.const_set('RAILS_DEFAULT_LOGGER', Logger.new(STDOUT))
+  end
+else
+  # Rails 3
+  if Rails.logger
+    Rails.logger = Logger.new(STDOUT)
+    ActiveRecord::Base.logger = Rails.logger
   end
 end
 

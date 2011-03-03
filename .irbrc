@@ -1,12 +1,22 @@
-require 'rubygems'
-require 'wirble'
+# pretty print from the Ruby Standard Library
 require 'pp'
-require 'ap'
-require 'hirb'
-require 'interactive_editor'
-Wirble.init
-Wirble.colorize
-Hirb.enable
+
+# require console enhancement gems (you need to list them in the Gemfile in the :development & :test groups)
+%w(rubygems ap interactive_editor hirb wirble).each do |gem|
+  begin
+    require gem
+  rescue LoadError
+  end
+end
+
+# Initialize Wirble
+if defined?(Wirble)
+  Wirble.init
+  Wirble.colorize
+end
+
+# Initialize Hirb
+Hirb.enable if defined?(Hirb)
 
 # .local_methods method for all classes
 class Object
@@ -31,17 +41,11 @@ class Object
   end
 end
 
-# Log to STDOUT if in Rails (script/console)
-if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
-  require 'logger'
-  RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
-end
-
 # q for exit
 alias q exit
 
 # load .railsrc when in 'script/console'
-load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
+load File.dirname(__FILE__) + '/.railsrc' if ($0 == 'irb' && ENV['RAILS_ENV']) || ($0 == 'script/rails' && Rails.env)
 
 # keep output manageable
 class Array
