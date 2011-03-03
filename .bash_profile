@@ -19,15 +19,19 @@ alias ...='cd ../..'
 alias ack='ack-grep'
 alias diff='colordiff -u'
 
-alias lc="cl"
+alias lc='cl'
 function cl() { cd "$@" && l; }
 
 # rails
 alias r='rails'
+alias b='bundle'
+alias bi='b install'
+alias bu='b update'
+alias be='b exec'
 
 function sc {
   if [ -e script/rails ]; then
-    rails console
+    bundle exec rails console
   else
     script/console --debugger
   fi
