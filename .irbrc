@@ -1,6 +1,13 @@
 # pretty print from the Ruby Standard Library
 require 'pp'
 
+# tab-completion and history saving
+require 'irb/completion'
+require 'irb/ext/save-history'
+
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+
 # require console enhancement gems (you need to list them in the Gemfile in the :development & :test groups)
 %w(rubygems ap interactive_editor hirb wirble).each do |gem|
   begin
