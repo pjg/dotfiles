@@ -44,6 +44,9 @@ alias ls='ls --color=auto'
 # make less always work with colored input
 alias less='less -R'
 
+# make watch always work with colored input
+alias watch='watch --color'
+
 # subversion
 alias svndiff='svn diff --diff-cmd=colordiff'
 alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
