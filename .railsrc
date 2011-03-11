@@ -30,7 +30,7 @@ if (rails_env = ENV['RAILS_ENV']) || (rails_env = Rails.env)
 
     # sql for arbitrary SQL commands through the AR
     def sql(query)
-      ActiveRecord::Base.connection.select_all(query)
+      ActiveRecord::Base.connection.execute(query)
     end
   end
 end
