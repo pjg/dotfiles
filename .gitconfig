@@ -1,5 +1,6 @@
 [alias]
-  st=status
+  l = log -10 --pretty=format:'%C(yellow)%h %Creset%an <%ae>: %s'
+  st = status
 
 [color]
   diff = auto
