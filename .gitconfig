@@ -1,4 +1,6 @@
 [alias]
+  ci = commit
+  co = checkout
   l = log -10 --date=relative --pretty=format:'%C(yellow)%h %Creset%ad %an <%ae>: %s'
   st = status
 
