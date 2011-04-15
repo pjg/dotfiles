@@ -136,6 +136,11 @@ augroup END
 " 4 spaces for TAB in CSS files
 autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
 
+" 2 spaces for TAB in JS files
+autocmd User Rails/**/*.js set softtabstop=2
+autocmd User Rails/**/*.js set tabstop=2
+autocmd User Rails/**/*.js set shiftwidth=2
+
 
 
 " ADVANCED SETTINGS
