@@ -6,6 +6,9 @@ set nocompatible
 " you can change buffers without saving
 set hidden
 
+" do not autoresize windows
+set noequalalways
+
 " no backup files
 set nobackup nowritebackup
 
@@ -71,11 +74,18 @@ set virtualedit=block
 " the /g flag on :s substitutions by default
 set gdefault
 
-" Keep 3 lines (top/bottom) for scope when scrolling
+" keep 3 lines (top/bottom) for scope when scrolling
 set scrolloff=3
 set sidescrolloff=3
 
-" Keep longer vim commands history
+" avoid moving cursor to BOL when jumping around
+set nostartofline
+
+" briefly jump to a paren once it's balanced (but only for 200ms)
+set showmatch
+set matchtime=2
+
+" keep longer vim commands history
 set history=1000
 
 " show available TAB-completions in command line
@@ -102,8 +112,22 @@ set timeoutlen=400
 " set keyword app (Shift+k) to ack
 autocmd BufEnter * setlocal keywordprg=ack-grep
 
-" backspace in gVim
-set bs=2
+" allow backspacing over autoindent, EOL, and BOL
+set backspace=2
+
+" never write unless requested
+set noautowrite
+set noautowriteall
+
+" do not autoread changed files
+set noautoread
+
+" write swap files after 2 seconds of inactivity
+set updatetime=2000
+
+" yes/no/cancel prompt if closing with unsaved changes
+set confirm
+
 
 
 " FILE TYPES
