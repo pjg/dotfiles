@@ -109,8 +109,8 @@ function! s:Init()
     let b:surround_45 = "<% \r %>"
     let b:surround_61 = "<%= \r %>"
   endif
-  imap     <buffer> <C-X>= <SID>ragtagOopen<SID>ragtagOclose<Left>
-  imap     <buffer> <C-X>+ <C-V><NL><Esc>I<SID>ragtagOopen<Space><Esc>A<Space><SID>ragtagOclose<Esc>F<NL>s
+  imap <script> <buffer> <C-X>= <SID>ragtagOopen<SID>ragtagOclose<Left>
+  imap <script> <buffer> <C-X>+ <C-V><NL><Esc>I<SID>ragtagOopen<Esc>A<SID>ragtagOclose<Esc>F<NL>s
   " <%\n\n%>
   if &ft == "cf"
     inoremap <buffer> <C-X>] <cfscript><CR></cfscript><Esc>O
@@ -122,20 +122,20 @@ function! s:Init()
     imap     <buffer> <C-X>] <C-X><Lt><CR><C-X>><Esc>O
   endif
   " <% %>
-  if &ft == "eruby"
+  if &ft =~ '\<eruby\>'
     inoremap  <buffer> <C-X>- <%<Space><Space>-%><Esc>3hi
     inoremap  <buffer> <C-X>_ <C-V><NL><Esc>I<%<Space><Esc>A<Space>-%><Esc>F<NL>s
   elseif &ft == "cf"
     inoremap  <buffer> <C-X>- <cf><Left>
     inoremap  <buffer> <C-X>_ <cfset ><Left>
   else
-    imap      <buffer> <C-X>- <C-X><Lt><Space><Space><C-X>><Esc>2hi
-    imap      <buffer> <C-X>_ <C-V><NL><Esc>I<C-X><Lt><Space><Esc>A<Space><C-X>><Esc>F<NL>s
+    imap <buffer> <C-X>- <C-X><Lt><Space><Space><C-X>><Esc>2hi
+    imap <buffer> <C-X>_ <C-V><NL><Esc>I<C-X><Lt><Space><Esc>A<Space><C-X>><Esc>F<NL>s
   endif
   " Comments
   if &ft =~ '^asp'
-    imap     <buffer> <C-X>'     <C-X><Lt>'<Space><Space><C-X>><Esc>2hi
-    imap     <buffer> <C-X>"     <C-V><NL><Esc>I<C-X><Lt>'<Space><Esc>A<Space><C-X>><Esc>F<NL>s
+    imap <buffer> <C-X>' <C-X><Lt>'<Space><Space><C-X>><Esc>2hi
+    imap <buffer> <C-X>" <C-V><NL><Esc>I<C-X><Lt>'<Space><Esc>A<Space><C-X>><Esc>F<NL>s
     let b:surround_35 = maparg("<C-X><Lt>","i")."' \r ".maparg("<C-X>>","i")
   elseif &ft == "jsp"
     inoremap <buffer> <C-X>'     <Lt>%--<Space><Space>--%><Esc>4hi
@@ -159,8 +159,8 @@ function! s:Init()
     inoremap <buffer> <C-X>"     <C-V><NL><Esc>I<C-X>{%<Space>comment<Space>%}<Esc>A{%<Space>endcomment<Space>%}<Esc>F<NL>s
     let b:surround_35 = "{% comment %}\r{% endcomment %}"
   else
-    imap     <buffer> <C-X>'     <C-X><Lt>#<Space><Space><C-X>><Esc>2hi
-    imap     <buffer> <C-X>"     <C-V><NL><Esc>I<C-X><Lt>#<Space><Esc>A<Space><C-X>><Esc>F<NL>s
+    imap <buffer> <C-X>' <C-X><Lt>#<Space><Space><C-X>><Esc>2hi
+    imap <buffer> <C-X>" <C-V><NL><Esc>I<C-X><Lt>#<Space><Esc>A<Space><C-X>><Esc>F<NL>s
     let b:surround_35 = maparg("<C-X><Lt>","i")."# \r ".maparg("<C-X>>","i")
   endif
   imap <buffer> <C-X>%           <Plug>ragtagUrlEncode
@@ -206,7 +206,7 @@ function! s:doctypeSeek()
   if !exists("b:ragtag_doctype_index")
     if exists("b:allml_doctype_index")
       let b:ragtag_doctype_index = b:allml_doctype_index
-    elseif &ft == 'xhtml' || &ft == 'eruby'
+    elseif &ft == 'xhtml' || &ft =~ '\<eruby\>'
       let b:ragtag_doctype_index = 10
     elseif &ft != 'xml'
       let b:ragtag_doctype_index = 7
@@ -279,7 +279,7 @@ function! s:subtype()
     return 'xhtml'
   elseif top =~ '[^<]\<html\>'
     return "html"
-  elseif &ft == "xhtml" || &ft == "eruby"
+  elseif &ft == "xhtml" || &ft == '\<eruby\>'
     return "xhtml"
   elseif exists("b:loaded_ragtag")
     return "html"
