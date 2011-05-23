@@ -5,8 +5,10 @@
   co = checkout
   d = diff
   dc = diff --cached
+  g = grep
   l = log -10 --date=relative --pretty=format:'%C(yellow)%h %Creset%ad %an <%ae>: %s'
   sh = show
+  s = status
   st = status
 
 [color]
