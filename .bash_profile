@@ -19,6 +19,7 @@ alias ...='cd ../..'
 alias ack='ack-grep'
 alias diff='colordiff -u'
 alias g='git'
+alias wtf='git wtf'
 
 alias lc='cl'
 function cl() { cd "$@" && l; }
