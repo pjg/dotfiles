@@ -15,6 +15,7 @@
   diff = auto
   status = auto
   branch = auto
+  ui = auto
 
 [core]
   # For dealing with Windows projects
