@@ -21,6 +21,9 @@
   # For dealing with Windows projects
   autocrlf = false
 
+  # Global gitignore
+  excludesfile = ~/.gitignoreglobal
+
 [diff]
   # Detect renames of files
   renames = true
