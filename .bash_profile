@@ -105,6 +105,11 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# git function
+function scoreboard () {
+  git log | grep Author | sort | uniq -ci | sort -hr
+}
+
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
