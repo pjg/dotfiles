@@ -211,7 +211,6 @@ let g:ragtag_global_maps = 1
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 
-
 " KEYS
 
 " have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
@@ -342,6 +341,9 @@ set statusline+=%{StatuslineTrailingSpaceWarning()}
 
 set statusline+=%#warningmsg#
 set statusline+=%*
+
+" fugitive.vim
+set statusline+=%{fugitive#statusline()}
 
 "display a warning if &paste is set
 set statusline+=%#error#
