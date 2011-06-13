@@ -313,26 +313,37 @@ endfunction
 
 
 
-" STATUSLINE STUFF
+" STATUSLINE
 
-set statusline=%f "path relative to current to the filename
+" path relative to current to the filename
+set statusline=%f
 
-"display a warning if fileformat isn't unix
+" display a warning if fileformat isn't unix
 set statusline+=%#warningmsg#
 set statusline+=%{&ff!='unix'?'['.&ff.']':''}
 set statusline+=%*
 
-"display a warning if file encoding isn't utf-8
+" display a warning if file encoding isn't utf-8
 set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
 
-set statusline+=%h "help file flag
-set statusline+=%y "filetype
-set statusline+=%r "read only flag
-set statusline+=%m "modified flag
+" help file flag
+set statusline+=%h
 
-"display a warning if &et is wrong, or we have mixed-indenting
+" filetype
+set statusline+=%y
+
+" if git repo/branch (fugitive.vim)
+set statusline+=%{fugitive#statusline()}
+
+" read only flag
+set statusline+=%r
+
+" modified flag
+set statusline+=%m
+
+" display a warning if &et is wrong or we have mixed-indenting
 set statusline+=%#error#
 set statusline+=%{StatuslineTabWarning()}
 set statusline+=%*
@@ -342,23 +353,27 @@ set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%#warningmsg#
 set statusline+=%*
 
-" fugitive.vim
-set statusline+=%{fugitive#statusline()}
-
-"display a warning if &paste is set
+" display a warning if &paste is set
 set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
 
-set statusline+=%= "left/right separator
-set statusline+=%c, "cursor column
-set statusline+=%l/%L "cursor line/total lines
-set statusline+=\ %P "percent through file
+" left/right separator
+set statusline+=%=
+
+" cursor column
+set statusline+=%c,
+
+" cursor line/total lines
+set statusline+=%l/%L
+
+" percent through file
+set statusline+=\ %P
 
 " always show status line
 set laststatus=2
 
-"recalculate the trailing whitespace warning when idle, and after saving
+" recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 "return '[\s]' if trailing white space is detected
