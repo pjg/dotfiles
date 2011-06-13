@@ -28,6 +28,10 @@
   # Detect renames of files
   renames = true
 
+[grep]
+  lineNumber = true
+  extendedRegexp = true
+
 [merge]
   tool = vimdiff
 
