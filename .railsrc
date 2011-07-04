@@ -64,3 +64,11 @@ class Object
   end
   alias :detailed :details
 end
+
+# returns a collection of the methods that Rails added to the given class
+# http://lucapette.com/irb/rails-core-ext-and-irb/
+class Class
+  def core_ext
+    self.instance_methods.map {|m| [m, self.instance_method(m).source_location] }.select {|m| m[1] && m[1][0] =~/activesupport/}.map {|m| m[0]}.sort
+  end
+end
