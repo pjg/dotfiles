@@ -91,8 +91,10 @@ VISUAL=/usr/bin/vim
 export EDITOR
 export VISUAL
 
-# turn off terminal driver flow control
-stty -ixon -ixoff
+# turn off terminal driver flow control (CTRL+S/CTRL+Q) (if we are a terminal)
+if [ -t 0 ]; then
+  stty -ixon -ixoff
+fi
 
 # check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s checkwinsize
