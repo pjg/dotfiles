@@ -8,14 +8,14 @@ end
 
 if Gem.available? 'guard-livereload'
   guard 'livereload' do
-    # omit files starting with a dot (probably HAML produces them)
+    # omit files starting with a dot (to prevent double reloads)
     watch(%r{^app/([a-zA-Z0-9_-]+/)+[^\.]+(\.html)*\.(erb|haml)})
+    watch(%r{^app/helpers/([a-zA-Z0-9_-]+/)*[^\.]+\.rb})
+    watch(%r{^(public/|app/assets/)([a-zA-Z0-9_-]+/)*[^\.]+\.(css|js|html)})
+    watch(%r{^config/locales/([a-zA-Z0-9_-]+/)*[^\.]+\.yml})
     # the rest
-    watch(%r{^app/helpers/.+\.rb})
-    watch(%r{^(public/|app/assets).+\.(css|js|html)})
     watch(%r{^(app/assets/.+\.css)\.scss})  { |m| m[1] }
     watch(%r{^(app/assets/.+\.js)\.coffee}) { |m| m[1] }
-    watch(%r{^config/locales/.+\.yml})
   end
 end
 
