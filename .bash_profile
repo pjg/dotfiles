@@ -115,6 +115,9 @@ function scoreboard () {
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
+# set DISPLAY if Xvfb is running (expects it to run on :0)
+[ $(pgrep Xvfb) ] && export DISPLAY=:0
+
 
 # PS1 (shell prompt)
 
