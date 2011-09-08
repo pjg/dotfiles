@@ -48,6 +48,9 @@ end
 
 if Gem.available? 'guard-rspec'
   guard 'rspec', :version => 2 do
+    # Factories
+    watch('spec/factories.rb')  { "spec" }
+
     # Global
     watch(%r{^spec/.+_spec\.rb$})
     watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
@@ -56,9 +59,8 @@ if Gem.available? 'guard-rspec'
     # Rails specific
     watch(%r{^app/(.+)\.rb$})                          { |m| "spec/#{m[1]}_spec.rb" }
     watch(%r{^lib/(.+)\.rb$})                          { |m| "spec/lib/#{m[1]}_spec.rb" }
-    watch(%r{^app/controllers/(.+)_(controller)\.rb$}) { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
+    watch(%r{^app/controllers/(.+)_(controller)\.rb$}) { |m| ["spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
     watch(%r{^spec/support/(.+)\.rb$})                 { "spec" }
-    watch('config/routes.rb')                          { "spec/routing" }
     watch('app/controllers/application_controller.rb') { "spec/controllers" }
 
     # Capybara request specs
@@ -66,6 +68,9 @@ if Gem.available? 'guard-rspec'
 
     # Controller specs for views
     watch(%r{^app/views/(.+)/.*\.(erb|haml)$})         { |m| "spec/controllers/#{m[1]}_spec.rb" }
+
+    # Runs all specs when something in /lib is modified. Might be overkill, but helps tremendously during Gem development
+    watch(%r{^lib/.+\.rb$}) { "spec" }
   end
 end
 
