@@ -38,7 +38,7 @@ if Gem.available? 'guard-jasmine-headless-webkit'
   # Your spec files end with _spec.{js,coffee}.
   spec_location = "spec/javascripts/%s_spec"
 
-  guard 'jasmine-headless-webkit' do
+  guard 'jasmine-headless-webkit', :all_on_start => false do
     watch(%r{^app/views/.*\.jst$})
     watch(%r{^public/javascripts/(.*)\.js$}) { |m| newest_js_file(spec_location % m[1]) }
     watch(%r{^app/assets/javascripts/(.*)\.(js|coffee)$}) { |m| newest_js_file(spec_location % m[1]) }
@@ -47,7 +47,7 @@ if Gem.available? 'guard-jasmine-headless-webkit'
 end
 
 if Gem.available? 'guard-rspec'
-  guard 'rspec', :version => 2 do
+  guard 'rspec', :all_on_start => false, :version => 2 do
     # Factories
     watch('spec/factories.rb')  { "spec" }
 
