@@ -4,7 +4,7 @@
 export INPUTRC=~/.inputrc
 
 # add various directories to PATH
-PATH=./:~/bin:/bin:/sbin:/usr/bin:/usr/sbin:"${PATH}"
+PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 export PATH
 
 # umask
