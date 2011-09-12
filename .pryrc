@@ -74,4 +74,4 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
 end
 
 # alias 'q' for 'exit'
-Pry.config.commands.alias_command "q", "exit"
+Pry.config.commands.alias_command "q", "exit-all"
