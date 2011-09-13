@@ -43,8 +43,9 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
       "[#{env.upcase}]"
     end
 
-  Pry.config.prompt = [ proc { |obj, nest_level, *| "#{rails_root} #{rails_env_prompt} #{obj}:#{nest_level}> "},
-                        proc { |obj, nest_level, *| "#{rails_root} #{rails_env_prompt} #{obj}:#{nest_level}* "} ]
+  prompt = '%s %s %s:%s'
+  Pry.config.prompt = [ proc { |obj, nest_level, *| "#{prompt}> " % [rails_root, rails_env_prompt, obj, nest_level] },
+                        proc { |obj, nest_level, *| "#{prompt}* " % [rails_root, rails_env_prompt, obj, nest_level] } ]
 
   # [] acts as find()
   ActiveRecord::Base.instance_eval { alias :[] :find }
