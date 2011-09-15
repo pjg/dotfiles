@@ -6,7 +6,8 @@
   d = diff
   dc = diff --cached
   g = grep
-  l = log -10 --date=relative --pretty=format:'%C(yellow)%h %Creset%ad %an <%ae>: %s'
+  l = log -10 --date=relative --pretty=format:'%C(yellow)%h %Creset%ad %an: %s'
+  ll = log --date=relative --graph --pretty=format:'%C(yellow)%h%d %Creset%ad %an: %s'
   sh = show
   s = status
   st = status
@@ -39,3 +40,7 @@
   # The name and e-mail address will be used to identify you in the commits
   name = "Paweł Gościcki"
   email = pawel.goscicki@gmail.com
+
+[push]
+  # Push current branch even if you've never pushed it before
+  default = current
