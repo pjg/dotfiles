@@ -27,6 +27,7 @@ function cl() { cd "$@" && l; }
 # rails
 alias r='rails'
 alias b='bundle'
+alias bundler='bundle'
 alias bi='b install'
 alias bu='b update'
 alias be='b exec'
