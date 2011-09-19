@@ -18,8 +18,11 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ack='ack-grep'
 alias diff='colordiff -u'
-alias g='git'
 alias wtf='git wtf'
+
+# g alias with bash completion
+alias g='git'
+complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null || complete -o default -o nospace -F _git g
 
 alias lc='cl'
 function cl() { cd "$@" && l; }
