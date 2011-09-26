@@ -1,3 +1,8 @@
+" PATHOGEN
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
+
 " BASIC SETTINGS
 
 " no vi compatible mode
