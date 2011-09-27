@@ -215,6 +215,10 @@ let g:ragtag_global_maps = 1
 " ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
+" jslint.vim
+let g:JSLintHighlightErrorLine = 0
+
+
 
 " KEYS
 
