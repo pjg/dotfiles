@@ -1,5 +1,16 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
+if Gem.available? 'guard-spork'
+  guard 'spork', :wait => 180, :cucumber => false, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+    watch('config/application.rb')
+    watch('config/environment.rb')
+    watch(%r{^config/environments/.+\.rb$})
+    watch(%r{^config/initializers/.+\.rb$})
+    watch('spec/spec_helper.rb')
+    watch(%r{^spec/support/.+\.rb$})
+  end
+end
+
 if Gem.available? 'guard-sass'
   guard 'sass', :output => 'public/stylesheets' do
     watch(%r{^public/stylesheets/sass/(.+\.s[ac]ss)$})
@@ -33,6 +44,12 @@ if Gem.available? 'guard-shell'
   end
 end
 
+if Gem.available? 'guard-delayed'
+  guard 'delayed', :environment => 'development' do
+    watch(%r{^app/(.+)\.rb})
+  end
+end
+
 if Gem.available? 'guard-jasmine-headless-webkit'
   # Run JS and CoffeeScript files in a typical Rails 3.1 fashion, placing Underscore templates in app/views/*.jst
   # Your spec files end with _spec.{js,coffee}.
@@ -47,7 +64,7 @@ if Gem.available? 'guard-jasmine-headless-webkit'
 end
 
 if Gem.available? 'guard-rspec'
-  guard 'rspec', :all_on_start => false, :version => 2 do
+  guard 'rspec', :all_on_start => false, :all_after_pass => false, :version => 2, :cli => '--drb' do
     # Factories
     watch('spec/factories.rb')  { "spec" }
 
