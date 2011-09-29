@@ -79,9 +79,9 @@
 [submodule ".vim/bundle/tabular"]
 	path = .vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule ".vim/bundle/vim-autoclose"]
-	path = .vim/bundle/vim-autoclose
-	url = https://github.com/Townk/vim-autoclose.git
 [submodule ".vim/bundle/fuzzyfinder_textmate"]
 	path = .vim/bundle/fuzzyfinder_textmate
 	url = https://github.com/sethbc/fuzzyfinder_textmate.git
+[submodule ".vim/bundle/vim-autoclose"]
+	path = .vim/bundle/vim-autoclose
+	url = https://github.com/blueyed/vim-autoclose.git
