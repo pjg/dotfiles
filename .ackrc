@@ -1,2 +1,19 @@
---type-add
-ruby=.haml,.sass
+# color
+--color
+
+# sorting
+--sort-files
+
+# only search with case sensitivity if there is mixed case
+--smart-case
+
+# ignore dirs
+--ignore-dir=coverage
+--ignore-dir=doc
+--ignore-dir=tmp
+
+# filetypes
+--type-add=ruby=.haml,.rake,.rsel,.builder
+--type-add=html=.html.erb,.html.haml
+--type-add=js=js.erb
+--type-add=css=.sass,.scss
