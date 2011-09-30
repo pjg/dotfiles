@@ -1,6 +1,8 @@
 [alias]
   a = add
+  b = branch
   br = branch
+  c = commit
   ci = commit
   co = checkout
   d = diff
@@ -8,6 +10,8 @@
   g = grep
   l = log -10 --date=relative --pretty=format:'%C(yellow)%h %Creset%ad %an: %s'
   ll = log --date=relative --graph --pretty=format:'%C(yellow)%h%d %Creset%ad %an: %s'
+  r = remote
+  ru = remote update
   sh = show
   s = status
   st = status
