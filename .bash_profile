@@ -43,6 +43,9 @@ function sc {
   fi
 }
 
+# Rails production environment by default for all non-development machines
+[[ $(hostname -s) != 'ubuntu' ]] && [[ $(hostname -s) != 'genesis' ]] && export RAILS_ENV="production"
+
 # enable colors
 eval "`dircolors -b`"
 alias ls='ls --color=auto'
