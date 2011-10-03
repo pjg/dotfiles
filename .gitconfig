@@ -10,6 +10,8 @@
   g = grep
   l = log -10 --date=relative --pretty=format:'%C(yellow)%h %Creset%ad %an: %s'
   ll = log --date=relative --graph --pretty=format:'%C(yellow)%h%d %Creset%ad %an: %s'
+  p = push
+  pf = push -f
   r = remote
   ru = remote update
   sh = show
