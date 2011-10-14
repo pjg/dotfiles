@@ -218,6 +218,9 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " jslint.vim
 let g:JSLintHighlightErrorLine = 0
 
+" autoclose.vim
+let g:AutoCloseProtectedRegions = ["Comment"]
+
 
 
 " KEYS
