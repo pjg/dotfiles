@@ -13,6 +13,10 @@
   p = push
   pf = push -f
   r = remote
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbs = rebase --skip
   ru = remote update
   sh = show
   s = status
