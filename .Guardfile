@@ -64,7 +64,7 @@ if Gem.available? 'guard-jasmine-headless-webkit'
 end
 
 if Gem.available? 'guard-rspec'
-  guard 'rspec', :all_on_start => false, :all_after_pass => false, :version => 2, :cli => '--drb' do
+  guard 'rspec', :all_on_start => false, :all_after_pass => false, :version => 2, :cli => '--color --fail-fast --drb' do
     # Factories
     watch('spec/factories.rb')  { "spec" }
 
@@ -92,7 +92,7 @@ if Gem.available? 'guard-rspec'
 end
 
 if Gem.available? 'guard-test'
-  guard 'test', :all_on_start => false do
+  guard 'test', :all_on_start => false, :all_after_pass => false do
     watch(%r{^lib/(.+)\.rb$})     { |m| "test/#{m[1]}_test.rb" }
     watch(%r{^test/.+_test\.rb$})
     watch('test/test_helper.rb')  { "test" }
