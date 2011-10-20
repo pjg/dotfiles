@@ -1,16 +1,5 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
-if Gem.available? 'guard-spork'
-  guard 'spork', :wait => 180, :cucumber => false, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
-    watch('config/application.rb')
-    watch('config/environment.rb')
-    watch(%r{^config/environments/.+\.rb$})
-    watch(%r{^config/initializers/.+\.rb$})
-    watch('spec/spec_helper.rb')
-    watch(%r{^spec/support/.+\.rb$})
-  end
-end
-
 if Gem.available? 'guard-sass'
   guard 'sass', :output => 'public/stylesheets', :debug_info => false, :style => :nested do
     watch(%r{^public/stylesheets/sass/(.+\.s[ac]ss)$})
@@ -60,6 +49,17 @@ if Gem.available? 'guard-jasmine-headless-webkit'
     watch(%r{^public/javascripts/(.*)\.js$}) { |m| newest_js_file(spec_location % m[1]) }
     watch(%r{^app/assets/javascripts/(.*)\.(js|coffee)$}) { |m| newest_js_file(spec_location % m[1]) }
     watch(%r{^spec/javascripts/(.*)_spec\..*}) { |m| newest_js_file(spec_location % m[1]) }
+  end
+end
+
+if Gem.available? 'guard-spork'
+  guard 'spork', :wait => 180, :cucumber => false, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+    watch('config/application.rb')
+    watch('config/environment.rb')
+    watch(%r{^config/environments/.+\.rb$})
+    watch(%r{^config/initializers/.+\.rb$})
+    watch('spec/spec_helper.rb')
+    watch(%r{^spec/support/.+\.rb$})
   end
 end
 
