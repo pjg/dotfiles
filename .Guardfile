@@ -12,7 +12,7 @@ if Gem.available? 'guard-spork'
 end
 
 if Gem.available? 'guard-sass'
-  guard 'sass', :output => 'public/stylesheets', :debug_info => false, :style => :expanded do
+  guard 'sass', :output => 'public/stylesheets', :debug_info => false, :style => :nested do
     watch(%r{^public/stylesheets/sass/(.+\.s[ac]ss)$})
   end
 end
