@@ -3,6 +3,7 @@
   b = branch
   br = branch
   c = commit
+  ca = commit --amend
   ci = commit
   co = checkout
   d = diff
@@ -16,6 +17,9 @@
   rb = rebase
   rba = rebase --abort
   rbc = rebase --continue
+  rbi = rebase --interactive
+  rbi10 = rebase --interactive HEAD~10
+  rbi20 = rebase --interactive HEAD~20
   rbs = rebase --skip
   ru = remote update
   sh = show
