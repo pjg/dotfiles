@@ -5,6 +5,7 @@
   c = commit
   ca = commit --amend
   ci = commit
+  cia = commit --amend
   co = checkout
   d = diff
   dc = diff --cached
