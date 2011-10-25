@@ -1,12 +1,12 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
-if Gem.available? 'guard-sass'
+if Gem::Specification.find_all_by_name('guard-sass').any?
   guard 'sass', :output => 'public/stylesheets', :debug_info => false, :style => :nested do
     watch(%r{^public/stylesheets/sass/(.+\.s[ac]ss)$})
   end
 end
 
-if Gem.available? 'guard-livereload'
+if Gem::Specification.find_all_by_name('guard-livereload').any?
   guard 'livereload' do
     # omit files starting with a dot (to prevent double reloads)
     watch(%r{^app/([a-zA-Z0-9_-]+/)+[^\.]+(\.html)*\.(erb|haml)})
@@ -19,13 +19,13 @@ if Gem.available? 'guard-livereload'
   end
 end
 
-if Gem.available? 'guard-bundler'
+if Gem::Specification.find_all_by_name('guard-bundler').any?
   guard 'bundler' do
     watch('Gemfile')
   end
 end
 
-if Gem.available? 'guard-shell'
+if Gem::Specification.find_all_by_name('guard-shell').any?
   guard 'shell' do
     # Restart passenger
     watch('Gemfile.lock')       { |m| `touch tmp/restart.txt` }
@@ -33,13 +33,13 @@ if Gem.available? 'guard-shell'
   end
 end
 
-if Gem.available? 'guard-delayed'
+if Gem::Specification.find_all_by_name('guard-delayed').any?
   guard 'delayed', :environment => 'development' do
     watch(%r{^app/(.+)\.rb})
   end
 end
 
-if Gem.available? 'guard-jasmine-headless-webkit'
+if Gem::Specification.find_all_by_name('guard-jasmine-headless-webkit').any?
   # Run JS and CoffeeScript files in a typical Rails 3.1 fashion, placing Underscore templates in app/views/*.jst
   # Your spec files end with _spec.{js,coffee}.
   spec_location = "spec/javascripts/%s_spec"
@@ -52,7 +52,7 @@ if Gem.available? 'guard-jasmine-headless-webkit'
   end
 end
 
-if Gem.available? 'guard-spork'
+if Gem::Specification.find_all_by_name('guard-spork').any?
   guard 'spork', :wait => 180, :cucumber => false, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
     watch('config/application.rb')
     watch('config/environment.rb')
@@ -63,7 +63,7 @@ if Gem.available? 'guard-spork'
   end
 end
 
-if Gem.available? 'guard-rspec'
+if Gem::Specification.find_all_by_name('guard-rspec').any?
   guard 'rspec', :all_on_start => false, :all_after_pass => false, :version => 2, :cli => '--color --fail-fast --drb' do
     # Factories
     watch('spec/factories.rb')  { "spec" }
@@ -91,7 +91,7 @@ if Gem.available? 'guard-rspec'
   end
 end
 
-if Gem.available? 'guard-test'
+if Gem::Specification.find_all_by_name('guard-test').any?
   guard 'test', :all_on_start => false, :all_after_pass => false do
     watch(%r{^lib/(.+)\.rb$})     { |m| "test/#{m[1]}_test.rb" }
     watch(%r{^test/.+_test\.rb$})
