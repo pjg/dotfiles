@@ -46,6 +46,10 @@ function sc {
 # Rails production environment by default for all non-development machines
 [[ $(hostname -s) != 'ubuntu' ]] && [[ $(hostname -s) != 'genesis' ]] && export RAILS_ENV="production"
 
+# Heroku
+alias hcp='heroku console --remote production'
+alias hcs='heroku console --remote staging'
+
 # enable colors
 eval "`dircolors -b`"
 alias ls='ls --color=auto'
