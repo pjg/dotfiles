@@ -49,6 +49,8 @@ function sc {
 # Heroku
 alias hcp='heroku console --remote production'
 alias hcs='heroku console --remote staging'
+alias hlp='heroku logs -t --remote production'
+alias hls='heroku logs -t --remote staging'
 
 # enable colors
 eval "`dircolors -b`"
