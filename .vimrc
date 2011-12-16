@@ -264,6 +264,10 @@ nmap <F12> :set list!<bar>set list?<cr>
 " Press Shift+P while in visual mode to replace the selection without overwriting the default register
 vmap P p :call setreg('"', getreg('0')) <cr>
 
+" swap ` with ' (so that ' will jump to line *and* column)
+nnoremap ' `
+nnoremap ` '
+
 " scroll faster & move cursor too
 nnoremap <c-e> 3<c-e>3j
 nnoremap <c-y> 3<c-y>3k
