@@ -1,9 +1,7 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
 if Gem::Specification.find_all_by_name('guard-sass').any?
-  guard 'sass', :output => 'public/stylesheets', :debug_info => false, :style => :nested do
-    watch(%r{^public/stylesheets/sass/(.+\.s[ac]ss)$})
-  end
+  guard 'sass', :input => 'public/stylesheets/sass', :output => 'public/stylesheets', :debug_info => false, :style => :nested
 end
 
 if Gem::Specification.find_all_by_name('guard-livereload').any?
