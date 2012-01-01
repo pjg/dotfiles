@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/scss-syntax.vim"]
 	path = .vim/bundle/scss-syntax.vim
 	url = https://github.com/cakebaker/scss-syntax.vim.git
+[submodule ".vim/bundle/command-t"]
+	path = .vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
