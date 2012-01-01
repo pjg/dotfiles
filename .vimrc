@@ -205,11 +205,6 @@ inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 
 " PLUGINS
 
-" FuzzyFinder
-let g:fuzzy_ignore = "tmp/*;log/*;coverage/*;*.log;*.git;*.svn;*.jpg;*.jpeg;*.gif;*.png"
-let g:fuzzy_matching_limit = 20
-let g:fuzzy_ceiling = 50000
-
 " ragtag
 inoremap <M-o> <Esc>o
 inoremap <C-j> <Down>
@@ -237,11 +232,6 @@ vmap <F2> <esc><F2>
 map <F4> :set wrap!<cr>
 imap <F4> <esc><F4>
 vmap <F4> <esc><F4>
-
-" <F5> to refresh directory contents
-map <F5> :FuzzyFinderTextMateRefreshFiles<cr>
-imap <F5> <esc><F5>
-vmap <F5> <esc><F5>
 
 " <F8> to temporary turn off the highlight search
 map <F8> :nohlsearch<cr>
@@ -292,11 +282,6 @@ let localmapleader = "\\"
 " for quick opening of :Ack/:grep results
 map <leader>n :cnext<cr>
 map <leader>p :cprevious<cr>
-
-" FuzzyFinder
-map <leader>t :FuzzyFinderTextMate<cr>
-map <leader>b :FuzzyFinderBuffer<cr>
-map <leader>h :FuzzyFinderMruFile<cr>
 
 " NERD_tree
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<cr>
