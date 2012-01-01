@@ -218,10 +218,6 @@ let g:ragtag_global_maps = 1
 " ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-" jslint.vim
-let g:JSLintHighlightErrorLine = 1
-autocmd FileType javascript let b:jslint_disabled = 1
-
 " autoclose.vim
 let g:AutoCloseProtectedRegions = ["Comment"]
 
@@ -251,9 +247,6 @@ vmap <F5> <esc><F5>
 map <F8> :nohlsearch<cr>
 imap <F8> <esc><F8>
 vmap <F8> <esc><F8>
-
-" <F9> to toggle JSLint
-nmap <F9> :JSLintToggle<cr> :JSLintUpdate<cr>
 
 " <F10> to wipe buffer (closes buffer)
 nmap <F10> :bw<cr>
