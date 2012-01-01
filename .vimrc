@@ -33,6 +33,9 @@ set ignorecase smartcase
 " always display current cursor position
 set ruler
 
+" display incomplete commands
+set showcmd
+
 " syntax highlight on
 syntax on
 
