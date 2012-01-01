@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/command-t"]
 	path = .vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule ".vim/bundle/Gemfile.vim"]
+	path = .vim/bundle/Gemfile.vim
+	url = https://github.com/hron84/Gemfile.vim.git
