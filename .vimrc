@@ -292,6 +292,22 @@ imap <C-k> <C-o>b:<Esc>Ea
 let mapleader = ","
 let localmapleader = "\\"
 
+" upper/lower word
+nmap <leader>u mQviwU`Q
+nmap <leader>l mQviwu`Q
+
+" upper/lower first char of word
+nmap <leader>U mQgewvU`Q
+nmap <leader>L mQgewvu`Q`
+
+" fugitive.vim
+nmap <leader>gb :Gblame<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gp :Git push<cr>
+
 " for quick opening of :Ack/:grep results
 map <leader>n :cnext<cr>
 map <leader>p :cprevious<cr>
@@ -307,6 +323,9 @@ map <leader>rr :.Rake<cr>
 
 " ZoomWin
 map <leader>zw :ZoomWin<cr>
+
+" Adjust viewports to the same size
+map <leader>= <C-w>=
 
 " convert file to utf-8 and cleanup whitespace garbage
 map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
