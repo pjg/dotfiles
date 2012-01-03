@@ -308,7 +308,7 @@ map <leader>n :cnext<cr>
 map <leader>p :cprevious<cr>
 
 " NERD_tree
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<cr>
+map <leader>d :NERDTreeToggle<cr>
 
 " git blame (for visually selected lines)
 vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
