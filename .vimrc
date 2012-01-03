@@ -227,7 +227,7 @@ let g:ragtag_global_maps = 1
 
 
 
-" KEYS
+" KEY MAPPINGS
 
 " have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
 noremap Y y$
@@ -289,6 +289,16 @@ imap <c-s> <esc><c-s>
 nmap <c-q> :q<cr>
 imap <c-q> <esc><c-q>
 
+" rails: bind control-l to hashrocket
+imap <C-l> <Space>=><Space>'
+
+" rails: convert word into ruby symbol
+imap <C-k> <C-o>b:<Esc>Ea
+
+
+
+" LEADER KEY MAPPINGS
+
 " leader/localleader mappings
 let mapleader = ","
 let localmapleader = "\\"
@@ -306,11 +316,8 @@ vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'
 " rails.vim
 map <leader>rr :.Rake<cr>
 
-" rails: bind control-l to hashrocket
-imap <C-l> <Space>=><Space>'
-
-" rails: convert word into ruby symbol
-imap <C-k> <C-o>b:<Esc>Ea
+" ZoomWin
+map <leader>zw :ZoomWin<cr>
 
 " convert file to utf-8 and cleanup whitespace garbage
 map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>

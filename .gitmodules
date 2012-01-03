@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/command-t"]
 	path = .vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule ".vim/bundle/ZoomWin"]
+	path = .vim/bundle/ZoomWin
+	url = https://github.com/vim-scripts/ZoomWin.git
