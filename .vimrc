@@ -189,21 +189,6 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-" use TAB for word-completion (tip #102)
-function! InsertTabWrapper(direction)
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  elseif "backward" == a:direction
-    return "\<c-p>"
-  else
-    return "\<c-n>"
-  endif
-endfunction
-
-inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
-
 
 
 " PLUGINS
@@ -224,6 +209,10 @@ let g:CommandTCancelMap='<Esc>'
 inoremap <M-o> <Esc>o
 inoremap <C-j> <Down>
 let g:ragtag_global_maps = 1
+
+" supertab
+let g:SuperTabMappingForward = '<s-tab>' "(default value: '<tab>')
+let g:SuperTabMappingBackward = '<tab>' "(default value: '<s-tab>')
 
 
 

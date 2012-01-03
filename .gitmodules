@@ -103,3 +103,6 @@
 [submodule ".vim/bundle/Kwbd.vim"]
 	path = .vim/bundle/Kwbd.vim
 	url = https://github.com/rgarver/Kwbd.vim.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
