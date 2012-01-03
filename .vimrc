@@ -252,8 +252,8 @@ map <F8> :nohlsearch<cr>
 imap <F8> <esc><F8>
 vmap <F8> <esc><F8>
 
-" <F10> to wipe buffer (closes buffer)
-nmap <F10> :bw<cr>
+" <F10> to close current buffer but don't close the window (Kwbd.vim)
+nmap <F10> :Kwbd<cr>
 
 " <F11> to toggle the paste mode (when vim either adds or not spaces in the front of lines)
 set pastetoggle=<F11>
