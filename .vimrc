@@ -275,6 +275,9 @@ nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
+" gw to swap the current word with the one next to it
+nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>''
+
 " CTRL+s always saves file
 nmap <c-s> :w<cr>
 vmap <c-s> <esc><c-s>
@@ -299,12 +302,12 @@ let mapleader = ","
 let localmapleader = "\\"
 
 " upper/lower word
-nmap <leader>u mQviwU`Q
-nmap <leader>l mQviwu`Q
+nmap <leader>u mQviwU'Q
+nmap <leader>l mQviwu'Q
 
 " upper/lower first char of word
-nmap <leader>U mQgewvU`Q
-nmap <leader>L mQgewvu`Q`
+nmap <leader>U mQgewvU'Q
+nmap <leader>L mQgewvu'Q'
 
 " fugitive.vim
 nmap <leader>gb :Gblame<cr>
