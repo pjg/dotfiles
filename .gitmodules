@@ -109,3 +109,6 @@
 [submodule ".vim/bundle/handlebars"]
 	path = .vim/bundle/handlebars
 	url = git://github.com/nono/vim-handlebars.git
+[submodule ".vim/bundle/vim-node.js"]
+	path = .vim/bundle/vim-node.js
+	url = https://github.com/mmalecki/vim-node.js.git
