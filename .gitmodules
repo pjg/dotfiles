@@ -112,3 +112,6 @@
 [submodule ".vim/bundle/vim-node.js"]
 	path = .vim/bundle/vim-node.js
 	url = https://github.com/mmalecki/vim-node.js.git
+[submodule ".vim/bundle/vim-pasta"]
+	path = .vim/bundle/vim-pasta
+	url = https://github.com/sickill/vim-pasta.git
