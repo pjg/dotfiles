@@ -133,6 +133,9 @@ set noautoread
 " write swap files after 2 seconds of inactivity
 set updatetime=2000
 
+" global directory for .swp files
+set directory=$HOME/.vim/tmp
+
 " yes/no/cancel prompt if closing with unsaved changes
 set confirm
 
