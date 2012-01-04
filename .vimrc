@@ -321,9 +321,6 @@ map <leader>p :cprevious<cr>
 " NERD_tree
 map <leader>d :NERDTreeToggle<cr>
 
-" git blame (for visually selected lines)
-vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-
 " rails.vim
 map <leader>rr :.Rake<cr>
 
