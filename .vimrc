@@ -205,12 +205,6 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " autoclose.vim
 let g:AutoCloseProtectedRegions = ["Comment"]
 
-" command-t
-let g:CommandTMaxFiles = 20000
-let g:CommandTMaxHeight = 20
-let g:CommandTMatchWindowReverse = 1
-let g:CommandTCancelMap='<Esc>'
-
 " ragtag
 inoremap <M-o> <Esc>o
 inoremap <C-j> <Down>
@@ -236,11 +230,6 @@ vmap <F2> <esc><F2>
 map <F4> :set wrap!<cr>
 imap <F4> <esc><F4>
 vmap <F4> <esc><F4>
-
-" <F5> to flush command-t cache
-map <F5> :CommandTFlush<cr>
-imap <F5> <esc><F5>
-vmap <F5> <esc><F5>
 
 " <F8> to temporary turn off the highlight search
 map <F8> :nohlsearch<cr>
