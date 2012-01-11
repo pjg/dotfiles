@@ -231,6 +231,11 @@ map <F4> :set wrap!<cr>
 imap <F4> <esc><F4>
 vmap <F4> <esc><F4>
 
+" <F5> to flush command-t cache
+map <F5> :ClearCtrlPCache<cr>
+imap <F5> <esc><F5>
+vmap <F5> <esc><F5>
+
 " <F8> to temporary turn off the highlight search
 map <F8> :nohlsearch<cr>
 imap <F8> <esc><F8>
@@ -312,6 +317,11 @@ map <leader>p :cprevious<cr>
 
 " NERD_tree
 map <leader>d :NERDTreeToggle<cr>
+
+" ctrlp.vim
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+map <leader>h :CtrlPMRU<cr>
 
 " rails.vim
 map <leader>rr :.Rake<cr>

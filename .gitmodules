@@ -112,3 +112,6 @@
 [submodule ".vim/bundle/vim-pasta"]
 	path = .vim/bundle/vim-pasta
 	url = https://github.com/sickill/vim-pasta.git
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
