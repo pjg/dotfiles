@@ -103,7 +103,12 @@ set wildmenu
 set wildmode=list:longest,full
 
 " ignore these files when completing names and in Explorer
-set wildignore=tmp/*,log/*,coverage/*,.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.log,*.swp,*.jpg,*.jpeg,*.png,*.xpm,*.gif
+set wildignore=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem                 " output & scm files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz                      " archive files
+set wildignore+=*.jpg,*.jpeg,*.png,*.xpm,*.gif,*.bmp                         " pictures
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/* " bundler and sass
+set wildignore+=tmp/*,log/*,*.log,coverage/*                                 " tmp, logs and rcov
+set wildignore+=*.swp,*~,._*                                                 " swp and backup files
 
 " short messages
 set shortmess=atI
