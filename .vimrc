@@ -219,6 +219,9 @@ let g:ragtag_global_maps = 1
 let g:SuperTabMappingForward = '<s-tab>' "(default value: '<tab>')
 let g:SuperTabMappingBackward = '<tab>' "(default value: '<s-tab>')
 
+" ctrlp
+let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
+
 
 
 " KEY MAPPINGS
