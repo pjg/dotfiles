@@ -28,6 +28,10 @@
   s = status
   st = status
 
+[branch]
+  # set up git pull to do a rebase instead of merge
+  autosetuprebase = always
+
 [color]
   diff = auto
   status = auto
@@ -52,11 +56,11 @@
 [merge]
   tool = vimdiff
 
-[user]
-  # The name and e-mail address will be used to identify you in the commits
-  name = "Paweł Gościcki"
-  email = pawel.goscicki@gmail.com
-
 [push]
   # Push current branch even if you've never pushed it before
   default = current
+
+  [user]
+    # The name and e-mail address will be used to identify you in the commits
+    name = "Paweł Gościcki"
+    email = pawel.goscicki@gmail.com
