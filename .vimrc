@@ -221,7 +221,6 @@ let g:SuperTabMappingBackward = '<tab>' "(default value: '<s-tab>')
 
 " ctrlp
 let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files'] " for git repositories use git ls-files to list files
 
 
 
