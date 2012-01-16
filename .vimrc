@@ -245,10 +245,14 @@ map <F4> :set wrap!<cr>
 imap <F4> <esc><F4>
 vmap <F4> <esc><F4>
 
-" <F5> to flush command-t cache
+" <F5> to flush CtrlP cache
 map <F5> :ClearCtrlPCache<cr>
 imap <F5> <esc><F5>
 vmap <F5> <esc><F5>
+
+" <F6> for gundo.vim
+nmap <F6> :GundoToggle<cr><cr>
+imap <F6> <esc>:GundoToggle<cr><cr>
 
 " <F8> to temporary turn off the highlight search
 map <F8> :nohlsearch<cr>
