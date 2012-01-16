@@ -139,10 +139,16 @@ set noautoread
 set updatetime=2000
 
 " global directory for .swp files
-set directory=$HOME/.vim/tmp
+set directory=$HOME/.vim/tmp/
 
 " yes/no/cancel prompt if closing with unsaved changes
 set confirm
+
+" persistent undo (preserved after restarting vim)
+if v:version >= 703
+  set undofile
+  set undodir=$HOME/.vim/tmp/
+endif
 
 
 
@@ -422,14 +428,14 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 "return '[\s]' if trailing white space is detected
 "return '' otherwise
 function! StatuslineTrailingSpaceWarning()
-    if !exists("b:statusline_trailing_space_warning")
-        if search('\s\+$', 'nw') != 0
-            let b:statusline_trailing_space_warning = '[\s]'
-        else
-            let b:statusline_trailing_space_warning = ''
-        endif
+  if !exists("b:statusline_trailing_space_warning")
+    if search('\s\+$', 'nw') != 0
+      let b:statusline_trailing_space_warning = '[\s]'
+    else
+      let b:statusline_trailing_space_warning = ''
     endif
-    return b:statusline_trailing_space_warning
+  endif
+  return b:statusline_trailing_space_warning
 endfunction
 
 
@@ -440,17 +446,17 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
 "return '[mixed-indenting]' if spaces and tabs are used to indent
 "return an empty string if everything is fine
 function! StatuslineTabWarning()
-    if !exists("b:statusline_tab_warning")
-        let tabs = search('^\t', 'nw') != 0
-        let spaces = search('^ ', 'nw') != 0
+  if !exists("b:statusline_tab_warning")
+    let tabs = search('^\t', 'nw') != 0
+    let spaces = search('^ ', 'nw') != 0
 
-        if tabs && spaces
-            let b:statusline_tab_warning = '[mixed-indenting]'
-        elseif (spaces && !&et) || (tabs && &et)
-            let b:statusline_tab_warning = '[&et]'
-        else
-            let b:statusline_tab_warning = ''
-        endif
+    if tabs && spaces
+      let b:statusline_tab_warning = '[mixed-indenting]'
+    elseif (spaces && !&et) || (tabs && &et)
+      let b:statusline_tab_warning = '[&et]'
+    else
+      let b:statusline_tab_warning = ''
     endif
-    return b:statusline_tab_warning
+  endif
+  return b:statusline_tab_warning
 endfunction
