@@ -303,6 +303,26 @@ imap <C-k> <C-o>b:<Esc>Ea
 
 
 
+" COMMAND LINE KEY MAPPINGS
+
+" Bash like keys for the command line
+cnoremap <c-a> <Home>
+cnoremap <c-e> <End>
+cnoremap <c-p> <Up>
+cnoremap <c-n> <Down>
+cnoremap <c-b> <Left>
+cnoremap <c-f> <Right>
+cnoremap <c-d> <Del>
+cnoremap <c-k> <C-\>estrpart(getcmdline(), 0, getcmdpos()-1)<cr>
+
+" swap <Up>/<Down> with <PageUp>/<PageDown>
+cnoremap <Up> <S-Up>
+cnoremap <PageUp> <Up>
+cnoremap <Down> <S-Down>
+cnoremap <PageDown> <Down>
+
+
+
 " LEADER KEY MAPPINGS
 
 " leader/localleader mappings
