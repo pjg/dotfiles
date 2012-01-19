@@ -24,9 +24,6 @@ alias wtf='git wtf'
 alias g='git'
 complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null || complete -o default -o nospace -F _git g
 
-alias lc='cl'
-function cl() { cd "$@" && l; }
-
 # rails
 alias r='rails'
 alias b='bundle'
@@ -34,14 +31,6 @@ alias bundler='bundle'
 alias bi='b install'
 alias bu='b update'
 alias be='b exec'
-
-function sc {
-  if [ -e script/rails ]; then
-    bundle exec rails console
-  else
-    script/console --debugger
-  fi
-}
 
 # Rails production environment by default for all non-development machines
 [[ $(hostname -s) != 'ubuntu' ]] && [[ $(hostname -s) != 'genesis' ]] && export RAILS_ENV="production"
