@@ -118,3 +118,6 @@
 [submodule ".vim/bundle/gundo.vim"]
 	path = .vim/bundle/gundo.vim
 	url = http://github.com/sjl/gundo.vim.git
+[submodule ".zsh/git-prompt"]
+	path = .zsh/git-prompt
+	url = https://github.com/olivierverdier/zsh-git-prompt.git
