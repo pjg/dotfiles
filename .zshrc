@@ -140,10 +140,16 @@ setopt no_hup
 # parameter expansion, command substitution and arithmetic expansion are performed in prompts
 setopt prompt_subst
 
+# tab completion for both ends
+setopt completeinword
+
 # fuzzy matching for typos
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# tab completion should be case-insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # cd will never select parent
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
@@ -158,7 +164,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # load completions
-autoload compinit
+autoload -U compinit
 compinit
 
 
@@ -245,6 +251,9 @@ source ~/.zsh/bundler/bundler.plugin.zsh
 # SMART URLS
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
+
+# display CPU usage stats for commands taking more than 10 seconds
+REPORTTIME=10
 
 # Rails production environment by default for all non-development machines
 [[ $(hostname -s) != 'ubuntu' ]] && [[ $(hostname -s) != 'genesis' ]] && export RAILS_ENV="production"
