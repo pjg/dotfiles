@@ -121,3 +121,6 @@
 [submodule ".zsh/git-prompt"]
 	path = .zsh/git-prompt
 	url = https://github.com/olivierverdier/zsh-git-prompt.git
+[submodule ".vim/bundle/vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git

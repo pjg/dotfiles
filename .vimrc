@@ -388,65 +388,14 @@ endfunction
 
 " STATUSLINE
 
-" path relative to current to the filename
-set statusline=%f
+" vim-powerline
+let g:Powerline_cache_file = $HOME.'/.vim/tmp/.powerline_cache'
+let g:Powerline_cache_enabled = 0
+let g:Powerline_symbols = 'unicode'
 
-" display a warning if fileformat isn't unix
-set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-set statusline+=%*
+call Pl#Theme#InsertSegment(['raw', '%{StatuslineTabWarning()}%{StatuslineTrailingSpaceWarning()}'], 'after', 'fileinfo')
 
-" display a warning if file encoding isn't utf-8
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%*
-
-" help file flag
-set statusline+=%h
-
-" filetype
-set statusline+=%y
-
-" if git repo/branch (fugitive.vim)
-set statusline+=%{fugitive#statusline()}
-
-" read only flag
-set statusline+=%r
-
-" modified flag
-set statusline+=%m
-
-" display a warning if &et is wrong or we have mixed-indenting
-set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
-set statusline+=%*
-
-set statusline+=%{StatuslineTrailingSpaceWarning()}
-
-set statusline+=%#warningmsg#
-set statusline+=%*
-
-" display a warning if &paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
-
-" left/right separator
-set statusline+=%=
-
-" cursor column
-set statusline+=%c,
-
-" cursor line/total lines
-set statusline+=%l/%L
-
-" percent through file
-set statusline+=\ %P
-
-" always show status line
-set laststatus=2
-
-" recalculate the trailing whitespace warning when idle, and after saving
+" recalculate the trailing whitespace warning when idle and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 "return '[\s]' if trailing white space is detected
