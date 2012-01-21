@@ -388,11 +388,13 @@ endfunction
 
 " STATUSLINE
 
+" always show status line
+set laststatus=2
+
 " vim-powerline
-let g:Powerline_cache_file = $HOME.'/.vim/tmp/.powerline_cache'
-let g:Powerline_cache_enabled = 0
 let g:Powerline_symbols = 'unicode'
 
+" insert custom Powerline 'raw" Segment
 call Pl#Theme#InsertSegment(['raw', '%{StatuslineTabWarning()}%{StatuslineTrailingSpaceWarning()}'], 'after', 'fileinfo')
 
 " recalculate the trailing whitespace warning when idle and after saving
