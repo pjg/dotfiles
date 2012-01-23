@@ -140,9 +140,6 @@ setopt no_hup
 # parameter expansion, command substitution and arithmetic expansion are performed in prompts
 setopt prompt_subst
 
-# tab completion for both ends
-setopt completeinword
-
 # fuzzy matching for typos
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
