@@ -160,6 +160,9 @@ zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
+# custom completions
+fpath=(~/.zsh/gem ~/.zsh/bundler ~/.zsh/heroku $fpath)
+
 # load completions
 autoload -U compinit
 compinit
