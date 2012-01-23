@@ -1,6 +1,6 @@
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/bundler/bundler.plugin.zsh
 
-bundled_commands=(annotate cap capify cucumber foreman guard heroku nanoc pry rackup rainbows rake rspec ruby shotgun spec spork thin thor unicorn unicorn_rails)
+bundled_commands=(annotate cap capify cucumber foreman guard nanoc pry rackup rainbows rake rspec ruby shotgun spec spork thin thor unicorn unicorn_rails)
 
 _bundler-installed() {
   which bundle > /dev/null 2>&1
