@@ -251,6 +251,9 @@ source ~/.zsh/bundler/bundler.plugin.zsh
 # set GitHub credentials
 [[ -e ~/.github_credentials ]] && source ~/.github_credentials
 
+# alias hub to git (https://github.com/defunkt/hub)
+function git() { hub "$@" }
+
 # SMART URLS
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
