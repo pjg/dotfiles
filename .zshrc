@@ -248,6 +248,9 @@ alias heroku='nocorrect heroku'
 # Never type "bunde exec" again
 source ~/.zsh/bundler/bundler.plugin.zsh
 
+# set GitHub credentials
+[[ -e ~/.github_credentials ]] && source ~/.github_credentials
+
 # SMART URLS
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
