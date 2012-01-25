@@ -25,7 +25,7 @@
   rbs = rebase --skip
   ru = remote update
   sh = show
-  s = status
+  s = status -sb
   st = status
 
 [branch]
