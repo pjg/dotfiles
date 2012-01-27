@@ -128,8 +128,8 @@ setopt no_case_glob
 # if command not found, but directory found, cd into this directory
 setopt auto_cd
 
-# with auto_cd will also let you match directories found in ~/
-setopt cdable_vars
+# turn off automatic matching of ~/ directories (speeds things up)
+setopt no_cdable_vars
 
 # perform implicit tees or cats when multiple redirections are attempted
 setopt multios
@@ -159,6 +159,11 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # custom completions
 fpath=(~/.zsh/gem ~/.zsh/bundler ~/.zsh/heroku $fpath)
+
+# speed-up the git completion for filenames
+__git_files () {
+  _wanted files expl 'local files' _files
+}
 
 # load completions
 autoload -U compinit
