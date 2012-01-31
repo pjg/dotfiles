@@ -87,6 +87,7 @@ alias mc='mc -cu'
 # GLOBAL ALIASES
 
 alias -g C='| wc -l'
+alias -g G='| grep'
 alias -g L='| less'
 alias -g M='| more'
 alias -g S='&> /dev/null'
