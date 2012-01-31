@@ -236,12 +236,14 @@ RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
 
 setopt correct_all
 
+alias cp='nocorrect cp'
+alias git='nocorrect git'
+alias gist='nocorrect gist'
+alias heroku='nocorrect heroku'
 alias man='nocorrect man'
 alias mv='nocorrect mv'
 alias mysql='nocorrect mysql'
 alias mkdir='nocorrect mkdir'
-alias gist='nocorrect gist'
-alias heroku='nocorrect heroku'
 
 
 
