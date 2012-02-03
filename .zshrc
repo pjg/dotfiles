@@ -250,6 +250,13 @@ alias mkdir='nocorrect mkdir'
 
 # MISC STUFF
 
+# Ruby tweaks (make it speedier by using more memory; source: https://gist.github.com/1688857)
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=500000000
+export RUBY_HEAP_FREE_MIN=500000
+
 # Never type "bunde exec" again
 source ~/.zsh/bundler/bundler.plugin.zsh
 
