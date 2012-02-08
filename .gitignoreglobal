@@ -1,4 +1,5 @@
 .rvmrc
+.sass-cache
 *.sw[po]
-doc/tags
 .vim/tmp
+doc/tags
