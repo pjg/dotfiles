@@ -365,6 +365,12 @@ map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>h :CtrlPMRU<cr>
 
+" quit current buffer
+map <leader>q :q<cr>
+
+" save file
+map <leader>s :w<cr>
+
 " rails.vim
 map <leader>rr :.Rake<cr>
 
