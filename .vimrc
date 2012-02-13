@@ -343,7 +343,7 @@ nmap <leader>l mQviwu'Q
 
 " upper/lower first char of word
 nmap <leader>U mQgewvU'Q
-nmap <leader>L mQgewvu'Q'
+nmap <leader>L mQgewvu'Q
 
 " fugitive.vim
 nmap <leader>gb :Gblame<cr>
