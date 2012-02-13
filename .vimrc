@@ -305,6 +305,10 @@ imap <C-l> <Space>=><Space>'
 " rails: convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
 
+" ESC in insert mode
+inoremap jk <esc>
+inoremap kj <esc>
+
 
 
 " COMMAND LINE KEY MAPPINGS
