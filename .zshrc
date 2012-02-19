@@ -274,7 +274,7 @@ zle -N self-insert url-quote-magic
 REPORTTIME=10
 
 # Rails production environment by default for all non-development machines
-[[ $(hostname -s) != 'ubuntu' ]] && [[ $(hostname -s) != 'genesis' ]] && export RAILS_ENV="production"
+[[ $(hostname -s) != 'ubuntu' ]] && [[ $(hostname -s) != 'genesis' ]] && [[ $(hostname -s) != 'htpc' ]] && export RAILS_ENV="production"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
