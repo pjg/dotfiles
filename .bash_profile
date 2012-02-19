@@ -114,8 +114,9 @@ function scoreboard () {
   git log | grep Author | sort | uniq -ci | sort -hr
 }
 
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 xdpyinfo -display :0 &>/dev/null && export DISPLAY=:0

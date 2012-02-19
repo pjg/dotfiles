@@ -288,4 +288,5 @@ function scoreboard () {
 xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
 # RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
+PATH=$PATH:$HOME/.rvm/bin
