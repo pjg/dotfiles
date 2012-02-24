@@ -18,6 +18,9 @@ setopt no_beep
 # make cd push the old directory onto the directory stack
 setopt auto_pushd
 
+# Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
+setopt notify
+
 
 
 # COLORS
