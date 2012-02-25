@@ -50,9 +50,14 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   # [] acts as find()
   ActiveRecord::Base.instance_eval { alias :[] :find } if defined?(ActiveRecord)
 
-  # r!
-  if Object.respond_to?(:reload!)
-    alias :r! :reload!
+  # Add Rails console helpers (like `reload!`) to pry
+  if Rails.env
+    extend Rails::ConsoleMethods
+  end
+
+  # r! to reload Rails console
+  def r!
+    reload!
   end
 
   # sql for arbitrary SQL commands through the AR
