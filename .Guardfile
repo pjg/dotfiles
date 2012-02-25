@@ -54,12 +54,14 @@ if Gem::Specification.find_all_by_name('guard-spork').any?
   guard 'spork', :wait => 180, :cucumber => false, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
     watch('config/application.rb')
     watch('config/environment.rb')
+    watch('config/routes.rb')
     watch(%r{^config/environments/.+\.rb$})
     watch(%r{^config/initializers/.+\.rb$})
     watch('Gemfile')
     watch('Gemfile.lock')
     watch('spec/spec_helper.rb') { :rspec }
     watch('test/test_helper.rb') { :test_unit }
+    watch(%r{^lib/.+\.rb$})
     watch(%r{^spec/support/.+\.rb$})
   end
 end
