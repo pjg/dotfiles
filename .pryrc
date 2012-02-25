@@ -7,12 +7,12 @@ end
 
 # Load 'hirb'
 require 'hirb'
-Hirb.enable
-old_print = Pry.config.print
 
 Pry.config.print = proc do |output, value|
-  Hirb::View.view_or_page_output(value) || old_print.call(output, value)
+  Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
 end
+
+Hirb.enable
 
 # Launch Pry with access to the entire Rails stack
 rails = File.join(Dir.getwd, 'config', 'environment.rb')
@@ -48,10 +48,12 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
                         proc { |obj, nest_level, *| "#{prompt}* " % [rails_root, rails_env_prompt, obj, nest_level] } ]
 
   # [] acts as find()
-  ActiveRecord::Base.instance_eval { alias :[] :find }
+  ActiveRecord::Base.instance_eval { alias :[] :find } if defined?(ActiveRecord)
 
   # r!
-  alias :r! :reload!
+  if Object.respond_to?(:reload!)
+    alias :r! :reload!
+  end
 
   # sql for arbitrary SQL commands through the AR
   def sql(query)
@@ -67,7 +69,7 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
     end
   else
     # Rails 3
-    if Rails.logger
+    if Rails.logger and defined?(ActiveRecord)
       Rails.logger = Logger.new(STDOUT)
       ActiveRecord::Base.logger = Rails.logger
     end
