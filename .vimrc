@@ -228,6 +228,9 @@ let g:SuperTabMappingBackward = '<tab>' "(default value: '<s-tab>')
 " ctrlp
 let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
 
+" fugitive.vim - auto clean fugitive buffers
+au BufReadPost fugitive://* set bufhidden=delete
+
 
 
 " KEY MAPPINGS
@@ -287,6 +290,22 @@ nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
+" improve movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+nnoremap $ g$
+nnoremap ^ g^
+nnoremap 0 g0
+vnoremap j gj
+vnoremap k gk
+vnoremap $ g$
+vnoremap ^ g^
+vnoremap 0 g0
+
+" Go to home and end using capitalized directions
+noremap H ^
+noremap L $
+
 " gw to swap the current word with the one next to it
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>''
 
@@ -308,6 +327,10 @@ imap <C-k> <C-o>b:<Esc>Ea
 " ESC in insert mode
 inoremap jk <esc>
 inoremap kj <esc>
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
 
 
@@ -337,6 +360,9 @@ cnoremap <PageDown> <Down>
 let mapleader = ","
 let localmapleader = "\\"
 
+" select all text in current buffer
+nmap <leader>a ggVG
+
 " upper/lower word
 nmap <leader>u mQviwU'Q
 nmap <leader>l mQviwu'Q
@@ -347,11 +373,12 @@ nmap <leader>L mQgewvu'Q
 
 " fugitive.vim
 nmap <leader>gb :Gblame<cr>
-nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gl :Glog<cr>
-nmap <leader>gc :Gcommit<cr>
 nmap <leader>gp :Git push<cr>
+nmap <leader>gr :Gremove<cr>
+nmap <leader>gs :Gstatus<cr>
 
 " for quick opening of :Ack/:grep results
 map <leader>n :cnext<cr>
@@ -379,6 +406,9 @@ map <leader>zw :ZoomWin<cr>
 
 " Adjust viewports to the same size
 map <leader>= <C-w>=
+
+" Quick insertion of newline in normal mode
+nnoremap <silent> <cr> :put=''<cr>
 
 " convert file to utf-8 and cleanup whitespace garbage
 map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
