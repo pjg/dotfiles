@@ -51,7 +51,7 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   ActiveRecord::Base.instance_eval { alias :[] :find } if defined?(ActiveRecord)
 
   # Add Rails console helpers (like `reload!`) to pry
-  if Rails.env
+  if defined?(Rails::ConsoleMethods)
     extend Rails::ConsoleMethods
   end
 
