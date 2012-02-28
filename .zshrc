@@ -199,10 +199,14 @@ case "$TERM" in
     # alt + arrows
     bindkey '[D' backward-word
     bindkey '[C' forward-word
+    bindkey '^[[1;3D' backward-word
+    bindkey '^[[1;3C' forward-word
 
     # ctrl + arrows
     bindkey '^[OD' backward-word
     bindkey '^[OC' forward-word
+    bindkey '^[[1;5D' backward-word
+    bindkey '^[[1;5C' forward-word
 
     # home / end
     bindkey '^[[1~' beginning-of-line
