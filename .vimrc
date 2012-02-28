@@ -150,6 +150,9 @@ if v:version >= 703
   set undodir=$HOME/.vim/tmp/
 endif
 
+" mouse support in xterm
+set mouse=a
+
 
 
 " FILE TYPES
