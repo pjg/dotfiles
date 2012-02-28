@@ -54,6 +54,7 @@ alias sl=ls
 
 # git
 alias g='git'
+alias gs='git s'
 alias wtf='git wtf'
 
 # cd
