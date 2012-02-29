@@ -440,25 +440,11 @@ set laststatus=2
 " vim-powerline
 let g:Powerline_symbols = 'unicode'
 
-" insert custom Powerline 'raw" Segment
-call Pl#Theme#InsertSegment(['raw', '%{StatuslineTabWarning()}%{StatuslineTrailingSpaceWarning()}'], 'after', 'fileinfo')
+" insert trailing whitespace marker segment
+call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
-" recalculate the trailing whitespace warning when idle and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-
-"return '[\s]' if trailing white space is detected
-"return '' otherwise
-function! StatuslineTrailingSpaceWarning()
-  if !exists("b:statusline_trailing_space_warning")
-    if search('\s\+$', 'nw') != 0
-      let b:statusline_trailing_space_warning = '[\s]'
-    else
-      let b:statusline_trailing_space_warning = ''
-    endif
-  endif
-  return b:statusline_trailing_space_warning
-endfunction
-
+" insert tab indenting warning segment
+call Pl#Theme#InsertSegment(['raw', '%{StatuslineTabWarning()}'], 'after', 'fileinfo')
 
 "recalculate the tab warning flag when idle and after writing
 autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
