@@ -404,6 +404,9 @@ map <leader>s :w<cr>
 " rails.vim
 map <leader>rr :.Rake<cr>
 
+" copy to system clipboard
+map <leader>y "*y"
+
 " ZoomWin
 map <leader>zw :ZoomWin<cr>
 
