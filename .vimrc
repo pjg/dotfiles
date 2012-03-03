@@ -432,13 +432,16 @@ endfunction
 
 
 
-" STATUSLINE
+" STATUSLINE (vim-powerline)
 
 " always show status line
 set laststatus=2
 
-" vim-powerline
+" unicode symbols
 let g:Powerline_symbols = 'unicode'
+
+" display relative file path
+let g:Powerline_stl_path_style = 'relative'
 
 " insert trailing whitespace marker segment
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
