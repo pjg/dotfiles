@@ -153,6 +153,9 @@ endif
 " mouse support in xterm
 set mouse=a
 
+" inverse space as a vsplit character (instead of |)
+set fcs+=vert:\ " the space after the backslash is intentional
+
 
 
 " FILE TYPES
