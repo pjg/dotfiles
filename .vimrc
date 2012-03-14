@@ -186,7 +186,7 @@ augroup filetypedetect
 augroup END
 
 " Explicitly set filetype to Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,Capfile,config.ru} set ft=ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,Capfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
 " Explicitly set filetype to SCSS
 au BufRead,BufNewFile *.scss set filetype=scss
