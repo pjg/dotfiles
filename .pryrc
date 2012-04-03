@@ -6,13 +6,16 @@ rescue LoadError => err
 end
 
 # Load 'hirb'
-require 'hirb'
+begin
+  require 'hirb'
 
-Pry.config.print = proc do |output, value|
-  Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
+  Pry.config.print = proc do |output, value|
+    Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
+  end
+
+  Hirb.enable
+rescue LoadError => err
 end
-
-Hirb.enable
 
 # Launch Pry with access to the entire Rails stack
 rails = File.join(Dir.getwd, 'config', 'environment.rb')
