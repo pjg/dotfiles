@@ -71,8 +71,8 @@ alias bu='b update'
 alias be='b exec'
 
 # heroku
-alias hcp='heroku console --remote production'
-alias hcs='heroku console --remote staging'
+alias hcp='heroku run console --remote production'
+alias hcs='heroku run console --remote staging'
 alias hlp='heroku logs -t --remote production'
 alias hls='heroku logs -t --remote staging'
 
