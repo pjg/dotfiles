@@ -21,6 +21,9 @@ set completion-ignore-case On
 
 # KEYMAPPINGS for xterm mode (PUTTY/ssh)
 $if term=xterm
+  # "\e" is the ESC sequence => ^[
+  # type C-v and press any <key> or a combination of <key>s to see its code
+
   # allow the use of the Home/End keys
   "\e[1~": beginning-of-line
   "\e[4~": end-of-line
@@ -36,8 +39,12 @@ $if term=xterm
   # move by word using alt+left/right-arrow 
   "\e\e[C": forward-word
   "\e\e[D": backward-word
+  "\e[1;3C": forward-word
+  "\e[1;3D": backward-word
 
   # move by word using ctrl+left/right-arrow
   "\eOC": forward-word
   "\eOD": backward-word
+  "\e[1;5C": forward-word
+  "\e[1;5D": backward-word
 $endif
