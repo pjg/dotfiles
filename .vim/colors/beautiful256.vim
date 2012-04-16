@@ -1,8 +1,8 @@
 " Beautiful256 - a vim 256 colors scheme
 " Based on Beauty256 by Mahmoud Sahebi Afzal
-" Maintainer:	Paul Goscicki
-" Last Change: 27 December 2008
-" Version: 0.1
+" Maintainer:	Paweł Gościcki
+" Last Change: 16 April 2012
+" Version: 0.2
 
 " check for t_Co
 if &t_Co != 256 && ! has("gui_running")
@@ -52,7 +52,7 @@ hi MoreMsg gui=bold guifg=ForestGreen
 hi Question gui=bold guifg=ForestGreen
 hi WarningMsg gui=bold guifg=Red
 
-hi Comment gui=italic guifg=#9999cc ctermfg=246
+hi Comment gui=italic guifg=#9999cc ctermfg=248
 hi Error gui=none guifg=White guibg=Red ctermfg=15 ctermbg=197
 hi Identifier gui=none guifg=Sienna4 ctermfg=94
 hi Special gui=none guifg=RoyalBlue4 ctermfg=69
@@ -64,9 +64,9 @@ hi Directory ctermfg=132
 hi Pmenu ctermfg=250 ctermbg=238
 hi PmenuSel ctermbg=214 ctermfg=16
 
-hi Boolean gui=bold guifg=ForestGreen
-hi Constant gui=none guifg=ForestGreen
-hi Number gui=bold guifg=ForestGreen
+hi Boolean gui=bold guifg=ForestGreen ctermfg=172
+hi Constant gui=none guifg=ForestGreen ctermfg=124
+hi Number gui=bold guifg=ForestGreen ctermfg=172
 hi String gui=none guifg=ForestGreen ctermfg=2
 hi helpNote ctermbg=220 ctermfg=16
 
