@@ -235,6 +235,15 @@ esac
 # zsh-git-prompt (https://github.com/olivierverdier/zsh-git-prompt/) -- slow, but *awesome*
 source ~/.zsh/git-prompt/zshrc.sh
 
+# do not execute for the ~ directory, which is really slow (redefine a function from zsh-git-prompt)
+function chpwd_update_git_vars() {
+  if [ `pwd` = $HOME ]; then
+    unset __CURRENT_GIT_STATUS
+  else
+    update_current_git_vars
+  fi
+}
+
 local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
 PROMPT='
