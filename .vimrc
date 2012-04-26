@@ -14,6 +14,13 @@ set hidden
 " do not autoresize windows
 set noequalalways
 
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
+" split below/right
+set splitbelow
+set splitright
+
 " no backup files
 set nobackup nowritebackup
 
@@ -35,6 +42,12 @@ set ruler
 
 " display incomplete commands
 set showcmd
+
+" don't show mode (vim-powerline does it for me)
+set noshowmode
+
+" lazy redraw
+set lazyredraw
 
 " syntax highlight on
 syntax on
@@ -72,6 +85,9 @@ set tabstop=8
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+
+" round indent to multiple of 'shiftwidth' (applies to > and < commands)
+set shiftround
 
 " set various characters to be treated as a part of words
 set iskeyword+=-,_,$,@,#
@@ -119,8 +135,10 @@ set visualbell
 set t_vb=
 autocmd GUIEnter * set vb t_vb=
 
-" time to wait after ESC (default causes an annoying delay)
-set timeoutlen=400
+" time out on key codes but not on mappings
+set notimeout
+set ttimeout
+set ttimeoutlen=10
 
 " set keyword app (Shift+k) to ack
 autocmd BufEnter * setlocal keywordprg=ack-grep
@@ -175,7 +193,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-" Do not auto-indent HTML-like files
+" do not auto-indent HTML-like files
 autocmd BufEnter *.html setlocal indentexpr=
 autocmd BufEnter *.htm setlocal indentexpr=
 autocmd BufEnter *.html.erb setlocal indentexpr=
@@ -185,10 +203,10 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.yml setf eruby
 augroup END
 
-" Explicitly set filetype to Ruby
+" explicitly set filetype to Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,Capfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
-" Explicitly set filetype to SCSS
+" explicitly set filetype to SCSS
 au BufRead,BufNewFile *.scss set filetype=scss
 
 " 4 spaces for TAB in CSS files
@@ -211,7 +229,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
-
 
 
 " PLUGINS
@@ -263,8 +280,8 @@ vmap <F5> <esc><F5>
 nmap <F6> :GundoToggle<cr><cr>
 imap <F6> <esc>:GundoToggle<cr><cr>
 
-" <F8> to temporary turn off the highlight search
-map <F8> :nohlsearch<cr>
+" <F8> to turn off the highlight search & redraw both screen and statusline
+map <F8> :syntax sync fromstart<cr>:redraw!<cr>:redrawstatus!<cr>:nohlsearch<cr>
 imap <F8> <esc><F8>
 vmap <F8> <esc><F8>
 
@@ -276,9 +293,6 @@ set pastetoggle=<F11>
 
 " <F12> to toggle the display of unvisible characters ($\t)
 nmap <F12> :set list!<bar>set list?<cr>
-
-" Press Shift+P while in visual mode to replace the selection without overwriting the default register
-vmap P p :call setreg('"', getreg('0')) <cr>
 
 " swap ` with ' (so that ' will jump to line *and* column)
 nnoremap ' `
@@ -308,7 +322,7 @@ vnoremap $ g$
 vnoremap ^ g^
 vnoremap 0 g0
 
-" Go to home and end using capitalized directions
+" go to home and end using capitalized directions
 noremap H ^
 noremap L $
 
@@ -324,25 +338,75 @@ imap <c-s> <esc><c-s>
 nmap <c-q> :q<cr>
 imap <c-q> <esc><c-q>
 
+" use sane regexes
+nnoremap / /\v
+vnoremap / /\v
+
+" don't move on *
+nnoremap * *<c-o>
+
+" keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+
+" gi already moves to 'last place you exited insert mode', so we'll map gI to something similar: move to last change
+nnoremap gI `.
+
+" lists nagivation
+nnoremap <left> :cprev<cr>zvzz
+nnoremap <right> :cnext<cr>zvzz
+nnoremap <up> :lprev<cr>zvzz
+nnoremap <down> :lnext<cr>zvzz
+
+
+" INSERT MODE KEY MAPPINGS
+
+" ESC in insert mode
+inoremap jk <esc>
+inoremap kj <esc>
+
 " rails: bind control-l to hashrocket
 imap <C-l> <Space>=><Space>'
 
 " rails: convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
 
-" ESC in insert mode
-inoremap jk <esc>
-inoremap kj <esc>
+" basic readline shortcuts
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
 
-" Reselect visual block after indent/outdent
+
+" VISUAL MODE KEY MAPPINGS
+
+" reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
 
+" press Shift+P while in visual mode to replace the selection without overwriting the default register
+vmap P p :call setreg('"', getreg('0')) <cr>
+
+" make backspace work sanely in visual mode
+vnoremap <bs> x
+
+" select entire buffer
+nnoremap vaa ggvGg_
+nnoremap Vaa ggVG
+
+" fix linewise visual selection of various text objects
+nnoremap VV V
+nnoremap Vit vitVkoj
+nnoremap Vat vatV
+nnoremap Vab vabV
+nnoremap VaB vaBV
 
 
 " COMMAND LINE KEY MAPPINGS
 
-" Bash like keys for the command line
+" bash like keys for the command line
 cnoremap <c-a> <Home>
 cnoremap <c-e> <End>
 cnoremap <c-p> <Up>
@@ -378,13 +442,16 @@ nmap <leader>U mQgewvU'Q
 nmap <leader>L mQgewvu'Q
 
 " fugitive.vim
+nmap <leader>ga :Gadd<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gd :Gdiff<cr>
-nmap <leader>gl :Glog<cr>
+nmap <leader>gl :!git l<cr>
+nmap <leader>gm :Gmove<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>gr :Gremove<cr>
 nmap <leader>gs :Gstatus<cr>
+nmap <leader>gw :Gwrite<cr>
 
 " for quick opening of :Ack/:grep results
 map <leader>n :cnext<cr>
@@ -407,16 +474,21 @@ map <leader>s :w<cr>
 " rails.vim
 map <leader>rr :.Rake<cr>
 
-" copy to system clipboard
-map <leader>y "*y"
+" system clipboard interaction
+noremap <leader>y "*y
+noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
+noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
+
+" easier vsplit
+noremap <leader>v <C-w>v
 
 " ZoomWin
 map <leader>zw :ZoomWin<cr>
 
-" Adjust viewports to the same size
+" adjust viewports to the same size
 map <leader>= <C-w>=
 
-" Quick insertion of newline in normal mode
+" quick insertion of newline in normal mode
 nnoremap <silent> <cr> :put=''<cr>
 
 " convert file to utf-8 and cleanup whitespace garbage
@@ -429,7 +501,7 @@ function! CleanupFileConvertToUnixUtf8()
   set fileformat=unix
   " UTF-8 encoding by default
   set fileencoding=utf-8
-  " Cleanup unnecessary spaces at the end of all lines
+  " cleanup trailing whitespace
   execute '%s/\s\+$//e'
 endfunction
 
