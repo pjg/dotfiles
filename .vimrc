@@ -453,10 +453,6 @@ nmap <leader>gr :Gremove<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gwrite<cr>
 
-" for quick opening of :Ack/:grep results
-map <leader>n :cnext<cr>
-map <leader>p :cprevious<cr>
-
 " NERD_tree
 map <leader>d :NERDTreeToggle<cr>
 
