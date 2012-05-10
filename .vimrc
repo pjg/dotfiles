@@ -55,20 +55,39 @@ syntax on
 " 256-color VIM
 set t_Co=256
 
-" font/colorscheme/encoding
+" colorscheme
+colorscheme beautiful256
+
+" GUI settings (gvim)
 if has("gui_running")
-  " Windows GUI
-  set guifont=DejaVu_Sans_Mono:h10:cEASTEUROPE
+  " encoding
   set encoding=utf-8
-  " maximize editor window
-  autocmd GUIEnter * simalt ~s
-  " set English language
-  language en
-  " On win32, use shellslash
-  set shellslash
-else
-  " Linux terminal
-  colorscheme beautiful256
+
+  " window size / position
+  winsize 140 50
+  winpos 70 40
+
+  " Windows
+  if has("win32")
+    " font
+    set guifont=DejaVu_Sans_Mono:h10:cEASTEUROPE
+
+    " simulate alt key behaviour
+    autocmd GUIEnter * simalt ~s
+
+    " use shellslash
+    set shellslash
+  endif
+
+  " Unix/Linux
+  if has("unix")
+    " font
+    set guifont=DejaVu\ Sans\ Mono\ 10
+
+    " set English language
+    language en_US.utf8
+    language messages en_US.utf8
+  endif
 endif
 
 " enable filetype detection and filetype-specific plugins and indenting
