@@ -1,7 +1,12 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
 if Gem::Specification.find_all_by_name('guard-sass').any?
-  guard 'sass', :input => 'public/stylesheets/sass', :output => 'public/stylesheets', :debug_info => false, :style => :nested
+  guard 'sass',
+    :input => 'app/assets/stylesheets',
+    :output => 'public/stylesheets',
+    :style => :expanded,
+    :debug_info => true,
+    :load_paths => Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/blueprint/stylesheets")) + Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/compass/stylesheets"))
 end
 
 if Gem::Specification.find_all_by_name('guard-livereload').any?
