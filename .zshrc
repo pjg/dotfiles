@@ -69,6 +69,7 @@ alias bundler='bundle'
 alias bi='b install'
 alias bu='b update'
 alias be='b exec'
+alias bo='b open'
 
 # heroku
 alias hcp='heroku run console --remote production'
