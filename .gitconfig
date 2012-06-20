@@ -27,6 +27,7 @@
   sh = show
   s = status -sb
   st = status
+  t = tag
 
 [branch]
   # set up git pull to do a rebase instead of merge
