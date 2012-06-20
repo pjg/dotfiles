@@ -85,6 +85,9 @@ alias hss='heroku sql --remote staging'
 alias svndiff='svn diff --diff-cmd=colordiff'
 alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
 
+# htop
+if [[ -x `which htop` ]]; then alias top="htop"; fi
+
 # misc
 alias _='sudo'
 alias ack='ack-grep'
