@@ -120,7 +120,7 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
 end
 
 if Gem::Specification.find_all_by_name('guard-test').any?
-  guard 'test', :all_on_start => false, :all_after_pass => false, :bundler => true, :keep_failed => false do
+  guard 'test', :all_on_start => false, :all_after_pass => false, :bundler => true, :keep_failed => false, :cli => '--verbose=normal' do
     watch(%r{^lib/(.+)\.rb$})     { |m| "test/#{m[1]}_test.rb" }
     watch(%r{^test/.+_test\.rb$})
     watch('test/test_helper.rb')  { "test" }
