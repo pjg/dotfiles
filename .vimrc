@@ -82,7 +82,7 @@ if has("gui_running")
   " Unix/Linux
   if has("unix")
     " font
-    set guifont=DejaVu\ Sans\ Mono\ 10
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 
     " set English language
     language en_US.utf8
@@ -528,7 +528,7 @@ endfunction
 set laststatus=2
 
 " unicode symbols
-let g:Powerline_symbols = 'unicode'
+let g:Powerline_symbols = 'fancy'
 
 " insert trailing whitespace marker segment
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
