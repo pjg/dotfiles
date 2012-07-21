@@ -204,7 +204,7 @@ zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
 case "$TERM" in
-  *xterm*)
+  *xterm*|screen-256color)
     # alt + arrows
     bindkey '[D' backward-word
     bindkey '[C' forward-word
