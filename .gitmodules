@@ -133,3 +133,6 @@
 [submodule ".tmux/tmux-powerline"]
 	path = .tmux/tmux-powerline
 	url = https://github.com/erikw/tmux-powerline.git
+[submodule ".vim/bundle/vim-slim"]
+	path = .vim/bundle/vim-slim
+	url = https://github.com/bbommarito/vim-slim.git
