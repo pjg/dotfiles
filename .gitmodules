@@ -100,9 +100,6 @@
 [submodule ".vim/bundle/Kwbd.vim"]
 	path = .vim/bundle/Kwbd.vim
 	url = https://github.com/rgarver/Kwbd.vim.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/handlebars"]
 	path = .vim/bundle/handlebars
 	url = git://github.com/nono/vim-handlebars.git
@@ -136,3 +133,6 @@
 [submodule ".vim/bundle/vim-slim"]
 	path = .vim/bundle/vim-slim
 	url = https://github.com/bbommarito/vim-slim.git
+[submodule ".vim/bundle/neocomplcache"]
+	path = .vim/bundle/neocomplcache
+	url = https://github.com/Shougo/neocomplcache.git

@@ -200,7 +200,7 @@ set fcs+=vert:\ " the space after the backslash is intentional
 " auto-completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -263,15 +263,37 @@ inoremap <M-o> <Esc>o
 inoremap <C-j> <Down>
 let g:ragtag_global_maps = 1
 
-" supertab
-let g:SuperTabMappingForward = '<s-tab>' "(default value: '<tab>')
-let g:SuperTabMappingBackward = '<tab>' "(default value: '<s-tab>')
-
 " ctrlp
 let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
 
 " fugitive.vim - auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
+
+" neocomplcache
+
+" [neocomplcache] Disable AutoComplPop
+let g:acp_enableAtStartup = 0
+" [neocomplcache] Use neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+" [neocomplcache] Use smartcase
+let g:neocomplcache_enable_smart_case = 1
+" [neocomplcache] Use camel case completion
+let g:neocomplcache_enable_camel_case_completion = 1
+" [neocomplcache] Use underbar completion
+let g:neocomplcache_enable_underbar_completion = 1
+" [neocomplcache] Set minimum syntax keyword length
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" [neocomplcache] key-mappings
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
 
@@ -364,7 +386,7 @@ vnoremap / /\v
 " don't move on *
 nnoremap * *<c-o>
 
-" keep search matches in the middle of the window.
+" keep search matches in the middle of the window
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
