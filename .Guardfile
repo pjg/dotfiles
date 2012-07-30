@@ -6,7 +6,11 @@ if Gem::Specification.find_all_by_name('guard-sass').any?
     :output => 'public/stylesheets',
     :style => :expanded,
     :debug_info => true,
-    :load_paths => Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/blueprint/stylesheets")) + Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/compass/stylesheets"))
+    :load_paths =>
+      Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/blueprint/stylesheets")) +
+      Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/compass/stylesheets")) +
+      Dir.glob(File.join(Gem.dir, "gems", "bootstrap-sass*", "vendor/assets/stylesheets")) +
+      Dir.glob(File.join(Gem.dir, "bundler", "gems", "exvo-assets*", "lib/assets/stylesheets"))
 end
 
 if Gem::Specification.find_all_by_name('guard-livereload').any?
