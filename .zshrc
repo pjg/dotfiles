@@ -78,8 +78,8 @@ alias hlp='heroku logs -t --remote production'
 alias hls='heroku logs -t --remote staging'
 alias hpp='heroku ps --remote production'
 alias hps='heroku ps --remote staging'
-alias hsp='heroku sql --remote production'
-alias hss='heroku sql --remote staging'
+alias hsp='heroku pg:psql --remote production'
+alias hss='heroku pg:psql --remote staging'
 
 # subversion
 alias svndiff='svn diff --diff-cmd=colordiff'
