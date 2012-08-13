@@ -266,6 +266,9 @@ let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
 " fugitive.vim - auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
 
+" disable syntastic for sass files (it introduces a few seconds pause after writing such file)
+let loaded_scss_syntax_checker = 1
+
 " neocomplcache
 
 " [neocomplcache] Disable AutoComplPop
