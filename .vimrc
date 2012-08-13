@@ -225,9 +225,6 @@ augroup END
 " explicitly set filetype to Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,Capfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
-" explicitly set filetype to SCSS
-au BufRead,BufNewFile *.scss set filetype=scss
-
 " 4 spaces for TAB in CSS files
 autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
 
