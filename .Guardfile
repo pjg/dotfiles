@@ -1,5 +1,8 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
+# so that we can use String#singularize
+require 'active_support/inflector'
+
 if Gem::Specification.find_all_by_name('guard-sass').any?
   guard 'sass',
     :input => 'app/assets/stylesheets',
@@ -98,7 +101,8 @@ end
 if Gem::Specification.find_all_by_name('guard-rspec').any?
   guard 'rspec', :all_on_start => false, :all_after_pass => false, :keep_failed => false, :version => 2, :cli => '--color --fail-fast --drb --backtrace' do
     # Factories
-    watch('spec/factories.rb')  { "spec" }
+    watch('spec/factories.rb')                         { "spec" }
+    watch(%r{^spec/factories/(.+)\.rb$})               { |m| ["spec/models/#{m[1].singularize}_spec.rb", "spec/controllers/#{m[1]}_controller_spec.rb", "spec/requests/#{m[1]}_spec.rb"] }
 
     # Global
     watch(%r{^spec/.+_spec\.rb$})
