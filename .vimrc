@@ -301,6 +301,13 @@ function! s:my_cr_function()
   return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
 endfunction
 
+" [neocomplcache] Enable heavy omni completion (with forced patterns;
+" See https://github.com/vim-ruby/vim-ruby/issues/95#issuecomment-8258003.
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
 
 
 " KEY MAPPINGS
