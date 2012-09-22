@@ -133,6 +133,6 @@
 [submodule ".vim/bundle/neocomplcache"]
 	path = .vim/bundle/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.git
-[submodule ".vim/bundle/vim-autoclose"]
-	path = .vim/bundle/vim-autoclose
-	url = https://github.com/Townk/vim-autoclose.git
+[submodule ".vim/bundle/delimitMate"]
+	path = .vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
