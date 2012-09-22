@@ -185,6 +185,11 @@ __git_files () {
 autoload -U compinit
 compinit
 
+# If a pattern for filename generation has no matches, print an error,
+# instead of leaving it unchanged in the argument list. This also
+# applies to file expansion of an initial ~ or =.
+unsetopt nomatch
+
 
 
 # KEY BINDINGS
