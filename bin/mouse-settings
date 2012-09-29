@@ -1,0 +1,11 @@
+#!/bin/bash
+
+device='Microsoft Microsoft® 2.4GHz Transceiver v5.0'
+
+if [ `xinput list | grep "$device" | wc -l` -gt 0 ]; then
+  xinput --set-prop "$device" "Device Accel Constant Deceleration" 2.7
+  xinput --set-prop "$device" "Device Accel Velocity Scaling" 2.0
+  xinput --set-prop "$device" "Device Accel Adaptive Deceleration" 1.2
+  xinput set-ptr-feedback "$device" 0 11 5
+  # threshold, accelNum, accelDenom
+fi
