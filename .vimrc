@@ -508,12 +508,10 @@ nmap <leader>U mQgewvU'Q
 nmap <leader>L mQgewvu'Q
 
 " fugitive.vim
-nmap <leader>ga :Gadd<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gl :!git l<cr>
-nmap <leader>gm :Gmove<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>gr :Gremove<cr>
 nmap <leader>gs :Gstatus<cr>
