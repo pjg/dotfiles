@@ -1,3 +1,7 @@
+# Load plugins (only those I whitelist)
+Pry.config.should_load_plugins = false
+Pry.plugins["doc"].activate!
+
 # Load 'awesome_print'
 begin
   require 'awesome_print'
