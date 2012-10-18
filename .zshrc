@@ -1,9 +1,5 @@
 # BASICS
 
-# path
-PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
-export PATH
-
 # umask
 umask 022
 
@@ -20,6 +16,18 @@ setopt auto_pushd
 
 # Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
 setopt notify
+
+
+
+# PATHS
+
+PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+
+# Heroku Toolbelt
+PATH="$PATH:/usr/local/heroku/bin"
+
+# Export in the end
+export PATH
 
 
 
