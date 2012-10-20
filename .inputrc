@@ -19,32 +19,79 @@ set enable-keypad off
 # ignore case on TAB-completion
 set completion-ignore-case On
 
+# vi mode when editing
+set editing-mode vi
+
 # KEYMAPPINGS for xterm mode (PUTTY/ssh)
 $if term=xterm
   # "\e" is the ESC sequence => ^[
   # type C-v and press any <key> or a combination of <key>s to see its code
 
-  # allow the use of the Home/End keys
+  # Home/End
   "\e[1~": beginning-of-line
   "\e[4~": end-of-line
 
-  # allow the use of the Delete/Insert keys
+  # Delete/Insert
   "\e[3~": delete-char
   "\e[2~": quoted-insert
 
-  # alternate mappings for "page up" and "page down" to search the history (start typing a command and press page-up)
+  # PageUp/PageDown
   "\e[5~": history-search-backward
   "\e[6~": history-search-forward
 
-  # move by word using alt+left/right-arrow 
+  # Alt+Left/Alt+Right
   "\e\e[C": forward-word
   "\e\e[D": backward-word
   "\e[1;3C": forward-word
   "\e[1;3D": backward-word
 
-  # move by word using ctrl+left/right-arrow
+  # Ctrl+Left/Ctrl+Right
   "\eOC": forward-word
   "\eOD": backward-word
   "\e[1;5C": forward-word
   "\e[1;5D": backward-word
+$endif
+
+# KEYMAPPINGS for vi mode
+$if mode=vi
+  # INSERT MODE
+  set keymap vi-insert
+  "\C-a": beginning-of-line
+  "\C-e": end-of-line
+  "\C-k": kill-line
+  "\C-l": clear-screen
+  "\C-p": history-search-backward
+  "\C-n": history-search-forward
+  "\C-r": reverse-search-history
+  "\C-s": forward-search-history
+  "\C-u": unix-line-discard
+  "\C-w": unix-word-rubout
+  "\C-y": yank
+  "\C-_": undo
+  "\eb":  backward-word # alt-b
+  "\ed":  kill-word  # alt-d
+  "\ef":  forward-word # alt-f
+
+  # COMMAND MODE
+  set keymap vi-command
+  "\C-a": beginning-of-line
+  "\C-e": end-of-line
+  "\C-h": delete-char
+  "\C-k": kill-line
+  "\C-l": clear-screen
+  "\C-p": history-search-backward
+  "\C-n": history-search-forward
+  "\C-r": reverse-search-history
+  "\C-s": forward-search-history
+  "\C-u": unix-line-discard
+  "\C-w": unix-word-rubout
+  "\C-y": yank
+  "\C-_": undo
+  "\eb":  backward-word # alt-b
+  "\ed":  kill-word  # alt-d
+  "\ef":  forward-word # alt-f
+  "\e[A": history-search-backward # up-arrow
+  "\e[B": history-search-forward  # down-arrow
+  "\e[5~": history-search-backward # pg-up
+  "\e[6~": history-search-forward  # pg-down
 $endif
