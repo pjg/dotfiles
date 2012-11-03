@@ -7,6 +7,7 @@ export ADOTDIR=~/.zsh
 source ~/.zsh/antigen/antigen.zsh
 
 # define the plugins
+antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-completions
 
 # load the plugins
