@@ -1,3 +1,13 @@
+# ANTIGEN
+
+# directory to store cloned antigen repositories
+export ADOTDIR=~/.zsh
+
+# load antigen
+source ~/.zsh/antigen/antigen.zsh
+
+
+
 # BASICS
 
 # umask
