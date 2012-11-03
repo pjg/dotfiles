@@ -7,6 +7,7 @@ export ADOTDIR=~/.zsh
 source ~/.zsh/antigen/antigen.zsh
 
 # define the plugins
+antigen-bundle bundler
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-completions
 
@@ -374,9 +375,6 @@ export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=500000000
 export RUBY_HEAP_FREE_MIN=500000
-
-# Never type "bunde exec" again
-source ~/.zsh/bundler/bundler.plugin.zsh
 
 # set GitHub credentials
 [[ -e ~/.github_credentials ]] && source ~/.github_credentials
