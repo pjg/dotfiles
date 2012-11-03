@@ -6,6 +6,12 @@ export ADOTDIR=~/.zsh
 # load antigen
 source ~/.zsh/antigen/antigen.zsh
 
+# define the plugins
+antigen-bundle zsh-users/zsh-completions
+
+# load the plugins
+antigen-apply
+
 
 
 # BASICS
@@ -39,6 +45,8 @@ PATH="$PATH:/usr/local/heroku/bin"
 # Export in the end
 export PATH
 
+# fpath (for zsh-completions)
+fpath=(~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
 
 # COLORS
@@ -190,9 +198,6 @@ zstyle ':completion:*:kill:*' force-list always
 # cache completions
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# custom completions
-fpath=(~/.zsh/gem ~/.zsh/bundler ~/.zsh/heroku $fpath)
 
 # speed-up the git completion for filenames
 __git_files () {
