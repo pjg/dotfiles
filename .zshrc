@@ -8,6 +8,7 @@ source ~/.zsh/antigen/antigen.zsh
 
 # define the plugins
 antigen-bundle bundler
+antigen-bundle olivierverdier/zsh-git-prompt
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-completions
 
@@ -313,11 +314,10 @@ esac
 
 # PROMPT
 
-# zsh-git-prompt (https://github.com/olivierverdier/zsh-git-prompt/) -- slow, but *awesome*
-source ~/.zsh/git-prompt/zshrc.sh
+# [zsh-git-prompt] location
+export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-olivierverdier-SLASH-zsh-git-prompt.git/
 
-# [zsh-git-prompt]
-# do not execute the git prompt for the ~ directory, as it is _really_ slow (redefine original functions from zsh-git-prompt)
+# [zsh-git-prompt] do not execute the git prompt for the ~/ directory, as it is _really_ slow (redefine original functions from the plugin)
 function chpwd_update_git_vars() {
   if [ `pwd` = $HOME ]; then
     unset __CURRENT_GIT_STATUS
@@ -331,9 +331,9 @@ function preexec_update_git_vars() {
     unset __EXECUTED_GIT_COMMAND
   else
     case "$2" in
-        git*)
-        __EXECUTED_GIT_COMMAND=1
-        ;;
+      git*)
+      __EXECUTED_GIT_COMMAND=1
+      ;;
     esac
   fi
 }
