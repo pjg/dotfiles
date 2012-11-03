@@ -23,7 +23,7 @@ setopt notify
 
 PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 
-# Heroku Toolbelt
+### Added by the Heroku Toolbelt
 PATH="$PATH:/usr/local/heroku/bin"
 
 # Export in the end
