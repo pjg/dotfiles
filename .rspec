@@ -1,1 +1,1 @@
---color --format documentation --fail-fast --profile --backtrace
+--color --format documentation --fail-fast --profile --backtrace --drb
