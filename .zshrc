@@ -11,6 +11,7 @@ antigen-bundle bundler
 antigen-bundle olivierverdier/zsh-git-prompt
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-completions
+antigen-bundle Peeja/ctrl-zsh
 
 # load the plugins
 antigen-apply
