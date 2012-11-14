@@ -271,8 +271,9 @@ let g:ctrlp_custom_ignore = '\/tmp/*'
 " fugitive.vim - auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
 
-" disable syntastic for sass files (it introduces a few seconds pause after writing such file)
-let loaded_scss_syntax_checker = 1
+" [syntastic] disable slow checkers
+let g:syntastic_mode_map = {}
+let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'slim']
 
 " [neocomplcache] Disable AutoComplPop
 let g:acp_enableAtStartup = 0
