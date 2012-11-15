@@ -89,6 +89,7 @@ if Gem::Specification.find_all_by_name('guard-spork').any?
     watch('config/routes.rb')
     watch(%r{^config/environments/.+\.rb$})
     watch(%r{^config/initializers/.+\.rb$})
+    watch('config/locales/en.yml')
     watch('Gemfile')
     watch('Gemfile.lock')
     watch('spec/spec_helper.rb') { :rspec }
