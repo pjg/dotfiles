@@ -273,7 +273,7 @@ au BufReadPost fugitive://* set bufhidden=delete
 
 " [syntastic] disable slow checkers
 let g:syntastic_mode_map = {}
-let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'slim']
+let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'scss', 'scss.css', 'slim']
 
 " [neocomplcache] Disable AutoComplPop
 let g:acp_enableAtStartup = 0
