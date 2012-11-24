@@ -28,6 +28,7 @@
   s = status -sb
   st = status
   t = tag
+  undo = reset --soft HEAD^
   wc = whatchanged -p
 
 [branch]
