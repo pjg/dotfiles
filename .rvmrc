@@ -1,0 +1,2 @@
+export rvm_trust_rvmrcs_flag=1
+export rvm_pretty_print_flag=1
