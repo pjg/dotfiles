@@ -409,11 +409,6 @@ REPORTTIME=10
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
-# git function
-function scoreboard () {
-  git log | grep Author | sort | uniq -ci | sort -hr
-}
-
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 

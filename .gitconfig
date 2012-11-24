@@ -8,6 +8,7 @@
   cia = commit --amend
   cl = clone
   co = checkout
+  count = shortlog -sn
   d = diff
   dc = diff --cached
   g = grep
@@ -26,6 +27,7 @@
   ru = remote update
   sh = show
   s = status -sb
+  scoreboard = shortlog -sn
   st = status
   t = tag
   undo = reset --soft HEAD^
