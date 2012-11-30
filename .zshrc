@@ -238,6 +238,9 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
+alias ←="pushd -q +1"
+alias →="pushd -q -0"
+
 case "$TERM" in
   *xterm*|screen-256color)
     # alt + arrows
@@ -270,6 +273,8 @@ case "$TERM" in
     # VI MODE KEYBINDINGS (ins mode)
     bindkey -M viins '^a'    beginning-of-line
     bindkey -M viins '^e'    end-of-line
+    bindkey -M viins -s '^b' "←\n"
+    bindkey -M viins -s '^f' "→\n"
     bindkey -M viins '^k'    kill-line
     bindkey -M viins '^r'    history-incremental-pattern-search-backward
     bindkey -M viins '^s'    history-incremental-pattern-search-forward
