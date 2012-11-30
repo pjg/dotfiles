@@ -12,6 +12,7 @@ antigen-bundle olivierverdier/zsh-git-prompt
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-completions
 antigen-bundle Peeja/ctrl-zsh
+antigen-bundle pjg/zsh-vim-plugin
 
 # load the plugins
 antigen-apply
