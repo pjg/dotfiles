@@ -117,10 +117,10 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
     watch('app/controllers/application_controller.rb') { "spec/controllers" }
 
     # Capybara request specs
-    watch(%r{^app/views/(.+)/.*\.(erb|haml)$})         { |m| "spec/requests/#{m[1]}_spec.rb" }
+    watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})    { |m| "spec/requests/#{m[1]}_spec.rb" }
 
     # Controller specs for views
-    watch(%r{^app/views/(.+)/.*\.(erb|haml)$})         { |m| "spec/controllers/#{m[1]}_spec.rb" }
+    watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})    { |m| "spec/controllers/#{m[1]}_spec.rb" }
 
     # Runs all specs when something in /lib is modified. Might be overkill, but helps tremendously during Gem development
     watch(%r{^lib/.+\.rb$}) { "spec" }
