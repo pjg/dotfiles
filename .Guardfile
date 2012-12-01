@@ -19,13 +19,12 @@ end
 if Gem::Specification.find_all_by_name('guard-livereload').any?
   guard 'livereload' do
     # omit files starting with a dot (to prevent double reloads)
-    watch(%r{^app/([a-zA-Z0-9_-]+/)+[^\.]+(\.html)*\.(erb|haml)})
+    watch(%r{^app/([a-zA-Z0-9_-]+/)+[^\.]+\.(erb|haml|slim)$})
     watch(%r{^app/helpers/([a-zA-Z0-9_-]+/)*[^\.]+\.rb})
-    watch(%r{^(public/|app/assets/)([a-zA-Z0-9_-]+/)*[^\.]+\.(css|js|html)})
+    watch(%r{^public/([a-zA-Z0-9_-]+/)*[^\.]+\.(css|js|html)})
     watch(%r{^config/locales/([a-zA-Z0-9_-]+/)*[^\.]+\.yml})
-    # the rest
-    watch(%r{^(app/assets/.+\.css)\.scss})  { |m| m[1] }
-    watch(%r{^(app/assets/.+\.js)\.coffee}) { |m| m[1] }
+    # Rails Assets Pipeline
+    watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html))).*}) { |m| "/assets/#{m[3]}" }
   end
 end
 
