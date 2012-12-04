@@ -85,9 +85,6 @@
 [submodule ".vim/bundle/ZoomWin"]
 	path = .vim/bundle/ZoomWin
 	url = https://github.com/vim-scripts/ZoomWin.git
-[submodule ".vim/bundle/Rename2"]
-	path = .vim/bundle/Rename2
-	url = https://github.com/vim-scripts/Rename2.git
 [submodule ".vim/bundle/vim-easymotion"]
 	path = .vim/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
