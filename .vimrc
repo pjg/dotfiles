@@ -532,6 +532,10 @@ map <leader>zw :ZoomWin<cr>
 " adjust viewports to the same size
 map <leader>= <C-w>=
 
+" underline current line
+nmap <silent> <leader>- :t.<CR>Vr-
+nmap <silent> <leader>_ :t.<CR>Vr=
+
 " quick insertion of newline in normal mode
 nnoremap <silent> <cr> :put=''<cr>
 
