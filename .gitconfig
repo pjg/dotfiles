@@ -50,6 +50,9 @@
   # Global gitignore
   excludesfile = ~/.gitignoreglobal
 
+  # Wrap long-lines when printing on the screen (i.e. use `less` as a pager)
+  pager = less -r
+
 [diff]
   # Detect renames of files
   renames = true
