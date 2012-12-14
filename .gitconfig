@@ -14,6 +14,7 @@
   g = grep
   l = log -10 --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
   ll = log --date=relative --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%an, %ad)%Creset'
+  m = merge
   p = push
   pf = push -f
   r = remote
