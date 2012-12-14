@@ -3,19 +3,6 @@
 # so that we can use String#singularize
 require 'active_support/inflector'
 
-if Gem::Specification.find_all_by_name('guard-sass').any?
-  guard 'sass',
-    :input => 'app/assets/stylesheets',
-    :output => 'public/stylesheets',
-    :style => :expanded,
-    :debug_info => true,
-    :load_paths =>
-      Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/blueprint/stylesheets")) +
-      Dir.glob(File.join(Gem.dir, "gems", "compass*", "frameworks/compass/stylesheets")) +
-      Dir.glob(File.join(Gem.dir, "gems", "bootstrap-sass*", "vendor/assets/stylesheets")) +
-      Dir.glob(File.join(Gem.dir, "bundler", "gems", "exvo-assets*", "lib/assets/stylesheets"))
-end
-
 if Gem::Specification.find_all_by_name('guard-livereload').any?
   guard 'livereload' do
     # omit files starting with a dot (to prevent double reloads)
