@@ -24,7 +24,7 @@ if Gem::Specification.find_all_by_name('guard-livereload').any?
     watch(%r{^public/([a-zA-Z0-9_-]+/)*[^\.]+\.(css|js|html)})
     watch(%r{^config/locales/([a-zA-Z0-9_-]+/)*[^\.]+\.yml})
     # Rails Assets Pipeline
-    watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html))).*}) { |m| "/assets/#{m[3]}" }
+    watch(%r{(app|vendor)(/assets/\w+/(.+\.(s[ac]ss|coffee|css|js|html))).*}) { |m| "/assets/#{m[3]}" }
   end
 end
 
