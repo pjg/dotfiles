@@ -1,7 +1,9 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
-# so that we can use String#singularize
-require 'active_support/inflector'
+if Gem::Specification.find_all_by_name('activesupport').any?
+  # so that we can use String#singularize
+  require 'active_support/inflector'
+end
 
 if Gem::Specification.find_all_by_name('guard-livereload').any?
   guard 'livereload' do
