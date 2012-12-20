@@ -25,8 +25,9 @@ end
 if Gem::Specification.find_all_by_name('guard-shell').any?
   guard 'shell' do
     # Restart passenger
-    watch('Gemfile.lock')       { |m| `touch tmp/restart.txt` }
-    watch(%r{^(config|lib)/.*}) { |m| `touch tmp/restart.txt` }
+    watch('Gemfile.lock')                       { |m| `touch tmp/restart.txt` }
+    watch(%r{^lib/.*})                          { |m| `touch tmp/restart.txt` }
+    watch('config/environments/development.rb') { |m| `touch tmp/restart.txt` }
   end
 end
 
