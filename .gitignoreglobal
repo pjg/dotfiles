@@ -5,3 +5,4 @@
 *.sw[po]
 .vim/tmp
 doc/tags
+tags
