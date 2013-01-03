@@ -45,15 +45,11 @@ stty -ixon -ixoff
 # Do not kill background processes when closing the shell.
 setopt nohup
 
+
+
 # PATHS
 
-PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
-
-### Added by the Heroku Toolbelt
-PATH="$PATH:/usr/local/heroku/bin"
-
-# Export in the end
-export PATH
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 
 # fpath (for zsh-completions)
 fpath=(~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
@@ -586,6 +582,9 @@ REPORTTIME=10
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
+
+### Added by the Heroku Toolbelt
+PATH="$PATH:/usr/local/heroku/bin"
 
 # RVM
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
