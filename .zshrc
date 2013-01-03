@@ -132,6 +132,7 @@ alias ack='ack-grep'
 alias diff='colordiff -u'
 alias mc='mc -cu'
 alias tmux='TERM=screen-256color tmux'
+alias v="vim"
 
 
 
