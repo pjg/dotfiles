@@ -374,16 +374,21 @@ RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
 
 # SPELLING CORRECTIONS
 
-setopt correct_all
+# limit correction only to commands
+setopt correct
 
-alias cp='nocorrect cp'
-alias git='nocorrect git'
-alias gist='nocorrect gist'
-alias heroku='nocorrect heroku'
-alias man='nocorrect man'
-alias mv='nocorrect mv'
-alias mysql='nocorrect mysql'
-alias mkdir='nocorrect mkdir'
+# When offering typo corrections, do not propose anything which starts with an underscore (such as many of Zsh's shell functions)
+CORRECT_IGNORE='_*'
+
+# general exceptions
+for i in {'cp','git','gist','man','mv','mysql','mkdir'}; do
+  alias $i="nocorrect $i"
+done
+
+# ruby/rails exceptions
+for i in {'bundle','cap','capify','cucumber','foreman','gem','guard','heroku','puma','pry','rake','rspec','ruby','spec','spork','thin'}; do
+  alias $i="nocorrect $i"
+done
 
 
 
