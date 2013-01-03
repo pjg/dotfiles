@@ -192,6 +192,11 @@ setopt no_hup
 # parameter expansion, command substitution and arithmetic expansion are performed in prompts
 setopt prompt_subst
 
+# speed-up the git completion for filenames
+__git_files () {
+  _wanted files expl 'local files' _files
+}
+
 # fuzzy matching for typos
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
@@ -205,18 +210,21 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm,
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
 
+# zsh completions chache
+CACHEDIR="$HOME/.zsh/cache"
+
+# create $CACHEDIR if it does not exist
+if [ ! -d $CACHEDIR ]; then
+  mkdir -p $CACHEDIR
+fi
+
 # cache completions
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# speed-up the git completion for filenames
-__git_files () {
-  _wanted files expl 'local files' _files
-}
+zstyle ':completion:*' cache-path $CACHEDIR
 
 # load completions
 autoload -U compinit
-compinit
+compinit -d $CACHEDIR/zcompdump
 
 # If a pattern for filename generation has no matches, print an error,
 # instead of leaving it unchanged in the argument list. This also
