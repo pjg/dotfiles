@@ -38,7 +38,12 @@ setopt auto_pushd
 # Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
 setopt notify
 
+# Turn off terminal driver flow control (CTRL+S/CTRL+Q)
+setopt noflowcontrol
+stty -ixon -ixoff
 
+# Do not kill background processes when closing the shell.
+setopt nohup
 
 # PATHS
 
@@ -227,11 +232,6 @@ bindkey -v
 
 # make backward-word and forward-word move to each word separated by a '/'
 export WORDCHARS=''
-
-# turn off terminal driver flow control (CTRL+S/CTRL+Q) (if we are a terminal)
-if [ -t 0 ]; then
-  stty -ixon -ixoff
-fi
 
 # edit command line
 autoload -U edit-command-line
