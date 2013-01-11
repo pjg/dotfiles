@@ -380,12 +380,6 @@ zle -N change-around
 # VIM style keybindings by default
 bindkey -v
 
-# Remove escape timeout in insert mode
-bindkey -rpM viins '^['
-
-# Remove escape timeout in normal mode
-bindkey -rpM vicmd '^['
-
 # make backward-word and forward-word move to each word separated by a '/'
 export WORDCHARS=''
 
