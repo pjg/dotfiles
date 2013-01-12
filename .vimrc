@@ -515,8 +515,11 @@ map <leader>q :q<cr>
 " save file
 map <leader>s :w<cr>
 
-" rails.vim
+" [rails.vim] Rake
 map <leader>rr :.Rake<cr>
+
+" [rails.vim] `:Rfactory user` to go to the user factory
+autocmd User Rails Rnavcommand factory spec/factories/ -suffix=.rb
 
 " system clipboard interaction
 noremap <leader>y "*y
