@@ -123,7 +123,7 @@
 	url = https://github.com/erikw/tmux-powerline.git
 [submodule ".vim/bundle/vim-slim"]
 	path = .vim/bundle/vim-slim
-	url = https://github.com/bbommarito/vim-slim.git
+	url = git://github.com/slim-template/vim-slim.git
 [submodule ".vim/bundle/neocomplcache"]
 	path = .vim/bundle/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.git
