@@ -71,7 +71,7 @@ if Gem::Specification.find_all_by_name('guard-spin').any?
 end
 
 if Gem::Specification.find_all_by_name('guard-spork').any?
-  guard 'spork', :wait => 180, :cucumber => false, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+  guard 'spork', :wait => 180, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' }, :test_unit_env => { 'RAILS_ENV' => 'test' } do
     watch('config/application.rb')
     watch('config/environment.rb')
     watch('config/environments/test.rb')
@@ -117,12 +117,12 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
 end
 
 if Gem::Specification.find_all_by_name('guard-test').any?
-  guard 'test', :all_on_start => false, :all_after_pass => false, :bundler => true, :keep_failed => false, :cli => '--verbose=normal' do
+  guard 'test', :all_on_start => false, :all_after_pass => false, :bundler => true, :keep_failed => false, :cli => '--verbose=normal', :drb => true do
     watch(%r{^lib/(.+)\.rb$})     { |m| "test/#{m[1]}_test.rb" }
     watch(%r{^test/.+_test\.rb$})
     watch('test/test_helper.rb')  { "test" }
 
-    # Rails example
+    # Rails
     watch(%r{^app/models/(.+)\.rb$})                   { |m| "test/unit/#{m[1]}_test.rb" }
     watch(%r{^app/controllers/(.+)\.rb$})              { |m| "test/functional/#{m[1]}_test.rb" }
     watch(%r{^app/views/.+\.rb$})                      { "test/integration" }
