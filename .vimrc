@@ -266,7 +266,10 @@ let g:ragtag_global_maps = 1
 
 " ctrlp
 let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
-let g:ctrlp_custom_ignore = '\/tmp/*'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\/tmp/',
+  \ 'file': '\/public/stylesheets/.*css$'
+  \ }
 
 " fugitive.vim - auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
