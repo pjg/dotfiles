@@ -1,8 +1,8 @@
 " Beautiful256 - a vim 256 colors scheme
 " Based on Beauty256 by Mahmoud Sahebi Afzal
 " Maintainer: Paweł Gościcki <pawel.goscicki@gmail.com>
-" Last Change: 10 May 2012
-" Version: 0.3
+" Last Change: 16 February 2013
+" Version: 0.4
 
 " check for t_Co
 if &t_Co != 256 && ! has("gui_running")
@@ -106,6 +106,10 @@ hi link rubyRegexpDelimiter rubyRegexp
 hi link javascriptRegexpString  Regexp
 hi link javascriptNumber        Number
 hi link javascriptNull          Constant
+
+" match git diff view colors with shell's gits diff colors
+hi diffAdded ctermfg=2 guifg=#008000
+hi diffRemoved ctermfg=1 guifg=#800000
 
 " additional colors definitions (apart from those from beauty256)
 hi Regexp guifg=#df00df ctermfg=13
