@@ -441,9 +441,6 @@ case "$TERM" in
     bindkey -M viins '\eOH'  beginning-of-line # Home
     bindkey -M viins '\eOF'  end-of-line       # End
     bindkey -M viins '\e[2~' overwrite-mode    # Insert
-    bindkey -M viins '\ef'   forward-word      # Alt-f
-    bindkey -M viins '\eb'   backward-word     # Alt-b
-    bindkey -M viins '\ed'   kill-word         # Alt-d
 
 
     # VI MODE KEYBINDINGS (cmd mode)
