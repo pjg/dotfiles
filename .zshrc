@@ -550,11 +550,11 @@ done
 # MISC STUFF
 
 # [RUBY] (make GC speedier by using more memory; source: https://gist.github.com/1688857)
-export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_MIN_SLOTS=1000000 # initial number of heap slots as well as the minimum number of slots allocated
 export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=500000000
-export RUBY_HEAP_FREE_MIN=500000
+export RUBY_GC_MALLOC_LIMIT=500000000 # number of C data structures tha can be allocated before GC kicks in; if too low, GC will run even if there are still heap slots available
+export RUBY_HEAP_FREE_MIN=100000 # the minimum number of heap slots that should be available after GC runs; if they are not available then, ruby will allocate more slots
 export RUBY_FREE_MIN=$RUBY_HEAP_FREE_MIN
 
 # [RUBY] use better allocator (apt-get install libtcmalloc-minimal4) (source: https://gist.github.com/4136373)
