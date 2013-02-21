@@ -267,7 +267,7 @@ let g:ragtag_global_maps = 1
 " ctrlp
 let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\/tmp/',
+  \ 'dir':  '\/tmp',
   \ 'file': '\/public/stylesheets/.*css$'
   \ }
 
