@@ -12,6 +12,7 @@
 --ignore-dir=doc
 --ignore-dir=log
 --ignore-dir=tmp
+--ignore-dir=.bundle
 
 # add filetypes
 --type-add=ruby=.haml,.rake,.rsel,.builder
