@@ -226,7 +226,7 @@ augroup filetypedetect
 augroup END
 
 " explicitly set filetype to Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,Capfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
 " 4 spaces for TAB in CSS files
 autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
