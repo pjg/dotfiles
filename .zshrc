@@ -377,6 +377,9 @@ zle -N change-around
 
 # KEY BINDINGS
 
+# 50ms wait for a longer bound string (usually ESC + something; wait 50ms for 'something' and if it doesn't come, just execute normal <Esc>)
+export KEYTIMEOUT=5
+
 # VIM style keybindings by default
 bindkey -v
 
