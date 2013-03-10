@@ -33,6 +33,7 @@ hi Title term=bold ctermfg=5 guifg=#800080
 hi Visual term=reverse ctermbg=7 guifg=White guibg=#829db9
 hi Ignore ctermfg=NONE guifg=NONE
 
+hi SignColumn guibg=#fffbf0 ctermbg=NONE
 hi FoldColumn guifg=Black guibg=#979797 ctermbg=7 ctermfg=4
 hi Folded guifg=Black guibg=#bbbbbb  ctermbg=7 ctermfg=244
 hi StatusLine guifg=#ddddff guibg=#220088 ctermfg=5 ctermbg=231
