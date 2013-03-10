@@ -26,7 +26,7 @@ set nobackup nowritebackup
 
 " show line numbers
 set number
-set numberwidth=4
+set numberwidth=2
 
 " highlight searches
 set hlsearch
@@ -274,6 +274,13 @@ let g:ctrlp_custom_ignore = {
 " fugitive.vim - auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
 
+" [vim-gitgutter] always show sign column (by adding a dummy sign)
+function! ShowSignColumn()
+  sign define dummy
+  execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+endfunc
+au BufRead,BufNewFile * call ShowSignColumn()
+
 " [syntastic] disable slow checkers
 let g:syntastic_mode_map = {}
 let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'scss', 'scss.css', 'slim']
@@ -333,8 +340,8 @@ vmap <F5> <esc><F5>
 nmap <F6> :GundoToggle<cr><cr>
 imap <F6> <esc>:GundoToggle<cr><cr>
 
-" <F8> to turn off the highlight search & redraw both screen and statusline
-map <F8> :syntax sync fromstart<cr>:redraw!<cr>:redrawstatus!<cr>:nohlsearch<cr>
+" <F8> to turn off the highlight search & redraw screen, sign column and statusline
+map <F8> :syntax sync fromstart<cr>:nohlsearch<cr>:GitGutter<cr>:redrawstatus!<cr>:redraw!<cr>
 imap <F8> <esc><F8>
 vmap <F8> <esc><F8>
 
