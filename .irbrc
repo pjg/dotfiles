@@ -17,7 +17,9 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 end
 
 # Initialize awesome_print
-AwesomePrint.irb!
+if defined?(AwesomePrint)
+  AwesomePrint.irb!
+end
 
 # Initialize Wirble
 if defined?(Wirble)
@@ -26,7 +28,9 @@ if defined?(Wirble)
 end
 
 # Initialize Hirb
-Hirb.enable if defined?(Hirb)
+if defined?(Hirb)
+  Hirb.enable
+end
 
 # .local_methods method for all classes
 class Object
