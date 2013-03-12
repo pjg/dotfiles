@@ -5,7 +5,9 @@ Pry.plugins["doc"].activate!
 # Load 'awesome_print'
 begin
   require 'awesome_print'
-  Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+  require 'awesome_print/ext/active_record'
+  require 'awesome_print/ext/active_support'
+  AwesomePrint.pry!
 rescue LoadError => err
 end
 

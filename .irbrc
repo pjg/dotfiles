@@ -9,12 +9,15 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 
 # require console enhancement gems (you need to list them in the Gemfile in the :development & :test groups)
-%w(rubygems ap interactive_editor hirb wirble).each do |gem|
+%w(rubygems awesome_print interactive_editor hirb wirble).each do |gem|
   begin
     require gem
   rescue LoadError
   end
 end
+
+# Initialize awesome_print
+AwesomePrint.irb!
 
 # Initialize Wirble
 if defined?(Wirble)
