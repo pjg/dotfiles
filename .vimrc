@@ -386,6 +386,12 @@ vnoremap 0 g0
 noremap H ^
 noremap L $
 
+" make g^/g$ go to 'true' home/end
+nnoremap g$ $
+nnoremap g^ ^
+vnoremap g$ $
+vnoremap g^ ^
+
 " gw to swap the current word with the one next to it
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>''
 
