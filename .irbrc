@@ -5,8 +5,9 @@ require 'pp'
 require 'irb/completion'
 require 'irb/ext/save-history'
 
-IRB.conf[:SAVE_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+IRB.conf[:EVAL_HISTORY] = 10000
+IRB.conf[:SAVE_HISTORY] = 10000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
 
 # require console enhancement gems (you need to list them in the Gemfile in the :development & :test groups)
 %w(rubygems awesome_print interactive_editor hirb wirble).each do |gem|
@@ -23,7 +24,7 @@ end
 
 # Initialize Wirble
 if defined?(Wirble)
-  Wirble.init
+  Wirble.init(:history_path => "#{ENV['HOME']}/.irb-history")
   Wirble.colorize
 end
 
