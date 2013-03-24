@@ -2,6 +2,9 @@
 Pry.config.should_load_plugins = false
 Pry.plugins["doc"].activate!
 
+# alias 'q' for 'exit'
+Pry.config.commands.alias_command "q", "exit-all"
+
 # Load 'awesome_print'
 begin
   require 'awesome_print'
@@ -91,7 +94,42 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
       ActiveRecord::Base.logger = Rails.logger
     end
   end
-end
 
-# alias 'q' for 'exit'
-Pry.config.commands.alias_command "q", "exit-all"
+  # .details method for pretty printing ActiveRecord's objects attributes
+  class Object
+    def details
+      if self.respond_to?(:attributes) and self.attributes.any?
+        max = self.attributes.keys.sort_by { |k| k.size }.pop.size + 5
+        puts
+        self.attributes.keys.sort.each do |k|
+          puts sprintf("%-#{max}.#{max}s%s", k, self.try(k))
+        end
+        puts
+      end
+    end
+    alias :detailed :details
+  end
+
+  # returns a collection of the methods that Rails added to the given class
+  # http://lucapette.com/irb/rails-core-ext-and-irb/
+  class Class
+    def core_ext
+      self.instance_methods.map {|m| [m, self.instance_method(m).source_location] }.select {|m| m[1] && m[1][0] =~/activesupport/}.map {|m| m[0]}.sort
+    end
+  end
+
+  # local methods helper
+  # http://rakeroutes.com/blog/customize-your-irb/
+  class Object
+    def local_methods
+      case self.class
+      when Class
+        self.public_methods.sort - Object.public_methods
+      when Module
+        self.public_methods.sort - Module.public_methods
+      else
+        self.public_methods.sort - Object.new.public_methods
+      end
+    end
+  end
+end
