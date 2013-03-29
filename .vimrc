@@ -382,15 +382,17 @@ vnoremap $ g$
 vnoremap ^ g^
 vnoremap 0 g0
 
-" go to home and end using capitalized directions
+" go to home/end using capitalized directions
 noremap H ^
 noremap L $
 
-" make g^/g$ go to 'true' home/end
+" make g$/g^/g0 go to 'true' home/end
 nnoremap g$ $
 nnoremap g^ ^
+nnoremap g0 0
 vnoremap g$ $
 vnoremap g^ ^
+vnoremap g0 0
 
 " gw to swap the current word with the one next to it
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>''
