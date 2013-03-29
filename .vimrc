@@ -537,6 +537,9 @@ map <leader>rr :.Rake<cr>
 " [rails.vim] `:Rfactory user` to go to the user factory
 autocmd User Rails Rnavcommand factory spec/factories/ -suffix=.rb
 
+" [rails.vim] `:Eroutes` to open routes
+command Eroutes Einitializer
+
 " system clipboard interaction
 noremap <leader>y "*y
 noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
