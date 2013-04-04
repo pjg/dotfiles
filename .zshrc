@@ -528,6 +528,9 @@ ${smiley} '
 
 RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
 
+# don't display RPROMPT for previously accepted lines; only display it next to current line
+setopt transient_rprompt
+
 
 
 # SPELLING CORRECTIONS
