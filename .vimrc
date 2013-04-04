@@ -291,6 +291,9 @@ let g:acp_enableAtStartup = 0
 " [neocomplcache] Use neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 
+" [neocomplcache] make neocomplcache the *only* completefunc
+let g:neocomplcache_force_overwrite_completefunc = 1
+
 " [neocomplcache] Use smartcase
 let g:neocomplcache_enable_smart_case = 1
 
