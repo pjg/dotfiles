@@ -31,12 +31,6 @@ if Gem::Specification.find_all_by_name('guard-shell').any?
   end
 end
 
-if Gem::Specification.find_all_by_name('guard-delayed').any?
-  guard 'delayed', :environment => 'development' do
-    watch(%r{^app/(.+)\.rb})
-  end
-end
-
 if Gem::Specification.find_all_by_name('guard-jasmine-headless-webkit').any?
   # Run JS and CoffeeScript files in a typical Rails 3.1 fashion, placing Underscore templates in app/views/*.jst
   # Your spec files end with _spec.{js,coffee}.
@@ -127,5 +121,11 @@ if Gem::Specification.find_all_by_name('guard-test').any?
     watch(%r{^app/controllers/(.+)\.rb$})              { |m| "test/functional/#{m[1]}_test.rb" }
     watch(%r{^app/views/.+\.rb$})                      { "test/integration" }
     watch('app/controllers/application_controller.rb') { ["test/functional", "test/integration"] }
+  end
+end
+
+if Gem::Specification.find_all_by_name('guard-delayed').any?
+  guard 'delayed', :environment => 'development' do
+    watch(%r{^app/(.+)\.rb})
   end
 end
