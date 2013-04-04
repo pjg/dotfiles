@@ -126,6 +126,6 @@ end
 
 if Gem::Specification.find_all_by_name('guard-delayed').any?
   guard 'delayed', :environment => 'development' do
-    watch(%r{^app/(.+)\.rb})
+    watch(%r{^app/(.+)\.rb$})
   end
 end
