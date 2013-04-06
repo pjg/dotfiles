@@ -7,7 +7,6 @@ export ADOTDIR=~/.zsh
 source ~/.zsh/antigen/antigen.zsh
 
 # define the plugins
-antigen-bundle bundler
 antigen-bundle olivierverdier/zsh-git-prompt
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-completions
@@ -594,3 +593,30 @@ PATH="$PATH:/usr/local/heroku/bin"
 # RVM
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
 PATH=$PATH:$HOME/.rvm/bin
+
+# BUNDLER BINSTUBS (this is a small security risk as we're dynamically changing $PATH)
+# http://hmarr.com/2012/nov/08/rubies-and-bundles/
+# http://code.jjb.cc/2012/11/09/putting-your-rbenv-managed-bundler-specified-executables-in-your-path-more-securely/
+# http://stackoverflow.com/questions/13881608/issues-installing-gems-when-using-bundlers-binstubs
+# https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
+export DEFAULT_GEM_HOME=$GEM_HOME
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd chpwd_add_binstubs_to_paths
+
+function chpwd_add_binstubs_to_paths {
+  # always delete from $OLDPWD (.bundle/bin/ from $PATH and .bundle/ from $GEM_PATH) AND restore $GEM_HOME
+  export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
+  export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
+  export GEM_HOME=$DEFAULT_GEM_HOME
+
+  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/.bundle/bin ]; then
+    # add .bundle/bin to $PATH and .bundle/ to $GEM_PATH (deleting existing entries first) AND set a new $GEM_HOME
+    export PATH=$PWD/.bundle/bin:${PATH//$PWD\/\.bundle\/bin:}
+    export GEM_PATH=$PWD/.bundle:${GEM_PATH//$PWD\/\.bundle:}
+    export GEM_HOME=$PWD/.bundle
+  fi
+}
+
+# initially execute `chpwd_add_binstubs_to_paths` as we might be opening a new shell in Rails project's directory
+chpwd_add_binstubs_to_paths
