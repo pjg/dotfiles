@@ -498,7 +498,7 @@ cnoremap <PageDown> <Down>
 " LEADER KEY MAPPINGS
 
 " leader/localleader mappings
-let mapleader = ","
+let mapleader = "\<space>"
 let localmapleader = "\\"
 
 " select all text in current buffer
