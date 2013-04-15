@@ -28,6 +28,7 @@ if Gem::Specification.find_all_by_name('guard-shell').any?
     watch('Gemfile.lock')                       { |m| `touch tmp/restart.txt` }
     watch(%r{^lib/.*})                          { |m| `touch tmp/restart.txt` }
     watch('config/environments/development.rb') { |m| `touch tmp/restart.txt` }
+    watch(%r{^config/initializers/.+\.rb$})     { |m| `touch tmp/restart.txt` }
   end
 end
 
