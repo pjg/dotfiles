@@ -319,6 +319,12 @@ endfunction
 
 
 
+" ABBREVIATIONS
+abbreviate teh the
+abbreviate bpr binding.pry;
+
+
+
 " KEY MAPPINGS
 
 " have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
