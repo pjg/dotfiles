@@ -5,5 +5,5 @@ gem: --no-ri --no-rdoc
 :bulk_threshold: 1000
 :verbose: true
 :sources:
-- http://rubygems.org
+- https://rubygems.org
 :backtrace: false
