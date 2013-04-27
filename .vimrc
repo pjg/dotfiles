@@ -566,6 +566,7 @@ map <leader>h :CtrlPMRU<cr>
 map <leader>q :q<cr>
 
 " save file
+map <leader>s :w<cr>
 map <leader>w :w<cr>
 
 " [rails.vim] Rake
