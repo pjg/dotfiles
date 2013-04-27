@@ -550,6 +550,7 @@ autocmd User Rails Rnavcommand factory spec/factories/ -suffix=.rb
 
 " [rails.vim] `:Eroutes` to open routes
 command Eroutes Einitializer
+command Egemfile edit Gemfile
 
 " system clipboard interaction
 noremap <leader>y "*y
