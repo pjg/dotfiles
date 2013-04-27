@@ -274,6 +274,32 @@ let g:ctrlp_custom_ignore = {
 " fugitive.vim - auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
 
+" [rails.vim] custom commands
+command Eroutes Einitializer
+command Egemfile edit Gemfile
+
+" [rails.vim] projections - typing `:Efactory users` will open the users factory
+let g:rails_projections = {
+      \ "test/factories/*.rb": {
+      \   "command":   "factory",
+      \   "affinity":  "collection",
+      \   "alternate": "app/models/%i.rb",
+      \   "related":   "db/schema.rb#%s",
+      \   "test":      "test/models/%i_test.rb",
+      \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
+      \   "keywords":  "factory sequence"
+      \ },
+      \ "spec/factories/*.rb": {
+      \   "command":   "factory",
+      \   "affinity":  "collection",
+      \   "alternate": "app/models/%i.rb",
+      \   "related":   "db/schema.rb#%s",
+      \   "test":      "spec/models/%i_test.rb",
+      \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
+      \   "keywords":  "factory sequence"
+      \ }
+      \}
+
 " [vim-gitgutter] always show sign column (by adding a dummy sign)
 function! ShowSignColumn()
   sign define dummy
@@ -544,13 +570,6 @@ map <leader>w :w<cr>
 
 " [rails.vim] Rake
 map <leader>rr :.Rake<cr>
-
-" [rails.vim] `:Rfactory user` to go to the user factory
-autocmd User Rails Rnavcommand factory spec/factories/ -suffix=.rb
-
-" [rails.vim] `:Eroutes` to open routes
-command Eroutes Einitializer
-command Egemfile edit Gemfile
 
 " system clipboard interaction
 noremap <leader>y "*y
