@@ -22,6 +22,7 @@
   rba = rebase --abort
   rbc = rebase --continue
   rbi = rebase --interactive
+  rbi5 = rebase --interactive HEAD~5
   rbi10 = rebase --interactive HEAD~10
   rbi20 = rebase --interactive HEAD~20
   rbs = rebase --skip
