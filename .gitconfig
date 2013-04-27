@@ -55,6 +55,10 @@
   # Wrap long-lines when printing on the screen (i.e. use `less` as a pager)
   pager = less -r
 
+[init]
+  # Default git hooks (will be copied over to each newly cloned repo)
+  templatedir = ~/.git_template
+
 [diff]
   # Detect renames of files
   renames = true
