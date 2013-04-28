@@ -430,6 +430,7 @@ case "$TERM" in
     bindkey -M viins '^k'    kill-line
     bindkey -M viins '^r'    history-incremental-pattern-search-backward
     bindkey -M viins '^s'    history-incremental-pattern-search-forward
+    bindkey -M viins '^o'    history-beginning-search-backward
     bindkey -M viins '^p'    history-beginning-search-backward
     bindkey -M viins '^n'    history-beginning-search-forward
     bindkey -M viins '^y'    yank
@@ -458,6 +459,7 @@ case "$TERM" in
     bindkey -M vicmd '^k'    kill-line
     bindkey -M vicmd '^r'    history-incremental-pattern-search-backward
     bindkey -M vicmd '^s'    history-incremental-pattern-search-forward
+    bindkey -M vicmd '^o'    history-beginning-search-backward
     bindkey -M vicmd '^p'    history-beginning-search-backward
     bindkey -M vicmd '^n'    history-beginning-search-forward
     bindkey -M vicmd '^y'    yank
