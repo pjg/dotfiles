@@ -346,8 +346,10 @@ endfunction
 
 
 " ABBREVIATIONS
+
 abbreviate teh the
 abbreviate bpr binding.pry;
+abbreviate taht that
 
 
 
