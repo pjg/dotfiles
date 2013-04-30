@@ -275,8 +275,8 @@ let g:ctrlp_custom_ignore = {
 au BufReadPost fugitive://* set bufhidden=delete
 
 " [rails.vim] custom commands
-command Eroutes Einitializer
-command Egemfile edit Gemfile
+command! Eroutes Einitializer
+command! Egemfile edit Gemfile
 
 " [rails.vim] projections - typing `:Efactory users` will open the users factory
 let g:rails_projections = {
