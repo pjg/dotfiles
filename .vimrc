@@ -311,38 +311,6 @@ au BufRead,BufNewFile * call ShowSignColumn()
 let g:syntastic_mode_map = {}
 let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'scss', 'scss.css', 'slim']
 
-" [neocomplcache] Disable AutoComplPop
-let g:acp_enableAtStartup = 0
-
-" [neocomplcache] Use neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-
-" [neocomplcache] make neocomplcache the *only* completefunc
-let g:neocomplcache_force_overwrite_completefunc = 1
-
-" [neocomplcache] Use smartcase
-let g:neocomplcache_enable_smart_case = 1
-
-" [neocomplcache] Use camel case completion
-let g:neocomplcache_enable_camel_case_completion = 1
-
-" [neocomplcache] Use underbar completion
-let g:neocomplcache_enable_underbar_completion = 1
-
-" [neocomplcache] Set minimum syntax keyword length
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" [neocomplcache] <TAB> completion
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
-" [neocomplcache] <CR>: close popup and save indent
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
-endfunction
-
 
 
 " ABBREVIATIONS
