@@ -311,8 +311,11 @@ au BufRead,BufNewFile * call ShowSignColumn()
 let g:syntastic_mode_map = {}
 let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'scss', 'scss.css', 'slim']
 
-" [YouCompleteMe]
+" [YouCompleteMe] use Eclim for TAB-autocompletion
 let g:EclimCompletionMethod = 'omnifunc'
+
+" [Eclim] disable ruby validation (there is syntastic for that))
+let g:EclimRubyValidate = 0
 
 
 
