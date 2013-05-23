@@ -277,6 +277,7 @@ au BufReadPost fugitive://* set bufhidden=delete
 " [rails.vim] custom commands
 command! Eroutes Einitializer
 command! Egemfile edit Gemfile
+command! Ereadme edit README.md
 
 " [rails.vim] projections - typing `:Efactory users` will open the users factory
 let g:rails_projections = {
