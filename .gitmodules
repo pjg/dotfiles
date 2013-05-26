@@ -142,3 +142,6 @@
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = git://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/vim-seek"]
+	path = .vim/bundle/vim-seek
+	url = git@github.com:goldfeld/vim-seek.git
