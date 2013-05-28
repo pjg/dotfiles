@@ -279,7 +279,7 @@ command! Eroutes Einitializer
 command! Egemfile edit Gemfile
 command! Ereadme edit README.md
 
-" [rails.vim] projections - typing `:Efactory users` will open the users factory
+" [rails.vim] projections - typing `:Efactory users` will open the users factory, etc.
 let g:rails_projections = {
       \ "test/factories/*.rb": {
       \   "command":   "factory",
@@ -298,6 +298,17 @@ let g:rails_projections = {
       \   "test":      "spec/models/%i_test.rb",
       \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
       \   "keywords":  "factory sequence"
+      \ },
+      \ "spec/features/*_spec.rb": {
+      \   "command":   "feature",
+      \   "template":  "require 'spec_helper'\n\nfeature '%h' do\n\nend"
+      \ },
+      \ "app/serializers/*_serializer.rb": {
+      \   "command":   "serializer",
+      \   "affinity":  "model",
+      \   "test":      "spec/serializers/%s_spec.rb",
+      \   "related":   "app/models/%s.rb",
+      \   "template":  "class %SSerializer < ActiveModel::Serializer\nend"
       \ }
       \}
 
