@@ -107,6 +107,10 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
     # Controller specs for views
     watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})    { |m| "spec/controllers/#{m[1]}_spec.rb" }
 
+    # Turnip features and steps
+    watch(%r{^spec/acceptance/(.+)\.feature$})
+    watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})  { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+
     # Runs all specs when something in /lib is modified. Might be overkill, but helps tremendously during Gem development
     watch(%r{^lib/.+\.rb$}) { "spec" }
   end
