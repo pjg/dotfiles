@@ -99,6 +99,7 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
     watch(%r{^app/controllers/(.+)_(controller)\.rb$}) { |m| ["spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
     watch(%r{^spec/support/(.+)\.rb$})                 { "spec" }
     watch('app/controllers/application_controller.rb') { "spec/controllers" }
+    watch(%r{^app/views/(.+)$})                        { |m| "spec/views/#{m[1]}_spec.rb" }
 
     # Capybara request specs
     watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})    { |m| "spec/requests/#{m[1]}_spec.rb" }
