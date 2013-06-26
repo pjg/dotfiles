@@ -113,6 +113,8 @@ alias be='b exec'
 alias bo='b open'
 
 # heroku
+alias hcfgp='heroku config --remote production'
+alias hcfgs='heroku config --remote staging'
 alias hcp='heroku run console --remote production'
 alias hcs='heroku run console --remote staging'
 alias hlp='heroku logs -t --remote production'
