@@ -487,7 +487,7 @@ export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-
 
 # [zsh-git-prompt] do not execute the git prompt for the ~/ directory, as it is _really_ slow (redefine original functions from the plugin)
 function chpwd_update_git_vars() {
-  if [ `pwd` = $HOME ]; then
+  if [ $PWD = $HOME ]; then
     unset __CURRENT_GIT_STATUS
   else
     update_current_git_vars
@@ -495,7 +495,7 @@ function chpwd_update_git_vars() {
 }
 
 function preexec_update_git_vars() {
-  if [ `pwd` = $HOME ]; then
+  if [ $PWD = $HOME ]; then
     unset __EXECUTED_GIT_COMMAND
   else
     case "$2" in
