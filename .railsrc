@@ -25,8 +25,9 @@ if (rails_env = ENV['RAILS_ENV']) || (rails_env = Rails.env)
     # [] acts as find()
     ActiveRecord::Base.instance_eval { alias :[] :find }
 
-    # r!
-    alias :r! :reload!
+    def r!
+      reload!
+    end
 
     # sql for arbitrary SQL commands through the AR
     def sql(query)
