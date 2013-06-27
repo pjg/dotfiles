@@ -73,7 +73,7 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   end
 
   # automatically call `reload` every time a new command is typed
-  Pry.hooks.add_hook(:before_eval, :reload_everything) { reload! }
+  Pry.hooks.add_hook(:before_eval, :reload_everything) { reload!(false) }
 
   # sql for arbitrary SQL commands through the AR
   def sql(query)
