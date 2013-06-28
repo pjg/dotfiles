@@ -344,8 +344,11 @@ let g:EclimRubyValidate = 0
 " ABBREVIATIONS
 
 abbreviate teh the
-abbreviate bpr binding.pry;
 abbreviate taht that
+abbreviate ilke like
+
+" Rails specific
+abbreviate bpr binding.pry;
 
 
 
