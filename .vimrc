@@ -567,7 +567,6 @@ map <leader>h :CtrlPMRU<cr>
 map <leader>q :q<cr>
 
 " save file
-map <leader>s :w<cr>
 map <leader>w :w<cr>
 
 " [rails.vim] Rake
@@ -578,7 +577,8 @@ noremap <leader>y "*y
 noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
 noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
 
-" easier vsplit
+" easier splits
+noremap <leader>s <C-w>s
 noremap <leader>v <C-w>v
 
 " ZoomWin
