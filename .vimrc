@@ -319,6 +319,15 @@ let g:rails_gem_projections = {
       \     "related":   "app/models/%s.rb",
       \     "template":  "class %SSerializer < ActiveModel::Serializer\nend"
       \   }
+      \ },
+      \ "draper": {
+      \   "app/decorators/*_decorator.rb": {
+      \     "command":   "decorator",
+      \     "affinity":  "model",
+      \     "test":      "spec/decorators/%s_spec.rb",
+      \     "related":   "app/models/%s.rb",
+      \     "template":  "class %SDecorator < ApplicationDecorator\nend"
+      \   }
       \ }
       \}
 
