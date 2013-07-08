@@ -1,1 +1,1 @@
---color --format documentation --fail-fast --profile
+--color --format documentation --fail-fast --profile 5
