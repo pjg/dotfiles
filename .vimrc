@@ -337,6 +337,14 @@ let g:rails_gem_projections = {
       \     "related":   "app/models/%s.rb",
       \     "template":  "class %SUploader < CarrierWave::Uploader::Base\nend"
       \   }
+      \ },
+      \ "turnip": {
+      \   "spec/acceptance/*.feature": {
+      \     "command":   "acceptance"
+      \   },
+      \   "spec/acceptance/steps/*_steps.rb": {
+      \     "command":   "steps"
+      \   }
       \ }
       \}
 
