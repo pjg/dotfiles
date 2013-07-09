@@ -328,6 +328,15 @@ let g:rails_gem_projections = {
       \     "related":   "app/models/%s.rb",
       \     "template":  "class %SDecorator < ApplicationDecorator\nend"
       \   }
+      \ },
+      \ "carrierwave": {
+      \   "app/uploaders/*_uploader.rb": {
+      \     "command":   "uploader",
+      \     "affinity":  "model",
+      \     "test":      "spec/uploaders/%s_spec.rb",
+      \     "related":   "app/models/%s.rb",
+      \     "template":  "class %SUploader < CarrierWave::Uploader::Base\nend"
+      \   }
       \ }
       \}
 
