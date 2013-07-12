@@ -343,7 +343,8 @@ let g:rails_gem_projections = {
       \     "command":   "acceptance"
       \   },
       \   "spec/acceptance/steps/*_steps.rb": {
-      \     "command":   "steps"
+      \     "command":   "steps",
+      \     "template":  "steps_for :%s do\nend"
       \   }
       \ }
       \}
