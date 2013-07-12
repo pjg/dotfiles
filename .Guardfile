@@ -116,8 +116,10 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
     watch(%r{^spec/acceptance/(.+)\.feature$})
     watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})  { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 
-    # Runs all specs when something in /lib is modified. Might be overkill, but helps tremendously during Gem development
-    watch(%r{^lib/.+\.rb$}) { "spec" }
+    # Runs all specs when something in /lib is modified (for Ruby gems development)
+    if Dir.glob('*.gemspec').any?
+      watch(%r{^lib/.+\.rb$}) { "spec" }
+    end
 
     # Ignore Zeus
     ignore(/\.zeus\.sock/)
