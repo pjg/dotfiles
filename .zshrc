@@ -131,13 +131,21 @@ alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
 # htop
 if [[ -x `which htop` ]]; then alias top="htop"; fi
 
+# vim - load tmp/current.vim if it exist and no params to vim are passed (aka vim is aliased to v)
+function v() {
+if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
+    vim -S tmp/current.vim
+  else
+    vim "$@"
+  fi
+}
+
 # misc
 alias _='sudo'
 alias ack='ack-grep'
 alias diff='colordiff -u'
 alias mc='mc -cu'
 alias tmux='TERM=screen-256color tmux'
-alias v="vim"
 
 
 
