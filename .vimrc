@@ -346,6 +346,15 @@ let g:rails_gem_projections = {
       \     "command":   "steps",
       \     "template":  "steps_for :%s do\nend"
       \   }
+      \ },
+      \ "pundit": {
+      \   "app/policies/*_policy.rb": {
+      \     "command":   "policy",
+      \     "affinity":  "model",
+      \     "test":      "spec/policies/%s_spec.rb",
+      \     "related":   "app/models/%s.rb",
+      \     "template":  "class %SPolicy < Struct.new(:user, :%s)\nend"
+      \   }
       \ }
       \}
 
