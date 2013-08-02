@@ -581,7 +581,7 @@ export RUBY_FREE_MIN=$RUBY_HEAP_FREE_MIN
 [[ -e ~/.github_credentials ]] && source ~/.github_credentials
 
 # alias hub to git (https://github.com/defunkt/hub)
-eval "$(hub alias -s)"
+function git() { hub "$@" }
 
 # SMART URLS
 autoload -U url-quote-magic
