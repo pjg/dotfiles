@@ -87,6 +87,7 @@ alias sl=ls
 alias g='git'
 alias gd='git d'
 alias gs='git s'
+alias gl='git l'
 alias wtf='git wtf'
 alias rmorig='git status --short | grep "??" | cut -d " " -f 2 | xargs rm'
 
