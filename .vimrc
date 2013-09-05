@@ -96,6 +96,9 @@ filetype plugin indent on
 " do not wrap lines
 set nowrap
 
+" wrap around beginning and end of file when searching
+set wrapscan
+
 " autoindent
 set autoindent
 
