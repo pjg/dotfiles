@@ -10,3 +10,4 @@ tags
 # Eclim's project files
 .buildpath
 .project
+workbench.xmi
