@@ -148,8 +148,8 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/* " b
 set wildignore+=*/log/*,*.log,*/coverage/*                                   " logs and rcov
 set wildignore+=*.swp,*~,._*                                                 " swp and backup files
 
-" short messages
-set shortmess=atI
+" short messages in command line (so that they don't overflow and require pressing <ENTER>) (h :shortmess)
+set shortmess=aoOtI
 
 " disable visual/audible bells
 set noerrorbells
