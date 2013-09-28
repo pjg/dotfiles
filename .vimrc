@@ -138,7 +138,7 @@ set history=1000
 set wildmenu
 
 " have TAB-completion behave similarly to a shell (ie: complete the longest part, then cycle through the matches)
-set wildmode=list:longest,full
+set wildmode=longest:full
 
 " ignore these files when completing names and in Explorer
 set wildignore=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem                 " output & scm files
