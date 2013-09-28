@@ -258,7 +258,7 @@ history-beginning-search-backward-then-append() {
 zle -N history-beginning-search-backward-then-append
 
 # Delete all characters between a pair of characters. Mimics vim's "di" text object functionality
-delete-in() {
+function delete-in {
 
   # Create locally-scoped variables we'll need
   local CHAR LCHAR RCHAR LSEARCH RSEARCH COUNT
@@ -290,7 +290,7 @@ delete-in() {
 
   # diw was unique.  For everything else, we just have to define the
   # characters to the left and right of the cursor to be removed
-  elif [ "$CHAR" = "(" ] || [ "$CHAR" = ")" ]
+  elif [ "$CHAR" = "(" ] || [ "$CHAR" = ")" ] || [ "$CHAR" = "b" ]
   then
     # di), delete inside of a pair of parenthesis
     LCHAR="("
@@ -302,7 +302,7 @@ delete-in() {
     LCHAR="["
     RCHAR="]"
 
-  elif [ $CHAR = "{" ] || [ $CHAR = "}" ]
+  elif [ $CHAR = "{" ] || [ $CHAR = "}" ] || [ "$CHAR" = "B" ]
   then
     # di}, delete inside of a pair of braces
     LCHAR="{"
@@ -357,7 +357,7 @@ zle -N delete-in
 
 # Delete all characters between a pair of characters and then go to insert mode
 # Mimics vim's "ci" text object functionality.
-change-in() {
+function change-in {
   zle delete-in
   zle vi-insert
 }
@@ -365,7 +365,7 @@ zle -N change-in
 
 # Delete all characters between a pair of characters as well as the surrounding
 # characters themselves. Mimics vim's "da" text object functionality
-delete-around() {
+function delete-around {
   zle delete-in
   zle vi-backward-char
   zle vi-delete-char
@@ -375,7 +375,7 @@ zle -N delete-around
 
 # Delete all characters between a pair of characters as well as the surrounding
 # characters themselves and then go into insert mode. Mimics vim's "ca" text object functionality.
-change-around() {
+function change-around {
   zle delete-in
   zle vi-backward-char
   zle vi-delete-char
