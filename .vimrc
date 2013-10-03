@@ -28,6 +28,9 @@ set nobackup nowritebackup
 set number
 set numberwidth=2
 
+" also show relative numbers, besides current line (Vim 7.4+)
+set relativenumber
+
 " highlight searches
 set hlsearch
 
