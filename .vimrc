@@ -332,7 +332,7 @@ let g:rails_gem_projections = {
       \     "affinity":  "model",
       \     "test":      "spec/decorators/%s_spec.rb",
       \     "related":   "app/models/%s.rb",
-      \     "template":  "class %SDecorator < ApplicationDecorator\n  delegate_all\nend"
+      \     "template":  "class %SDecorator < Draper::Decorator\n  delegate_all\nend"
       \   }
       \ },
       \ "carrierwave": {
