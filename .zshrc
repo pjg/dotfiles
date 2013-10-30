@@ -21,7 +21,7 @@ antigen-apply
 # BASICS
 
 # umask
-umask 077
+umask 022
 
 # editor/visual/pager
 export EDITOR=vim
