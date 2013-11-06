@@ -390,7 +390,16 @@ let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'scss', 'scss.css', 'sl
 " [YouCompleteMe] use Eclim for TAB-autocompletion
 let g:EclimCompletionMethod = 'omnifunc'
 
-" [Eclim] disable ruby validation (there is syntastic for that))
+" [YouCompleteMe] collect identifiers from comments and strings
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+" [YouCompleteMe] collect identifiers from tags file
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+" [YouCompleteMe] add some default identifiers based on vim filetype
+let g:ycm_seed_identifiers_with_syntax = 1
+
+" [Eclim] disable Ruby validation (there is syntastic for that)
 let g:EclimRubyValidate = 0
 
 
