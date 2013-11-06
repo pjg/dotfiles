@@ -84,12 +84,15 @@ if Gem::Specification.find_all_by_name('guard-spork').any?
 end
 
 if Gem::Specification.find_all_by_name('guard-rspec').any?
-  turnip = Gem::Specification.find_all_by_name('turnip').any?
-  parallel = Gem::Specification.find_all_by_name('parallel_tests').any?
   zeus = File.exists?('.zeus.sock')
-  drb = '--drb' if Gem::Specification.find_all_by_name('spork').any?
+  spork = Gem::Specification.find_all_by_name('spork').any?
 
-  guard 'rspec', :bundler => false, :binstubs => '.bundle/bin', :turnip => turnip, :zeus => zeus, :parallel => parallel, :parallel_cli => "-n 2", :all_on_start => false, :all_after_pass => false, :keep_failed => false, :focus_on_failed => true, :cli => "--color --fail-fast #{ drb }" do
+  cmd = ''
+  cmd += 'zeus ' if zeus
+  cmd += 'rspec --color --fail-fast '
+  cmd += '--drb ' if spork
+
+  guard 'rspec', :all_on_start => false, :all_after_pass => false, :keep_failed => false, :focus_on_failed => true, :cmd => cmd do
     # Factories
     watch('spec/factories.rb')                         { "spec" }
     watch(%r{^spec/factories/(.+)\.rb$})               { |m| ["spec/models/#{m[1].singularize}_spec.rb", "spec/controllers/#{m[1]}_controller_spec.rb", "spec/requests/#{m[1]}_spec.rb"] }
