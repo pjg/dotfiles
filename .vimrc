@@ -394,6 +394,11 @@ let g:EclimRubyValidate = 0
 abbreviate teh the
 abbreviate taht that
 abbreviate ilke like
+abbreviate apge page
+abbreviate pgae page
+abbreviate invitatoin invitation
+abbreviate invitaion invitation
+abbreviate sgined signed
 
 " Rails specific
 abbreviate bpr binding.pry;
