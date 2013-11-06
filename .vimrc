@@ -49,8 +49,11 @@ set showcmd
 " don't show mode (vim-powerline does it for me)
 set noshowmode
 
-" lazy redraw
-set lazyredraw
+" no lazy redraw
+set nolazyredraw
+
+" we're a fast tty, so redraw screen if more than 3 lines to scroll (this can make vim a tiny bit faster)
+set ttyscroll=3
 
 " syntax highlight on
 syntax on
@@ -234,7 +237,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.yml setf eruby
 augroup END
 
-" explicitly set filetype to Ruby
+" explicitly set filetype to Ruby for some well-known files
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
 " 4 spaces for TAB in CSS files
@@ -280,8 +283,11 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\/public/stylesheets/.*css$'
   \ }
 
-" fugitive.vim - auto clean fugitive buffers
+" [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
+
+" [vim-ruby] faster syntax highlighting
+let ruby_no_expensive=1
 
 " [rails.vim] custom commands
 command! Eroutes Einitializer
@@ -529,7 +535,7 @@ inoremap kj <esc>
 " rails: bind control-l to hashrocket
 imap <C-l> <Space>=><Space>'
 
-" rails: convert word into ruby symbol
+" rails: convert word into Ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
 
 " basic readline shortcuts
