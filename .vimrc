@@ -37,7 +37,7 @@ set hlsearch
 " find as you type
 set incsearch
 
-" smartcase -- normaly ignores case, but when we type uppercase character in search box it will be CASE SENSITIVE
+" smartcase -- normally ignores case, but when we type uppercase character in search box it will be CASE SENSITIVE
 set ignorecase smartcase
 
 " always display current cursor position
@@ -133,7 +133,7 @@ set sidescrolloff=3
 " avoid moving cursor to BOL when jumping around
 set nostartofline
 
-" briefly jump to a paren once it's balanced (but only for 200ms)
+" briefly jump to a parenthesis once it's balanced (but only for 200ms)
 set showmatch
 set matchtime=2
 
@@ -143,7 +143,7 @@ set history=1000
 " show available TAB-completions in command line
 set wildmenu
 
-" have TAB-completion behave similarly to a shell (ie: complete the longest part, then cycle through the matches)
+" have TAB-completion behave similarly to a shell (i.e. complete the longest part, then cycle through the matches)
 set wildmode=longest:full,full
 
 " ignore these files when completing names and in Explorer
@@ -402,7 +402,7 @@ let g:ycm_seed_identifiers_with_syntax = 0
 " [YouCompleteMe] work nicely with floobits' plugin
 let g:ycm_allow_changing_updatetime = 0
 
-" [Eclim] disable Ruby validation (there is syntastic for that)
+" [Eclim] disable Ruby validation
 let g:EclimRubyValidate = 0
 
 
@@ -460,7 +460,7 @@ nmap <F10> :Kwbd<cr>
 " <F11> to toggle the paste mode (when vim either adds or not spaces in the front of lines)
 set pastetoggle=<F11>
 
-" <F12> to toggle the display of unvisible characters ($\t)
+" <F12> to toggle the display of invisible characters ($\t)
 nmap <F12> :set list!<bar>set list?<cr>
 
 " swap ` with ' (so that ' will jump to line *and* column)
@@ -533,7 +533,7 @@ nnoremap g, g,zz
 " gi already moves to 'last place you exited insert mode', so we'll map gI to something similar: move to last change
 nnoremap gI `.
 
-" lists nagivation
+" lists navigation
 nnoremap <left> :cprev<cr>zvzz
 nnoremap <right> :cnext<cr>zvzz
 nnoremap <up> :lprev<cr>zvzz
