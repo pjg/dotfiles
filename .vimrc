@@ -414,6 +414,8 @@ abbreviate pgae page
 abbreviate invitatoin invitation
 abbreviate invitaion invitation
 abbreviate sgined signed
+abbreviate tewak tweak
+abbreviate glboal global
 
 " Rails specific
 abbreviate bpr binding.pry;
