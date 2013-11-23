@@ -396,8 +396,11 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " [YouCompleteMe] collect identifiers from tags file
 let g:ycm_collect_identifiers_from_tags_files = 1
 
-" [YouCompleteMe] add some default identifiers based on vim filetype
-let g:ycm_seed_identifiers_with_syntax = 1
+" [YouCompleteMe] don't add default identifiers based on vim filetype
+let g:ycm_seed_identifiers_with_syntax = 0
+
+" [YouCompleteMe] work nicely with floobits' plugin
+let g:ycm_allow_changing_updatetime = 0
 
 " [Eclim] disable Ruby validation (there is syntastic for that)
 let g:EclimRubyValidate = 0
