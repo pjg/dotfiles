@@ -72,12 +72,9 @@ if Gem::Specification.find_all_by_name('guard-spork').any?
     watch('config/environments/test.rb')
     watch('config/routes.rb')
     watch(%r{^config/initializers/.+\.rb$})
-    watch('config/locales/en.yml')
+    watch(%r{^config/locales/.+\.yml$})
     watch('db/schema.rb')
-    watch('Gemfile')
     watch('Gemfile.lock')
-    watch('spec/spec_helper.rb') { :rspec }
-    watch('test/test_helper.rb') { :test_unit }
     watch(%r{^lib/.+\.rb$})
     watch(%r{^spec/support/.+\.rb$})
   end
