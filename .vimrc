@@ -654,9 +654,6 @@ noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
 noremap <leader>s <C-w>s
 noremap <leader>v <C-w>v
 
-" ZoomWin
-map <leader>zw :ZoomWin<cr>
-
 " adjust viewports to the same size
 map <leader>= <C-w>=
 
