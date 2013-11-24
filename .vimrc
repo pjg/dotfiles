@@ -49,8 +49,8 @@ set showcmd
 " don't show mode (vim-powerline does it for me)
 set noshowmode
 
-" no lazy redraw
-set nolazyredraw
+" lazy redraw the screen
+set lazyredraw
 
 " we're a fast tty, so redraw screen if more than 3 lines to scroll (this can make vim a tiny bit faster)
 set ttyscroll=3
