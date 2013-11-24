@@ -688,11 +688,13 @@ set laststatus=2
 " unicode symbols
 let g:Powerline_symbols = 'fancy'
 
-" insert trailing whitespace marker segment
-call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+if exists('g:Powerline_loaded')
+  " insert trailing whitespace marker segment
+  call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
-" insert tab indenting warning segment
-call Pl#Theme#InsertSegment(['raw', '%{StatuslineTabWarning()}'], 'after', 'fileinfo')
+  " insert tab indenting warning segment
+  call Pl#Theme#InsertSegment(['raw', '%{StatuslineTabWarning()}'], 'after', 'fileinfo')
+end
 
 "recalculate the tab warning flag when idle and after writing
 autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
