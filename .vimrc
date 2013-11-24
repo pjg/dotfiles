@@ -208,6 +208,9 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " automatically re-read files files changed outside of vim
 set autoread
 
+" use the old Regexp engine (used by the syntax highlighting, for example) (this makes vim about 100x faster)
+set regexpengine=1
+
 
 
 " FILE TYPES
