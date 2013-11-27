@@ -76,9 +76,6 @@
 [submodule ".vim/bundle/Kwbd.vim"]
 	path = .vim/bundle/Kwbd.vim
 	url = https://github.com/rgarver/Kwbd.vim.git
-[submodule ".vim/bundle/handlebars"]
-	path = .vim/bundle/handlebars
-	url = git://github.com/nono/vim-handlebars.git
 [submodule ".vim/bundle/vim-node.js"]
 	path = .vim/bundle/vim-node.js
 	url = https://github.com/mmalecki/vim-node.js.git
@@ -121,3 +118,6 @@
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = git://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/vim-mode"]
+	path = .vim/bundle/vim-mode
+	url = https://github.com/mustache/vim-mode
