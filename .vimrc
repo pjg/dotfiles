@@ -250,6 +250,9 @@ augroup END
 " explicitly set filetype to Ruby for some well-known files
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
+" explicitly set filetype to slim for slim view files (not sure why it's needed...)
+au BufRead,BufNewFile {*.html.slim} set filetype=slim
+
 " 4 spaces for TAB in CSS files
 autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
 
