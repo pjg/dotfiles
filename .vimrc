@@ -386,10 +386,6 @@ let g:gitgutter_eager = 0
 " [vim-gitgutter] use 'raw' grep
 let g:gitgutter_escape_grep = 1
 
-" [syntastic] disable slow checkers
-let g:syntastic_mode_map = {}
-let g:syntastic_mode_map["passive_filetypes"] = ['sass', 'scss', 'scss.css', 'slim']
-
 " [YouCompleteMe] use Eclim for TAB-autocompletion
 let g:EclimCompletionMethod = 'omnifunc'
 
