@@ -55,9 +55,6 @@ set lazyredraw
 " we're a fast tty, so redraw screen if more than 3 lines to scroll (this can make vim a tiny bit faster)
 set ttyscroll=3
 
-" syntax highlight on
-syntax on
-
 " 256-color VIM
 set t_Co=256
 
@@ -208,6 +205,16 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " automatically re-read files files changed outside of vim
 set autoread
 
+
+
+" SYNTAX HIGHLIGHTING
+
+" syntax highlight on
+syntax on
+
+" faster Ruby syntax highlighting
+let ruby_no_expensive=1
+
 " use the old Regexp engine (used by the syntax highlighting, for example) (this makes vim about 100x faster)
 set regexpengine=1
 
@@ -288,9 +295,6 @@ let g:ctrlp_custom_ignore = {
 
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
-
-" [vim-ruby] faster syntax highlighting
-let ruby_no_expensive=1
 
 " [rails.vim] custom commands
 command! Eroutes Einitializer
