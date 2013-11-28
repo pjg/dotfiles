@@ -76,6 +76,7 @@ if Gem::Specification.find_all_by_name('guard-spork').any?
     watch('db/schema.rb')
     watch('Gemfile.lock')
     watch(%r{^lib/.+\.rb$})
+    watch('spec/spec_helper.rb')
     watch(%r{^spec/support/.+\.rb$})
   end
 end
