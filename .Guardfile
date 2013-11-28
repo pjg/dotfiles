@@ -97,10 +97,6 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
     # Factories
     watch(%r{^spec/factories/(.+)\.rb$})               { |m| ["spec/models/#{m[1].singularize}_spec.rb", "spec/controllers/#{m[1]}_controller_spec.rb", "spec/requests/#{m[1]}_spec.rb"] }
 
-    # Spec configuration
-    watch('spec/spec_helper.rb')                       { "spec" }
-    watch(%r{^spec/support/(.+)\.rb$})                 { "spec" }
-
     # Rails specific
     watch(%r{^app/(.+)\.rb$})                          { |m| "spec/#{m[1]}_spec.rb" }
     watch(%r{^lib/(.+)\.rb$})                          { |m| "spec/lib/#{m[1]}_spec.rb" }
