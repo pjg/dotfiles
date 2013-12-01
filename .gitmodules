@@ -158,7 +158,7 @@
         path = .vim/bundle/YouCompleteMe
         url = git://github.com/Valloric/YouCompleteMe.git
         ignore = dirty
-[submodule ".vim/bundle/vim-mode"]
-        path = .vim/bundle/vim-mode
-        url = https://github.com/mustache/vim-mode
+[submodule ".vim/bundle/vim-mustache-handlebars"]
+        path = .vim/bundle/vim-mustache-handlebars
+        url = https://github.com/mustache/vim-mustache-handlebars
         ignore = dirty
