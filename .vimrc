@@ -114,9 +114,6 @@ set expandtab
 " round indent to multiple of 'shiftwidth' (applies to > and < commands)
 set shiftround
 
-" set various characters to be treated as a part of words
-set iskeyword+=-,_,$,@,#
-
 " set virtual edit only when in visual block selection mode
 set virtualedit=block
 
@@ -260,6 +257,9 @@ autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
 autocmd User Rails/**/*.js set softtabstop=2
 autocmd User Rails/**/*.js set tabstop=2
 autocmd User Rails/**/*.js set shiftwidth=2
+
+" set various characters to be treated as a part of words
+autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee setlocal iskeyword+=-,$,#
 
 
 
