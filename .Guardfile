@@ -90,7 +90,7 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
   cmd += 'rspec --color --fail-fast --profile 5 --format documentation '
   cmd += '--drb ' if spork
 
-  guard 'rspec', :all_on_start => false, :all_after_pass => false, :keep_failed => false, :focus_on_failed => true, :cmd => cmd do
+  guard 'rspec', :all_on_start => false, :all_after_pass => false, :cmd => cmd do
     # Spec files
     watch(%r{^spec/.+_spec\.rb$})
 
