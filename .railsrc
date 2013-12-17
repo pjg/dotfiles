@@ -66,6 +66,15 @@ class Object
   alias :detailed :details
 end
 
+# readable BigDecimal#inspect output (https://gist.github.com/henrik/6280438)
+if RUBY_VERSION >= '1.9.0'
+   class BigDecimal
+     def inspect
+       format("#<BigDecimal:%x %s>", object_id, to_s('F'))
+     end
+   end
+end
+
 # returns a collection of the methods that Rails added to the given class
 # http://lucapette.com/irb/rails-core-ext-and-irb/
 class Class
