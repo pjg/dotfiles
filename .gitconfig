@@ -52,9 +52,6 @@
   # Global gitignore
   excludesfile = ~/.gitignoreglobal
 
-  # Wrap long-lines when printing on the screen (i.e. use `less` as a pager)
-  pager = less -r
-
 [init]
   # Default git hooks (will be copied over to each newly cloned repo)
   templatedir = ~/.git_template
@@ -69,6 +66,13 @@
 
 [merge]
   tool = vimdiff
+
+[pager]
+  # Use diff-highlight (from git-contrib) to highlight line changes
+  # and wrap long-lines when printing on the screen (i.e. use `less` as a pager)
+  diff = diff-highlight | less -r
+  log = diff-highlight | less -r
+  show = diff-highlight | less -r
 
 [push]
   # Push current branch even if you've never pushed it before
