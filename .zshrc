@@ -527,6 +527,11 @@ vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
 vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
 vim_mode=$vim_ins_mode
 
+# background jobs indicator in prompt (https://gist.github.com/remy/6079223)
+function background_jobs() {
+  [[ $(jobs -l | wc -l) -gt 0 ]] && echo "⚙"
+}
+
 function zle-keymap-select {
   vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
   zle reset-prompt
@@ -545,14 +550,14 @@ function TRAPINT() {
   return $(( 128 + $1 ))
 }
 
+# don't display RPROMPT for previously accepted lines; only display it next to current line
+setopt transient_rprompt
+
 PROMPT='
-%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode}
+%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
 ${smiley} '
 
 RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
-
-# don't display RPROMPT for previously accepted lines; only display it next to current line
-setopt transient_rprompt
 
 
 
