@@ -532,6 +532,18 @@ function background_jobs() {
   [[ $(jobs -l | wc -l) -gt 0 ]] && echo "⚙"
 }
 
+# online indicator in prompt (https://gist.github.com/remy/6079223)
+ONLINE='%{%F{green}%}◉'
+OFFLINE='%{%F{red}%}⦿'
+
+function prompt_online() {
+  if [[ -f ~/.offline ]]; then
+    echo $OFFLINE
+  else
+    echo $ONLINE
+  fi
+}
+
 function zle-keymap-select {
   vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
   zle reset-prompt
@@ -557,7 +569,7 @@ PROMPT='
 %(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
 ${smiley} '
 
-RPROMPT='%{$fg[white]%}%T%{$reset_color%}'
+RPROMPT='$(prompt_online) %{$fg[white]%}%T%{$reset_color%}'
 
 
 

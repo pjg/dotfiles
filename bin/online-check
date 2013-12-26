@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# Saved in ~/bin/online-check and in a cron job as:
+# * * * * * ~/bin/online-check
+
+local offline=`dig 8.8.8.8 +time=1 +short google.com A | grep -c "no servers could be reached"`
+
+if [[ "$offline" == "0" ]]; then
+  rm -f ~/.offline
+else
+  touch ~/.offline
+fi
