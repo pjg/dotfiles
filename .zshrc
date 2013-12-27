@@ -145,9 +145,11 @@ if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
   fi
 }
 
+# ack
+if [[ -x `which ack-grep` ]]; then alias ack='ack-grep'; fi
+
 # misc
 alias _='sudo'
-alias ack='ack-grep'
 alias diff='colordiff -u'
 alias mc='mc -cu'
 alias tmux='TERM=screen-256color tmux'
