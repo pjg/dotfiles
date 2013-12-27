@@ -599,10 +599,16 @@ done
 
 # MISC STUFF
 
-# [RUBY] (make GC speedier by using more memory; source: https://gist.github.com/1688857) (https://gist.github.com/jjb/7389552/)
-export RUBY_HEAP_MIN_SLOTS=1000000       # (1M) initial number of heap slots as well as the minimum number of slots allocated
-export RUBY_GC_MALLOC_LIMIT=150000000    # (150MB) number of C data structures that can be allocated before GC kicks in; if too low, GC will run even if there are still heap slots available; too high setting will increase memory fragmentation
-export RUBY_FREE_MIN=100000              # (1M) the minimum number of heap slots that should be available after GC runs; if they are not available then, ruby will allocate more slots
+# [RUBY] (make GC speedier by using more memory) (sources: https://gist.github.com/1688857, https://gist.github.com/jjb/7389552/)
+# (1.9.x, 2.0.0)
+export RUBY_HEAP_MIN_SLOTS=1000000         # (1M) initial number of heap slots as well as the minimum number of slots allocated
+export RUBY_FREE_MIN=100000                # (1M) the minimum number of heap slots that should be available after GC runs; if they are not available then, ruby will allocate more slots
+# (1.9.x, 2.0.0, 2.1.0+)
+export RUBY_GC_MALLOC_LIMIT=150000000      # (150MB) number of C data structures that can be allocated before GC kicks in; if too low, GC will run even if there are still heap slots available; too high setting will increase memory fragmentation
+# (2.1.0+)
+export RUBY_GC_HEAP_INIT_SLOTS=1000000     # (1M) (renamed from RUBY_HEAP_MIN_SLOTS)
+export RUBY_GC_HEAP_FREE_SLOTS=1000000     # (1M) (renamed from RUBY_FREE_MIN)
+export RUBY_GC_MALLOC_LIMIT_MAX=1000000000 # (1GB) (?)
 
 # [RUBY] [Ubuntu] use better allocator (apt-get install libtcmalloc-minimal4) (source: https://gist.github.com/4136373)
 [[ -e /usr/lib/libtcmalloc_minimal.so.4.1.0 ]] && export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4.1.0
