@@ -605,8 +605,11 @@ export RUBY_GC_MALLOC_LIMIT=250000000 # number of C data structures that can be 
 export RUBY_HEAP_FREE_MIN=100000 # the minimum number of heap slots that should be available after GC runs; if they are not available then, ruby will allocate more slots
 export RUBY_FREE_MIN=$RUBY_HEAP_FREE_MIN
 
-# [RUBY] use better allocator (apt-get install libtcmalloc-minimal4) (source: https://gist.github.com/4136373)
+# [RUBY] [Ubuntu] use better allocator (apt-get install libtcmalloc-minimal4) (source: https://gist.github.com/4136373)
 [[ -e /usr/lib/libtcmalloc_minimal.so.4.1.0 ]] && export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4.1.0
+
+# [RUBY] [Mac OS X] use better allocator (brew install google-perftools)
+[[ -e /usr/local/lib/libtcmalloc_minimal.dylib ]] && export DYLD_INSERT_LIBRARIES=/usr/local/lib/libtcmalloc_minimal.dylib
 
 # set GitHub credentials
 [[ -e ~/.github_credentials ]] && source ~/.github_credentials
