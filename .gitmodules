@@ -162,3 +162,6 @@
         path = .vim/bundle/vim-mustache-handlebars
         url = https://github.com/mustache/vim-mustache-handlebars
         ignore = dirty
+[submodule ".vim/bundle/ag.vim"]
+	path = .vim/bundle/ag.vim
+	url = https://github.com/rking/ag.vim
