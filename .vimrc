@@ -278,18 +278,18 @@ autocmd BufReadPost *
 
 " PLUGINS
 
-" ack.vim
+" [ack.vim]
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-" autoclose.vim
+" [autoclose.vim]
 let g:AutoCloseProtectedRegions = ["Comment"]
 
-" ragtag
+" [vim-ragtag]
 inoremap <M-o> <Esc>o
 inoremap <C-j> <Down>
 let g:ragtag_global_maps = 1
 
-" ctrlp
+" [ctrlp.vim]
 let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\/tmp',
@@ -299,13 +299,13 @@ let g:ctrlp_custom_ignore = {
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
 
-" [rails.vim] custom commands
+" [vim-rails] custom commands
 command! Eroutes Einitializer
 command! Egemfile edit Gemfile
 command! Ereadme edit README.md
 command! Eseeds edit db/seeds.rb
 
-" [rails.vim] gem projections - typing `:Efactory users` will open the users factory, etc.
+" [vim-rails] gem projections - typing `:Efactory users` will open the users factory, etc.
 let g:rails_gem_projections = {
       \ "factory_girl": {
       \   "test/factories/*.rb": {
@@ -552,10 +552,10 @@ nnoremap <down> :lnext<cr>zvzz
 inoremap jk <esc>
 inoremap kj <esc>
 
-" rails: bind control-l to hashrocket
+" Ruby: bind control-l to hashrocket
 imap <C-l> <Space>=><Space>'
 
-" rails: convert word into Ruby symbol
+" Ruby: convert word into Ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
 
 " basic readline shortcuts
@@ -648,7 +648,7 @@ map <leader>q :q<cr>
 " save file
 map <leader>w :w<cr>
 
-" [rails.vim] Rake
+" [vim-rails] Rake
 map <leader>rr :.Rake<cr>
 
 " system clipboard interaction
