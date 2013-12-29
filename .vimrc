@@ -281,6 +281,18 @@ autocmd BufReadPost *
 " [ack.vim]
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
+" [ag.vim]
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 " [autoclose.vim]
 let g:AutoCloseProtectedRegions = ["Comment"]
 
@@ -508,6 +520,9 @@ nnoremap g0 0
 vnoremap g$ $
 vnoremap g^ ^
 vnoremap g0 0
+
+" K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " gw to swap the current word with the one next to it
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>''
