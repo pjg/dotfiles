@@ -1,0 +1,30 @@
+-- Be quiet when setting commands from this file
+\set QUIET 1
+
+-- Nicer prompt
+\set PROMPT1 '%M %n@%/%R%# '
+\set PROMPT2 '%M [more] %R > '
+
+-- Display null values as [NULL]
+\pset null '[NULL]'
+
+-- Switch to expanded table format when there's a lot of data
+\x auto
+
+-- Verbose error reports
+\set VERBOSITY verbose
+
+-- Use a separate history file per-database
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- Don't store duplicate records in history file
+\set HISTCONTROL ignoredups
+
+-- Autocomplete keywords (like SELECT) in upper-case
+\set COMP_KEYWORD_CASE upper
+
+-- Time commands execution
+\timing
+
+-- Unset QUIET set at the beggining of this file
+\unset QUIET
