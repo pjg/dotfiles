@@ -633,6 +633,9 @@ function git() { hub "$@" }
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
 # display CPU usage stats for commands taking more than 10 seconds
 REPORTTIME=10
 
