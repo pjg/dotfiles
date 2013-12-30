@@ -663,6 +663,9 @@ map <leader>q :q<cr>
 " save file
 map <leader>w :w<cr>
 
+" Sudo save file
+map <leader>W :SudoWrite<cr>
+
 " [vim-rails] Rake
 map <leader>rr :.Rake<cr>
 
