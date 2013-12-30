@@ -52,6 +52,9 @@
   # Global gitignore
   excludesfile = ~/.gitignoreglobal
 
+  # Make git rebase safer on OS X (http://www.git-tower.com/blog/make-git-rebase-safe-on-osx)
+  trustctime = false
+
 [init]
   # Default git hooks (will be copied over to each newly cloned repo)
   templatedir = ~/.git_template
