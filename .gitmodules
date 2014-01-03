@@ -170,3 +170,7 @@
         path = .vim/bundle/rspec.vim
         url = https://github.com/Keithbsmiley/rspec.vim.git
         ignore = dirty
+[submodule ".vim/bundle/splitjoin.vim"]
+        path = .vim/bundle/splitjoin.vim
+        url = https://github.com/AndrewRadev/splitjoin.vim
+        ignore = dirty
