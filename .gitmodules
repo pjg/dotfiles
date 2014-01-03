@@ -166,3 +166,7 @@
         path = .vim/bundle/vim-vinegar
         url = https://github.com/tpope/vim-vinegar
         ignore = dirty
+[submodule ".vim/bundle/rspec.vim"]
+        path = .vim/bundle/rspec.vim
+        url = https://github.com/Keithbsmiley/rspec.vim.git
+        ignore = dirty
