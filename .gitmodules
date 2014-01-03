@@ -174,3 +174,7 @@
         path = .vim/bundle/splitjoin.vim
         url = https://github.com/AndrewRadev/splitjoin.vim
         ignore = dirty
+[submodule ".vim/bundle/vim-visual-star-search"]
+        path = .vim/bundle/vim-visual-star-search
+        url = https://github.com/nelstrom/vim-visual-star-search
+        ignore = dirty
