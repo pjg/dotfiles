@@ -70,10 +70,6 @@
         path = .vim/bundle/vim-javascript
         url = https://github.com/pangloss/vim-javascript.git
         ignore = dirty
-[submodule ".vim/bundle/nerdtree"]
-        path = .vim/bundle/nerdtree
-        url = https://github.com/scrooloose/nerdtree.git
-        ignore = dirty
 [submodule ".vim/bundle/vim-matchit"]
         path = .vim/bundle/vim-matchit
         url = https://github.com/edsono/vim-matchit.git
@@ -163,5 +159,10 @@
         url = https://github.com/mustache/vim-mustache-handlebars
         ignore = dirty
 [submodule ".vim/bundle/ag.vim"]
-	path = .vim/bundle/ag.vim
-	url = https://github.com/rking/ag.vim
+        path = .vim/bundle/ag.vim
+        url = https://github.com/rking/ag.vim
+        ignore = dirty
+[submodule ".vim/bundle/vim-vinegar"]
+        path = .vim/bundle/vim-vinegar
+        url = https://github.com/tpope/vim-vinegar
+        ignore = dirty

@@ -649,9 +649,6 @@ nmap <leader>gr :Gremove!<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gwrite<cr>
 
-" NERD_tree
-map <leader>d :NERDTreeToggle<cr>
-
 " ctrlp.vim
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
