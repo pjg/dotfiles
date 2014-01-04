@@ -1,6 +1,77 @@
-" PATHOGEN
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+" VUNDLE
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+
+
+" VUNDLES
+
+" let vundle manage vundle
+Bundle 'gmarik/vundle'
+
+" file navigation/management
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-vinegar'
+
+" git related
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+
+" additional syntax files
+Bundle 'Keithbsmiley/rspec.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'mmalecki/vim-node.js'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'pangloss/vim-javascript'
+Bundle 'slim-template/vim-slim'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+
+" Ruby related
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-rvm'
+
+" text objects
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'bootleq/vim-textobj-rubysymbol'
+Bundle 'michaeljsmith/vim-indent-object'
+
+" code completion
+Bundle 'Valloric/YouCompleteMe'
+
+" searching
+Bundle 'rking/ag.vim'
+Bundle 'nelstrom/vim-visual-star-search'
+
+" general text-editing improvements
+Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'godlygeek/tabular'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tomtom/tcomment_vim'
+
+" general vim improvements
+Bundle 'edsono/vim-matchit'
+Bundle 'rgarver/Kwbd.vim'
+Bundle 'sickill/vim-pasta'
+Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+
+" statusline (and related)
+Bundle 'bling/vim-airline'
+Bundle 'airblade/vim-gitgutter'
+
 
 
 " BASIC SETTINGS
