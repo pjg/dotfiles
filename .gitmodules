@@ -114,10 +114,6 @@
         path = .vim/bundle/gundo.vim
         url = http://github.com/sjl/gundo.vim.git
         ignore = dirty
-[submodule ".vim/bundle/vim-powerline"]
-        path = .vim/bundle/vim-powerline
-        url = https://github.com/Lokaltog/vim-powerline.git
-        ignore = dirty
 [submodule ".vim/bundle/vim-eunuch"]
         path = .vim/bundle/vim-eunuch
         url = https://github.com/tpope/vim-eunuch.git
@@ -181,4 +177,8 @@
 [submodule ".vim/bundle/vim-textobj-rubysymbol"]
         path = .vim/bundle/vim-textobj-rubysymbol
         url = https://github.com/bootleq/vim-textobj-rubysymbol
+        ignore = dirty
+[submodule ".vim/bundle/vim-airline"]
+        path = .vim/bundle/vim-airline
+        url = https://github.com/bling/vim-airline
         ignore = dirty

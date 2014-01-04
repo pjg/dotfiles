@@ -46,9 +46,6 @@ set ruler
 " display incomplete commands
 set showcmd
 
-" don't show mode (vim-powerline does it for me)
-set noshowmode
-
 " lazy redraw the screen
 set lazyredraw
 
@@ -733,40 +730,41 @@ endfunction
 
 
 
-" STATUSLINE (vim-powerline)
+" STATUSLINE
 
-" always show status line
+" always show the status line
 set laststatus=2
 
-" unicode symbols
-let g:Powerline_symbols = 'fancy'
+" don't show mode text (which vim shows below the statusline)
+set noshowmode
 
-if exists('g:Powerline_loaded')
-  " insert trailing whitespace marker segment
-  call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+" [vim-airline] use Powerline fonts
+let g:airline_powerline_fonts = 1
 
-  " insert tab indenting warning segment
-  call Pl#Theme#InsertSegment(['raw', '%{StatuslineTabWarning()}'], 'after', 'fileinfo')
-end
+" [vim-airline] set theme to the one resembling vim-powerline
+let g:airline_theme = 'powerlineish'
 
-"recalculate the tab warning flag when idle and after writing
-autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+" [vim-airline] collapse inactive segments
+let g:airline_inactive_collapse = 1
 
-"return '[&et]' if &et is set wrong
-"return '[mixed-indenting]' if spaces and tabs are used to indent
-"return an empty string if everything is fine
-function! StatuslineTabWarning()
-  if !exists("b:statusline_tab_warning")
-    let tabs = search('^\t', 'nw') != 0
-    let spaces = search('^ ', 'nw') != 0
+" [vim-airline] shorter mixed indentation message
+let g:airline#extensions#whitespace#mixed_indent_format = 'indent[%s]'
 
-    if tabs && spaces
-      let b:statusline_tab_warning = '[mixed-indenting]'
-    elseif (spaces && !&et) || (tabs && &et)
-      let b:statusline_tab_warning = '[&et]'
-    else
-      let b:statusline_tab_warning = ''
-    endif
+" [vim-airline] don't show gitgutter's changed hunks number
+let g:airline#extensions#hunks#enabled = 0
+
+" [vim-airline] don't show git branch (with fugitive.vim)
+let g:airline#extensions#branch#enabled = 0
+
+" [vim-airline] patch 'powerlineish' colors
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+
+function! AirlineThemePatch(palette)
+  if g:airline_theme == 'powerlineish'
+    " set inactive colors to be a light grey text on dark grey background (so it's actually visible)
+    for colors in values(a:palette.inactive)
+      let colors[2] = 247
+      let colors[3] = 237
+    endfor
   endif
-  return b:statusline_tab_warning
 endfunction
