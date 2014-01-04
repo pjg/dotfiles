@@ -162,6 +162,13 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
+" even faster ESC-aping (https://powerline.readthedocs.org/en/latest/tipstricks.html#vim)
+augroup FastEscape
+  autocmd!
+  au InsertEnter * set timeoutlen=0
+  au InsertLeave * set timeoutlen=1000
+augroup END
+
 " set keyword app (Shift+k) to ack
 autocmd BufEnter * setlocal keywordprg=ack-grep
 
