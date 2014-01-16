@@ -660,19 +660,16 @@ PATH=$PATH:$HOME/.rvm/bin
 # http://code.jjb.cc/2012/11/09/putting-your-rbenv-managed-bundler-specified-executables-in-your-path-more-securely/
 # http://stackoverflow.com/questions/13881608/issues-installing-gems-when-using-bundlers-binstubs
 # https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
-export DEFAULT_GEM_HOME=$GEM_HOME
-
 autoload -U add-zsh-hook
 add-zsh-hook chpwd chpwd_add_binstubs_to_paths
 
 function chpwd_add_binstubs_to_paths {
-  # always delete from $OLDPWD (.bundle/bin/ from $PATH and .bundle/ from $GEM_PATH) AND restore $GEM_HOME
+  # always delete from $OLDPWD (.bundle/bin/ from $PATH and .bundle/ from $GEM_PATH); RVM will restore $GEM_HOME for us
   export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
   export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
-  export GEM_HOME=$DEFAULT_GEM_HOME
 
   if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/.bundle/bin ]; then
-    # add .bundle/bin to $PATH and .bundle/ to $GEM_PATH (deleting existing entries first) AND set a new $GEM_HOME
+    # add .bundle/bin to $PATH and .bundle/ to $GEM_PATH (deleting existing entries first) AND set a new $GEM_HOME (overriding one set for us by RVM)
     export PATH=$PWD/.bundle/bin:${PATH//$PWD\/\.bundle\/bin:}
     export GEM_PATH=$PWD/.bundle:${GEM_PATH//$PWD\/\.bundle:}
     export GEM_HOME=$PWD/.bundle
