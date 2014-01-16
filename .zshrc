@@ -651,9 +651,6 @@ REPORTTIME=10
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
-### Added by the Heroku Toolbelt
-PATH="$PATH:/usr/local/heroku/bin"
-
 # RVM
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
 PATH=$PATH:$HOME/.rvm/bin
