@@ -775,6 +775,9 @@ noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
 noremap <leader>s <C-w>s
 noremap <leader>v <C-w>v
 
+" window close
+noremap <leader>c <C-w>c
+
 " adjust viewports to the same size
 map <leader>= <C-w>=
 
@@ -786,7 +789,7 @@ nmap <silent> <leader>_ :t.<CR>Vr=
 nnoremap <silent> <cr> :-1put=''<cr><down>
 
 " convert file to utf-8 and cleanup whitespace garbage
-map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
+map <leader>xx :call CleanupFileConvertToUnixUtf8()<cr>
 
 function! CleanupFileConvertToUnixUtf8()
   " insert 'tabstop' characters instead of <TAB>s
