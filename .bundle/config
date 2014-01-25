@@ -1,4 +1,4 @@
 ---
-BUNDLE_PATH: .bundle
-BUNDLE_BIN: .bundle/bin
+BUNDLE_PATH: ".bundle"
+BUNDLE_BIN: ".bundle/bin"
 BUNDLE_JOBS: '4'
