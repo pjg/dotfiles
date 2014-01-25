@@ -55,6 +55,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'godlygeek/tabular'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'itspriddle/vim-stripper'
 
 " general vim improvements
 Bundle 'edsono/vim-matchit'
