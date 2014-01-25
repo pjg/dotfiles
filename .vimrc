@@ -783,7 +783,7 @@ nmap <silent> <leader>- :t.<CR>Vr-
 nmap <silent> <leader>_ :t.<CR>Vr=
 
 " quick insertion of newline in normal mode
-nnoremap <silent> <cr> :put=''<cr>
+nnoremap <silent> <cr> :-1put=''<cr><down>
 
 " convert file to utf-8 and cleanup whitespace garbage
 map <leader>cc :call CleanupFileConvertToUnixUtf8()<cr>
