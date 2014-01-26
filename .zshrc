@@ -551,6 +551,14 @@ function prompt_online() {
   fi
 }
 
+function ssh_prompt_color() {
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    echo '%{%F{blue}%}'
+  else
+    echo '%{%F{green}%}'
+  fi
+}
+
 function zle-keymap-select {
   vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
   zle reset-prompt
@@ -573,7 +581,7 @@ function TRAPINT() {
 setopt transient_rprompt
 
 PROMPT='
-%(!.%{$fg[red]%}.%{$fg[green]%})%n%{$fg[green]%}@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
+%(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
 ${smiley} '
 
 RPROMPT='$(prompt_online) %{$fg[white]%}%T%{$reset_color%}'
