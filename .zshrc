@@ -573,7 +573,7 @@ function TRAPINT() {
 setopt transient_rprompt
 
 PROMPT='
-%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
+%(!.%{$fg[red]%}.%{$fg[green]%})%n%{$fg[green]%}@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
 ${smiley} '
 
 RPROMPT='$(prompt_online) %{$fg[white]%}%T%{$reset_color%}'
