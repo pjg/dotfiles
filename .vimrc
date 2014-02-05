@@ -1,4 +1,6 @@
 " VUNDLE
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -358,7 +360,7 @@ autocmd BufReadPost *
 " [ack.vim]
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-" [ag.vim]
+" [ag.vim] (aka 'the_silver_searcher')
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
