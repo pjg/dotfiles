@@ -76,6 +76,10 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 
+" external applications
+Bundle 'rizatti/funcoo.vim'
+Bundle 'rizatti/dash.vim'
+
 
 
 " BASIC SETTINGS
@@ -374,6 +378,11 @@ endif
 
 " [autoclose.vim]
 let g:AutoCloseProtectedRegions = ["Comment"]
+
+" [dash.vim]
+let g:dash_map = {
+  \ 'ruby' : 'rails'
+  \ }
 
 " [vim-ragtag]
 inoremap <M-o> <Esc>o
@@ -758,6 +767,9 @@ let localmapleader = "\\"
 
 " select all text in current buffer
 nmap <leader>a ggVG
+
+" run Dash (on MAC) to search for word under cursor
+nmap <silent> <leader>d <Plug>DashSearch
 
 " upper/lower word
 nmap <leader>u mQviwU'Q
