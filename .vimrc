@@ -507,8 +507,9 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 let g:rbpt_colorpairs = [
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['gray',        'RoyalBlue3'],
     \ ['red',         'firebrick3'],
-    \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
     \ ['darkgray',    'DarkOrchid3'],
     \ ['darkgreen',   'firebrick3'],
@@ -516,15 +517,13 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'SeaGreen3'],
     \ ['darkmagenta', 'DarkOrchid3'],
     \ ['brown',       'firebrick3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
     \ ['darkgreen',   'RoyalBlue3'],
     \ ['darkcyan',    'SeaGreen3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['darkred',     'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'RoyalBlue3'],
     \ ['black',       'SeaGreen3'],
     \ ]
-
 
 
 " ABBREVIATIONS
