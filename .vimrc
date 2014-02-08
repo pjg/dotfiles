@@ -245,9 +245,6 @@ augroup FastEscape
   au InsertLeave * set timeoutlen=1000
 augroup END
 
-" set keyword app (Shift+k) to ack
-autocmd BufEnter * setlocal keywordprg=ack-grep
-
 " allow backspacing over autoindent, EOL, and BOL
 set backspace=2
 
@@ -360,9 +357,6 @@ autocmd BufReadPost *
 
 
 " PLUGINS
-
-" [ack.vim]
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 " [ag.vim] (aka 'the_silver_searcher')
 if executable('ag')
