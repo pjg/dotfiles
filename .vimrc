@@ -61,7 +61,7 @@ Bundle 'itspriddle/vim-stripper'
 
 " general vim improvements
 Bundle 'edsono/vim-matchit'
-Bundle 'rgarver/Kwbd.vim'
+Bundle 'omh/Kwbd.vim'
 Bundle 'sickill/vim-pasta'
 Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-abolish'
