@@ -46,6 +46,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 
 " code completion
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'pjg/eclim.vim'
 
 " searching
 Bundle 'rking/ag.vim'
