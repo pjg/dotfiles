@@ -695,10 +695,6 @@ endfunction
 
 " INSERT MODE KEY MAPPINGS
 
-" ESC in insert mode
-inoremap jk <esc>
-inoremap kj <esc>
-
 " Ruby: bind control-l to hashrocket
 imap <C-l> <Space>=><Space>'
 
