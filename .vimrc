@@ -157,10 +157,14 @@ if has("gui_running")
 
     " use shellslash
     set shellslash
-  endif
+
+  " Mac OS X
+  elseif has("mac")
+    " font
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
 
   " Unix/Linux
-  if has("unix")
+  elseif has("unix")
     " font
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 
