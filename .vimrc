@@ -705,6 +705,9 @@ imap <C-k> <C-o>b:<Esc>Ea
 inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
 
+" map Ctrl+p to ESC (common misstype when you press Ctrl+[ for ESC)
+inoremap <c-p> <esc>
+
 
 " VISUAL MODE KEY MAPPINGS
 
