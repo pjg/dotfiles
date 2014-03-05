@@ -161,7 +161,7 @@ if has("gui_running")
   " Mac OS X
   elseif has("mac")
     " font
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 
   " Unix/Linux
   elseif has("unix")
