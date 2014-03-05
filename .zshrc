@@ -58,7 +58,7 @@ export LC_MESSAGES=${LC_MESSAGES/pl_PL/en_US}
 
 # PATHS
 
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 
 # fpath (for zsh-completions)
 fpath=(~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
@@ -682,10 +682,12 @@ autoload -U add-zsh-hook
 add-zsh-hook chpwd chpwd_add_binstubs_to_paths
 
 function chpwd_add_binstubs_to_paths {
-  # always delete from $OLDPWD (.bin/ and .bundle/bin/ from $PATH, .bundle/ from $GEM_PATH); RVM will restore $GEM_HOME for us
-  export PATH=${PATH//$OLDPWD\/bin:}
-  export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
-  export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
+  if [ -r $OLDPWD/Gemfile.lock ] && [ -d $OLDPWD/.bundle/bin ]; then
+    # delete from $OLDPWD (.bin/ and .bundle/bin/ from $PATH, .bundle/ from $GEM_PATH); RVM will restore $GEM_HOME for us
+    export PATH=${PATH//$OLDPWD\/bin:}
+    export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
+    export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
+  fi
 
   if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/.bundle/bin ]; then
     # add .bundle/bin to $PATH and .bundle/ to $GEM_PATH (deleting existing entries first) AND set a new $GEM_HOME (overriding one set for us by RVM)
