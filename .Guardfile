@@ -84,9 +84,11 @@ end
 if Gem::Specification.find_all_by_name('guard-rspec').any?
   zeus = File.exists?('.zeus.sock')
   spork = Gem::Specification.find_all_by_name('spork').any?
+  spring = Gem::Specification.find_all_by_name('spring').any?
 
   cmd = ''
   cmd += 'zeus ' if zeus
+  cmd += 'spring ' if spring
   cmd += 'rspec --color --fail-fast --profile 5 --format documentation '
   cmd += '--drb ' if spork
 
