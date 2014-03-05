@@ -682,7 +682,8 @@ autoload -U add-zsh-hook
 add-zsh-hook chpwd chpwd_add_binstubs_to_paths
 
 function chpwd_add_binstubs_to_paths {
-  # always delete from $OLDPWD (.bundle/bin/ from $PATH and .bundle/ from $GEM_PATH); RVM will restore $GEM_HOME for us
+  # always delete from $OLDPWD (.bin/ and .bundle/bin/ from $PATH, .bundle/ from $GEM_PATH); RVM will restore $GEM_HOME for us
+  export PATH=${PATH//$OLDPWD\/bin:}
   export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
   export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
 
@@ -691,6 +692,11 @@ function chpwd_add_binstubs_to_paths {
     export PATH=$PWD/.bundle/bin:${PATH//$PWD\/\.bundle\/bin:}
     export GEM_PATH=$PWD/.bundle:${GEM_PATH//$PWD\/\.bundle:}
     export GEM_HOME=$PWD/.bundle
+  fi
+
+  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/bin ]; then
+    # add bin/ to $PATH (Rails 4+) (has precedense over .bundle/bin)
+    export PATH=$PWD/bin:${PATH//$PWD\/bin:}
   fi
 }
 
