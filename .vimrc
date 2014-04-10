@@ -432,6 +432,15 @@ let g:rails_gem_projections = {
       \     "template":  "require 'spec_helper'\n\nfeature '%h' do\n\nend"
       \   }
       \ },
+      \ "activeadmin": {
+      \   "app/admin/*.rb": {
+      \     "command":   "admin",
+      \     "affinity":  "model",
+      \     "test":      "spec/admin/%s_spec.rb",
+      \     "related":   "app/models/%s.rb",
+      \     "template":  "ActiveAdmin.register %S do\n  config.sort_order = 'created_at_desc'\nend"
+      \   }
+      \ },
       \ "active_model_serializers": {
       \   "app/serializers/*_serializer.rb": {
       \     "command":   "serializer",
