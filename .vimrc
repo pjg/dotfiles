@@ -404,6 +404,16 @@ command! Egemfile edit Gemfile
 command! Ereadme edit README.md
 command! Eseeds edit db/seeds.rb
 
+" [vim-rails] Rails projections - typing `:Eservice accept_bid` will open /app/services/accept_bid.rb
+let g:rails_projections = {
+    \   "app/services/*.rb": {
+    \     "command":   "service",
+    \     "affinity":  "collection",
+    \     "test":      "spec/services/%i_spec.rb",
+    \     "template":  "class %S\nend"
+    \   }
+    \ }
+
 " [vim-rails] gem projections - typing `:Efactory users` will open the users factory, etc.
 let g:rails_gem_projections = {
       \ "factory_girl": {
