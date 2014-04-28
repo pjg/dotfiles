@@ -411,6 +411,12 @@ let g:rails_projections = {
     \     "affinity":  "collection",
     \     "test":      "spec/services/%i_spec.rb",
     \     "template":  "class %S\nend"
+    \   },
+    \   "app/finders/*.rb": {
+    \     "command":   "finder",
+    \     "affinity":  "collection",
+    \     "test":      "spec/finders/%i_spec.rb",
+    \     "template":  "class %S\nend"
     \   }
     \ }
 
