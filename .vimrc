@@ -78,8 +78,8 @@ Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 
 " external applications
-Bundle 'rizatti/funcoo.vim'
-Bundle 'rizatti/dash.vim'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 
 
