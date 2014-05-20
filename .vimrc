@@ -72,6 +72,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'justinmk/vim-sneak'
 
 " statusline (and related)
 Bundle 'bling/vim-airline'
