@@ -832,6 +832,7 @@ map <leader>rr :.Rake<cr>
 
 " system clipboard interaction
 noremap <leader>y "*y
+noremap <leader>Y "*Y
 noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
 noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
 
