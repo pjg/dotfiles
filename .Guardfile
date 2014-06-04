@@ -121,6 +121,9 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
       watch(%r{^lib/.+\.rb$}) { "spec" }
     end
 
+    # Standalone projects
+    watch(%r{^(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+
     # Ignore Zeus
     ignore(/\.zeus\.sock/)
   end
