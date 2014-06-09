@@ -41,9 +41,13 @@ alias hcs='heroku console --remote staging'
 alias hlp='heroku logs -t --remote production'
 alias hls='heroku logs -t --remote staging'
 
-# enable colors
-eval "`dircolors -b`"
-alias ls='ls --color=auto'
+# colored ls (one version for GNU, other for Mac OS X)
+if whence dircolors > /dev/null; then
+  eval "`dircolors -b`"
+  alias ls='ls --color=auto'
+else
+  export CLICOLOR=1
+fi
 
 # make less always work with colored input
 alias less='less -R'
