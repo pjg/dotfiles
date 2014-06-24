@@ -18,11 +18,13 @@ end
 begin
   require 'hirb'
 
-  Pry.config.print = proc do |output, value|
-    Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
-  end
-
   Hirb.enable
+
+  pry_print = Pry.config.print
+
+  Pry.config.print = proc do |*args|
+    Hirb::View.view_or_page_output(args[1]) || pry_print.call(*args)
+  end
 rescue LoadError => err
 end
 
