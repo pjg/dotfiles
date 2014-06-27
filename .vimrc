@@ -258,8 +258,8 @@ set backspace=2
 set noautowrite
 set noautowriteall
 
-" do not autoread changed files
-set noautoread
+" automatically re-read files files changed outside of vim
+set autoread
 
 " write swap files after 2 seconds of inactivity
 set updatetime=2000
@@ -284,9 +284,6 @@ set fcs+=vert:\ " the space after the backslash is intentional
 
 " always start on first line when editing git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" automatically re-read files files changed outside of vim
-set autoread
 
 " automatically open files in read-only mode if swapfile exists
 augroup NoSimultaneousEdits
