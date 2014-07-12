@@ -1,5 +1,16 @@
 # Global Guardfile (more info at https://github.com/guard/guard#readme)
 
+# Pass ignore option to the `listen` gem
+
+# Ignore public/ directory in the project (i.e. changes to files there should not trigger any actions)
+ignore /public\//
+
+# Ignore root of the project. This is a workaround for a bug with `listen` gem and 'polling'.
+# Sometimes something will trigger a filechange at root of the project ('.') and listen/guard
+# will then do a polling for all files in a project directory (including git, bundle, tmp and
+# others). Adding root dir to ignore seems to fix it.
+ignore /\A\.\Z/
+
 if Gem::Specification.find_all_by_name('activesupport').any?
   # so that we can use String#singularize
   require 'active_support/inflector'
