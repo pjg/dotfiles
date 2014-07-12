@@ -15,6 +15,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-vinegar'
+Bundle 'pbrisbin/vim-mkdir'
 
 " git related
 Bundle 'tpope/vim-fugitive'
