@@ -597,7 +597,7 @@ setopt transient_rprompt
 
 PROMPT='
 %(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
-${smiley} '
+${smiley} %{$reset_color%}'
 
 RPROMPT='$(prompt_online) %{$fg[white]%}%T%{$reset_color%}'
 
