@@ -520,28 +520,7 @@ esac
 # [zsh-git-prompt] location
 export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-olivierverdier-SLASH-zsh-git-prompt.git/
 
-# [zsh-git-prompt] do not execute the git prompt for the ~/ directory, as it is _really_ slow (redefine original functions from the plugin)
-function chpwd_update_git_vars() {
-  if [ $PWD = $HOME ]; then
-    unset __CURRENT_GIT_STATUS
-  else
-    update_current_git_vars
-  fi
-}
-
-function preexec_update_git_vars() {
-  if [ $PWD = $HOME ]; then
-    unset __EXECUTED_GIT_COMMAND
-  else
-    case "$2" in
-      git*)
-      __EXECUTED_GIT_COMMAND=1
-      ;;
-    esac
-  fi
-}
-
-# result of last command displays either happy or sad face as a prompt
+# result of last command displays either a happy or sad face as the prompt
 smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
 # vim mode indicator in prompt (http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode)
