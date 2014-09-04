@@ -413,12 +413,18 @@ command! Egemfile edit Gemfile
 command! Ereadme edit README.md
 command! Eseeds edit db/seeds.rb
 
-" [vim-rails] Rails projections - typing `:Eservice accept_bid` will open /app/services/accept_bid.rb
+" [vim-rails] Rails projections - typing `:Eservice accept_bid` will open /app/services/accept_bid.rb, etc.
 let g:rails_projections = {
     \   "app/services/*.rb": {
     \     "command":   "service",
     \     "affinity":  "collection",
     \     "test":      "spec/services/%i_spec.rb",
+    \     "template":  "class %S\nend"
+    \   },
+    \   "app/gateways/*.rb": {
+    \     "command":   "gateway",
+    \     "affinity":  "collection",
+    \     "test":      "spec/gateways/%i_spec.rb",
     \     "template":  "class %S\nend"
     \   },
     \   "app/finders/*.rb": {
