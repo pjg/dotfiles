@@ -9,6 +9,7 @@
   cia = commit --amend
   cl = clone
   co = checkout
+  compare = log --left-right --graph --cherry-pick --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
   count = shortlog -sn
   d = diff
   dc = diff --cached
