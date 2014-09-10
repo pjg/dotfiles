@@ -1,6 +1,7 @@
 [alias]
   a = add
   b = branch
+  bl = blame
   br = branch
   c = commit
   ca = commit --amend
