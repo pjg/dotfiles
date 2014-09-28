@@ -409,9 +409,10 @@ let g:ctrlp_custom_ignore = {
 au BufReadPost fugitive://* set bufhidden=delete
 
 " [vim-rails] custom commands
-command! Eroutes Einitializer
 command! Egemfile edit Gemfile
+command! Eprocfile edit Procfile
 command! Ereadme edit README.md
+command! Eroutes Einitializer
 command! Eseeds edit db/seeds.rb
 command! Espechelper edit spec/spec_helper.rb
 command! Erailshelper edit spec/rails_helper.rb
