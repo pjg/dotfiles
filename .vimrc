@@ -440,6 +440,11 @@ let g:rails_projections = {
     \     "affinity":  "collection",
     \     "test":      "spec/finders/%i_spec.rb",
     \     "template":  "class %S\nend"
+    \   },
+    \   "app/controllers/api/*_controller.rb": {
+    \     "command":   "apicontroller",
+    \     "test":      "spec/controllers/api/%s_controller_spec.rb",
+    \     "template":  "class Api::%SController < Api::ApplicationController\nend"
     \   }
     \ }
 
