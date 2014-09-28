@@ -413,6 +413,8 @@ command! Eroutes Einitializer
 command! Egemfile edit Gemfile
 command! Ereadme edit README.md
 command! Eseeds edit db/seeds.rb
+command! Espechelper edit spec/spec_helper.rb
+command! Erailshelper edit spec/rails_helper.rb
 
 " [vim-rails] Rails projections - typing `:Eservice accept_bid` will open /app/services/accept_bid.rb, etc.
 let g:rails_projections = {
