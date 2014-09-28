@@ -414,12 +414,13 @@ au BufReadPost fugitive://* set bufhidden=delete
 
 " [vim-rails] custom commands
 command! Egemfile edit Gemfile
+command! Ejroutes Ejinitializer
 command! Eprocfile edit Procfile
+command! Erailshelper edit spec/rails_helper.rb
 command! Ereadme edit README.md
 command! Eroutes Einitializer
 command! Eseeds edit db/seeds.rb
 command! Espechelper edit spec/spec_helper.rb
-command! Erailshelper edit spec/rails_helper.rb
 
 " [vim-rails] Rails projections - typing `:Eservice accept_bid` will open /app/services/accept_bid.rb, etc.
 let g:rails_projections = {
@@ -535,6 +536,43 @@ let g:rails_gem_projections = {
     \       "command":   "job",
     \       "test":      "spec/jobs/%s_spec.rb",
     \       "template":  "class %SJob\n\n  def self.perform\n  end\n\nend"
+    \     }
+    \   },
+    \   "ember-rails": {
+    \     "app/assets/javascripts/router.js.coffee": {
+    \       "command":   "jinitializer"
+    \     },
+    \     "app/assets/javascripts/models/*.js.coffee": {
+    \       "command":   "jmodel",
+    \       "alternate": "spec/javascripts/models/%s_spec.js.coffee",
+    \       "template":  "App.%S = DS.Model.extend"
+    \     },
+    \     "app/assets/javascripts/views/*.js.coffee": {
+    \       "command":   "jview",
+    \       "alternate": "spec/javascripts/views/%s_spec.js.coffee",
+    \       "template":  "App.%SView = Ember.View.extend"
+    \     },
+    \     "app/assets/javascripts/controllers/*.js.coffee": {
+    \       "command":   "jcontroller",
+    \       "alternate": "spec/javascripts/controllers/%s_spec.js.coffee",
+    \       "template":  "App.%SController = Ember.Controller.extend"
+    \     },
+    \     "app/assets/javascripts/routes/*.js.coffee": {
+    \       "command":   "jroute",
+    \       "alternate": "spec/javascripts/routes/%s_spec.js.coffee",
+    \       "template":  "App.%SRoute = Ember.Route.extend"
+    \     },
+    \     "app/assets/javascripts/mixins/*.js.coffee": {
+    \       "command":   "jmixin",
+    \       "alternate": "spec/javascripts/mixins/%s_spec.js.coffee",
+    \       "template":  "App.%S = Ember.Mixin.create"
+    \     },
+    \     "app/assets/javascripts/templates/*.emblem": {
+    \       "command":   "jtemplate"
+    \     },
+    \     "spec/javascripts/**/*_spec.js.coffee": {
+    \       "command":   "jspec",
+    \       "alternate": "app/assets/javascripts/%s.coffee"
     \     }
     \   }
     \ }
