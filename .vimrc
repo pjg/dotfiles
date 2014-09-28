@@ -517,6 +517,13 @@ let g:rails_gem_projections = {
     \       "related":   "app/models/%s.rb",
     \       "template":  "class %SPolicy < Struct.new(:user, :%s)\nend"
     \     }
+    \   },
+    \   "resque": {
+    \     "app/jobs/*_job.rb": {
+    \       "command":   "job",
+    \       "test":      "spec/jobs/%s_spec.rb",
+    \       "template":  "class %SJob\n\n  def self.perform\n  end\n\nend"
+    \     }
     \   }
     \ }
 
