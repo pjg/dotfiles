@@ -567,7 +567,7 @@ let g:rails_gem_projections = {
     \       "alternate": "spec/javascripts/mixins/%s_spec.js.coffee",
     \       "template":  "App.%S = Ember.Mixin.create"
     \     },
-    \     "app/assets/javascripts/templates/*.emblem": {
+    \     "app/assets/javascripts/templates/*.js.emblem": {
     \       "command":   "jtemplate"
     \     },
     \     "spec/javascripts/**/*_spec.js.coffee": {
