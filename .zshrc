@@ -537,8 +537,8 @@ function background_jobs() {
 }
 
 # online indicator in prompt (https://gist.github.com/remy/6079223)
-ONLINE='%{%F{green}%}◉'
-OFFLINE='%{%F{red}%}⦿'
+ONLINE="%{%F{green}%}◉%{$reset_color%}"
+OFFLINE="%{%F{red}%}⦿%{$reset_color%}"
 
 function prompt_online() {
   if [[ -f ~/.offline ]]; then
