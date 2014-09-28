@@ -126,6 +126,10 @@ set ignorecase smartcase
 " always display current cursor position
 set ruler
 
+" make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
 " display incomplete commands
 set showcmd
 
