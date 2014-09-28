@@ -35,6 +35,7 @@ hi Ignore ctermfg=NONE guifg=NONE
 
 hi SignColumn guibg=#fffbf0 ctermbg=NONE
 hi FoldColumn guifg=Black guibg=#979797 ctermbg=7 ctermfg=4
+hi ColorColumn guibg=#fefefe ctermbg=255
 hi Folded guifg=Black guibg=#bbbbbb  ctermbg=7 ctermfg=244
 hi StatusLine guifg=#ddddff guibg=#220088 ctermfg=5 ctermbg=231
 hi StatusLineNC guifg=#829db9 guibg=Black ctermfg=8 ctermbg=188
