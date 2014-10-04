@@ -548,17 +548,17 @@ let g:rails_gem_projections = {
     \       "alternate": "spec/javascripts/models/%s_spec.js.coffee",
     \       "template":  "App.%S = DS.Model.extend"
     \     },
-    \     "app/assets/javascripts/views/*.js.coffee": {
+    \     "app/assets/javascripts/views/*_view.js.coffee": {
     \       "command":   "jview",
     \       "alternate": "spec/javascripts/views/%s_spec.js.coffee",
     \       "template":  "App.%SView = Ember.View.extend"
     \     },
-    \     "app/assets/javascripts/controllers/*.js.coffee": {
+    \     "app/assets/javascripts/controllers/*_controller.js.coffee": {
     \       "command":   "jcontroller",
     \       "alternate": "spec/javascripts/controllers/%s_spec.js.coffee",
-    \       "template":  "App.%SController = Ember.Controller.extend"
+    \       "template":  "App.%SController = Ember.ObjectController.extend"
     \     },
-    \     "app/assets/javascripts/routes/*.js.coffee": {
+    \     "app/assets/javascripts/routes/*_route.js.coffee": {
     \       "command":   "jroute",
     \       "alternate": "spec/javascripts/routes/%s_spec.js.coffee",
     \       "template":  "App.%SRoute = Ember.Route.extend"
