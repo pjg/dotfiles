@@ -571,6 +571,16 @@ let g:rails_gem_projections = {
     \     "app/assets/javascripts/templates/*.js.emblem": {
     \       "command":   "jtemplate"
     \     },
+    \     "app/assets/javascripts/serializers/*_serializer.js.coffee": {
+    \       "command":   "jserializer",
+    \       "alternate": "spec/javascripts/serializers/%s_spec.js.coffee",
+    \       "template":  "App.%SSerializer = DS.RESTSerializer.extend"
+    \     },
+    \     "app/assets/javascripts/adapters/*_adapter.js.coffee": {
+    \       "command":   "jadapter",
+    \       "alternate": "spec/javascripts/adapters/%s_spec.js.coffee",
+    \       "template":  "App.%SAdapter = App.ApplicationAdapter.extend"
+    \     },
     \     "spec/javascripts/**/*_spec.js.coffee": {
     \       "command":   "jspec",
     \       "alternate": "app/assets/javascripts/%s.coffee"
