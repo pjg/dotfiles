@@ -75,6 +75,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'justinmk/vim-sneak'
+Bundle 'nelstrom/vim-qargs'
 
 " statusline (and related)
 Bundle 'bling/vim-airline'
