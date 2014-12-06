@@ -629,10 +629,10 @@ export RUBY_GC_OLDMALLOC_LIMIT_GROWTH_FACTOR=$RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR
 [[ -e /usr/lib/libtcmalloc_minimal.so.4.1.0 ]] && export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4.1.0
 
 # [RUBY] [Mac OS X] use libtcmalloc, if available (a somewhat better allocator) (brew install google-perftools)
-[[ -e /usr/local/lib/libtcmalloc_minimal.dylib ]] && export DYLD_INSERT_LIBRARIES=/usr/local/lib/libtcmalloc_minimal.dylib
+# [[ -e /usr/local/lib/libtcmalloc_minimal.dylib ]] && export DYLD_INSERT_LIBRARIES=/usr/local/lib/libtcmalloc_minimal.dylib
 
 # [RUBY] [Mac OS X] use jemalloc, if available (the best allocator?) (brew install jemalloc) (http://samsaffron.com/archive/2014/04/08/ruby-2-1-garbage-collection-ready-for-production)
-[[ -e /usr/local/lib/libjemalloc.dylib ]] && export DYLD_INSERT_LIBRARIES=/usr/local/lib/libjemalloc.dylib
+# [[ -e /usr/local/lib/libjemalloc.dylib ]] && export DYLD_INSERT_LIBRARIES=/usr/local/lib/libjemalloc.dylib
 
 # set GitHub credentials
 [[ -e ~/.github_credentials ]] && source ~/.github_credentials
