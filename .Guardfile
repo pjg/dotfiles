@@ -156,6 +156,15 @@ if Gem::Specification.find_all_by_name('guard-test').any?
   end
 end
 
+if Gem::Specification.find_all_by_name('guard-minitest').any?
+  guard 'minitest', all_on_start: false, bundler: false do
+    watch(%r{(.+)\.rb$})               { |m| "test/#{m[1]}_test.rb" }
+    watch(%r{^lib/(.+)\.rb$})          { |m| "test/#{m[1]}_test.rb" }
+    watch(%r{^test/.+_test\.rb$})
+    watch(%r{^test/test_helper\.rb$})  { 'test' }
+  end
+end
+
 if Gem::Specification.find_all_by_name('guard-delayed').any?
   guard 'delayed', :environment => 'development' do
     watch(%r{^app/(.+)\.rb$})
