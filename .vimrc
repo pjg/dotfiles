@@ -476,6 +476,11 @@ let g:rails_gem_projections = {
     \       "keywords":  "factory sequence"
     \     }
     \   },
+    \   "settingslogic": {
+    \     "config/application.yml": {
+    \       "command":   "settings"
+    \     }
+    \   },
     \   "capybara": {
     \     "spec/features/*_spec.rb": {
     \       "command":   "feature",
