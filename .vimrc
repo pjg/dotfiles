@@ -885,7 +885,7 @@ let localmapleader = "\\"
 nmap <leader>a ggVG
 
 " run Dash (on MAC) to search for word under cursor
-nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>z <Plug>DashSearch
 
 " upper/lower word
 nmap <leader>u mQviwU'Q
@@ -923,6 +923,8 @@ map <leader>W :SudoWrite<cr>
 map <leader>rr :.Rake<cr>
 
 " system clipboard interaction
+noremap <leader>d "*d
+noremap <leader>D "*d$
 noremap <leader>y "*y
 noremap <leader>Y "*y$
 noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
