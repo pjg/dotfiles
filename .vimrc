@@ -339,6 +339,9 @@ autocmd BufEnter *.html setlocal indentexpr=
 autocmd BufEnter *.htm setlocal indentexpr=
 autocmd BufEnter *.html.erb setlocal indentexpr=
 
+" do not force 80 columns for txt files
+autocmd BufEnter *.txt setlocal textwidth=0
+
 " YAML files read as Ruby
 augroup filetypedetect
   autocmd BufNewFile,BufRead *.yml setf eruby
