@@ -432,25 +432,25 @@ let g:rails_projections = {
     \   "app/services/*.rb": {
     \     "command":   "service",
     \     "affinity":  "collection",
-    \     "test":      "spec/services/%i_spec.rb",
-    \     "template":  "class %S\nend"
+    \     "test":      "spec/services/{}_spec.rb",
+    \     "template":  "class {camelcase|capitalize|colons}\nend"
     \   },
     \   "app/gateways/*.rb": {
     \     "command":   "gateway",
     \     "affinity":  "collection",
-    \     "test":      "spec/gateways/%i_spec.rb",
-    \     "template":  "class %S\nend"
+    \     "test":      "spec/gateways/{}_spec.rb",
+    \     "template":  "class {camelcase|capitalize|colons}\nend"
     \   },
     \   "app/finders/*.rb": {
     \     "command":   "finder",
     \     "affinity":  "collection",
-    \     "test":      "spec/finders/%i_spec.rb",
-    \     "template":  "class %S\nend"
+    \     "test":      "spec/finders/{}_spec.rb",
+    \     "template":  "class {camelcase|capitalize|colons}\nend"
     \   },
     \   "app/controllers/api/*_controller.rb": {
     \     "command":   "apicontroller",
-    \     "test":      "spec/controllers/api/%s_controller_spec.rb",
-    \     "template":  "class Api::%SController < Api::ApplicationController\nend"
+    \     "test":      "spec/controllers/api/{}_controller_spec.rb",
+    \     "template":  "class Api::{camelcase|capitalize|colons}Controller < Api::ApplicationController\nend"
     \   }
     \ }
 
@@ -460,19 +460,19 @@ let g:rails_gem_projections = {
     \     "test/factories/*.rb": {
     \       "command":   "factory",
     \       "affinity":  "collection",
-    \       "alternate": "app/models/%i.rb",
-    \       "related":   "db/schema.rb#%s",
-    \       "test":      "test/models/%i_test.rb",
-    \       "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
+    \       "alternate": "app/models/{singular}.rb",
+    \       "related":   "db/schema.rb#{}",
+    \       "test":      "test/models/{singular}_test.rb",
+    \       "template":  "FactoryGirl.define do\n  factory :{singular} do\n  end\nend",
     \       "keywords":  "factory sequence"
     \     },
     \     "spec/factories/*.rb": {
     \       "command":   "factory",
     \       "affinity":  "collection",
-    \       "alternate": "app/models/%i.rb",
-    \       "related":   "db/schema.rb#%s",
-    \       "test":      "spec/models/%i_test.rb",
-    \       "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
+    \       "alternate": "app/models/{singular}.rb",
+    \       "related":   "db/schema.rb#{}",
+    \       "test":      "spec/models/{singular}_test.rb",
+    \       "template":  "FactoryGirl.define do\n  factory :{singular} do\n  end\nend",
     \       "keywords":  "factory sequence"
     \     }
     \   },
@@ -484,43 +484,43 @@ let g:rails_gem_projections = {
     \   "capybara": {
     \     "spec/features/*_spec.rb": {
     \       "command":   "feature",
-    \       "template":  "require 'spec_helper'\n\nfeature '%h' do\n\nend"
+    \       "template":  "require 'spec_helper'\n\nfeature '{underscore|capitalize|blank}' do\n\nend"
     \     }
     \   },
     \   "activeadmin": {
     \     "app/admin/*.rb": {
     \       "command":   "admin",
     \       "affinity":  "model",
-    \       "test":      "spec/admin/%s_spec.rb",
-    \       "related":   "app/models/%s.rb",
-    \       "template":  "ActiveAdmin.register %S do\n  config.sort_order = 'created_at_desc'\nend"
+    \       "test":      "spec/admin/{}_spec.rb",
+    \       "related":   "app/models/{singular}.rb",
+    \       "template":  "ActiveAdmin.register {camelcase|capitalize|colons} do\n  config.sort_order = 'created_at_desc'\nend"
     \     }
     \   },
     \   "active_model_serializers": {
     \     "app/serializers/*_serializer.rb": {
     \       "command":   "serializer",
     \       "affinity":  "model",
-    \       "test":      "spec/serializers/%s_spec.rb",
-    \       "related":   "app/models/%s.rb",
-    \       "template":  "class %SSerializer < ActiveModel::Serializer\nend"
+    \       "test":      "spec/serializers/{}_spec.rb",
+    \       "related":   "app/models/{}.rb",
+    \       "template":  "class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer\nend"
     \     }
     \   },
     \   "draper": {
     \     "app/decorators/*_decorator.rb": {
     \       "command":   "decorator",
     \       "affinity":  "model",
-    \       "test":      "spec/decorators/%s_spec.rb",
-    \       "related":   "app/models/%s.rb",
-    \       "template":  "class %SDecorator < Draper::Decorator\n  delegate_all\nend"
+    \       "test":      "spec/decorators/{}_spec.rb",
+    \       "related":   "app/models/{}.rb",
+    \       "template":  "class {camelcase|capitalize|colons}Decorator < Draper::Decorator\n  delegate_all\nend"
     \     }
     \   },
     \   "carrierwave": {
     \     "app/uploaders/*_uploader.rb": {
     \       "command":   "uploader",
     \       "affinity":  "model",
-    \       "test":      "spec/uploaders/%s_spec.rb",
-    \       "related":   "app/models/%s.rb",
-    \       "template":  "class %SUploader < CarrierWave::Uploader::Base\nend"
+    \       "test":      "spec/uploaders/{}_spec.rb",
+    \       "related":   "app/models/{}.rb",
+    \       "template":  "class {camelcase|capitalize|colons}Uploader < CarrierWave::Uploader::Base\nend"
     \     }
     \   },
     \   "turnip": {
@@ -529,23 +529,23 @@ let g:rails_gem_projections = {
     \     },
     \     "spec/acceptance/steps/*_steps.rb": {
     \       "command":   "steps",
-    \       "template":  "steps_for :%s do\nend"
+    \       "template":  "steps_for :{} do\nend"
     \     }
     \   },
     \   "pundit": {
     \     "app/policies/*_policy.rb": {
     \       "command":   "policy",
     \       "affinity":  "model",
-    \       "test":      "spec/policies/%s_spec.rb",
-    \       "related":   "app/models/%s.rb",
-    \       "template":  "class %SPolicy < Struct.new(:user, :%s)\nend"
+    \       "test":      "spec/policies/{}_spec.rb",
+    \       "related":   "app/models/{}.rb",
+    \       "template":  "class {camelcase|capitalize|colons}Policy < Struct.new(:user, :{})\nend"
     \     }
     \   },
     \   "resque": {
     \     "app/jobs/*_job.rb": {
     \       "command":   "job",
-    \       "test":      "spec/jobs/%s_spec.rb",
-    \       "template":  "class %SJob\n\n  def self.perform\n  end\n\nend"
+    \       "test":      "spec/jobs/{}_spec.rb",
+    \       "template":  "class {camelcase|capitalize|colons}Job\n\n  def self.perform\n  end\n\nend"
     \     }
     \   },
     \   "ember-rails": {
@@ -554,45 +554,45 @@ let g:rails_gem_projections = {
     \     },
     \     "app/assets/javascripts/models/*.js.coffee": {
     \       "command":   "jmodel",
-    \       "alternate": "spec/javascripts/models/%s_spec.js.coffee",
-    \       "template":  "App.%S = DS.Model.extend"
+    \       "alternate": "spec/javascripts/models/{}_spec.js.coffee",
+    \       "template":  "App.{camelcase|capitalize|dot} = DS.Model.extend"
     \     },
     \     "app/assets/javascripts/views/*_view.js.coffee": {
     \       "command":   "jview",
-    \       "alternate": "spec/javascripts/views/%s_spec.js.coffee",
-    \       "template":  "App.%SView = Ember.View.extend"
+    \       "alternate": "spec/javascripts/views/{}_spec.js.coffee",
+    \       "template":  "App.{camelcase|capitalize|dot}View = Ember.View.extend"
     \     },
     \     "app/assets/javascripts/controllers/*_controller.js.coffee": {
     \       "command":   "jcontroller",
-    \       "alternate": "spec/javascripts/controllers/%s_spec.js.coffee",
-    \       "template":  "App.%SController = Ember.ObjectController.extend"
+    \       "alternate": "spec/javascripts/controllers/{}_spec.js.coffee",
+    \       "template":  "App.{camelcase|capitalize|dot}Controller = Ember.ObjectController.extend"
     \     },
     \     "app/assets/javascripts/routes/*_route.js.coffee": {
     \       "command":   "jroute",
-    \       "alternate": "spec/javascripts/routes/%s_spec.js.coffee",
-    \       "template":  "App.%SRoute = Ember.Route.extend"
+    \       "alternate": "spec/javascripts/routes/{}_spec.js.coffee",
+    \       "template":  "App.{camelcase|capitalize|dot}Route = Ember.Route.extend"
     \     },
     \     "app/assets/javascripts/mixins/*.js.coffee": {
     \       "command":   "jmixin",
-    \       "alternate": "spec/javascripts/mixins/%s_spec.js.coffee",
-    \       "template":  "App.%S = Ember.Mixin.create"
+    \       "alternate": "spec/javascripts/mixins/{}_spec.js.coffee",
+    \       "template":  "App.{camelcase|capitalize|dot} = Ember.Mixin.create"
     \     },
     \     "app/assets/javascripts/templates/*.js.emblem": {
     \       "command":   "jtemplate"
     \     },
     \     "app/assets/javascripts/serializers/*_serializer.js.coffee": {
     \       "command":   "jserializer",
-    \       "alternate": "spec/javascripts/serializers/%s_spec.js.coffee",
-    \       "template":  "App.%SSerializer = DS.RESTSerializer.extend"
+    \       "alternate": "spec/javascripts/serializers/{}_spec.js.coffee",
+    \       "template":  "App.{camelcase|capitalize|dot}Serializer = DS.RESTSerializer.extend"
     \     },
     \     "app/assets/javascripts/adapters/*_adapter.js.coffee": {
     \       "command":   "jadapter",
-    \       "alternate": "spec/javascripts/adapters/%s_spec.js.coffee",
-    \       "template":  "App.%SAdapter = App.ApplicationAdapter.extend"
+    \       "alternate": "spec/javascripts/adapters/{}_spec.js.coffee",
+    \       "template":  "App.{camelcase|capitalize|dot}Adapter = App.ApplicationAdapter.extend"
     \     },
     \     "spec/javascripts/**/*_spec.js.coffee": {
     \       "command":   "jspec",
-    \       "alternate": "app/assets/javascripts/%s.coffee"
+    \       "alternate": "app/assets/javascripts/{}.coffee"
     \     }
     \   }
     \ }
