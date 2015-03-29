@@ -940,9 +940,9 @@ noremap <leader>c <C-w>c
 " adjust viewports to the same size
 map <leader>= <C-w>=
 
-" underline current line
-nmap <silent> <leader>- :t.<CR>Vr-
-nmap <silent> <leader>_ :t.<CR>Vr=
+" underline the current line
+nmap <silent> <leader>1 :t.<CR>Vr-
+nmap <silent> <leader>2 :t.<CR>Vr=
 
 " quick insertion of newline in normal mode
 nnoremap <silent> <cr> :-1put=''<cr><down>
