@@ -83,6 +83,10 @@
   # Push current branch even if you've never pushed it before
   default = current
 
+[rebase]
+  # will add --autosquash setting to rebases
+  autosquash = true
+
 [user]
   # The name and e-mail address will be used to identify you in the commits
   name = "Paweł Gościcki"
