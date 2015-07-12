@@ -663,6 +663,7 @@ abbreviate apge page
 abbreviate pgae page
 abbreviate invitatoin invitation
 abbreviate invitaion invitation
+abbreviate invitaiton invitation
 abbreviate sgined signed
 abbreviate tewak tweak
 abbreviate glboal global
