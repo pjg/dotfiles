@@ -656,17 +656,19 @@ let g:rbpt_colorpairs = [
 
 " ABBREVIATIONS
 
-abbreviate teh the
-abbreviate taht that
-abbreviate ilke like
 abbreviate apge page
-abbreviate pgae page
-abbreviate invitatoin invitation
+abbreviate glboal global
+abbreviate ilke like
 abbreviate invitaion invitation
 abbreviate invitaiton invitation
+abbreviate invitatoin invitation
+abbreviate pgae page
+abbreviate recieve receive
 abbreviate sgined signed
+abbreviate taht that
+abbreviate teh the
 abbreviate tewak tweak
-abbreviate glboal global
+abbreviate upadting updating
 
 " Rails specific
 abbreviate bpr binding.pry;
