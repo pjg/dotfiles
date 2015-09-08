@@ -299,7 +299,7 @@ augroup NoSimultaneousEdits
   autocmd SwapExists * echohl ErrorMsg
   autocmd SwapExists * echo 'Duplicate edit session (readonly)'
   autocmd SwapExists * echohl None
-  autocmd SwapExists * sleep 2
+  autocmd SwapExists * sleep 1
 augroup END
 
 
