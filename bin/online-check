@@ -3,7 +3,7 @@
 # Saved in ~/bin/online-check and in a cron job as:
 # * * * * * ~/bin/online-check
 
-ping -c 1 -n -q -W 1000 91.221.26.1 &> /dev/null
+ping -c 1 -n -q -W 1000 212.77.100.101 &> /dev/null
 
 if [ $? -eq 0 ]; then
   rm -f ~/.offline
