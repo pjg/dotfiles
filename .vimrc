@@ -929,6 +929,9 @@ noremap <leader>V V`]
 noremap <leader>s <C-w>s
 noremap <leader>v <C-w>v
 
+" SudoWrite
+noremap <leader>S :SudoWrite<cr>
+
 " window close
 noremap <leader>c <C-w>c
 
