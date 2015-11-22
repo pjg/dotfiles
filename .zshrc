@@ -578,7 +578,7 @@ function TRAPINT() {
 setopt transient_rprompt
 
 PROMPT='
-%(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(~/.rvm/bin/rvm-prompt 2> /dev/null)%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
+%(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(ruby -e "print \"ruby-#{ RUBY_VERSION }\"")%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
 ${smiley} %{$reset_color%}'
 
 RPROMPT='$(prompt_online) %{$fg[white]%}%T%{$reset_color%}'
@@ -602,6 +602,59 @@ done
 for i in {'bundle','cap','capify','cucumber','foreman','gem','guard','heroku','puma','pry','rake','rspec','ruby','spec','spork','thin'}; do
   alias $i="nocorrect $i"
 done
+
+
+
+# CHRUBY
+
+# chruby scripts
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+# chruby + binstubs
+# http://hmarr.com/2012/nov/08/rubies-and-bundles/
+# http://code.jjb.cc/2012/11/09/putting-your-rbenv-managed-bundler-specified-executables-in-your-path-more-securely/
+# http://stackoverflow.com/questions/13881608/issues-installing-gems-when-using-bundlers-binstubs
+# https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
+# https://github.com/postmodern/chruby/wiki/Implementing-an-'after-use'-hook
+function chruby_binstubs {
+  if [ -r $OLDPWD/Gemfile.lock ] && [ -d $OLDPWD/.bundle/bin ]; then
+    # delete from $OLDPWD (.bin/ and .bundle/bin/ from $PATH, .bundle/ from $GEM_PATH)
+    export PATH=${PATH//$OLDPWD\/bin:}
+    export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
+    export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
+
+    # restore GEM_HOME from chruby (using wrapper)
+    export GEM_HOME=~/.gem/ruby/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')
+  fi
+
+  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/.bundle/bin ]; then
+    # add .bundle/bin to $PATH and .bundle/ to $GEM_PATH (deleting existing entries first) AND set a new $GEM_HOME
+    export PATH=$PWD/.bundle/bin:${PATH//$PWD\/\.bundle\/bin:}
+    export GEM_PATH=$PWD/.bundle:${GEM_PATH//$PWD\/\.bundle:}
+
+    # set GEM_HOME
+    export GEM_HOME=$PWD/.bundle
+  fi
+
+  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/bin ]; then
+    # add bin/ to $PATH (Rails 4+) (has precedence over .bundle/bin)
+    export PATH=$PWD/bin:${PATH//$PWD\/bin:}
+  fi
+}
+
+# remove the preexec hook added by chruby (we will be using chruby_auto in a chpwd hook)
+add-zsh-hook -d preexec chruby_auto
+
+# add chruby_auto and chruby_binstubs calls for every directory change (needed so that prompt works)
+autoload -U add-zsh-hook
+add-zsh-hook chpwd chruby_auto
+add-zsh-hook chpwd chruby_binstubs
+
+# execute on first run, so that we have everything setup correctly regardless of
+# the directory we open new terminal window in
+chruby_auto
+chruby_binstubs
 
 
 
@@ -658,39 +711,3 @@ REPORTTIME=10
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
-
-# RVM
-[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
-PATH=$PATH:$HOME/.rvm/bin
-
-# BUNDLER BINSTUBS (this is a small security risk as we're dynamically changing $PATH)
-# http://hmarr.com/2012/nov/08/rubies-and-bundles/
-# http://code.jjb.cc/2012/11/09/putting-your-rbenv-managed-bundler-specified-executables-in-your-path-more-securely/
-# http://stackoverflow.com/questions/13881608/issues-installing-gems-when-using-bundlers-binstubs
-# https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
-autoload -U add-zsh-hook
-add-zsh-hook chpwd chpwd_add_binstubs_to_paths
-
-function chpwd_add_binstubs_to_paths {
-  if [ -r $OLDPWD/Gemfile.lock ] && [ -d $OLDPWD/.bundle/bin ]; then
-    # delete from $OLDPWD (.bin/ and .bundle/bin/ from $PATH, .bundle/ from $GEM_PATH); RVM will restore $GEM_HOME for us
-    export PATH=${PATH//$OLDPWD\/bin:}
-    export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
-    export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
-  fi
-
-  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/.bundle/bin ]; then
-    # add .bundle/bin to $PATH and .bundle/ to $GEM_PATH (deleting existing entries first) AND set a new $GEM_HOME (overriding one set for us by RVM)
-    export PATH=$PWD/.bundle/bin:${PATH//$PWD\/\.bundle\/bin:}
-    export GEM_PATH=$PWD/.bundle:${GEM_PATH//$PWD\/\.bundle:}
-    export GEM_HOME=$PWD/.bundle
-  fi
-
-  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/bin ]; then
-    # add bin/ to $PATH (Rails 4+) (has precedense over .bundle/bin)
-    export PATH=$PWD/bin:${PATH//$PWD\/bin:}
-  fi
-}
-
-# initially execute `chpwd_add_binstubs_to_paths` as we might be opening a new shell in Rails project's directory
-chpwd_add_binstubs_to_paths

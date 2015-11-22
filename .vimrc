@@ -38,7 +38,6 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-rvm'
 
 " text objects
 Bundle 'kana/vim-textobj-user'

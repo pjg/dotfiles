@@ -3,6 +3,7 @@
 .jhw-cache
 .rspec-local
 .rvmrc
+.ruby-version
 .sass-cache
 *.sw[po]
 .vim/tmp

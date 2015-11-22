@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+# Wrapper for chruby to work with Phussion Passenger
+#
+# Based on:
+#   https://github.com/postmodern/chruby/issues/258
+#   https://github.com/phusion/passenger/issues/1205
+
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+chruby_auto
+
+# original call
+exec "ruby" "$@"
