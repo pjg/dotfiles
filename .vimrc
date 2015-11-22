@@ -47,7 +47,6 @@ Bundle 'michaeljsmith/vim-indent-object'
 
 " code completion
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'pjg/eclim.vim'
 
 " searching
 Bundle 'rking/ag.vim'
@@ -609,12 +608,6 @@ let g:gitgutter_eager = 0
 " [vim-gitgutter] use 'raw' grep
 let g:gitgutter_escape_grep = 1
 
-" [YouCompleteMe] use Eclim for TAB-autocompletion
-let g:EclimCompletionMethod = 'omnifunc'
-
-" [YouCompleteMe] collect identifiers from comments and strings
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
 " [YouCompleteMe] collect identifiers from tags file
 let g:ycm_collect_identifiers_from_tags_files = 1
 
@@ -623,9 +616,6 @@ let g:ycm_seed_identifiers_with_syntax = 0
 
 " [YouCompleteMe] work nicely with floobits' plugin
 let g:ycm_allow_changing_updatetime = 0
-
-" [Eclim] disable Ruby validation
-let g:EclimRubyValidate = 0
 
 " [rainbow_parentheses.vim]
 au VimEnter * RainbowParenthesesToggle
