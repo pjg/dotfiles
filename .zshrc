@@ -605,7 +605,15 @@ done
 
 
 
-# CHRUBY
+# RVM (load conditionally if exists)
+if [ -x "$HOME/.rvm/scripts/rvm" ]; then
+  source ~/.rvm/scripts/rvm
+  PATH=$PATH:$HOME/.rvm/bin
+fi
+
+
+
+# CHRUBY (load conditionally if exists)
 
 # chruby scripts
 if [ -d /usr/local/opt/chruby/share/chruby ]; then
