@@ -608,8 +608,10 @@ done
 # CHRUBY
 
 # chruby scripts
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+if [ -d /usr/local/opt/chruby/share/chruby ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+fi
 
 # chruby + binstubs
 # http://hmarr.com/2012/nov/08/rubies-and-bundles/
@@ -617,7 +619,7 @@ source /usr/local/opt/chruby/share/chruby/auto.sh
 # http://stackoverflow.com/questions/13881608/issues-installing-gems-when-using-bundlers-binstubs
 # https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
 # https://github.com/postmodern/chruby/wiki/Implementing-an-'after-use'-hook
-function chruby_binstubs {
+function setup_binstubs {
   if [ -r $OLDPWD/Gemfile.lock ] && [ -d $OLDPWD/.bundle/bin ]; then
     # delete from $OLDPWD (.bin/ and .bundle/bin/ from $PATH, .bundle/ from $GEM_PATH)
     export PATH=${PATH//$OLDPWD\/bin:}
@@ -625,7 +627,9 @@ function chruby_binstubs {
     export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
 
     # restore GEM_HOME from chruby (using wrapper)
-    export GEM_HOME=~/.gem/ruby/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')
+    if [ -d /usr/local/opt/chruby/share/chruby ]; then
+      export GEM_HOME=~/.gem/ruby/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')
+    fi
   fi
 
   if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/.bundle/bin ]; then
@@ -643,18 +647,25 @@ function chruby_binstubs {
   fi
 }
 
-# remove the preexec hook added by chruby (we will be using chruby_auto in a chpwd hook)
-add-zsh-hook -d preexec chruby_auto
-
-# add chruby_auto and chruby_binstubs calls for every directory change (needed so that prompt works)
 autoload -U add-zsh-hook
-add-zsh-hook chpwd chruby_auto
-add-zsh-hook chpwd chruby_binstubs
 
-# execute on first run, so that we have everything setup correctly regardless of
-# the directory we open new terminal window in
-chruby_auto
-chruby_binstubs
+# setup chruby on cd
+if [ -d /usr/local/opt/chruby/share/chruby ]; then
+  # remove the preexec hook added by chruby (we will be using chruby_auto in a chpwd hook)
+  add-zsh-hook -d preexec chruby_auto
+
+  # add chruby_auto and setup_binstubs calls for every directory change (needed so that prompt works)
+  add-zsh-hook chpwd chruby_auto
+
+  # execute on first run, so that we have everything setup correctly regardless of the directory we open new terminal window in
+  chruby_auto
+fi
+
+# add setup_binstubs calls for every directory change (needed so that prompt works)
+add-zsh-hook chpwd setup_binstubs
+
+# execute on first run, so that we have everything setup correctly regardless of the directory we open new terminal window in
+setup_binstubs
 
 
 
