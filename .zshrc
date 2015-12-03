@@ -608,7 +608,7 @@ done
 # RVM (load conditionally if exists)
 if [ -x "$HOME/.rvm/scripts/rvm" ]; then
   source ~/.rvm/scripts/rvm
-  PATH=$PATH:$HOME/.rvm/bin
+  export PATH=$PATH:$HOME/.rvm/bin
 fi
 
 
