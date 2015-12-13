@@ -70,12 +70,14 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   end
 
   # r! to reload Rails console
-  def r!
-    reload!
-  end
+  if defined?(Rails) && Rails.version.to_f >= 3.0
+    def r!
+      reload!
+    end
 
-  # automatically call `reload` every time a new command is typed
-  Pry.hooks.add_hook(:before_eval, :reload_everything) { reload!(false) }
+    # automatically call `reload` every time a new command is typed
+    Pry.hooks.add_hook(:before_eval, :reload_everything) { reload!(false) }
+  end
 
   # sql for arbitrary SQL commands through the AR
   def sql(query)
