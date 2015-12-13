@@ -605,20 +605,15 @@ done
 
 
 
-# RVM (load conditionally if exists)
-if [ -x "$HOME/.rvm/scripts/rvm" ]; then
-  source ~/.rvm/scripts/rvm
-  export PATH=$PATH:$HOME/.rvm/bin
-fi
-
-
-
-# CHRUBY (load conditionally if exists)
-
-# chruby scripts
+# CHRUBY / RVM (load either one conditionally)
 if [ -d /usr/local/opt/chruby/share/chruby ]; then
+  # CHRUBY (load conditionally if exists)
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   source /usr/local/opt/chruby/share/chruby/auto.sh
+elif [ -x "$HOME/.rvm/scripts/rvm" ]; then
+  # RVM (load conditionally if exists)
+  source ~/.rvm/scripts/rvm
+  export PATH=$PATH:$HOME/.rvm/bin
 fi
 
 # chruby + binstubs
@@ -634,7 +629,7 @@ function setup_binstubs {
     export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
     export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
 
-    # restore GEM_HOME from chruby (using wrapper)
+    # restore GEM_HOME when using chruby (using wrapper)
     if [ -d /usr/local/opt/chruby/share/chruby ]; then
       export GEM_HOME=~/.gem/ruby/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')
     fi
