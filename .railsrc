@@ -67,7 +67,8 @@ class Object
 end
 
 # readable BigDecimal#inspect output (https://gist.github.com/henrik/6280438)
-if RUBY_VERSION >= '1.9.0'
+# for Ruby 1.9+ and Rails 3+
+if RUBY_VERSION >= '1.9.0' && defined?(Rails)
    class BigDecimal
      def inspect
        format("#<BigDecimal:%x %s>", object_id, to_s('F'))
