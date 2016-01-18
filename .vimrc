@@ -661,6 +661,7 @@ abbreviate upadting updating
 
 " Rails specific
 abbreviate bpr binding.pry;
+abbreviate brp binding.pry;
 
 
 
