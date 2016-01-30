@@ -76,7 +76,8 @@ Bundle 'justinmk/vim-sneak'
 Bundle 'nelstrom/vim-qargs'
 
 " statusline (and related)
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'airblade/vim-gitgutter'
 
 " external applications
