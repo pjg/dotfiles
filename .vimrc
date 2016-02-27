@@ -136,6 +136,9 @@ set showcmd
 " lazy redraw the screen
 set lazyredraw
 
+" explicitly set ttyfast
+set ttyfast
+
 " we're a fast tty, so redraw screen if more than 3 lines to scroll (this can make vim a tiny bit faster)
 set ttyscroll=3
 
