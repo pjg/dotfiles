@@ -315,7 +315,7 @@ syntax on
 let ruby_no_expensive=1
 
 " use the old Regexp engine (used by the syntax highlighting, for example) (this makes vim about 100x faster)
-set regexpengine=1
+set regexpengine=0
 
 
 
