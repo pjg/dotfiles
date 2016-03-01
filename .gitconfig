@@ -19,6 +19,7 @@
   m = merge
   p = push
   pf = push -f
+  pl = pull
   r = remote
   rb = rebase
   rba = rebase --abort
