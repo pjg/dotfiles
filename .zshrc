@@ -151,12 +151,18 @@ alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
 # htop
 if [[ -x `which htop` ]]; then alias top="htop"; fi
 
-# vim - load tmp/current.vim if it exist and no params to vim are passed (aka vim is aliased to v)
+# vim/nvim - load tmp/current.vim if it exist (alias `v` to vim/nvim)
 function v() {
-if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
-    nvim -S tmp/current.vim
+  if type nvim >/dev/null 2>&1; then
+    # neovim
+    if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
+      nvim -S tmp/current.vim
+    else
+      nvim "$@"
+    fi
   else
-    nvim "$@"
+    # vim (without support for tmp/current.vim)
+    vim "$@"
   fi
 }
 
