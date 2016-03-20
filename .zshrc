@@ -154,9 +154,9 @@ if [[ -x `which htop` ]]; then alias top="htop"; fi
 # vim - load tmp/current.vim if it exist and no params to vim are passed (aka vim is aliased to v)
 function v() {
 if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
-    vim -S tmp/current.vim
+    nvim -S tmp/current.vim
   else
-    vim "$@"
+    nvim "$@"
   fi
 }
 
