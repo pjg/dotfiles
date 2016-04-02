@@ -170,6 +170,9 @@ if [[ -x `which ack-grep` ]]; then alias ack='ack-grep'; fi
 # diff
 if [[ -x `which colordiff` ]]; then alias diff='colordiff -u'; fi
 
+# find
+function ff { find . | grep -i "$1" }
+
 # misc
 alias _='sudo'
 alias mc='mc -cu'
