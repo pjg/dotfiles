@@ -107,10 +107,8 @@ alias rmorig='git status --short | grep "??" | cut -d " " -f 2 | xargs rm'
 
 # uses git blame to calculate code ownership (source: http://stackoverflow.com/questions/4589731/git-blame-statistics)
 function fame {
-  git ls-tree -r HEAD | cut -f 2 | grep -E '\.(cc|h|cpp|hpp|c|py|coffee|rb)$' \
-    | xargs -n1 git blame --line-porcelain \
-    | grep -Pzo "author [^\n]*\n([^\n]*\n){10}[\w]*[^\w]" | grep "author " \
-    | sort | uniq -c | sort -nr
+  git ls-tree -r -z --name-only HEAD | xargs -0 -n1 git blame --line-porcelain HEAD \
+    | grep "^author " | sort | uniq -c | sort -nr
 }
 
 # cd
