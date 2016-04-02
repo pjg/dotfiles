@@ -173,6 +173,9 @@ if [[ -x `which colordiff` ]]; then alias diff='colordiff -u'; fi
 # find
 function ff { find . | grep -i "$1" }
 
+# Rails application update
+alias pull='git pull; bundle; rake db:migrate; git checkout -- db/schema.rb; touch tmp/restart.txt'
+
 # misc
 alias _='sudo'
 alias mc='mc -cu'
