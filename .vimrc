@@ -483,7 +483,7 @@ let g:rails_gem_projections = {
     \   "capybara": {
     \     "spec/features/*_spec.rb": {
     \       "command":   "feature",
-    \       "template":  "require 'spec_helper'\n\nfeature '{underscore|capitalize|blank}' do\n\nend"
+    \       "template":  "feature '{underscore|capitalize|blank}' do\n\nend"
     \     }
     \   },
     \   "activeadmin": {
