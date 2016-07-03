@@ -95,3 +95,6 @@
   # The name and e-mail address will be used to identify you in the commits
   name = "Paweł Gościcki"
   email = pawel.goscicki@gmail.com
+
+[commit]
+  verbose = true
