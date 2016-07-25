@@ -530,8 +530,8 @@ esac
 # [zsh-git-prompt] location
 export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-olivierverdier-SLASH-zsh-git-prompt.git/
 
-# use Haskell's version of zsh-git-prompt (if it is available)
-if [[ -f $__GIT_PROMPT_DIR/dist/build/gitstatus/gitstatus ]]; then GIT_PROMPT_EXECUTABLE="haskell"; fi
+# use Haskell's version of zsh-git-prompt (if available)
+if [[ -f $__GIT_PROMPT_DIR/src/.bin/gitstatus ]]; then GIT_PROMPT_EXECUTABLE="haskell"; fi
 
 # result of last command displays either a happy or sad face as the prompt
 smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
