@@ -10,7 +10,6 @@ source ~/.zsh/antigen/antigen.zsh
 antigen-bundle olivierverdier/zsh-git-prompt
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-completions
-antigen-bundle Peeja/ctrl-zsh
 antigen-bundle pjg/zsh-vim-plugin
 
 # load the plugins
@@ -522,6 +521,19 @@ case "$TERM" in
     bindkey -M vicmd '\e[6~' history-beginning-search-forward  # PageDown
   ;;
 esac
+
+# Fancy ctrl+z
+function fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    fg
+    zle redisplay
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
 
 
 
