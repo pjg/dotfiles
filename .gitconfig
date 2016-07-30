@@ -14,6 +14,7 @@
   d = diff
   dc = diff --cached
   g = grep
+  i = init
   l = log -10 --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
   ll = log --date=relative --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%an, %ad)%Creset'
   m = merge
@@ -25,6 +26,8 @@
   rba = rebase --abort
   rbc = rebase --continue
   rbi = rebase --interactive
+  rbi2 = rebase --interactive HEAD~2
+  rbi3 = rebase --interactive HEAD~3
   rbi5 = rebase --interactive HEAD~5
   rbi10 = rebase --interactive HEAD~10
   rbi20 = rebase --interactive HEAD~20
