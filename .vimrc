@@ -126,8 +126,7 @@ set ignorecase smartcase
 " always display current cursor position
 set ruler
 
-" make it obvious where 80 characters is
-set textwidth=80
+" make it obvious where the textwidth is
 set colorcolumn=+1
 
 " display incomplete commands
@@ -336,15 +335,15 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 0
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
+" set 80 columns only for some file types (Ruby)
+autocmd FileType * setlocal textwidth=0
+autocmd FileType ruby,eruby setlocal textwidth=80
+autocmd FileType gitcommit setlocal textwidth=72
+
 " do not auto-indent HTML-like files
 autocmd BufEnter *.html setlocal indentexpr=
 autocmd BufEnter *.htm setlocal indentexpr=
 autocmd BufEnter *.html.erb setlocal indentexpr=
-
-" do not force 80 columns for some files
-autocmd BufEnter *.txt setlocal textwidth=0
-autocmd BufEnter *.html setlocal textwidth=0
-autocmd BufEnter *.slim setlocal textwidth=0
 
 " YAML files read as Ruby
 augroup filetypedetect
