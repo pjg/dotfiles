@@ -69,10 +69,6 @@ fpath=(~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-z
 autoload -U colors
 colors
 
-# colored grep
-export GREP_COLOR='31'
-export GREP_OPTIONS='--color=auto'
-
 # colored ls (one version for GNU, other for Mac OS X)
 if whence dircolors > /dev/null; then
   eval "`dircolors -b`"
@@ -103,6 +99,9 @@ alias gs='git s'
 alias gl='git l'
 alias wtf='git wtf'
 alias rmorig='git status --short | grep "??" | cut -d " " -f 2 | xargs rm'
+
+# grep
+alias grep='grep --color=auto'
 
 # uses git blame to calculate code ownership (source: http://stackoverflow.com/questions/4589731/git-blame-statistics)
 function fame {
