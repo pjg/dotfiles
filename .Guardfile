@@ -18,6 +18,8 @@ end
 
 if Gem::Specification.find_all_by_name('guard-livereload').any?
   guard 'livereload' do
+    watch(%r{.+\.html})
+    watch(%r{.+\.css})
     watch(%r{app/views/.+\.(erb|haml|slim)})
     watch(%r{app/helpers/.+\.rb})
     watch(%r{public/.+\.(css|js|html)})
