@@ -1,4 +1,9 @@
 ---
 BUNDLE_PATH: ".bundle"
 BUNDLE_BIN: ".bundle/bin"
-BUNDLE_JOBS: '4'
+BUNDLE_JOBS: "4"
+BUNDLE_GEM__COC: "false"
+BUNDLE_GEM__MIT: "false"
+BUNDLE_GEM__TEST: "rspec"
+BUNDLE_DISABLE_SHARED_GEMS: "true"
+BUNDLE_GITHUB__HTTPS: "true"
