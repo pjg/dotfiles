@@ -176,7 +176,7 @@ alias pull='git pull; bundle; rake db:migrate; git checkout -- db/schema.rb; tou
 
 # misc
 alias _='sudo'
-alias mc='mc -cu'
+alias mc='LANG=en_EN.UTF-8 mc -cu'
 alias tmux='TERM=screen-256color tmux'
 
 
