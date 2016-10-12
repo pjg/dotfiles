@@ -1,8 +1,8 @@
 " Beautiful256 - a vim 256 colors scheme
 " Based on Beauty256 by Mahmoud Sahebi Afzal
 " Maintainer: Paweł Gościcki <pawel.goscicki@gmail.com>
-" Last Change: 16 February 2013
-" Version: 0.4
+" Last Change: 11 October 2016
+" Version: 0.5
 
 " check for t_Co
 if &t_Co != 256 && ! has("gui_running")
@@ -23,7 +23,7 @@ endif
 let colors_name = 'beautiful256'
 
 " setting ctermbg=NONE results in a transparent-like background (it will be set to your terminal's background color)
-hi Normal gui=NONE guifg=Black guibg=#fffbf0 ctermfg=0 ctermbg=NONE
+hi Normal gui=NONE guifg=Black guibg=#fff7eb ctermfg=0 ctermbg=NONE
 
 hi Cursor guifg=White guibg=Black ctermfg=231 ctermbg=16
 hi LineNr guifg=#808080 ctermfg=244
