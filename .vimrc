@@ -33,6 +33,8 @@ Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'othree/html5.vim'
 
 " Ruby related
 Plugin 'ecomba/vim-ruby-refactoring'
