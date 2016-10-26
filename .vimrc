@@ -359,13 +359,11 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Gu
 " explicitly set filetype to slim for slim view files (not sure why it's needed...)
 au BufRead,BufNewFile {*.html.slim} set filetype=slim
 
-" 4 spaces for TAB in CSS files
-autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
-
-" 2 spaces for TAB in JS files
-autocmd User Rails/**/*.js set softtabstop=2
-autocmd User Rails/**/*.js set tabstop=2
-autocmd User Rails/**/*.js set shiftwidth=2
+" 2 spaces for TAB in JS/CSS/HTML files
+autocmd BufEnter *.css setlocal softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufEnter *.html setlocal softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufEnter *.htm setlocal softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufEnter *.js setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
 " set various characters to be treated as a part of words
 autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee setlocal iskeyword+=-,$,#
