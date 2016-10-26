@@ -9,81 +9,81 @@ call vundle#rc()
 " VUNDLES
 
 " let vundle manage vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " file navigation/management
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-vinegar'
-Bundle 'pbrisbin/vim-mkdir'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-vinegar'
+Plugin 'pbrisbin/vim-mkdir'
 
 " git related
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
 
 " additional syntax files
-Bundle 'Keithbsmiley/rspec.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mmalecki/vim-node.js'
-Bundle 'posva/vim-vue'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'heartsentwined/vim-emblem'
-Bundle 'pangloss/vim-javascript'
-Bundle 'slim-template/vim-slim'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'Keithbsmiley/rspec.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mmalecki/vim-node.js'
+Plugin 'posva/vim-vue'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'heartsentwined/vim-emblem'
+Plugin 'pangloss/vim-javascript'
+Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " Ruby related
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
+Plugin 'ecomba/vim-ruby-refactoring'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
 
 " text objects
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'bootleq/vim-textobj-rubysymbol'
-Bundle 'michaeljsmith/vim-indent-object'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'bootleq/vim-textobj-rubysymbol'
+Plugin 'michaeljsmith/vim-indent-object'
 
 " code completion
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " searching
-Bundle 'rking/ag.vim'
-Bundle 'nelstrom/vim-visual-star-search'
+Plugin 'rking/ag.vim'
+Plugin 'nelstrom/vim-visual-star-search'
 
 " general text-editing improvements
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'godlygeek/tabular'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'itspriddle/vim-stripper'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'godlygeek/tabular'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'itspriddle/vim-stripper'
 
 " general vim improvements
-Bundle 'edsono/vim-matchit'
-Bundle 'omh/Kwbd.vim'
-Bundle 'sickill/vim-pasta'
-Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'justinmk/vim-sneak'
-Bundle 'nelstrom/vim-qargs'
+Plugin 'edsono/vim-matchit'
+Plugin 'omh/Kwbd.vim'
+Plugin 'sickill/vim-pasta'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'justinmk/vim-sneak'
+Plugin 'nelstrom/vim-qargs'
 
 " statusline (and related)
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
 
 " external applications
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
 
 
 
