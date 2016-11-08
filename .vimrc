@@ -341,9 +341,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 0
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-" set 80 columns only for some file types (Ruby)
+" set 80 columns only for some file types
 autocmd FileType * setlocal textwidth=0
-autocmd FileType ruby,eruby setlocal textwidth=80
+autocmd FileType ruby,eruby,javascript,vue,css,scss setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
 
 " do not auto-indent HTML-like files
