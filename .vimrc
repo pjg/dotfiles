@@ -674,6 +674,7 @@ abbreviate taht that
 abbreviate teh the
 abbreviate tewak tweak
 abbreviate upadting updating
+abbreviate coudln couldn
 
 " Rails specific
 abbreviate bpr binding.pry;
