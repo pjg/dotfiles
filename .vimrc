@@ -64,7 +64,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'itspriddle/vim-stripper'
 
 " general vim improvements
-Plugin 'edsono/vim-matchit'
+Plugin 'adelarsq/vim-matchit'
 Plugin 'omh/Kwbd.vim'
 Plugin 'sickill/vim-pasta'
 Plugin 'sjl/gundo.vim'
