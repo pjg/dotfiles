@@ -47,11 +47,9 @@ setopt nohup
 
 # LOCALE
 
-# set some locale settings to en_US if they are set to pl_PL (Mac OS X tends to set all locales to pl_PL if you set your language as Polish in preferences)
-export LANG=${LANG/pl_PL/en_US}
-export LC_CTYPE=${LC_CTYPE/pl_PL/en_US}
-export LC_COLLATE=${LC_COLLATE/pl_PL/en_US}
-export LC_MESSAGES=${LC_MESSAGES/pl_PL/en_US}
+# ensure we have correct locale set (this is mostly for MacOS)
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 
 
