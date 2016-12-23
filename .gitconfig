@@ -19,6 +19,7 @@
   ll = log --date=relative --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%an, %ad)%Creset'
   m = merge
   p = push
+  patch = --no-pager diff --no-color
   pf = push -f
   pl = pull
   r = remote
