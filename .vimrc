@@ -306,6 +306,17 @@ augroup NoSimultaneousEdits
   autocmd SwapExists * sleep 1
 augroup END
 
+" netrw configuration sort files case insensitive
+let g:netrw_sort_options = "i"
+
+" netrw 1 level of dir history (more performance)
+let g:netrw_dirhistmax = 1
+
+" fast directory browsing
+let g:netrw_fastbrowse = 2
+
+" tree style listing
+let g:netrw_liststyle = 3
 
 
 " SYNTAX HIGHLIGHTING
