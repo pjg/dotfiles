@@ -318,6 +318,10 @@ let g:netrw_fastbrowse = 2
 " tree style listing
 let g:netrw_liststyle = 3
 
+" add path for tags created by git hooks
+set tags+=.git/tags
+
+
 
 " SYNTAX HIGHLIGHTING
 
