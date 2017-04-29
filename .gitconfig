@@ -52,6 +52,9 @@
   branch = auto
   ui = auto
 
+[commit]
+  verbose = true
+
 [core]
   # For dealing with Windows projects
   autocrlf = false
@@ -69,10 +72,6 @@
   # git-contrib) or custom `diff-so-fancy` (if available)
   pager = "if type diff-so-fancy >/dev/null 2>&1; then diff-so-fancy | less --tabs=4 -RFX; else diff-highlight | less -r; fi"
 
-[init]
-  # Default git hooks (will be copied over to each newly cloned repo)
-  templatedir = ~/.git_template
-
 [diff]
   # Detect renames of files
   renames = true
@@ -80,6 +79,10 @@
 [grep]
   lineNumber = true
   extendedRegexp = true
+
+[init]
+  # Default git hooks (will be copied over to each newly cloned repo)
+  templatedir = ~/.git_template
 
 [merge]
   tool = vimdiff
@@ -96,6 +99,3 @@
   # The name and e-mail address will be used to identify you in the commits
   name = "Paweł Gościcki"
   email = pawel.goscicki@gmail.com
-
-[commit]
-  verbose = true
