@@ -38,6 +38,7 @@
   s = status -sb
   scoreboard = shortlog -sn
   st = status
+  stash-all = stash save --include-untracked
   t = tag
   undo = reset --soft HEAD^
   wc = whatchanged -p
@@ -85,15 +86,21 @@
   templatedir = ~/.git_template
 
 [merge]
+  conflictstyle = diff3
   tool = vimdiff
 
 [push]
-  # Push current branch even if you've never pushed it before
-  default = current
+  # Push to origin/upstream with branch-name checking
+  default = simple
+  followTags = true
 
 [rebase]
   # will add --autosquash setting to rebases
   autosquash = true
+
+[transfer]
+  # do some extra checks when receiving or sending changes
+  fsckobjects = true
 
 [user]
   # The name and e-mail address will be used to identify you in the commits
