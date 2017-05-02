@@ -85,6 +85,11 @@
   # Default git hooks (will be copied over to each newly cloned repo)
   templatedir = ~/.git_template
 
+[filter "media"]
+  # Handle large media files in Git without storing the media in Git itself
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+
 [merge]
   conflictstyle = diff3
   tool = vimdiff
