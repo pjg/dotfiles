@@ -384,7 +384,7 @@ autocmd BufEnter *.htm setlocal softtabstop=2 tabstop=2 shiftwidth=2
 autocmd BufEnter *.js setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
 " set various characters to be treated as a part of words
-autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee setlocal iskeyword+=-,$,#
+autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee,yaml setlocal iskeyword+=-,$,#
 
 
 
