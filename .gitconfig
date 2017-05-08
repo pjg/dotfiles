@@ -95,8 +95,8 @@
   tool = vimdiff
 
 [push]
-  # Push to origin/upstream with branch-name checking
-  default = simple
+  # Push current branch even if you've never pushed it before
+  default = current
   followTags = true
 
 [rebase]
