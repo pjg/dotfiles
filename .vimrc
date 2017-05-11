@@ -629,7 +629,12 @@ let g:rails_gem_projections = {
     \       "command":   "jspec",
     \       "alternate": "app/assets/javascripts/{}.coffee"
     \     }
-    \   }
+    \   },
+    \   "whenever": {
+    \     "config/schedule.rb": {
+    \       "command":   "schedule"
+    \     }
+    \   },
     \ }
 
 " [vim-gitgutter] always show sign column (by adding a dummy sign)
