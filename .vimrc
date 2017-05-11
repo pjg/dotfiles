@@ -511,6 +511,11 @@ let g:rails_gem_projections = {
     \       "command":   "settings"
     \     }
     \   },
+    \   "capistrano": {
+    \     "config/deploy.rb": {
+    \       "command":   "deploy"
+    \     }
+    \   },
     \   "capybara": {
     \     "spec/features/*_spec.rb": {
     \       "command":   "feature",
