@@ -461,6 +461,12 @@ let g:rails_projections = {
     \     "test":      "spec/services/{}_spec.rb",
     \     "template":  "class {camelcase|capitalize|colons}\nend"
     \   },
+    \   "app/system/*.rb": {
+    \     "command":   "system",
+    \     "affinity":  "collection",
+    \     "test":      "spec/system/{}_spec.rb",
+    \     "template":  "class {camelcase|capitalize|colons}\nend"
+    \   },
     \   "app/gateways/*.rb": {
     \     "command":   "gateway",
     \     "affinity":  "collection",
