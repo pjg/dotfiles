@@ -14,10 +14,12 @@
   d = diff
   dc = diff --cached
   g = grep
+  graph = log --graph --all --decorate --stat --date=iso
   i = init
   l = log -10 --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
-  ll = log --date=relative --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%an, %ad)%Creset'
   m = merge
+  o = overview
+  overview = log --all --no-merges --oneline -10 --date=relative --pretty=format:'%Cred%h%Creset%Cblue%d%Creset %s %Cgreen(%an, %ad)%Creset'
   p = push
   patch = --no-pager diff --no-color
   pf = push -f
@@ -33,6 +35,7 @@
   rbi10 = rebase --interactive HEAD~10
   rbi20 = rebase --interactive HEAD~20
   rbs = rebase --skip
+  recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
   ru = remote update
   sh = show
   s = status -sb
@@ -41,6 +44,7 @@
   stash-all = stash save --include-untracked
   t = tag
   undo = reset --soft HEAD^
+  upstream = l HEAD..origin
   wc = whatchanged -p
 
 [branch]
