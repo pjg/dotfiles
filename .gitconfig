@@ -98,6 +98,10 @@
   conflictstyle = diff3
   tool = vimdiff
 
+[pull]
+  # always rebase local changes on pulls
+  rebase = true
+
 [push]
   # Push current branch even if you've never pushed it before
   default = current
