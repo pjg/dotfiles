@@ -7,13 +7,13 @@ export ADOTDIR=~/.zsh
 source ~/.zsh/antigen/antigen.zsh
 
 # define the plugins
-antigen-bundle olivierverdier/zsh-git-prompt
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zsh-completions
-antigen-bundle pjg/zsh-vim-plugin
+antigen bundle olivierverdier/zsh-git-prompt
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle pjg/zsh-vim-plugin
 
 # load the plugins
-antigen-apply
+antigen apply
 
 
 
@@ -58,7 +58,7 @@ export LANG=en_US.UTF-8
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 
 # fpath (for zsh-completions)
-fpath=(~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
+fpath=(~/.zsh/bundles/olivierverdier/zsh-git-prompt/src $fpath)
 
 
 # COLORS
@@ -537,7 +537,7 @@ bindkey '^Z' fancy-ctrl-z
 # PROMPT
 
 # [zsh-git-prompt] location
-export __GIT_PROMPT_DIR=~/.zsh/repos/https-COLON--SLASH--SLASH-github.com-SLASH-olivierverdier-SLASH-zsh-git-prompt.git/
+export __GIT_PROMPT_DIR=~/.zsh/bundles/olivierverdier/zsh-git-prompt
 
 # use Haskell's version of zsh-git-prompt (if available)
 if [[ -f $__GIT_PROMPT_DIR/src/.bin/gitstatus ]]; then GIT_PROMPT_EXECUTABLE="haskell"; fi
