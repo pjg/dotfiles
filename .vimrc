@@ -769,14 +769,7 @@ vnoremap <c-e> 3<c-e>3j
 vnoremap <c-y> 3<c-y>3k
 
 " move faster between windows
-" [neovim] workaround for issue #2048
-" https://github.com/neovim/neovim/issues/2048
-if has('nvim')
-  nmap <BS> <c-w>h
-else
-  nmap <c-h> <c-w>h
-endif
-
+nmap <c-h> <c-w>h
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
