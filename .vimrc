@@ -669,7 +669,7 @@ let g:ycm_seed_identifiers_with_syntax = 0
 let g:ycm_allow_changing_updatetime = 0
 
 " [YouCompleteMe] show completion popup menu only when this number of chars is entered
-let g:ycm_min_num_identifier_candidate_chars = 0
+let g:ycm_min_num_identifier_candidate_chars = 2
 
 " [rainbow_parentheses.vim]
 au VimEnter * RainbowParenthesesToggle
