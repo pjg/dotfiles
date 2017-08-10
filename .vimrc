@@ -147,6 +147,9 @@ set t_Co=256
 " colorscheme
 colorscheme beautiful256
 
+" enable 24-bit colors in the terminal
+set termguicolors
+
 " GUI settings (gvim)
 if has("gui_running")
   " encoding
