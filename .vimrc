@@ -1001,6 +1001,9 @@ noremap <leader>c <C-w>c
 " adjust viewports to the same size
 map <leader>= <C-w>=
 
+" make current window max height
+noremap <leader>- <C-w>_
+
 " underline the current line
 nmap <silent> <leader>1 :t.<CR>Vr-
 nmap <silent> <leader>2 :t.<CR>Vr=
