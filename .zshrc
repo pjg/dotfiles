@@ -93,6 +93,7 @@ alias sl=ls
 # git
 alias g='git'
 alias gd='git d'
+alias gg='git g'
 alias gs='git s'
 alias gl='git l'
 alias wtf='git wtf'
