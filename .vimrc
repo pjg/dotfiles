@@ -965,6 +965,9 @@ map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>h :CtrlPMRU<cr>
 
+" delete current buffer
+map <leader>d :bdelete<cr>
+
 " quit current buffer
 map <leader>q :q<cr>
 
