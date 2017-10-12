@@ -750,7 +750,7 @@ map <F8> :syntax sync fromstart<cr>:nohlsearch<cr>:GitGutter<cr>:redrawstatus!<c
 imap <F8> <esc><F8>
 vmap <F8> <esc><F8>
 
-" <F10> to close current buffer but don't close the window (Kwbd.vim)
+" close current buffer but don't close the window (Kwbd.vim)
 nmap <F10> :Kwbd<cr>
 
 " <F11> to toggle the paste mode (when vim either adds or not spaces in the front of lines)
@@ -965,11 +965,11 @@ map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>h :CtrlPMRU<cr>
 
-" delete current buffer
-map <leader>d :bdelete<cr>
+" close current buffer but don't close the window (Kwbd.vim)
+nmap <leader>q :Kwbd<cr>
 
-" quit current buffer
-map <leader>q :q<cr>
+" quit
+nmap <leader>Q :q<cr>
 
 " save file
 map <leader>w :w<cr>
