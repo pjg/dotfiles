@@ -976,11 +976,11 @@ map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>h :CtrlPMRU<cr>
 
-" close current buffer but don't close the window (Kwbd.vim)
-nmap <leader>q :Kwbd<cr>
+" delete current buffer
+noremap <leader>c :bdelete<cr>
 
 " quit
-nmap <leader>Q :q<cr>
+nmap <leader>q :q<cr>
 
 " save file
 map <leader>w :w<cr>
@@ -1008,9 +1008,6 @@ noremap <leader>v <C-w>v
 
 " SudoWrite
 noremap <leader>S :SudoWrite<cr>
-
-" window close
-noremap <leader>c <C-w>c
 
 " adjust viewports to the same size
 map <leader>= <C-w>=
