@@ -35,6 +35,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'othree/html5.vim'
+Plugin 'elixir-editors/vim-elixir'
 
 " Ruby related
 Plugin 'ecomba/vim-ruby-refactoring'
