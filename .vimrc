@@ -875,12 +875,6 @@ function! s:NextTextObject(motion, dir)
   exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
 
-" VimR workaround for <c-6>
-" https://github.com/qvacua/vimr/issues/492
-if has("gui_vimr")
-  nnoremap <c-6> <c-^>
-endif
-
 
 " INSERT MODE KEY MAPPINGS
 
