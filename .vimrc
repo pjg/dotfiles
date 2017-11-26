@@ -78,6 +78,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'justinmk/vim-sneak'
 Plugin 'nelstrom/vim-qargs'
+Plugin 'lambdalisue/suda.vim'
 
 " statusline (and related)
 Plugin 'vim-airline/vim-airline'
@@ -981,7 +982,12 @@ nmap <leader>q :q<cr>
 map <leader>w :w<cr>
 
 " Sudo save file
-map <leader>W :SudoWrite<cr>
+if has("gui_vimr")
+  " suda.vim plugin
+  map <leader>W :w suda://%<cr>
+elseif has("unix")
+  map <leader>W :SudoWrite<cr>
+endif
 
 " [vim-rails] Rake
 map <leader>rr :.Rake<cr>
