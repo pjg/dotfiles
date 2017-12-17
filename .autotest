@@ -1,9 +1,0 @@
-# always run autotest as 'bundle exec'
-require "autotest/bundler"
-
-# add integration/ specs
-Autotest.add_hook :initialize do |autotest|
-  autotest.add_mapping(/^spec\/integration\/.*_spec\.rb$/) do
-    autotest.files_matching(/^spec\/integration\/.*_spec\.rb$/)
-  end
-end
