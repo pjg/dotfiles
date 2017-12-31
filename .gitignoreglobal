@@ -10,6 +10,9 @@
 doc/tags
 tags
 
+# Random local stuff for various projects
+PLAYGROUND
+
 # Eclim's project files
 .classpath
 .buildpath
