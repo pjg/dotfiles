@@ -81,6 +81,10 @@
   # Detect renames of files
   renames = true
 
+[fetch]
+  # Disable fsck when pulling (some repos like rails have errors in them)
+  fsckobjects = false
+
 [grep]
   lineNumber = true
   extendedRegexp = true
@@ -112,7 +116,7 @@
   autosquash = true
 
 [transfer]
-  # do some extra checks when receiving or sending changes
+  # do some extra checks when sending local changes
   fsckobjects = true
 
 [user]
