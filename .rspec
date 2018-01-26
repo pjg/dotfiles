@@ -1,1 +1,3 @@
---color --format documentation --profile 5
+--color
+--format documentation
+--profile 5
