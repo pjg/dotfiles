@@ -97,7 +97,7 @@ alias gg='git g'
 alias gs='git s'
 alias gl='git l'
 alias wtf='git wtf'
-alias rmorig='git status --short | grep "??" | grep "orig" | cut -d " " -f 2 | xargs rm'
+alias rmorig='git status --short | grep "??" | grep "\.orig$" | cut -d " " -f 2 | xargs rm'
 
 # grep
 alias grep='grep --color=auto'
