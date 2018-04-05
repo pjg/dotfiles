@@ -467,6 +467,12 @@ let g:rails_projections = {
     \     "test":      "spec/services/{}_spec.rb",
     \     "template":  "class {camelcase|capitalize|colons}\nend"
     \   },
+    \   "app/core/*.rb": {
+    \     "command":   "core",
+    \     "affinity":  "collection",
+    \     "test":      "spec/core/{}_spec.rb",
+    \     "template":  "class {camelcase|capitalize|colons}\nend"
+    \   },
     \   "app/system/*.rb": {
     \     "command":   "system",
     \     "affinity":  "collection",
@@ -498,6 +504,26 @@ let g:rails_projections = {
 
 " [vim-rails] gem projections - typing `:Efactory users` will open the users factory, etc.
 let g:rails_gem_projections = {
+    \   "factory_bot": {
+    \     "test/factories/*.rb": {
+    \       "command":   "factory",
+    \       "affinity":  "collection",
+    \       "alternate": "app/models/{singular}.rb",
+    \       "related":   "db/schema.rb#{}",
+    \       "test":      "test/models/{singular}_test.rb",
+    \       "template":  "FactoryBot.define do\n  factory :{singular} do\n  end\nend",
+    \       "keywords":  "factory sequence"
+    \     },
+    \     "spec/factories/*.rb": {
+    \       "command":   "factory",
+    \       "affinity":  "collection",
+    \       "alternate": "app/models/{singular}.rb",
+    \       "related":   "db/schema.rb#{}",
+    \       "test":      "spec/models/{singular}_test.rb",
+    \       "template":  "FactoryBot.define do\n  factory :{singular} do\n  end\nend",
+    \       "keywords":  "factory sequence"
+    \     }
+    \   },
     \   "factory_girl": {
     \     "test/factories/*.rb": {
     \       "command":   "factory",
