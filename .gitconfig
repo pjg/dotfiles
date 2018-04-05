@@ -11,8 +11,10 @@
   co = checkout
   compare = log --left-right --graph --cherry-pick --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
   count = shortlog -sn
+  cp = cherry-pick
   d = diff
   dc = diff --cached
+  f = fetch
   g = grep
   graph = log --graph --all --decorate --stat --date=iso
   i = init
