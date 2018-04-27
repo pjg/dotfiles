@@ -449,15 +449,47 @@ let g:ctrlp_switch_buffer = '0'
 au BufReadPost fugitive://* set bufhidden=delete
 
 " [vim-rails] custom commands
+command! Ecircle edit .circleci/config.yml
+command! -nargs=1 -complete=custom,s:CompleteRailsControllers Econtroller call s:Econtroller(<q-args>)
 command! Egemfile edit Gemfile
 command! Ejroutes Ejinitializer
+command! -nargs=1 -complete=custom,s:CompleteRailsModels Emodel call s:Emodel(<q-args>)
 command! Eprocfile edit Procfile
 command! Erailshelper edit spec/rails_helper.rb
 command! Ereadme edit README.md
-command! Eroutes Einitializer
+command! Eroutes edit config/routes.rb
+command! Eschema edit db/schema.rb
 command! Esecrets edit config/secrets.yml
 command! Eseeds edit db/seeds.rb
 command! Espechelper edit spec/spec_helper.rb
+
+function! s:CompleteRailsControllers(A, L, P)
+  let names = []
+  for file in split(glob('app/controllers/**/*_controller.rb'), "\n")
+    let name = fnamemodify(file, ':t:r')
+    call add(names, name)
+  endfor
+  return join(names, "\n")
+endfunction
+
+function! s:CompleteRailsModels(A, L, P)
+  let names = []
+  for file in split(glob('app/models/**/*.rb'), "\n")
+    let name = fnamemodify(file, ':t:r')
+    call add(names, name)
+  endfor
+  return join(names, "\n")
+endfunction
+
+function! s:Econtroller(controller_name)
+  let controller_name = rails#pluralize(rails#underscore(a:controller_name))
+  exe 'edit app/controllers/'.controller_name.'_controller.rb'
+endfunction
+
+function! s:Emodel(model_name)
+  let model_name = rails#singularize(rails#underscore(a:model_name))
+  exe 'edit app/models/'.model_name.'.rb'
+endfunction
 
 " [vim-rails] Rails projections - typing `:Eservice accept_bid` will open /app/services/accept_bid.rb, etc.
 let g:rails_projections = {
