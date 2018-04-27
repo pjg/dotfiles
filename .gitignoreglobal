@@ -9,6 +9,7 @@
 .vim/tmp
 doc/tags
 tags
+NetrwTreeListing*
 
 # Random local stuff for various projects
 PLAYGROUND
