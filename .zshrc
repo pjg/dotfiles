@@ -23,8 +23,8 @@ antigen apply
 umask 022
 
 # editor/visual/pager
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export PAGER=less
 
 # zsh will not beep
