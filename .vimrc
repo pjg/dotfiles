@@ -864,7 +864,7 @@ vnoremap g0 0
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " gw to swap the current word with the one next to it
-nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>''
+nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>'':nohlsearch<cr>
 
 " CTRL+s always saves file
 nmap <c-s> :w<cr>
