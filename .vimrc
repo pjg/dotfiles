@@ -86,10 +86,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 
-" external applications
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'rizzatti/dash.vim'
-
 
 
 " BASIC SETTINGS
