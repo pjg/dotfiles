@@ -15,6 +15,11 @@ antigen bundle pjg/zsh-vim-plugin
 # load the plugins
 antigen apply
 
+# Returns whether the given command is executable or aliased.
+_has() {
+  return $( whence $1 >/dev/null )
+}
+
 
 
 # BASICS
@@ -172,6 +177,11 @@ function ff { find . | grep -i "$1" }
 
 # Rails application update
 alias pull='git pull; bundle; rake db:migrate; git checkout -- db/schema.rb; touch tmp/restart.txt'
+
+# FZF
+if _has fzf && _has ag; then
+  export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
+fi
 
 # misc
 alias _='sudo'

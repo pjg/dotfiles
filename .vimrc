@@ -11,8 +11,11 @@ call vundle#rc()
 " let vundle manage vundle
 Plugin 'gmarik/vundle'
 
+" file finder
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
+
 " file navigation/management
-Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-vinegar'
 Plugin 'pbrisbin/vim-mkdir'
@@ -410,12 +413,6 @@ autocmd BufReadPost *
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
 
 " [autoclose.vim]
@@ -431,16 +428,8 @@ inoremap <M-o> <Esc>o
 inoremap <C-j> <Down>
 let g:ragtag_global_maps = 1
 
-" [ctrlp.vim]
-let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/.ctrlp_cache'
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\/tmp',
-  \ 'file': '\/public/stylesheets/.*css$'
-  \ }
-
-" don't jump to an open buffer
-let g:ctrlp_switch_buffer = '0'
+" [fzf.vim]
+let g:fzf_buffers_jump = 0
 
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
@@ -763,11 +752,6 @@ map <F4> :set wrap!<cr>
 imap <F4> <esc><F4>
 vmap <F4> <esc><F4>
 
-" <F5> to flush CtrlP cache
-map <F5> :ClearCtrlPCache<cr>
-imap <F5> <esc><F5>
-vmap <F5> <esc><F5>
-
 " <F6> for gundo.vim
 nmap <F6> :GundoToggle<cr><cr>
 imap <F6> <esc>:GundoToggle<cr><cr>
@@ -992,10 +976,10 @@ nmap <leader>gr :Gremove!<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gwrite<cr>
 
-" ctrlp.vim
-map <leader>t :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
-map <leader>h :CtrlPMRU<cr>
+" fzf.vim
+map <leader>t :Files<cr>
+map <leader>b :Buffers<cr>
+map <leader>h :History<cr>
 
 " delete current buffer
 noremap <leader>c :bdelete<cr>
