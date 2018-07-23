@@ -65,7 +65,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'godlygeek/tabular'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
 Plugin 'itspriddle/vim-stripper'
 
 " general vim improvements
