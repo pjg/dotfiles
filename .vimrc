@@ -52,6 +52,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'bootleq/vim-textobj-rubysymbol'
 Plugin 'michaeljsmith/vim-indent-object'
+Bundle 'wellle/targets.vim'
 
 " code completion
 Plugin 'Valloric/YouCompleteMe'
@@ -844,17 +845,6 @@ nnoremap <right> :cnext<cr>zvzz
 nnoremap <up> :lprev<cr>zvzz
 nnoremap <down> :lnext<cr>zvzz
 
-" Motions for next/last objects: 'din(' will go to next () pair and delete its contents. 'dil(' will go to previous ()
-onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-
-onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-
 " quickselect tabs with CMD + # (gvim only)
 nnoremap <D-1> :tabn 1<CR>
 nnoremap <D-2> :tabn 2<CR>
@@ -865,20 +855,6 @@ nnoremap <D-6> :tabn 6<CR>
 nnoremap <D-7> :tabn 7<CR>
 nnoremap <D-8> :tabn 8<CR>
 nnoremap <D-9> :tabn 9<CR>
-
-function! s:NextTextObject(motion, dir)
-  let c = nr2char(getchar())
-
-  if c ==# "b"
-    let c = "("
-  elseif c ==# "B"
-    let c = "{"
-  elseif c ==# "d"
-    let c = "["
-  endif
-
-  exe "normal! ".a:dir.c."v".a:motion.c
-endfunction
 
 
 " INSERT MODE KEY MAPPINGS
