@@ -24,22 +24,11 @@ Plugin 'pbrisbin/vim-mkdir'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
-" additional syntax files
-Plugin 'Keithbsmiley/rspec.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mmalecki/vim-node.js'
-Plugin 'posva/vim-vue'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'heartsentwined/vim-emblem'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'slim-template/vim-slim'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
+" syntax files
+Plugin 'sheerun/vim-polyglot'
+
+" parentheses coloring
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'othree/html5.vim'
-Plugin 'elixir-editors/vim-elixir'
 
 " Ruby related
 Plugin 'ecomba/vim-ruby-refactoring'
