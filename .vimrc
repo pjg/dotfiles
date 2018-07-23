@@ -326,9 +326,6 @@ syntax on
 " faster Ruby syntax highlighting
 let ruby_no_expensive=1
 
-" use the old Regexp engine (used by the syntax highlighting, for example) (this makes vim about 100x faster)
-set regexpengine=0
-
 " only highlight syntax up to this column (to make dealing with files with long Ruby lines faster)
 set synmaxcol=200
 
