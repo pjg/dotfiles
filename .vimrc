@@ -362,7 +362,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 0
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-" set 80 columns only for some file types
+" set fixed columns only for some file types
 autocmd FileType * setlocal textwidth=0
 autocmd FileType ruby,eruby,javascript,vue,css,scss setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
@@ -417,11 +417,6 @@ endif
 
 " [autoclose.vim]
 let g:AutoCloseProtectedRegions = ["Comment"]
-
-" [dash.vim]
-let g:dash_map = {
-  \ 'ruby' : 'rails'
-  \ }
 
 " [vim-ragtag]
 inoremap <M-o> <Esc>o
@@ -954,9 +949,6 @@ let localmapleader = "\\"
 
 " select all text in current buffer
 nmap <leader>a ggVG
-
-" run Dash (on MAC) to search for word under cursor
-nmap <silent> <leader>z <Plug>DashSearch
 
 " upper/lower word
 nmap <leader>u mQviwU'Q
