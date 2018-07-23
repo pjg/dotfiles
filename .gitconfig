@@ -102,7 +102,10 @@
 
 [merge]
   conflictstyle = diff3
-  tool = vimdiff
+  tool = vimdiff3
+
+[mergetool "vimdiff3"]
+  path = nvim
 
 [pull]
   # always rebase local changes on pulls
