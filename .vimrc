@@ -86,9 +86,8 @@ Plugin 'nelstrom/vim-qargs'
 Plugin 'lambdalisue/suda.vim'
 
 " statusline (and related)
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'itchyny/lightline.vim'
 
 
 
@@ -1024,33 +1023,52 @@ set laststatus=2
 " don't show mode text (which vim shows below the statusline)
 set noshowmode
 
-" [vim-airline] use Powerline fonts
-let g:airline_powerline_fonts = 1
+" [lightline.vim]
+fun! WhitespaceStatus() abort
+  let elements = []
 
-" [vim-airline] set theme to the one resembling vim-powerline
-let g:airline_theme = 'powerlineish'
+  " empty lines at the EOF
+  let s:contains_empty_lines = search('\v($\n\s*)+%$', 'nw')
 
-" [vim-airline] collapse inactive segments
-let g:airline_inactive_collapse = 1
+  " mixed indentation
+  if &expandtab
+    " If spaces are being used and we find a line starting with tab.
+    let s:contains_mixed_indent = search('\v(^( +)?\t+)', 'nw')
+  el
+    " We only check mixed indents (tabs + spaces)
+    let s:contains_mixed_indent = search('\v(^\t+ +)|(^ +\t+)', 'nw')
+  en
 
-" [vim-airline] shorter mixed indentation message
-let g:airline#extensions#whitespace#mixed_indent_format = 'indent[%s]'
+  " trailing whitespace
+  let s:contains_trailing_whitespaces = search('\v\s+$', 'nw')
 
-" [vim-airline] don't show gitgutter's changed hunks number
-let g:airline#extensions#hunks#enabled = 0
+  if s:contains_empty_lines > 0
+    let elements = elements + ['empty-lines' . ':' . s:contains_empty_lines]
+  en
 
-" [vim-airline] don't show git branch (with fugitive.vim)
-let g:airline#extensions#branch#enabled = 0
+  if s:contains_mixed_indent > 0
+    let elements = elements + ['mixed-indent' . ':' . s:contains_mixed_indent]
+  en
 
-" [vim-airline] patch 'powerlineish' colors
-let g:airline_theme_patch_func = 'AirlineThemePatch'
+  if s:contains_trailing_whitespaces > 0
+    let elements = elements + ['trailing' . ':' . s:contains_trailing_whitespaces]
+  en
 
-function! AirlineThemePatch(palette)
-  if g:airline_theme == 'powerlineish'
-    " set inactive colors to be a light grey text on dark grey background (so it's actually visible)
-    for colors in values(a:palette.inactive)
-      let colors[2] = 247
-      let colors[3] = 237
-    endfor
-  endif
-endfunction
+  return join(elements, ' ')
+endf
+
+let g:lightline = {
+  \   'colorscheme': 'wombat',
+  \   'active': {
+  \     'left': [['mode', 'paste'], ['filename', 'readonly', 'modified']],
+  \     'right': [['lineinfo'], ['percent'], ['whitespace_status'], ['fileformat', 'fileencoding', 'filetype']]
+  \   },
+  \   'component_expand': {
+  \     'whitespace_status': 'WhitespaceStatus'
+  \   },
+  \   'component_type': {
+  \     'whitespace_status': 'error'
+  \   }
+  \ }
+
+autocmd BufWritePost * call lightline#update()
