@@ -649,9 +649,9 @@ let g:signify_vcs_list = ['git']
 let g:signify_sign_delete = '-'
 
 " [vim-signify] custom highlighting
-highlight SignifySignAdd    guibg=none ctermbg=none ctermfg=46  guifg=#339933
-highlight SignifySignDelete guibg=none ctermbg=none ctermfg=196 guifg=#BB3333
-highlight SignifySignChange guibg=none ctermbg=none ctermfg=76  guifg=#BB9933
+highlight SignifySignAdd    guibg=NONE ctermbg=NONE ctermfg=46  guifg=#339933
+highlight SignifySignDelete guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
+highlight SignifySignChange guibg=NONE ctermbg=NONE ctermfg=76  guifg=#BB9933
 
 " [vim-signify] always show the sign column (by adding a dummy sign)
 function! ShowSignColumn()
