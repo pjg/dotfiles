@@ -1050,7 +1050,6 @@ fun! WhitespaceStatus() abort
 endf
 
 let g:lightline = {
-  \   'colorscheme': 'wombat',
   \   'active': {
   \     'left': [['mode', 'paste'], ['filename', 'readonly', 'modified']],
   \     'right': [['lineinfo'], ['percent'], ['whitespace_status'], ['fileformat', 'fileencoding', 'filetype']]
