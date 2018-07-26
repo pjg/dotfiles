@@ -1047,6 +1047,7 @@ fun! WhitespaceStatus() abort
 endf
 
 let g:lightline = {
+  \   'colorscheme': 'wombat',
   \   'active': {
   \     'left': [['mode', 'paste'], ['filename', 'readonly', 'modified']],
   \     'right': [['lineinfo'], ['percent'], ['whitespace_status'], ['fileformat', 'fileencoding', 'filetype']]
@@ -1055,8 +1056,18 @@ let g:lightline = {
   \     'whitespace_status': 'WhitespaceStatus'
   \   },
   \   'component_type': {
-  \     'whitespace_status': 'error'
+  \     'whitespace_status': 'warning'
   \   }
   \ }
 
+" in wombat colorscheme swap normal/insert colors
+let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+
+let old_normal_left = s:palette.normal.left
+let old_insert_left = s:palette.insert.left
+
+let s:palette.normal.left = old_insert_left
+let s:palette.insert.left = old_normal_left
+
+" update on write
 autocmd BufWritePost * call lightline#update()
