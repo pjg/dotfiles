@@ -741,7 +741,7 @@ nmap <F6> :GundoToggle<cr><cr>
 imap <F6> <esc>:GundoToggle<cr><cr>
 
 " <F8> to turn off the highlight search & redraw screen, sign column and statusline
-map <F8> :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>
+map <F8> :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:SignifyRefresh<cr>
 imap <F8> <esc><F8>
 vmap <F8> <esc><F8>
 
