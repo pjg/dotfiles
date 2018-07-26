@@ -418,6 +418,7 @@ au BufReadPost fugitive://* set bufhidden=delete
 
 " [vim-rails / rails.vim] custom commands
 command! Ecircle edit .circleci/config.yml
+command! Edatabase edit config/database.yml
 command! Egemfile edit Gemfile
 command! Ejroutes Ejinitializer
 command! Eprocfile edit Procfile
