@@ -444,12 +444,6 @@ let g:rails_projections = {
     \     "test":      "spec/core/{}_spec.rb",
     \     "template":  "class {camelcase|capitalize|colons}\nend"
     \   },
-    \   "app/system/*.rb": {
-    \     "command":   "system",
-    \     "affinity":  "collection",
-    \     "test":      "spec/system/{}_spec.rb",
-    \     "template":  "class {camelcase|capitalize|colons}\nend"
-    \   },
     \   "app/gateways/*.rb": {
     \     "command":   "gateway",
     \     "affinity":  "collection",
@@ -469,6 +463,10 @@ let g:rails_projections = {
     \   },
     \   "spec/requests/*_spec.rb": {
     \     "command":   "request",
+    \     "template":  "describe '{underscore|capitalize|blank}' do\n\nend"
+    \   },
+    \   "spec/system/*_spec.rb": {
+    \     "command":   "system",
     \     "template":  "describe '{underscore|capitalize|blank}' do\n\nend"
     \   }
     \ }
