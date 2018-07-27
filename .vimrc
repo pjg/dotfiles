@@ -412,6 +412,7 @@ let g:ragtag_global_maps = 1
 
 " [fzf.vim]
 let g:fzf_buffers_jump = 0
+let g:fzf_layout = { 'down': '10' }
 
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
