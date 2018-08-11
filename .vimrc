@@ -661,17 +661,12 @@ function! ShowSignColumn()
 endfunc
 au BufRead,BufNewFile * call ShowSignColumn()
 
-" [YouCompleteMe] collect identifiers from tags file
+" [YouCompleteMe]
 let g:ycm_collect_identifiers_from_tags_files = 1
-
-" [YouCompleteMe] don't add default identifiers based on vim filetype
 let g:ycm_seed_identifiers_with_syntax = 0
-
-" [YouCompleteMe] work nicely with floobits' plugin
-let g:ycm_allow_changing_updatetime = 0
-
-" [YouCompleteMe] show completion popup menu only when this number of chars is entered
-let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_min_num_identifier_candidate_chars = 3
+let g:ycm_max_num_candidates = 20
+let g:ycm_max_num_identifier_candidates = 20
 
 " [rainbow_parentheses.vim]
 au VimEnter * RainbowParenthesesToggle
