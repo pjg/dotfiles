@@ -1048,6 +1048,10 @@ let g:lightline = {
   \     'left': [['mode', 'paste'], ['filename', 'readonly', 'modified']],
   \     'right': [['lineinfo'], ['percent'], ['whitespace_status'], ['fileformat', 'fileencoding', 'filetype']]
   \   },
+  \   'inactive': {
+  \     'left': [['filename'], ['modified']],
+  \     'right': [['lineinfo'], ['percent']]
+  \   },
   \   'component_expand': {
   \     'whitespace_status': 'WhitespaceStatus'
   \   },
