@@ -178,6 +178,9 @@ if [[ -x `which colordiff` ]]; then alias diff='colordiff -u'; fi
 # find
 function ff { find . | grep -i "$1" }
 
+# ping
+if [[ -x `which prettyping` ]]; then alias ping='prettyping --nolegend'; fi
+
 # Rails application update
 alias pull='git pull; bundle; rake db:migrate; git checkout -- db/schema.rb; touch tmp/restart.txt'
 
