@@ -188,6 +188,8 @@ alias pull='git pull; bundle; rake db:migrate; git checkout -- db/schema.rb; tou
 if _has fzf && _has ag; then
   export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
 fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 # misc
 alias _='sudo'
