@@ -169,6 +169,9 @@ function v() {
 # ack
 if [[ -x `which ack-grep` ]]; then alias ack='ack-grep'; fi
 
+# bat
+if [[ -x `which bat` ]]; then alias cat='bat'; fi
+
 # diff
 if [[ -x `which colordiff` ]]; then alias diff='colordiff -u'; fi
 
@@ -746,3 +749,6 @@ REPORTTIME=10
 
 # set DISPLAY if Xvfb is running (expects it to run on :0)
 xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
+
+# bat's theme
+export BAT_THEME="TwoDark"
