@@ -149,7 +149,7 @@ alias svndiff='svn diff --diff-cmd=colordiff'
 alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
 
 # htop
-if [[ -x `which htop` ]]; then alias top="htop"; fi
+if [[ -x `which htop` ]]; then alias top="sudo htop"; fi
 
 # vim/nvim - load tmp/current.vim if it exist (alias `v` to vim/nvim)
 function v() {
