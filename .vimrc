@@ -355,14 +355,15 @@ autocmd FileType * setlocal textwidth=0
 autocmd FileType ruby,eruby,javascript,vue,css,scss setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
 
-" do not auto-indent HTML-like files
-autocmd BufEnter *.html setlocal indentexpr=
-autocmd BufEnter *.htm setlocal indentexpr=
-autocmd BufEnter *.html.erb setlocal indentexpr=
-
-" YAML files read as Ruby
 augroup filetypedetect
+  " YAML files read as Ruby
   autocmd BufNewFile,BufRead *.yml setf eruby
+
+  " 2 spaces for TAB in JS/CSS/HTML files
+  autocmd BufNewFile,BufRead *.css setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.html setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.htm setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.js setlocal softtabstop=2 tabstop=2 shiftwidth=2
 augroup END
 
 " explicitly set filetype to Ruby for some well-known files
@@ -370,12 +371,6 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Gu
 
 " explicitly set filetype to slim for slim view files (not sure why it's needed...)
 au BufRead,BufNewFile {*.html.slim} set filetype=slim
-
-" 2 spaces for TAB in JS/CSS/HTML files
-autocmd BufEnter *.css setlocal softtabstop=2 tabstop=2 shiftwidth=2
-autocmd BufEnter *.html setlocal softtabstop=2 tabstop=2 shiftwidth=2
-autocmd BufEnter *.htm setlocal softtabstop=2 tabstop=2 shiftwidth=2
-autocmd BufEnter *.js setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
 " set various characters to be treated as a part of words
 autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee,yaml setlocal iskeyword+=-,$,#
