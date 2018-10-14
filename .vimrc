@@ -27,6 +27,7 @@ Plugin 'tpope/vim-git'
 " syntax files
 Plugin 'sheerun/vim-polyglot'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'M4R7iNP/vim-inky'
 
 " parentheses coloring
 Plugin 'kien/rainbow_parentheses.vim'
