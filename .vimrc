@@ -659,6 +659,10 @@ function! ShowSignColumn()
 endfunc
 au BufRead,BufNewFile * call ShowSignColumn()
 
+" CSS3 syntax (vendor prefixes highlighting)
+highlight VendorPrefix guifg=#880000 gui=BOLD
+match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
+
 " [YouCompleteMe]
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 0
