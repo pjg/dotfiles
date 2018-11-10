@@ -112,12 +112,30 @@ if Gem::Specification.find_all_by_name('guard-rspec').any?
     watch(%r{^spec/.+_spec\.rb$})
 
     # Factories
-    watch(%r{^spec/factories/(.+)\.rb$})               { |m| ["spec/models/#{m[1].singularize}_spec.rb", "spec/controllers/#{m[1]}_controller_spec.rb", "spec/requests/#{m[1]}_spec.rb"] }
+    watch(%r{^spec/factories/(.+)\.rb$}) do |m|
+      [
+        "spec/models/#{m[1].singularize}_spec.rb",
+        "spec/controllers/#{m[1]}_controller_spec.rb",
+        "spec/requests/#{m[1]}_spec.rb",
+        "spec/requests/#{m[1]}_requests_spec.rb",
+        "spec/requests/#{m[1].singularize}_spec.rb",
+        "spec/requests/#{m[1].singularize}_requests_spec.rb",
+      ]
+    end
 
     # Rails specific
     watch(%r{^app/(.+)\.rb$})                          { |m| "spec/#{m[1]}_spec.rb" }
     watch(%r{^lib/(.+)\.rb$})                          { |m| "spec/lib/#{m[1]}_spec.rb" }
-    watch(%r{^app/controllers/(.+)_(controller)\.rb$}) { |m| ["spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
+    watch(%r{^app/controllers/(.+)_(controller)\.rb$}) do |m|
+      [
+        "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb",
+        "spec/acceptance/#{m[1]}_spec.rb",
+        "spec/requests/#{m[1]}_spec.rb",
+        "spec/requests/#{m[1]}_requests_spec.rb",
+        "spec/requests/#{m[1].singularize}_spec.rb",
+        "spec/requests/#{m[1].singularize}_requests_spec.rb",
+      ]
+    end
     watch('app/controllers/application_controller.rb') { "spec/controllers" }
     watch(%r{^app/views/(.+)$})                        { |m| "spec/views/#{m[1]}_spec.rb" }
 
