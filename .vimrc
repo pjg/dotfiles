@@ -329,7 +329,7 @@ syntax on
 let ruby_no_expensive=1
 
 " only highlight syntax up to this column (to make dealing with files with long Ruby lines faster)
-set synmaxcol=200
+set synmaxcol=300
 
 
 
