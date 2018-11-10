@@ -24,11 +24,6 @@ Plugin 'pbrisbin/vim-mkdir'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
-" syntax files
-Plugin 'sheerun/vim-polyglot'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'M4R7iNP/vim-inky'
-
 " parentheses coloring
 Plugin 'luochen1990/rainbow'
 
@@ -79,6 +74,11 @@ Plugin 'lambdalisue/suda.vim'
 " statusline (and related)
 Plugin 'mhinz/vim-signify'
 Plugin 'itchyny/lightline.vim'
+
+" syntax files
+Plugin 'sheerun/vim-polyglot'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'M4R7iNP/vim-inky'
 
 
 
@@ -359,15 +359,18 @@ augroup filetypedetect
   " YAML files read as Ruby
   autocmd BufNewFile,BufRead *.yml setf eruby
 
+  " ActiveAdmin views read as Ruby
+  autocmd BufNewFile,BufRead *.arb setf ruby
+
   " 2 spaces for TAB in JS/CSS/HTML files
-  autocmd BufNewFile,BufRead *.css setlocal softtabstop=2 tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.html setlocal softtabstop=2 tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.htm setlocal softtabstop=2 tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.js setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 augroup END
 
 " explicitly set filetype to Ruby for some well-known files
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
+
+" explicitly set filetype to shell for dotenv's sample file
+autocmd BufNewFile,BufRead .env.sample setf sh
 
 " explicitly set filetype to slim for slim view files (not sure why it's needed...)
 au BufRead,BufNewFile {*.html.slim} set filetype=slim
