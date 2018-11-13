@@ -427,7 +427,6 @@ command! Eprocfile edit Procfile
 command! Erailshelper edit spec/rails_helper.rb
 command! Ereadme edit README.md
 command! Eroutes edit config/routes.rb
-command! Eschema edit db/schema.rb
 command! Esecrets edit config/secrets.yml
 command! Eseeds edit db/seeds.rb
 command! Espechelper edit spec/spec_helper.rb
