@@ -756,4 +756,4 @@ REPORTTIME=10
 xdpyinfo -display :0 &> /dev/null && export DISPLAY=:0
 
 # bat's theme
-export BAT_THEME="TwoDark"
+export BAT_THEME="OneHalfLight"
