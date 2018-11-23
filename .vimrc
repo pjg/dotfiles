@@ -43,9 +43,8 @@ Bundle 'wellle/targets.vim'
 " code completion
 Plugin 'Valloric/YouCompleteMe'
 
-" searching
-Plugin 'rking/ag.vim'
-Plugin 'nelstrom/vim-visual-star-search'
+" grepping files from vim
+Plugin 'mileszs/ack.vim'
 
 " general text-editing improvements
 Plugin 'AndrewRadev/splitjoin.vim'
@@ -70,6 +69,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'justinmk/vim-sneak'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'lambdalisue/suda.vim'
+Plugin 'nelstrom/vim-visual-star-search'
 
 " statusline (and related)
 Plugin 'mhinz/vim-signify'
@@ -395,10 +395,13 @@ autocmd BufReadPost *
 
 " PLUGINS
 
-" [ag.vim] (aka 'the_silver_searcher')
+" [ack.vim] (using ag aka 'the_silver_searcher')
 if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ackprg = 'ag --vimgrep --smart-case'
+  cnoreabbrev ag Ack
+  cnoreabbrev aG Ack
+  cnoreabbrev Ag Ack
+  cnoreabbrev AG Ack
 endif
 
 " [autoclose.vim]
