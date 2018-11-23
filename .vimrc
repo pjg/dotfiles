@@ -67,7 +67,6 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'justinmk/vim-sneak'
-Plugin 'nelstrom/vim-qargs'
 Plugin 'lambdalisue/suda.vim'
 Plugin 'nelstrom/vim-visual-star-search'
 
