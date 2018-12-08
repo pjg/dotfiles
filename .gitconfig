@@ -22,10 +22,11 @@
   m = merge
   o = overview
   overview = log --all --no-merges --oneline -10 --date=relative --pretty=format:'%Cred%h%Creset%Cblue%d%Creset %s %Cgreen(%an, %ad)%Creset'
-  p = push -u
+  p = push
   patch = --no-pager diff --no-color
   pf = push -f
   pl = pull
+  pu = push -u
   r = remote
   rb = rebase
   rba = rebase --abort
