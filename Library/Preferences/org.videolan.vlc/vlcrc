@@ -1233,13 +1233,13 @@ macosx-black=1
 [prefetch] # Stream prefetch filter
 
 # Buffer size (integer)
-#prefetch-buffer-size=16384
+prefetch-buffer-size=20000
 
 # Read size (integer)
-#prefetch-read-size=16384
+prefetch-read-size=3000000
 
 # Seek threshold (integer)
-#prefetch-seek-threshold=16384
+prefetch-seek-threshold=12000
 
 [vpx] # WebM video decoder
 
@@ -3500,16 +3500,16 @@ sub-language=English,ENG,Polish,Polski,PL
 #meta-url=
 
 # File caching (ms) (integer)
-file-caching=2993
+file-caching=600
 
 # Live capture caching (ms) (integer)
-live-caching=2545
+live-caching=600
 
 # Disc caching (ms) (integer)
-disc-caching=2885
+disc-caching=600
 
 # Network caching (ms) (integer)
-network-caching=3083
+network-caching=1200
 
 # Clock reference average counter (integer)
 #cr-average=40
@@ -3581,7 +3581,7 @@ sout-display=1
 #sout-spu=1
 
 # Stream output muxer caching (ms) (integer)
-sout-mux-caching=4
+sout-mux-caching=600
 
 # VLM configuration file (string)
 #vlm-conf=
