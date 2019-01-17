@@ -158,6 +158,9 @@ alias hss='heroku pg:psql --remote staging'
 alias svndiff='svn diff --diff-cmd=colordiff'
 alias svnaddall='svn status | awk "/\\?/ {print \$2}" | xargs svn add'
 
+# fswatch + rspec
+alias fswatch-rspec='fswatch -0 -e ".*" -i "\\.rb$" . | xargs -0 -n 1 -I {} rspec --format documentation'
+
 # htop
 if [[ -x `which htop` ]]; then alias top="sudo htop"; fi
 
