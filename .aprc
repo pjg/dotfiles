@@ -1,0 +1,4 @@
+AwesomePrint.defaults = {
+  index: false,
+  indent: 2
+}

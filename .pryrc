@@ -10,6 +10,9 @@ begin
   require 'awesome_print'
   require 'awesome_print/ext/active_record'
   require 'awesome_print/ext/active_support'
+  require 'awesome_print/ext/mongoid'
+  require 'awesome_print/ext/nokogiri'
+  require 'awesome_print/ext/ostruct'
   AwesomePrint.pry!
 rescue LoadError => err
 end
