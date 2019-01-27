@@ -1049,7 +1049,7 @@ macosx-black=1
 #sout-x264-stats=x264_2pass.log
 
 # Default preset setting used (string)
-#sout-x264-preset=
+sout-x264-preset=ultrafast
 
 # Default tune setting used (string)
 #sout-x264-tune=
@@ -1398,7 +1398,7 @@ prefetch-seek-threshold=12000
 #sout-rtp-rtcp-mux=0
 
 # Caching value (ms) (integer)
-#sout-rtp-caching=300
+sout-rtp-caching=400
 
 # SRTP key (hexadecimal) (string)
 #sout-rtp-key=
@@ -2183,7 +2183,7 @@ canvas-height=1080
 [udp] # UDP stream output
 
 # Caching value (ms) (integer)
-#sout-udp-caching=300
+sout-udp-caching=400
 
 # Group packets (integer)
 #sout-udp-group=1
@@ -2486,7 +2486,7 @@ sout-mono-channel=0
 #subsdec-align=-1
 
 # Subtitle text encoding (string)
-#subsdec-encoding=
+subsdec-encoding=UTF-8
 
 # UTF-8 subtitle autodetection (boolean)
 #subsdec-autodetect-utf8=1
@@ -2604,7 +2604,7 @@ satip-channelist=Auto
 #avcodec-skip-idct=0
 
 # Allow speed tricks (boolean)
-#avcodec-fast=0
+avcodec-fast=1
 
 # Skip the loop filter for H.264 decoding (integer)
 #avcodec-skiploopfilter=0
@@ -2637,13 +2637,13 @@ satip-channelist=Auto
 #sout-avcodec-bframes=0
 
 # Hurry up (boolean)
-#sout-avcodec-hurry-up=0
+sout-avcodec-hurry-up=1
 
 # Interlaced encoding (boolean)
 #sout-avcodec-interlace=0
 
 # Interlaced motion estimation (boolean)
-#sout-avcodec-interlace-me=1
+sout-avcodec-interlace-me=0
 
 # Video bitrate tolerance (integer)
 #sout-avcodec-vt=0
@@ -2925,10 +2925,10 @@ glconv=any
 [normvol] # Volume normalizer
 
 # Number of audio buffers (integer)
-norm-buff-size=10
+norm-buff-size=8
 
 # Maximal volume level (float)
-norm-max-level=3.000000
+#norm-max-level=2.000000
 
 [ps] # PS muxer
 
@@ -3161,13 +3161,13 @@ freetype-outline-opacity=219
 #audio=1
 
 # Audio gain (float)
-#gain=1.000000
+gain=2.000000
 
 # Audio output volume step (float)
 #volume-step=12.800000
 
 # Remember the audio volume (boolean)
-#volume-save=1
+volume-save=0
 
 # Force S/PDIF support (boolean)
 #spdif=0
@@ -3176,7 +3176,7 @@ freetype-outline-opacity=219
 #force-dolby-surround=0
 
 # Stereo audio output mode (integer)
-#stereo-mode=0
+stereo-mode=1
 
 # Audio desynchronization compensation (integer)
 #audio-desync=0
@@ -3227,13 +3227,13 @@ audio-resampler=any
 #xlib=1
 
 # Drop late frames (boolean)
-#drop-late-frames=1
+drop-late-frames=0
 
 # Skip frames (boolean)
-#skip-frames=1
+skip-frames=0
 
 # Quiet synchro (boolean)
-#quiet-synchro=0
+quiet-synchro=1
 
 # Key press events (boolean)
 #keyboard-events=1
@@ -3329,13 +3329,13 @@ video-title-position=4
 #zoom=1.000000
 
 # Deinterlace (integer)
-#deinterlace=-1
+deinterlace=0
 
 # Deinterlace mode (string)
 #deinterlace-mode=auto
 
 # Video output module (string)
-vout=any
+vout=macosx
 
 # Video filter module (string)
 #video-filter=
@@ -3362,10 +3362,10 @@ text-renderer=any
 sub-autodetect-fuzzy=60
 
 # Subtitle autodetection paths (string)
-sub-autodetect-path=./Subtitles, ./subtitles, ./Subs, ./subs, ./
+#sub-autodetect-path=./Subtitles, ./subtitles, ./Subs, ./subs
 
 # Force subtitle position (integer)
-sub-margin=50
+sub-margin=30
 
 # Subpictures source module (string)
 #sub-source=
@@ -3386,7 +3386,7 @@ sub-margin=50
 #sub-track=-1
 
 # Audio language (string)
-#audio-language=
+audio-language=ENG,English,Angielski
 
 # Subtitle language (string)
 sub-language=English,ENG,Polish,Polski,PL
@@ -3500,16 +3500,16 @@ sub-language=English,ENG,Polish,Polski,PL
 #meta-url=
 
 # File caching (ms) (integer)
-file-caching=600
+file-caching=500
 
 # Live capture caching (ms) (integer)
-live-caching=600
+live-caching=500
 
 # Disc caching (ms) (integer)
-disc-caching=600
+disc-caching=500
 
 # Network caching (ms) (integer)
-network-caching=1200
+network-caching=500
 
 # Clock reference average counter (integer)
 #cr-average=40
@@ -3581,7 +3581,7 @@ sout-display=1
 #sout-spu=1
 
 # Stream output muxer caching (ms) (integer)
-sout-mux-caching=600
+sout-mux-caching=400
 
 # VLM configuration file (string)
 #vlm-conf=
@@ -3593,7 +3593,7 @@ sout-mux-caching=600
 #mux=
 
 # Access output module (string)
-#access_output=
+access_output=any
 
 # Hop limit (TTL) (integer)
 #ttl=-1
