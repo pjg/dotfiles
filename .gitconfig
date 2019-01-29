@@ -60,6 +60,20 @@
   branch = auto
   ui = auto
 
+[color "diff-highlight"]
+  oldNormal = red
+  oldHighlight = 160 52
+  newNormal = green
+  newHighlight = 34 22
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  commit = yellow
+  old = red
+  new = green
+  whitespace = red reverse
+
 [commit]
   verbose = true
 
