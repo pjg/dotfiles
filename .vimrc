@@ -432,6 +432,7 @@ command! Eroutes edit config/routes.rb
 command! Esecrets edit config/secrets.yml
 command! Eseeds edit db/seeds.rb
 command! Espechelper edit spec/spec_helper.rb
+command! Estructure edit db/structure.sql
 
 " [vim-rails] Rails projections - typing `:Eservice accept_bid` will open /app/services/accept_bid.rb, etc.
 let g:rails_projections = {
