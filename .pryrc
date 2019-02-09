@@ -84,15 +84,15 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
     ActiveRecord::Base.connection.execute(query)
   end
 
-  # set logging to screen
+  # set logging to screen in Rails
   if ENV.include?('RAILS_ENV')
     # Rails 2.x
     if !Object.const_defined?('RAILS_DEFAULT_LOGGER')
       require 'logger'
       Object.const_set('RAILS_DEFAULT_LOGGER', Logger.new(STDOUT))
     end
-  else
-    # Rails 3
+
+    # Rails 3+
     if Rails.logger and defined?(ActiveRecord)
       Rails.logger = Logger.new(STDOUT)
       ActiveRecord::Base.logger = Rails.logger
