@@ -79,21 +79,21 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
     end
   end
 
-  # sql for arbitrary SQL commands through the AR
-  def sql(query)
-    ActiveRecord::Base.connection.execute(query)
+  # execute arbitrary SQL query through ActiveRecord
+  def execute query
+    ActiveRecord::Base.connection.execute query
   end
 
   # set logging to screen in Rails
-  if ENV.include?('RAILS_ENV')
+  if defined? Rails
     # Rails 2.x
-    if !Object.const_defined?('RAILS_DEFAULT_LOGGER')
+    if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
       require 'logger'
       Object.const_set('RAILS_DEFAULT_LOGGER', Logger.new(STDOUT))
     end
 
     # Rails 3+
-    if Rails.logger and defined?(ActiveRecord)
+    if Rails.logger && defined? ActiveRecord
       Rails.logger = Logger.new(STDOUT)
       ActiveRecord::Base.logger = Rails.logger
     end
