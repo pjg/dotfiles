@@ -122,6 +122,9 @@
 [mergetool "vimdiff3"]
   path = nvim
 
+[rerere]
+  enabled = 1
+
 [pull]
   # always rebase local changes on pulls
   rebase = true
