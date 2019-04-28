@@ -18,7 +18,7 @@
   g = grep
   graph = log --graph --all --decorate --stat --date=iso
   i = init
-  l = log -10 --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
+  l = log -10 --date=human --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
   m = merge
   o = overview
   overview = log --all --no-merges --oneline -10 --date=relative --pretty=format:'%Cred%h%Creset%Cblue%d%Creset %s %Cgreen(%an, %ad)%Creset'
