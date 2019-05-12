@@ -27,9 +27,18 @@ _has() {
 # umask
 umask 022
 
-# editor/visual/pager
-export EDITOR=nvim
-export VISUAL=nvim
+# editor/visual
+if type nvim >/dev/null 2>&1; then
+  # neovim
+  export EDITOR=nvim
+  export VISUAL=nvim
+else
+  # vim (without support for tmp/current.vim)
+  export EDITOR=vim
+  export VISUAL=vim
+fi
+
+# pager
 export PAGER=less
 
 # zsh will not beep
