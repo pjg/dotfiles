@@ -414,8 +414,9 @@ let g:ragtag_global_maps = 1
 " [fzf.vim]
 let g:fzf_buffers_jump = 0
 let g:fzf_layout = { 'down': '10' }
+
 " required for VimR (MacOS)
-let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/bundle --ignore-dir=vendor/plugins -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/bundle --ignore-dir=vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
 
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
