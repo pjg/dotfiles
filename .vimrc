@@ -665,6 +665,9 @@ function! ShowSignColumn()
 endfunc
 au BufRead,BufNewFile * call ShowSignColumn()
 
+" [suda.vim] will ask for sudo password when editing a non-writeable file
+let g:suda_smart_edit = 1
+
 " CSS3 syntax (vendor prefixes highlighting)
 highlight VendorPrefix guifg=#880000 gui=BOLD
 match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
@@ -952,14 +955,6 @@ nmap <leader>q :q<cr>
 " save file
 map <leader>w :w<cr>
 
-" Sudo save file
-if has("gui_vimr")
-  " suda.vim plugin
-  map <leader>W :w suda://%<cr>
-elseif has("unix")
-  map <leader>W :SudoWrite<cr>
-endif
-
 " [vim-rails] Rake
 map <leader>rr :.Rake<cr>
 
@@ -977,9 +972,6 @@ noremap <leader>V V`]
 " easier splits
 noremap <leader>s <C-w>s
 noremap <leader>v <C-w>v
-
-" SudoWrite
-noremap <leader>S :SudoWrite<cr>
 
 " adjust viewports to the same size
 map <leader>= <C-w>=
