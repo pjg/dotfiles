@@ -38,7 +38,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'bootleq/vim-textobj-rubysymbol'
 Plugin 'michaeljsmith/vim-indent-object'
-Bundle 'wellle/targets.vim'
+Plugin 'wellle/targets.vim'
 
 " code completion
 Plugin 'Valloric/YouCompleteMe'
