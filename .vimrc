@@ -523,6 +523,11 @@ let g:rails_gem_projections = {
     \       "command":   "settings"
     \     }
     \   },
+    \   "config": {
+    \     "config/settings.yml": {
+    \       "command":   "settings"
+    \     }
+    \   },
     \   "capistrano": {
     \     "config/deploy.rb": {
     \       "command":   "deploy"
