@@ -946,6 +946,11 @@ nmap <leader>gr :Gremove!<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gwrite<cr>
 
+" vimdiff conflict resolution for 3-way merge
+map <Leader>g1 :diffget LOCAL<CR>
+map <Leader>g2 :diffget BASE<CR>
+map <Leader>g3 :diffget REMOTE<CR>
+
 " fzf.vim
 map <leader>t :Files<cr>
 map <leader>b :Buffers<cr>

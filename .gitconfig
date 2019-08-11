@@ -119,8 +119,9 @@
   conflictstyle = diff3
   tool = vimdiff3
 
-[mergetool "vimdiff3"]
+[mergetool "vimdiff"]
   path = nvim
+  prompt = false
 
 [rerere]
   enabled = 1
