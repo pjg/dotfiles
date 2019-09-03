@@ -421,6 +421,9 @@ let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public/pictures --ignore-d
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
 
+" [vim-multiple-cursors]
+let g:multi_cursor_exit_from_insert_mode = 1
+
 " [vim-rails / rails.vim] custom commands
 command! Ecircle edit .circleci/config.yml
 command! Edatabase edit config/database.yml
