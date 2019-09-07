@@ -198,7 +198,15 @@ if [[ -x `which bat` ]]; then alias cat='bat'; fi
 if [[ -x `which colordiff` ]]; then alias diff='colordiff -u'; fi
 
 # find
-function ff { find . | grep -i "$1" }
+function ff {
+  SEARCH_PATH=$2
+
+  if [[ -z $SEARCH_PATH ]]; then
+    SEARCH_PATH=.
+  fi
+
+  find $SEARCH_PATH | grep -i "$1"
+}
 
 # ping
 if [[ -x `which prettyping` ]]; then alias ping='prettyping --nolegend'; fi
