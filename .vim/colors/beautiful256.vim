@@ -70,7 +70,7 @@ hi Boolean gui=bold guifg=#df8700 ctermfg=172
 hi Constant gui=NONE guifg=#af0000 ctermfg=124
 hi Number gui=bold guifg=#df8700 ctermfg=172
 hi String gui=NONE guifg=#008000 ctermfg=2
-hi helpNote ctermbg=220 ctermfg=16
+hi helpNote guifg=#eeeeee guibg=#444444 ctermbg=220 ctermfg=16
 
 hi Label gui=bold,underline guifg=Sienna4
 hi Statement gui=bold guifg=#af5f87 ctermfg=132

@@ -427,6 +427,25 @@ let g:fzf_layout = { 'down': '10' }
 " required for VimR/MacVim (MacOS)
 let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/bundle --ignore-dir=vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
 
+" hl  (non matched lines, matched letters fg)
+" fg+ (first matched line fg)
+" bg+ (first matched line bg)
+" hl+ (first matched line: matched letters fg)
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'helpNote'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
 
