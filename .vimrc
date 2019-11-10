@@ -970,8 +970,9 @@ noremap <leader>c :bdelete<cr>
 " quit
 nmap <leader>q :q<cr>
 
-" save file
+" save file / all files
 map <leader>w :w<cr>
+map <leader>W :wall<cr>
 
 " [vim-rails] Rake
 map <leader>rr :.Rake<cr>
