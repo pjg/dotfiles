@@ -143,14 +143,10 @@ colorscheme beautiful256
 " enable 24-bit colors in the terminal
 set termguicolors
 
-" GUI settings (gvim)
+" GUI settings (MacVIM/gVim)
 if has("gui_running")
   " encoding
   set encoding=utf-8
-
-  " window size / position
-  winsize 140 50
-  winpos 70 40
 
   " Windows
   if has("win32")
@@ -163,15 +159,26 @@ if has("gui_running")
     " use shellslash
     set shellslash
 
-  " Mac OS X
+  " MacOS
   elseif has("mac")
     " font
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+
+    " disable scrollbars in MacVim
+    set guioptions=
+
+    " default window size
+    set columns=231
+    set lines=87
 
   " Unix/Linux
   elseif has("unix")
     " font
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+
+    " window position / size
+    winpos 70 40
+    winsize 140 50
 
     " set English language
     language en_US.utf8
@@ -218,7 +225,7 @@ set showmatch
 set matchtime=2
 
 " keep longer vim commands history
-set history=1000
+set history=500
 
 " show available TAB-completions in command line
 set wildmenu
@@ -263,8 +270,8 @@ set backspace=2
 set noautowrite
 set noautowriteall
 
-" automatically re-read files files changed outside of vim
-set autoread
+" never automatically re-read files changed outside of vim
+set noautoread
 
 " write swap files after 2 seconds of inactivity
 set updatetime=2000
@@ -417,7 +424,7 @@ let g:ragtag_global_maps = 1
 let g:fzf_buffers_jump = 0
 let g:fzf_layout = { 'down': '10' }
 
-" required for VimR (MacOS)
+" required for VimR/MacVim (MacOS)
 let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/bundle --ignore-dir=vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
 
 " [fugitive.vim] auto clean fugitive buffers
