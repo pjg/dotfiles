@@ -6,7 +6,7 @@ call vundle#rc()
 
 
 
-" VUNDLES
+" VUNDLES (PLUGINS)
 
 " let vundle manage vundle
 Plugin 'gmarik/vundle'
@@ -78,6 +78,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'M4R7iNP/vim-inky'
+Plugin 'styled-components/vim-styled-components'
 
 
 
@@ -337,6 +338,7 @@ set synmaxcol=300
 " auto-completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascriptreact set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
@@ -351,7 +353,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " set fixed columns only for some file types
 autocmd FileType * setlocal textwidth=0
-autocmd FileType ruby,eruby,javascript,vue,css,scss setlocal textwidth=80
+autocmd FileType ruby,eruby,javascript,javascriptreact,vue,css,scss setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
 
 augroup filetypedetect
@@ -362,7 +364,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.arb setf ruby
 
   " 2 spaces for TAB in JS/CSS/HTML files
-  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js} setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 augroup END
 
 " explicitly set filetype to Ruby for some well-known files
@@ -712,6 +714,9 @@ let g:rainbow_conf = {
   \      'sass': 0
   \    }
   \  }
+
+" [vim-styled-components]
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 
 
 
