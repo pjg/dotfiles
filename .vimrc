@@ -501,6 +501,9 @@ let g:rails_projections = {
     \     "command":   "request",
     \     "template":  "describe '{underscore|capitalize|blank}' do\n\nend"
     \   },
+    \   "spec/support/*.rb": {
+    \     "command":   "support"
+    \   },
     \   "spec/system/*_spec.rb": {
     \     "command":   "system",
     \     "template":  "describe '{underscore|capitalize|blank}' do\n\nend"
