@@ -797,3 +797,6 @@ export BAT_THEME="OneHalfLight"
 # Objective C security issue with forking
 # https://blog.phusion.nl/2017/10/13/why-ruby-app-servers-break-on-macos-high-sierra-and-what-can-be-done-about-it/
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# Disable ads from npm packages installs
+export ADBLOCK=true
