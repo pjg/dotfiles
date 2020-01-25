@@ -1,85 +1,87 @@
-" VUNDLE
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" VIM-PLUG
 
+" automatic installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
+" plugins
 
-" VUNDLES (PLUGINS)
-
-" let vundle manage vundle
-Plugin 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
 " file finder
-set rtp+=/usr/local/opt/fzf
-Plugin 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " file navigation/management
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-vinegar'
-Plugin 'pbrisbin/vim-mkdir'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
+Plug 'pbrisbin/vim-mkdir'
 
 " git related
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
 
 " parentheses coloring
-Plugin 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 
 " Ruby related
-Plugin 'ecomba/vim-ruby-refactoring'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
 
 " text objects
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'bootleq/vim-textobj-rubysymbol'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'bootleq/vim-textobj-rubysymbol'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'wellle/targets.vim'
 
 " code completion
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " grepping files from vim
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 " general text-editing improvements
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'godlygeek/tabular'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-commentary'
-Plugin 'itspriddle/vim-stripper'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'godlygeek/tabular'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'itspriddle/vim-stripper'
 
 " general vim improvements
-Plugin 'adelarsq/vim-matchit'
-Plugin 'omh/Kwbd.vim'
-Plugin 'sickill/vim-pasta'
-Plugin 'sjl/gundo.vim'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-endwise'
-Plugin 'junegunn/vim-peekaboo'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'justinmk/vim-sneak'
-Plugin 'lambdalisue/suda.vim'
-Plugin 'nelstrom/vim-visual-star-search'
+Plug 'adelarsq/vim-matchit'
+Plug 'omh/Kwbd.vim'
+Plug 'sickill/vim-pasta'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-endwise'
+Plug 'junegunn/vim-peekaboo'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'justinmk/vim-sneak'
+Plug 'lambdalisue/suda.vim'
+Plug 'nelstrom/vim-visual-star-search'
 
 " statusline (and related)
-Plugin 'mhinz/vim-signify'
-Plugin 'itchyny/lightline.vim'
+Plug 'mhinz/vim-signify'
+Plug 'itchyny/lightline.vim'
 
 " syntax files
-Plugin 'sheerun/vim-polyglot'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'M4R7iNP/vim-inky'
-Plugin 'styled-components/vim-styled-components'
+Plug 'sheerun/vim-polyglot'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'M4R7iNP/vim-inky'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+call plug#end()
 
 
 
