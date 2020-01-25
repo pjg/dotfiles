@@ -41,7 +41,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 
 " code completion
-Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " grepping files from vim
 Plug 'mileszs/ack.vim'
@@ -104,7 +104,8 @@ set splitbelow
 set splitright
 
 " no backup files
-set nobackup nowritebackup
+set nobackup
+set nowritebackup
 
 " show line numbers
 set number
@@ -246,7 +247,7 @@ set wildignore+=*/log/*,*.log,*/coverage/*                                   " l
 set wildignore+=*.swp,*~,._*                                                 " swp and backup files
 
 " short messages in command line (so that they don't overflow and require pressing <ENTER>) (h :shortmess)
-set shortmess=aoOtI
+set shortmess=acoOtI
 
 " disable visual/audible bells
 set noerrorbells
@@ -276,8 +277,8 @@ set noautowriteall
 " never automatically re-read files changed outside of vim
 set noautoread
 
-" write swap files after 2 seconds of inactivity
-set updatetime=2000
+" write swap files after 300 ms of inactivity
+set updatetime=300
 
 " global directory for .swp files
 set directory=$HOME/.vim/tmp/
@@ -714,13 +715,6 @@ let g:suda_smart_edit = 1
 highlight VendorPrefix guifg=#880000 gui=BOLD
 match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
 
-" [YouCompleteMe]
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 0
-let g:ycm_min_num_identifier_candidate_chars = 3
-let g:ycm_max_num_candidates = 20
-let g:ycm_max_num_identifier_candidates = 20
-
 " [rainbow]
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -749,6 +743,45 @@ let g:rainbow_conf = {
 
 " [vim-styled-components]
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+
+" [coc.nvim]
+let g:coc_global_extensions = ['coc-css', 'coc-json', 'coc-html', 'coc-solargraph', 'coc-tsserver', 'coc-yaml']
+
+" use <tab> to trigger completion
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" use <c-space> to trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<cr>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 
 
@@ -847,9 +880,6 @@ nnoremap g0 0
 vnoremap g$ $
 vnoremap g^ ^
 vnoremap g0 0
-
-" K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " gw to swap the current word with the one next to it
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>'':nohlsearch<cr>
