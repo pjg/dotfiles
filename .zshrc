@@ -10,6 +10,7 @@ source ~/.zsh/antigen/antigen.zsh
 antigen bundle jimhester/per-directory-history
 antigen bundle olivierverdier/zsh-git-prompt
 antigen bundle pjg/zsh-vim-plugin
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 
@@ -257,6 +258,9 @@ setopt hist_expire_dups_first
 
 # if a new command line being added to the history list duplicates an older one, the older command is removed from the list
 setopt hist_ignore_all_dups
+
+# prefix a command with a space to keep it out of the history
+setopt hist_ignore_space
 
 # reduce unnecessary blanks from commands being written to history
 setopt hist_reduce_blanks
