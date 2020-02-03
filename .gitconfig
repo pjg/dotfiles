@@ -12,6 +12,7 @@
   compare = log --left-right --graph --cherry-pick --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%an, %ad)%Creset'
   count = shortlog -sn
   cp = cherry-pick
+  cpa = cherry-pick --abort
   d = diff
   dc = diff --cached
   f = fetch
