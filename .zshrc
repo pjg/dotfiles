@@ -704,9 +704,10 @@ function setup_binstubs {
     export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
     export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
 
-    # restore GEM_HOME when using chruby (using wrapper)
+    # restore GEM_HOME / GEM_ROOT when using chruby (using wrapper)
     if [ -d /usr/local/opt/chruby/share/chruby ]; then
       export GEM_HOME=~/.gem/ruby/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')
+      export GEM_ROOT=~/.rubies/ruby-$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')/lib/ruby/gems/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION.gsub(/\d$/, "0")')
     fi
   fi
 
@@ -717,6 +718,9 @@ function setup_binstubs {
 
     # set GEM_HOME
     export GEM_HOME=$PWD/.bundle
+
+    # set GEM_ROOT
+    export GEM_ROOT=$PWD/.bundle
   fi
 
   if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/bin ]; then
@@ -732,14 +736,14 @@ if [ -d /usr/local/opt/chruby/share/chruby ]; then
   # remove the preexec hook added by chruby (we will be using chruby_auto in a chpwd hook)
   add-zsh-hook -d preexec chruby_auto
 
-  # add chruby_auto and setup_binstubs calls for every directory change (needed so that prompt works)
+  # add chruby_auto and calls for every directory change (needed so that prompt works)
   add-zsh-hook chpwd chruby_auto
 
   # execute on first run, so that we have everything setup correctly regardless of the directory we open new terminal window in
   chruby_auto
 fi
 
-# add setup_binstubs calls for every directory change (needed so that prompt works)
+# add setup_binstubs calls for every directory change (needed so that zsh prompt works)
 add-zsh-hook chpwd setup_binstubs
 
 # execute on first run, so that we have everything setup correctly regardless of the directory we open new terminal window in
