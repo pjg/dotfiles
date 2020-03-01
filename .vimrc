@@ -284,8 +284,8 @@ set noautowriteall
 " never automatically re-read files changed outside of vim
 set noautoread
 
-" write swap files after 300 ms of inactivity
-set updatetime=300
+" write swap files after some inactivity [ms] (will trigger coc)
+set updatetime=3000
 
 " global directory for .swp files
 set directory=$HOME/.vim/tmp/
@@ -356,7 +356,7 @@ set synmaxcol=300
 " auto-completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascriptreact set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascrip.jsx set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
@@ -371,8 +371,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " set fixed columns only for some file types
 autocmd FileType * setlocal textwidth=0
-autocmd FileType ruby,eruby,javascript,javascriptreact,vue,css,scss setlocal textwidth=80
+autocmd FileType ruby,eruby,javascript,javascript.jsx,vue,css,scss setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
+
+" set various characters to be treated as a part of words
+autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,javascript.jsx,coffee,yaml setlocal iskeyword+=-,$,#
 
 augroup filetypedetect
   " YAML files read as Ruby
@@ -383,10 +386,9 @@ augroup filetypedetect
 
   " 2 spaces for TAB in JS/CSS/HTML files
   autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx} setlocal softtabstop=2 tabstop=2 shiftwidth=2
-augroup END
 
-" explicitly set filetype to Ruby for some well-known files
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
+  " explicitly set filetype to Ruby for some well-known files
+  autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
   " explicitly set filetype to shell for dotenv's sample file
   autocmd BufRead,BufNewFile .env.sample setfiletype sh
@@ -394,8 +396,9 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Gu
   " explicitly set filetype to slim for slim view files (not sure why it's needed...)
   autocmd BufNewFile,BufRead {*.html.slim} set filetype=slim
 
-" set various characters to be treated as a part of words
-autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee,yaml setlocal iskeyword+=-,$,#
+  " set filetype for React files
+  autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
 
 
 
@@ -752,7 +755,17 @@ let g:rainbow_conf = {
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 
 " [coc.nvim]
-let g:coc_global_extensions = ['coc-css', 'coc-json', 'coc-html', 'coc-solargraph', 'coc-tsserver', 'coc-yaml']
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-eslint',
+  \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-prettier',
+  \ 'coc-solargraph',
+  \ 'coc-styled-components',
+  \ 'coc-tsserver',
+  \ 'coc-yaml'
+  \ ]
 
 " use <tab> to trigger completion
 inoremap <silent><expr> <TAB>
@@ -786,7 +799,7 @@ function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    call CocAction('doHover')
+    call CocActionAsync('doHover')
   endif
 endfunction
 
