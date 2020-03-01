@@ -104,7 +104,7 @@ set hidden
 set noequalalways
 
 " Resize splits when the window is resized
-au VimResized * :wincmd =
+autocmd VimResized * :wincmd =
 
 " split below/right
 set splitbelow
@@ -270,8 +270,8 @@ set ttimeoutlen=10
 " even faster ESC-aping (https://powerline.readthedocs.org/en/latest/tipstricks.html#vim)
 augroup FastEscape
   autocmd!
-  au InsertEnter * set timeoutlen=0
-  au InsertLeave * set timeoutlen=1000
+  autocmd InsertEnter * set timeoutlen=0
+  autocmd InsertLeave * set timeoutlen=1000
 augroup END
 
 " allow backspacing over autoindent, EOL, and BOL
@@ -306,7 +306,7 @@ set mouse=a
 set fcs+=vert:\ " the space after the backslash is intentional
 
 " always start on first line when editing git commit message
-au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 " explicitly set language to English
 let $LANG = 'en'
@@ -376,10 +376,10 @@ autocmd FileType gitcommit setlocal textwidth=72
 
 augroup filetypedetect
   " YAML files read as Ruby
-  autocmd BufNewFile,BufRead *.yml setf eruby
+  autocmd BufNewFile,BufRead *.yml setfiletype eruby
 
   " ActiveAdmin views read as Ruby
-  autocmd BufNewFile,BufRead *.arb setf ruby
+  autocmd BufNewFile,BufRead *.arb setfiletype ruby
 
   " 2 spaces for TAB in JS/CSS/HTML files
   autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx} setlocal softtabstop=2 tabstop=2 shiftwidth=2
@@ -388,11 +388,11 @@ augroup END
 " explicitly set filetype to Ruby for some well-known files
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
 
-" explicitly set filetype to shell for dotenv's sample file
-autocmd BufNewFile,BufRead .env.sample setf sh
+  " explicitly set filetype to shell for dotenv's sample file
+  autocmd BufRead,BufNewFile .env.sample setfiletype sh
 
-" explicitly set filetype to slim for slim view files (not sure why it's needed...)
-au BufRead,BufNewFile {*.html.slim} set filetype=slim
+  " explicitly set filetype to slim for slim view files (not sure why it's needed...)
+  autocmd BufNewFile,BufRead {*.html.slim} set filetype=slim
 
 " set various characters to be treated as a part of words
 autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee,yaml setlocal iskeyword+=-,$,#
@@ -458,7 +458,7 @@ let g:fzf_colors = {
   \ 'header':  ['fg', 'Comment'] }
 
 " [fugitive.vim] auto clean fugitive buffers
-au BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " [vim-multiple-cursors]
 let g:multi_cursor_exit_from_insert_mode = 1
@@ -713,7 +713,7 @@ function! ShowSignColumn()
   sign define dummy
   execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 endfunc
-au BufRead,BufNewFile * call ShowSignColumn()
+autocmd BufRead,BufNewFile * call ShowSignColumn()
 
 " [suda.vim] will ask for sudo password when editing a non-writeable file
 let g:suda_smart_edit = 1
