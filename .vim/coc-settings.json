@@ -1,4 +1,9 @@
 {
-  "codeLens.enable": true,
   "coc.preferences.extensionUpdateCheck": "daily",
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": ["javascript", "javascriptreact"],
+  "eslint.run": "onSave",
+  "prettier.eslintIntegration": true,
+  "suggest.timeout": 1000,
+  "tsserver.formatOnType": false
 }
