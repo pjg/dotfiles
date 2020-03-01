@@ -179,7 +179,7 @@ if has("gui_running")
     set guioptions=
 
     " default window size
-    set columns=231
+    set columns=232
     set lines=87
 
   " Unix/Linux
