@@ -116,7 +116,7 @@ module.exports = {
     defaultSSHApp: true,
 
     // The number of rows to be persisted in terminal buffer for scrolling
-    scrollback: 30000,
+    scrollback: 10000,
 
     // if `true` (without backticks and without quotes), on right click selected text will be copied or pasted if no
     // selection is present (`true` by default on Windows and disables the context menu feature)
