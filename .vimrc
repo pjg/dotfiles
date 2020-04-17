@@ -356,7 +356,8 @@ set synmaxcol=300
 " auto-completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascrip.jsx set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript.jsx set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript.tsx set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
@@ -371,11 +372,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " set fixed columns only for some file types
 autocmd FileType * setlocal textwidth=0
-autocmd FileType ruby,eruby,javascript,javascript.jsx,vue,css,scss setlocal textwidth=80
+autocmd FileType ruby,eruby,javascript,javascript.jsx,javascript.tsx,vue,css,scss setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
 
 " set various characters to be treated as a part of words
-autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,javascript.jsx,coffee,yaml setlocal iskeyword+=-,$,#
+autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,javascript.jsx,javascript.tsx,coffee,yaml setlocal iskeyword+=-,$,#
 
 augroup filetypedetect
   " YAML files read as Ruby
@@ -385,7 +386,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.arb setfiletype ruby
 
   " 2 spaces for TAB in JS/CSS/HTML files
-  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx} setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx,*.tsx} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
   " explicitly set filetype to Ruby for some well-known files
   autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
@@ -398,6 +399,9 @@ augroup filetypedetect
 
   " set filetype for React files
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+
+  " set filetype for Typescript files
+  autocmd BufNewFile,BufRead *.tsx set filetype=javascript.tsx
 augroup END
 
 
