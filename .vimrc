@@ -285,7 +285,7 @@ set noautowriteall
 set noautoread
 
 " write swap files after some inactivity [ms] (will trigger coc)
-set updatetime=3000
+set updatetime=300
 
 " global directory for .swp files
 set directory=$HOME/.vim/tmp/
@@ -352,23 +352,6 @@ set synmaxcol=300
 
 
 " FILE TYPES
-
-" auto-completion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript.jsx set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript.tsx set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-
-" special auto-completion settings for Ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 0
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " set fixed columns only for some file types
 autocmd FileType * setlocal textwidth=0
@@ -807,6 +790,7 @@ function! s:show_documentation()
   endif
 endfunction
 
+highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 
 
 " ABBREVIATIONS
