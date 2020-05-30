@@ -63,7 +63,6 @@ Plug 'itspriddle/vim-stripper'
 
 " general vim improvements
 Plug 'adelarsq/vim-matchit'
-Plug 'omh/Kwbd.vim'
 Plug 'sickill/vim-pasta'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-abolish'
@@ -821,34 +820,6 @@ abbreviate brp binding.pry;
 " have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
 noremap Y y$
 
-" <F2> to save current session in tmp/current.vim
-map <F2> :mksession! tmp/current.vim<cr>
-imap <F2> <esc><F2>
-vmap <F2> <esc><F2>
-
-" <F4> to turn line wrap on/off
-map <F4> :set wrap!<cr>
-imap <F4> <esc><F4>
-vmap <F4> <esc><F4>
-
-" <F6> for gundo.vim
-nmap <F6> :GundoToggle<cr><cr>
-imap <F6> <esc>:GundoToggle<cr><cr>
-
-" <F8> to turn off the highlight search & redraw screen, sign column and statusline
-map <F8> :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:SignifyRefresh<cr>
-imap <F8> <esc><F8>
-vmap <F8> <esc><F8>
-
-" close current buffer but don't close the window (Kwbd.vim)
-nmap <F10> :Kwbd<cr>
-
-" <F11> to toggle the paste mode (when vim either adds or not spaces in the front of lines)
-set pastetoggle=<F11>
-
-" <F12> to toggle the display of invisible characters ($\t)
-nmap <F12> :set list!<bar>set list?<cr>
-
 " swap ` with ' (so that ' will jump to line *and* column)
 nnoremap ' `
 nnoremap ` '
@@ -1071,6 +1042,19 @@ noremap <leader>- <C-w>_
 " underline the current line
 nmap <silent> <leader>1 :t.<CR>Vr-
 nmap <silent> <leader>2 :t.<CR>Vr=
+
+" turn line wrap on/off
+nmap <leader>4 :set wrap!<cr>
+
+" gundo
+nmap <leader>6 :GundoToggle<cr>
+
+" turn off the highlight search & redraw screen, sign column and statusline
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:SignifyRefresh<cr>
+
+" toggle the paste mode (when vim either adds or not spaces in the front of lines)
+set pastetoggle=<leader>0
+
 
 " quick insertion of newline in normal mode
 nnoremap <silent> <cr> :-1put=''<cr><down>
