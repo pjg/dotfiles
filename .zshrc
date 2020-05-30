@@ -808,3 +808,6 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # Disable ads from npm packages installs
 export ADBLOCK=true
+
+# Load iTerm2 shell integration (if available)
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
