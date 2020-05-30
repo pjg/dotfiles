@@ -1,7 +1,3 @@
-# Load plugins (only those I whitelist)
-Pry.config.should_load_plugins = false
-Pry.plugins["doc"].activate!
-
 # alias 'q' for 'exit'
 Pry.config.commands.alias_command "q", "exit-all"
 
@@ -13,6 +9,7 @@ begin
   require 'awesome_print/ext/mongoid'
   require 'awesome_print/ext/nokogiri'
   require 'awesome_print/ext/ostruct'
+
   AwesomePrint.pry!
 rescue LoadError => err
 end
@@ -34,6 +31,9 @@ end
 # Launch Pry with access to the entire Rails stack
 rails = File.join(Dir.getwd, 'config', 'environment.rb')
 
+# Disable pry's shell integration (handle pasted Ruby code starting with a dot)
+Pry.commands.delete /\.(.*)/
+
 if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   require rails
 
@@ -44,14 +44,15 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
     require 'rails/console/app'
     require 'rails/console/helpers'
   else
-    warn "[WARN] cannot load Rails console commands (Not on Rails v2-5?)"
+    warn "[WARN] cannot load Rails console commands (Not using Rails v2-5?)"
   end
 
   # Rails' pry prompt
   env = ENV['RAILS_ENV'] || Rails.env
   rails_root = File.basename(Dir.pwd)
 
-  rails_env_prompt = case env
+  rails_env_prompt =
+    case env
     when 'development'
       '[DEV]'
     when 'production'
@@ -61,8 +62,14 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
     end
 
   prompt = '%s %s %s:%s'
-  Pry.config.prompt = [ proc { |obj, nest_level, *| "#{prompt}> " % [rails_root, rails_env_prompt, obj, nest_level] },
-                        proc { |obj, nest_level, *| "#{prompt}* " % [rails_root, rails_env_prompt, obj, nest_level] } ]
+
+  Pry.config.prompt = Pry::Prompt.new \
+    'Prompt',
+    'Custom prompt',
+    [
+      proc { |obj, _nest_level, pry_instance| "#{prompt}> " % [rails_root, rails_env_prompt, obj, pry_instance.input_ring.count] },
+      proc { |obj, _nest_level, pry_instance| "#{prompt}* " % [rails_root, rails_env_prompt, obj, pry_instance.input_ring.count] }
+    ]
 
   # [] acts as find()
   ActiveRecord::Base.instance_eval { alias :[] :find } if defined?(ActiveRecord)
@@ -104,10 +111,13 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
     def details
       if self.respond_to?(:attributes) and self.attributes.any?
         max = self.attributes.keys.sort_by { |k| k.size }.pop.size + 5
+
         puts
+
         self.attributes.keys.sort.each do |k|
           puts sprintf("%-#{max}.#{max}s%s", k, self.try(k))
         end
+
         puts
       end
     end
@@ -118,7 +128,12 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   # http://lucapette.com/irb/rails-core-ext-and-irb/
   class Class
     def core_ext
-      self.instance_methods.map {|m| [m, self.instance_method(m).source_location] }.select {|m| m[1] && m[1][0] =~/activesupport/}.map {|m| m[0]}.sort
+      self
+        .instance_methods
+        .map { |m| [m, self.instance_method(m).source_location] }
+        .select { |m| m[1] && m[1][0] =~/activesupport/ }
+        .map { |m| m[0] }
+        .sort
     end
   end
 
