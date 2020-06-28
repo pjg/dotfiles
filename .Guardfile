@@ -37,13 +37,16 @@ end
 
 if Gem::Specification.find_all_by_name('guard-shell').any?
   guard 'shell' do
-    # Restart passenger
-    watch('Gemfile.lock')                       { |m| `touch tmp/restart.txt` }
-    watch(%r{^lib/.*})                          { |m| `touch tmp/restart.txt` }
-    watch('config/environments/development.rb') { |m| `touch tmp/restart.txt` }
-    watch('config/application.yml')             { |m| `touch tmp/restart.txt` }
-    watch('config/secrets.yml')                 { |m| `touch tmp/restart.txt` }
-    watch(%r{^config/initializers/.+\.rb$})     { |m| `touch tmp/restart.txt` }
+    # Restart application server
+    watch('Gemfile.lock')                       { |_| `touch tmp/restart.txt` }
+    watch(%r{^lib/.*})                          { |_| `touch tmp/restart.txt` }
+    watch('config/environments/development.rb') { |_| `touch tmp/restart.txt` }
+    watch(%r{^config/locales/.+\.yml$})         { |_| `touch tmp/restart.txt` }
+    watch('config/application.yml')             { |_| `touch tmp/restart.txt` }
+    watch('config/secrets.yml')                 { |_| `touch tmp/restart.txt` }
+    watch('config/settings.yml')                { |_| `touch tmp/restart.txt` }
+    watch('config/settings.local.yml')          { |_| `touch tmp/restart.txt` }
+    watch(%r{^config/initializers/.+\.rb$})     { |_| `touch tmp/restart.txt` }
   end
 end
 
