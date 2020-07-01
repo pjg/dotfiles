@@ -1023,8 +1023,8 @@ noremap <leader>d "*d
 noremap <leader>D "*d$
 noremap <leader>y "*y
 noremap <leader>Y "*y$
-noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
-noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
+nnoremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
+nnoremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
 
 " select just pasted text
 noremap <leader>V V`]
