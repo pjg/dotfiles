@@ -358,7 +358,8 @@ autocmd FileType ruby,eruby,javascript,javascript.jsx,javascript.tsx,vue,css,scs
 autocmd FileType gitcommit setlocal textwidth=72
 
 " set various characters to be treated as a part of words
-autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,javascript.jsx,javascript.tsx,coffee,yaml setlocal iskeyword+=-,$,#
+autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,less,javascript,javascript.jsx,javascript.tsx,coffee,yaml setlocal iskeyword+=-,$,#
+autocmd FileType scss,sass,less,ruby,eruby setlocal iskeyword+=@
 
 augroup filetypedetect
   " YAML files read as Ruby
