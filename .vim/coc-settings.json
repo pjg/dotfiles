@@ -7,6 +7,7 @@
   "eslint.run": "onSave",
   "prettier.eslintIntegration": true,
   "signature.target": "echo",
+  "solargraph.promptDownload": false,
   "suggest.floatEnable": false,
   "suggest.timeout": 500,
   "tsserver.formatOnType": false
