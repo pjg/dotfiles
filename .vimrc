@@ -247,10 +247,12 @@ set wildmode=longest:full,full
 set wildignore=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem                 " output & scm files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz                      " archive files
 set wildignore+=*.jpg,*.jpeg,*.png,*.xpm,*.gif,*.bmp                         " pictures
+set wildignore+=*/public/*                                                   " rails/gatsby public
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/* " bundler and sass
 set wildignore+=*/node_modules/*                                             " node modules
 set wildignore+=*/log/*,*.log,*/coverage/*                                   " logs and rcov
 set wildignore+=*.swp,*~,._*                                                 " swp and backup files
+set wildignore+=*/.cache/*                                                   " gatsby cache
 
 " short messages in command line (so that they don't overflow and require pressing <ENTER>) (h :shortmess)
 set shortmess=acoOtI
@@ -369,7 +371,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.arb setfiletype ruby
 
   " 2 spaces for TAB in JS/CSS/HTML files
-  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx,*.tsx} setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx,*.tsx,*.svg} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
   " explicitly set filetype to Ruby for some well-known files
   autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
@@ -426,7 +428,7 @@ let g:fzf_buffers_jump = 0
 let g:fzf_layout = { 'down': '10' }
 
 " required for VimR/MacVim (MacOS)
-let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/bundle --ignore-dir=vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public --ignore-dir=node_modules --ignore-dir=.cache --ignore-dir=tmp --ignore-dir=vendor/bundle --ignore-dir=vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
 
 " hl  (non matched lines, matched letters fg)
 " fg+ (first matched line fg)
@@ -765,9 +767,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" use <c-space> to trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
