@@ -178,7 +178,7 @@ if has("gui_running")
     set guioptions=
 
     " default window size
-    set columns=232
+    set columns=248
     set lines=87
 
   " Unix/Linux
@@ -897,7 +897,7 @@ nnoremap <right> :cnext<cr>zvzz
 nnoremap <up> :lprev<cr>zvzz
 nnoremap <down> :lnext<cr>zvzz
 
-" quickselect tabs with CMD + # (gvim only)
+" quickselect tabs with CMD + #
 nnoremap <D-1> :tabn 1<CR>
 nnoremap <D-2> :tabn 2<CR>
 nnoremap <D-3> :tabn 3<CR>
@@ -907,6 +907,25 @@ nnoremap <D-6> :tabn 6<CR>
 nnoremap <D-7> :tabn 7<CR>
 nnoremap <D-8> :tabn 8<CR>
 nnoremap <D-9> :tabn 9<CR>
+
+inoremap <D-1> <C-o>:tabn 1<cr><Esc>
+inoremap <D-2> <C-o>:tabn 2<cr><Esc>
+inoremap <D-3> <C-o>:tabn 3<cr><Esc>
+inoremap <D-4> <C-o>:tabn 4<cr><Esc>
+inoremap <D-5> <C-o>:tabn 5<cr><Esc>
+inoremap <D-6> <C-o>:tabn 6<cr><Esc>
+inoremap <D-7> <C-o>:tabn 7<cr><Esc>
+inoremap <D-8> <C-o>:tabn 8<cr><Esc>
+inoremap <D-9> <C-o>:tabn 9<cr><Esc>
+
+" pasting
+nnoremap <D-v> a<C-r>+<Esc>
+inoremap <D-v> <C-r>+
+cnoremap <D-v> <C-r>+
+
+" new tab
+nnoremap <D-t> :tabnew<cr>
+inoremap <D-t> <C-o>:tabnew<cr>
 
 
 " INSERT MODE KEY MAPPINGS
