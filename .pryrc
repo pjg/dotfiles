@@ -1,16 +1,16 @@
 # alias 'q' for 'exit'
 Pry.config.commands.alias_command "q", "exit-all"
 
-# Load 'awesome_print'
+# Load 'amazing_print'
 begin
-  require 'awesome_print'
-  require 'awesome_print/ext/active_record'
-  require 'awesome_print/ext/active_support'
-  require 'awesome_print/ext/mongoid'
-  require 'awesome_print/ext/nokogiri'
-  require 'awesome_print/ext/ostruct'
+  require 'amazing_print'
+  require 'amazing_print/ext/active_record'
+  require 'amazing_print/ext/active_support'
+  require 'amazing_print/ext/mongoid'
+  require 'amazing_print/ext/nokogiri'
+  require 'amazing_print/ext/ostruct'
 
-  AwesomePrint.pry!
+  AmazingPrint.pry!
 rescue LoadError => err
 end
 

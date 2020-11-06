@@ -1,4 +1,4 @@
-AwesomePrint.defaults = {
+AmazingPrint.defaults = {
   index: false,
   indent: 2
 }
