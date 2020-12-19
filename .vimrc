@@ -792,8 +792,13 @@ highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 " [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
 let g:sneak#map_netrw = 0
 
-" [auto-pairs]
+" [auto-pairs] define new pair for html-like files
 au FileType javascript.jsx,javascript.tsx,javascript,html,eruby let b:AutoPairs = AutoPairsDefine({'<' : '>'})
+
+" [auto-pairs] fix shortcuts messing with polish characters via <CMD>+<letter>
+let g:AutoPairsShortcutFastWrap=''
+let g:AutoPairsShortcutJump=''
+
 
 
 " ABBREVIATIONS
@@ -929,6 +934,26 @@ cnoremap <D-v> <C-r>+
 " new tab
 nnoremap <D-t> :tabnew<cr>
 inoremap <D-t> <C-o>:tabnew<cr>
+
+" polish letters (goneovim requires those mappings)
+inoremap <M-a> ą
+inoremap <M-c> ć
+inoremap <M-e> ę
+inoremap <M-l> ł
+inoremap <M-n> ń
+inoremap <M-o> ó
+inoremap <M-s> ś
+inoremap <M-x> ź
+inoremap <M-z> ż
+inoremap <M-A> Ą
+inoremap <M-C> Ć
+inoremap <M-E> Ę
+inoremap <M-L> Ł
+inoremap <M-N> Ń
+inoremap <M-O> Ó
+inoremap <M-S> Ś
+inoremap <M-X> Ź
+inoremap <M-Z> Ż
 
 
 " INSERT MODE KEY MAPPINGS
