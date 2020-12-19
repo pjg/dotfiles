@@ -30,15 +30,8 @@ _has() {
 umask 022
 
 # editor/visual
-if type nvim >/dev/null 2>&1; then
-  # neovim
-  export EDITOR=nvim
-  export VISUAL=nvim
-else
-  # vim (without support for tmp/current.vim)
-  export EDITOR=vim
-  export VISUAL=vim
-fi
+export EDITOR=vim
+export VISUAL=vim
 
 # pager
 export PAGER=less
@@ -175,20 +168,8 @@ alias fswatch-rspec='fswatch -0 -e ".*" -i "\\.rb$" . | xargs -0 -n 1 -I {} rspe
 # htop
 if [[ -x `which htop` ]]; then alias top="sudo htop"; fi
 
-# vim/nvim - load tmp/current.vim if it exist (alias `v` to vim/nvim)
-function v() {
-  if type nvim >/dev/null 2>&1; then
-    # neovim
-    if (( $# == 0 )) && [[ -f tmp/current.vim ]]; then
-      nvim -S tmp/current.vim
-    else
-      nvim "$@"
-    fi
-  else
-    # vim (without support for tmp/current.vim)
-    vim "$@"
-  fi
-}
+# vim
+alias v=vim
 
 # ack
 if [[ -x `which ack-grep` ]]; then alias ack='ack-grep'; fi
