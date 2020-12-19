@@ -693,12 +693,12 @@ highlight SignifySignAdd    guibg=NONE ctermbg=NONE ctermfg=46  guifg=#339933
 highlight SignifySignDelete guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 highlight SignifySignChange guibg=NONE ctermbg=NONE ctermfg=76  guifg=#BB9933
 
-" [vim-signify] always show the sign column (by adding a dummy sign)
-function! ShowSignColumn()
-  sign define dummy
-  execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-endfunc
-autocmd BufRead,BufNewFile * call ShowSignColumn()
+" Recently vim can merge signcolumn and number column into one
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " [suda.vim] will ask for sudo password when editing a non-writeable file
 let g:suda_smart_edit = 1
