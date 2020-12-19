@@ -266,14 +266,7 @@ autocmd GUIEnter * set vb t_vb=
 " time out on key codes but not on mappings
 set notimeout
 set ttimeout
-set ttimeoutlen=10
-
-" even faster ESC-aping (https://powerline.readthedocs.org/en/latest/tipstricks.html#vim)
-augroup FastEscape
-  autocmd!
-  autocmd InsertEnter * set timeoutlen=0
-  autocmd InsertLeave * set timeoutlen=1000
-augroup END
+set ttimeoutlen=5
 
 " allow backspacing over autoindent, EOL, and BOL
 set backspace=2
