@@ -1,6 +1,7 @@
 {
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.hoverTarget": "echo",
+  "codeLens.enable": false,
   "diagnostic.messageTarget": "echo",
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "javascriptreact", "javascript.jsx", "javascript.tsx"],
