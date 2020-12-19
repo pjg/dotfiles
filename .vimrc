@@ -749,7 +749,7 @@ let g:coc_global_extensions = [
   \ 'coc-yaml'
   \ ]
 
-" use <tab> to trigger completion
+" use <tab> to trigger completion (vim-endwise + coc)
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
@@ -783,6 +783,10 @@ function! s:show_documentation()
 endfunction
 
 highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
+
+" [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
+let g:sneak#map_netrw = 0
+
 
 
 " ABBREVIATIONS
@@ -1083,6 +1087,18 @@ function! CleanupFileConvertToUnixUtf8()
   set fileencoding=utf-8
   " cleanup trailing whitespace
   execute '%s/\s\+$//e'
+endfunction
+
+" netrw overrides
+
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+  " move right
+  noremap <buffer> <c-l> <c-w>l
 endfunction
 
 
