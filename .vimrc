@@ -66,7 +66,7 @@ Plug 'adelarsq/vim-matchit'
 Plug 'sickill/vim-pasta'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
@@ -749,7 +749,7 @@ let g:coc_global_extensions = [
   \ 'coc-yaml'
   \ ]
 
-" use <tab> to trigger completion (vim-endwise + coc)
+" use <tab> to trigger completion (coc)
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
@@ -787,6 +787,8 @@ highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 " [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
 let g:sneak#map_netrw = 0
 
+" [auto-pairs]
+au FileType javascript.jsx,javascript.tsx,javascript,html,eruby let b:AutoPairs = AutoPairsDefine({'<' : '>'})
 
 
 " ABBREVIATIONS
