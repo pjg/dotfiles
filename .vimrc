@@ -190,7 +190,7 @@ if has("gui_running")
     winpos 70 40
     winsize 140 50
 
-    " set English language
+    " set English language in Vim's UI
     language en_US.utf8
     language messages en_US.utf8
   endif
@@ -301,9 +301,6 @@ set fcs+=vert:\ " the space after the backslash is intentional
 
 " always start on first line when editing git commit message
 autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" explicitly set language to English
-let $LANG = 'en'
 
 " automatically open files in read-only mode if swapfile exists
 augroup NoSimultaneousEdits
