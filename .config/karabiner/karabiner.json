@@ -142,7 +142,7 @@
                     }
                 }
             ],
-            "name": "Default profile",
+            "name": "My profile",
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
