@@ -933,24 +933,27 @@ nnoremap <D-t> :tabnew<cr>
 inoremap <D-t> <C-o>:tabnew<cr>
 
 " polish letters (goneovim requires those mappings)
-inoremap <M-a> ą
-inoremap <M-c> ć
-inoremap <M-e> ę
-inoremap <M-l> ł
-inoremap <M-n> ń
-inoremap <M-o> ó
-inoremap <M-s> ś
-inoremap <M-x> ź
-inoremap <M-z> ż
-inoremap <M-A> Ą
-inoremap <M-C> Ć
-inoremap <M-E> Ę
-inoremap <M-L> Ł
-inoremap <M-N> Ń
-inoremap <M-O> Ó
-inoremap <M-S> Ś
-inoremap <M-X> Ź
-inoremap <M-Z> Ż
+if exists('g:goneovim')
+  inoremap <M-a> ą
+  inoremap <M-c> ć
+  inoremap <M-e> ę
+  inoremap <M-l> ł
+  inoremap <M-n> ń
+  inoremap <M-o> ó
+  inoremap <M-s> ś
+  inoremap <M-x> ź
+  inoremap <M-z> ż
+  inoremap <M-A> Ą
+  inoremap <M-C> Ć
+  inoremap <M-E> Ę
+  inoremap <M-L> Ł
+  inoremap <M-N> Ń
+  inoremap <M-O> Ó
+  inoremap <M-S> Ś
+  inoremap <M-X> Ź
+  inoremap <M-Z> Ż
+endif
+
 
 
 " INSERT MODE KEY MAPPINGS
