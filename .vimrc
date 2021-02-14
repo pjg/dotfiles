@@ -423,7 +423,7 @@ let g:fzf_buffers_jump = 0
 let g:fzf_layout = { 'down': '10' }
 
 " required for VimR/MacVim (MacOS)
-let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=public --ignore-dir=node_modules --ignore-dir=.cache --ignore-dir=tmp --ignore-dir=vendor/bundle --ignore-dir=vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=./public --ignore-dir=./node_modules --ignore-dir=./.cache --ignore-dir=./tmp --ignore-dir=./vendor/bundle --ignore-dir=./vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
 
 " hl  (non matched lines, matched letters fg)
 " fg+ (first matched line fg)
