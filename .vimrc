@@ -758,6 +758,14 @@ inoremap <silent><expr> <TAB>
   \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" handles issue with `coc.nvim` and `vim-endwise` both remapping <cr> to handle completion
+" https://github.com/tpope/vim-endwise/issues/125
+" and https://github.com/tpope/vim-endwise/issues/22#issuecomment-652621302
+inoremap <silent> <cr> <C-r>=<SID>coc_confirm()<cr>
+function! s:coc_confirm() abort
+  return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+endfunction
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
