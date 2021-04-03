@@ -111,6 +111,9 @@
   # Default git hooks (will be copied over to each newly cloned repo)
   templatedir = ~/.git_template
 
+  # Default branch is 'master'
+  defaultBranch = master
+
 [filter "media"]
   # Handle large media files in Git without storing the media in Git itself
   clean = git-media-clean %f
