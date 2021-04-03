@@ -197,13 +197,6 @@ if [[ -x `which prettyping` ]]; then alias ping='prettyping --nolegend'; fi
 # Rails application update
 alias pull='git pull; bundle; rake db:migrate; git checkout -- db/schema.rb; touch tmp/restart.txt'
 
-# FZF
-if _has fzf && _has ag; then
-  export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
-fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
 # misc
 alias _='sudo'
 alias mc='LANG=en_EN.UTF-8 mc -cu'
@@ -792,3 +785,9 @@ export ADBLOCK=true
 
 # Load iTerm2 shell integration (if available)
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Load FZF shell integration (if available)
+if _has fzf && _has ag; then
+  export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
+fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
