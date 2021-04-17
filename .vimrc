@@ -1047,7 +1047,7 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gl :!git l<cr>
 nmap <leader>gp :Git push<cr>
-nmap <leader>gr :Gremove!<cr>
+nmap <leader>gr :GRemove!<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gwrite<cr>
 
