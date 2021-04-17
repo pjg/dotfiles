@@ -9,7 +9,7 @@ source ~/.zsh/antigen/antigen.zsh
 # define the plugins
 antigen bundle jimhester/per-directory-history
 antigen bundle olivierverdier/zsh-git-prompt
-antigen bundle pjg/zsh-vim-plugin
+antigen bundle nviennot/zsh-vim-plugin
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
