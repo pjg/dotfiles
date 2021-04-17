@@ -66,7 +66,7 @@ Plug 'sickill/vim-pasta'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
-Plug 'jiangmiao/auto-pairs'
+Plug 'LunarWatcher/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
@@ -797,12 +797,14 @@ highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 " [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
 let g:sneak#map_netrw = 0
 
-" [auto-pairs] define new pair for html-like files
-au FileType javascript.jsx,javascript.tsx,javascript,html,eruby let b:AutoPairs = AutoPairsDefine({'<' : '>'})
+" [auto-pairs] compatbility mode
+let g:AutoPairsCompatibleMaps = 0
 
-" [auto-pairs] fix shortcuts messing with polish characters via <CMD>+<letter>
-let g:AutoPairsShortcutFastWrap=''
-let g:AutoPairsShortcutJump=''
+" [auto-pairs] custom pairs
+let g:AutoPairs = autopairs#AutoPairsDefine([
+  \   {"open": "<%", "close": "%>", "filetype": ["eruby"]},
+  \   {"open": "<", "close": ">", "filetype": ["eruby", "javascript.jsx", "javascript.tsx", "javascript", "html"]}
+  \ ])
 
 
 
