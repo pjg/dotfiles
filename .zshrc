@@ -13,6 +13,7 @@ antigen bundle nviennot/zsh-vim-plugin
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle jeffreytse/zsh-vi-mode
 
 # load the plugins
 antigen apply
@@ -310,155 +311,19 @@ unsetopt nomatch
 HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 
 
-# ZLE WIDGETS
-
-# Zsh's history-beginning-search-backward is very close to Vim's C-x C-l
-history-beginning-search-backward-then-append() {
-  zle history-beginning-search-backward
-  zle vi-add-eol
-}
-zle -N history-beginning-search-backward-then-append
-
-# Delete all characters between a pair of characters. Mimics vim's "di" text object functionality
-function delete-in {
-
-  # Create locally-scoped variables we'll need
-  local CHAR LCHAR RCHAR LSEARCH RSEARCH COUNT
-
-  # Read the character to indicate which text object we're deleting
-  read -k CHAR
-
-  if [ "$CHAR" = "w" ]
-  then
-    # diw, delete the word
-
-    # find the beginning of the word under the cursor
-    zle vi-backward-word
-
-    # set the left side of the delete region at this point
-    LSEARCH=$CURSOR
-
-    # find the end of the word under the cursor
-    zle vi-forward-word
-
-    # set the right side of the delete region at this point
-    RSEARCH=$CURSOR
-
-    # Set the BUFFER to everything except the word we are removing
-    RBUFFER="$BUFFER[$RSEARCH+1,${#BUFFER}]"
-    LBUFFER="$LBUFFER[1,$LSEARCH]"
-
-    return
-
-  # diw was unique.  For everything else, we just have to define the
-  # characters to the left and right of the cursor to be removed
-  elif [ "$CHAR" = "(" ] || [ "$CHAR" = ")" ] || [ "$CHAR" = "b" ]
-  then
-    # di), delete inside of a pair of parenthesis
-    LCHAR="("
-    RCHAR=")"
-
-  elif [ "$CHAR" = "[" ] || [ "$CHAR" = "]" ]
-  then
-    # di], delete inside of a pair of square brackets
-    LCHAR="["
-    RCHAR="]"
-
-  elif [ $CHAR = "{" ] || [ $CHAR = "}" ] || [ "$CHAR" = "B" ]
-  then
-    # di}, delete inside of a pair of braces
-    LCHAR="{"
-    RCHAR="}"
-
-  else
-    # The character entered does not have a special definition.
-    # Simply find the first instance to the left and right of the cursor.
-    LCHAR="$CHAR"
-    RCHAR="$CHAR"
-  fi
-
-  # Find the first instance of LCHAR to the left of the cursor and the
-  # first instance of RCHAR to the right of the cursor, and remove everything in between.
-  # Begin the search for the left-sided character directly the left of the cursor
-  LSEARCH=${#LBUFFER}
-
-  # Keep going left until we find the character or hit the beginning of the buffer
-  while [ "$LSEARCH" -gt 0 ] && [ "$LBUFFER[$LSEARCH]" != "$LCHAR" ]
-  do
-    LSEARCH=$(expr $LSEARCH - 1)
-  done
-
-  # If we hit the beginning of the command line without finding the character, abort
-  if [ "$LBUFFER[$LSEARCH]" != "$LCHAR" ]
-  then
-    return
-  fi
-
-  # start the search directly to the right of the cursor
-  RSEARCH=0
-
-  # Keep going right until we find the character or hit the end of the buffer
-  while [ "$RSEARCH" -lt $(expr ${#RBUFFER} + 1 ) ] && [ "$RBUFFER[$RSEARCH]" != "$RCHAR" ]
-  do
-    RSEARCH=$(expr $RSEARCH + 1)
-  done
-
-  # If we hit the end of the command line without finding the character, abort
-  if [ "$RBUFFER[$RSEARCH]" != "$RCHAR" ]
-  then
-    return
-  fi
-
-  # Set the BUFFER to everything except the text we are removing
-  RBUFFER="$RBUFFER[$RSEARCH,${#RBUFFER}]"
-  LBUFFER="$LBUFFER[1,$LSEARCH]"
-}
-
-zle -N delete-in
-
-
-# Delete all characters between a pair of characters and then go to insert mode
-# Mimics vim's "ci" text object functionality.
-function change-in {
-  zle delete-in
-  zle vi-insert
-}
-zle -N change-in
-
-# Delete all characters between a pair of characters as well as the surrounding
-# characters themselves. Mimics vim's "da" text object functionality
-function delete-around {
-  zle delete-in
-  zle vi-backward-char
-  zle vi-delete-char
-  zle vi-delete-char
-}
-zle -N delete-around
-
-# Delete all characters between a pair of characters as well as the surrounding
-# characters themselves and then go into insert mode. Mimics vim's "ca" text object functionality.
-function change-around {
-  zle delete-in
-  zle vi-backward-char
-  zle vi-delete-char
-  zle vi-delete-char
-  zle vi-insert
-}
-zle -N change-around
-
 
 # KEY BINDINGS
 
 # 200ms wait (20 == 200ms) for a longer bound string (usually ESC + something; wait 200ms for 'something' and if it doesn't come, just execute normal <Esc>)
 export KEYTIMEOUT=20
 
-# VIM style keybindings by default
+# VIM style keybindings by default (unnecessary)
 bindkey -v
 
 # make backward-word and forward-word move to each word separated by a '/'
 export WORDCHARS=''
 
-# edit command line
+# edit command line (insert mode) (vv for command mode edit)
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
@@ -473,79 +338,38 @@ case "$TERM" in
     bindkey '[C' forward-word
     bindkey '^[[1;3D' backward-word
     bindkey '^[[1;3C' forward-word
-
-    # ctrl + arrows
-    bindkey '^[OD' backward-word
-    bindkey '^[OC' forward-word
-    bindkey '^[[1;5D' backward-word
-    bindkey '^[[1;5C' forward-word
-
-    # home / end
-    bindkey '^[[1~' beginning-of-line
-    bindkey '^[[4~' end-of-line
-
-    # delete
-    bindkey '^[[3~' delete-char
-
-    # page up / page down
-    bindkey '^[[5~' history-beginning-search-backward
-    bindkey '^[[6~' history-beginning-search-forward
-
-    # shift + tab
-    bindkey '^[[Z' reverse-menu-complete
-
+    bindkey "\e\e[D" backward-word
+    bindkey "\e\e[C" forward-word
 
     # VI MODE KEYBINDINGS (ins mode)
-    bindkey -M viins '^a'    beginning-of-line
-    bindkey -M viins '^e'    end-of-line
-    bindkey -M viins -s '^b' "←\n" # C-b move to previous directory (in history)
-    bindkey -M viins -s '^f' "→\n" # C-f move to next directory (in history)
-    bindkey -M viins '^k'    kill-line
-    bindkey -M viins '^r'    history-incremental-pattern-search-backward
-    bindkey -M viins '^s'    history-incremental-pattern-search-forward
-    bindkey -M viins '^o'    history-beginning-search-backward
-    bindkey -M viins '^p'    history-beginning-search-backward
-    bindkey -M viins '^n'    history-beginning-search-forward
-    bindkey -M viins '^y'    yank
-    bindkey -M viins '^w'    backward-kill-word
-    bindkey -M viins '^u'    backward-kill-line
-    bindkey -M viins '^h'    backward-delete-char
-    bindkey -M viins '^?'    backward-delete-char
-    bindkey -M viins '^_'    undo
-    bindkey -M viins '^x^l'  history-beginning-search-backward-then-append
-    bindkey -M viins '^x^r'  redisplay
-    bindkey -M viins '\eOH'  beginning-of-line # Home
-    bindkey -M viins '\eOF'  end-of-line       # End
-    bindkey -M viins '\e[2~' overwrite-mode    # Insert
-
+    bindkey -M viins '^a' beginning-of-line
+    bindkey -M viins '^e' end-of-line
+    bindkey -M viins '^k' kill-line
+    bindkey -M viins '^o' history-beginning-search-backward
+    bindkey -M viins '^p' history-beginning-search-backward
+    bindkey -M viins '^n' history-beginning-search-forward
+    bindkey -M viins '^y' yank
+    bindkey -M viins '^w' backward-kill-word
+    bindkey -M viins '^u' backward-kill-line
+    bindkey -M viins '^h' backward-delete-char
+    bindkey -M viins '^?' backward-delete-char
+    bindkey -M viins '^_' undo
 
     # VI MODE KEYBINDINGS (cmd mode)
-    bindkey -M vicmd 'ca'    change-around
-    bindkey -M vicmd 'ci'    change-in
-    bindkey -M vicmd 'da'    delete-around
-    bindkey -M vicmd 'di'    delete-in
-    bindkey -M vicmd 'ga'    what-cursor-position
-    bindkey -M vicmd 'gg'    beginning-of-history
-    bindkey -M vicmd 'G '    end-of-history
-    bindkey -M vicmd '^a'    beginning-of-line
-    bindkey -M vicmd '^e'    end-of-line
-    bindkey -M vicmd '^k'    kill-line
-    bindkey -M vicmd '^r'    history-incremental-pattern-search-backward
-    bindkey -M vicmd '^s'    history-incremental-pattern-search-forward
-    bindkey -M vicmd '^o'    history-beginning-search-backward
-    bindkey -M vicmd '^p'    history-beginning-search-backward
-    bindkey -M vicmd '^n'    history-beginning-search-forward
-    bindkey -M vicmd '^y'    yank
-    bindkey -M vicmd '^w'    backward-kill-word
-    bindkey -M vicmd '^u'    backward-kill-line
-    bindkey -M vicmd '/'     vi-history-search-forward
-    bindkey -M vicmd '?'     vi-history-search-backward
-    bindkey -M vicmd '^_'    undo
-    bindkey -M vicmd '\ef'   forward-word                      # Alt-f
-    bindkey -M vicmd '\eb'   backward-word                     # Alt-b
-    bindkey -M vicmd '\ed'   kill-word                         # Alt-d
-    bindkey -M vicmd '\e[5~' history-beginning-search-backward # PageUp
-    bindkey -M vicmd '\e[6~' history-beginning-search-forward  # PageDown
+    bindkey -M vicmd '^a' beginning-of-line
+    bindkey -M vicmd '^e' end-of-line
+    bindkey -M vicmd '^k' kill-line
+    bindkey -M vicmd '^o' history-beginning-search-backward
+    bindkey -M vicmd '^p' history-beginning-search-backward
+    bindkey -M vicmd '^n' history-beginning-search-forward
+    bindkey -M vicmd '^y' yank
+    bindkey -M vicmd '^w' backward-kill-word
+    bindkey -M vicmd '^u' backward-kill-line
+    bindkey -M vicmd '/'  vi-history-search-forward
+    bindkey -M vicmd '?'  vi-history-search-backward
+    bindkey -M vicmd '^_' undo
+    bindkey -M vicmd 'H'  beginning-of-line
+    bindkey -M vicmd 'L'  end-of-line
   ;;
 esac
 
@@ -575,10 +399,31 @@ if [[ -f $__GIT_PROMPT_DIR/src/.bin/gitstatus ]]; then GIT_PROMPT_EXECUTABLE="ha
 # result of last command displays either a happy or sad face as the prompt
 smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
-# vim mode indicator in prompt (http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode)
-vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
-vim_mode=$vim_ins_mode
+# vim mode indicator in prompt
+vim_insert_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
+vim_replace_mode="%{$fg[red]%}[REP]%{$reset_color%}"
+vim_visual_mode="%{$fg[blue]%}[VIS]%{$reset_color%}"
+vim_normal_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
+
+function zvm_after_select_vi_mode() {
+  case $ZVM_MODE in
+    $ZVM_MODE_NORMAL)
+      vim_mode=$vim_normal_mode
+    ;;
+    $ZVM_MODE_INSERT)
+      vim_mode=$vim_insert_mode
+    ;;
+    $ZVM_MODE_VISUAL)
+      vim_mode=$vim_visual_mode
+    ;;
+    $ZVM_MODE_VISUAL_LINE)
+      vim_mode=$vim_visual_mode
+    ;;
+    $ZVM_MODE_REPLACE)
+      vim_mode=$vim_replace_mode
+    ;;
+  esac
+}
 
 # background jobs indicator in prompt (https://gist.github.com/remy/6079223)
 function background_jobs() {
@@ -605,26 +450,8 @@ function ssh_prompt_color() {
   fi
 }
 
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
 
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
-# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
-function TRAPINT() {
-  vim_mode=$vim_ins_mode
-  return $(( 128 + $1 ))
-}
-
-# don't display RPROMPT for previously accepted lines; only display it next to current line
-setopt transient_rprompt
+vim_mode="N/A"
 
 PROMPT='
 %(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(ruby --disable=gems,did_you_mean -e "print \"ruby-#{RUBY_VERSION}\"")%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
@@ -790,4 +617,38 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if _has fzf && _has ag; then
   export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
 fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# [zsh-vi-mode]
+
+# readkey engine
+ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_NEX
+
+# key timeout [s]
+ZVM_KEYTIMEOUT=0.2
+
+ZVM_VI_HIGHLIGHT_BACKGROUND=#dff2f9
+
+# Always starting with insert mode for each command line
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+
+
+# will auto execute
+function zvm_after_init() {
+  # Load fzf key bindings
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+  # those keybindings need to be defined here, otherwise they don't work
+  zvm_bindkey viins '^O' history-beginning-search-backward
+  zvm_bindkey viins '^P' history-beginning-search-backward
+  zvm_bindkey viins '^N' history-beginning-search-forward
+}
+
+# default keybindings override
+function zvm_after_lazy_keybindings() {
+  # alt + arrows
+  zvm_bindkey vicmd "\e\e[D" backward-word
+  zvm_bindkey vicmd "\e\e[C" forward-word
+
+  zvm_bindkey vicmd '^a' beginning-of-line
+  zvm_bindkey vicmd '^e' end-of-line
+}
