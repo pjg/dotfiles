@@ -147,10 +147,6 @@
   # do some extra checks when sending local changes
   fsckobjects = true
 
-[url "git@github.com:"]
-  # always clone repos using ssh (private key authentication)
-  insteadOf = https://github.com/
-
 [user]
   # The name and e-mail address will be used to identify you in the commits
   name = "Paweł Gościcki"
