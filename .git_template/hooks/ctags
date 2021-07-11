@@ -1,5 +1,5 @@
 #!/bin/sh
 set -e
 trap "rm -f .git/tags.$$" EXIT
-ctags --tag-relative=yes -Rf.git/tags.$$ --exclude=.git --exclude=.bundle --exclude=node_modules --exclude=bower_components --exclude=tmp --exclude=migrate --exclude='*\.min\.*' --exclude=coverage --languages=-javascript,sql
+ctags --tag-relative=yes -Rf.git/tags.$$ --exclude=.git --exclude=.bundle --exclude=node_modules --exclude=bower_components --exclude=log --exclude=tmp --exclude=migrate --exclude='*\.min\.*' --exclude=coverage --exclude=platforms --exclude=plugins --exclude='*\.json' --languages=-sql
 mv .git/tags.$$ .git/tags
