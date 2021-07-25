@@ -1041,7 +1041,7 @@ nmap <leader>U mQgewvU'Q
 nmap <leader>L mQgewvu'Q
 
 " fugitive.vim
-nmap <leader>gb :Gblame<cr>
+nmap <leader>gb :Git blame<cr>
 nmap <leader>gc :Git commit<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gl :!git l<cr>
