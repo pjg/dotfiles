@@ -377,6 +377,9 @@ augroup filetypedetect
   " explicitly set filetype to slim for slim view files (not sure why it's needed...)
   autocmd BufNewFile,BufRead {*.html.slim} set filetype=slim
 
+  " explicitly set filetype to JSON for some well-known files
+  autocmd BufNewFile,BufRead {.prettierrc} set ft=json
+
   " set filetype for React files
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 
