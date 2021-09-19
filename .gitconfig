@@ -103,6 +103,9 @@
   # Disable fsck when pulling (some repos like rails have errors in them)
   fsckobjects = false
 
+  # Will delete any local origin/* branches if they have been merged on remote
+  prune = true
+
 [grep]
   lineNumber = true
   extendedRegexp = true
