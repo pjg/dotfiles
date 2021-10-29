@@ -575,6 +575,27 @@ export RUBY_GC_OLDMALLOC_LIMIT_GROWTH_FACTOR=$RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR
 # Reduce maximum number of OS heaps: https://www.joyfulbikeshedding.com/blog/2019-03-14-what-causes-ruby-memory-bloat.html
 export MALLOC_ARENA_MAX=2
 
+# Brew (amd64)
+if [[ -f /usr/local/bin/brew ]]; then
+  export HOMEBREW_PREFIX="/usr/local";
+  export HOMEBREW_CELLAR="/usr/local/Cellar";
+  export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+  export HOMEBREW_SHELLENV_PREFIX="/usr/local";
+  export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+  export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+fi
+
+# Brew (arm64)
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  export HOMEBREW_PREFIX="/opt/homebrew";
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+  export HOMEBREW_REPOSITORY="/opt/homebrew";
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+fi
+
 # set GitHub credentials
 [[ -e ~/.github_credentials ]] && source ~/.github_credentials
 
