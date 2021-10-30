@@ -12,15 +12,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " file finder
-if has("mac")
-  " brew installed fzf
-  Plug '/usr/local/opt/fzf'
-  Plug 'junegunn/fzf.vim'
-else
-  " install separately
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-endif
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " file navigation/management
 Plug 'tpope/vim-eunuch'
