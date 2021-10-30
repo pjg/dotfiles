@@ -1,3 +1,5 @@
+"use strict";
+
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
@@ -19,6 +21,12 @@ module.exports = {
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: 'bold',
+
+    // line height as a relative unit
+    lineHeight: 1,
+
+    // letter spacing as a relative unit
+    letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(48, 48, 29, 0.8)',
@@ -50,6 +58,9 @@ module.exports = {
 
     // custom CSS to embed in the terminal window
     termCSS: '',
+
+    // set custom startup directory (must be an absolute path)
+    workingDirectory: '',
 
     // if you're using a Linux setup which show native menus, set to false
     // default: `true` on Linux, `true` on Windows, ignored on macOS
@@ -83,6 +94,8 @@ module.exports = {
       lightMagenta: '#bc93b6',
       lightCyan: '#8ad6d6',
       lightWhite: '#f1f1ef',
+      limeGreen: '#32CD32',
+      lightCoral: '#F08080',
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -92,12 +105,18 @@ module.exports = {
     // - Make sure to use a full path if the binary name doesn't work
     // - Remove `--login` in shellArgs
     //
-    // Bash on Windows
-    // - Example: `C:\\Windows\\System32\\bash.exe`
+    // Windows Subsystem for Linux (WSL) - previously Bash on Windows
+    // - Example: `C:\\Windows\\System32\\wsl.exe`
+    //
+    // Git-bash on Windows
+    // - Example: `C:\\Program Files\\Git\\bin\\bash.exe`
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: '/usr/local/bin/zsh',
+    //
+    // Cygwin
+    // - Example: `C:\\cygwin64\\bin\\bash.exe`
+    shell: '/opt/homebrew/bin/zsh',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -106,8 +125,13 @@ module.exports = {
     // for environment variables
     env: {},
 
-    // set to `false` for no bell
+    // Supported Options:
+    //  1. 'SOUND' -> Enables the bell as a sound
+    //  2. false: turns off the bell
     bell: 'false',
+
+    // An absolute file path to a sound file on the machine.
+    // bellSoundURL: '/path/to/sound/file',
 
     // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
     copyOnSelect: true,
@@ -115,15 +139,31 @@ module.exports = {
     // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
     defaultSSHApp: true,
 
-    // The number of rows to be persisted in terminal buffer for scrolling
-    scrollback: 10000,
-
     // if `true` (without backticks and without quotes), on right click selected text will be copied or pasted if no
     // selection is present (`true` by default on Windows and disables the context menu feature)
-    // quickEdit: true,
+    quickEdit: false,
 
-    // URL to custom bell
-    // bellSoundURL: 'http://example.com/bell.mp3',
+    // choose either `'vertical'`, if you want the column mode when Option key is hold during selection (Default)
+    // or `'force'`, if you want to force selection regardless of whether the terminal is in mouse events mode
+    // (inside tmux or vim with mouse mode enabled for example).
+    macOptionSelectionMode: 'vertical',
+
+    // Whether to use the WebGL renderer. Set it to false to use canvas-based
+    // rendering (slower, but supports transparent backgrounds)
+    webGLRenderer: false,
+
+    // keypress required for weblink activation: [ctrl|alt|meta|shift]
+    // todo: does not pick up config changes automatically, need to restart terminal :/
+    webLinksActivationKey: 'meta',
+
+    // if `false` (without backticks and without quotes), Hyper will use ligatures provided by some fonts
+    disableLigatures: true,
+
+    // set to true to disable auto updates
+    disableAutoUpdates: false,
+
+    // The number of rows to be persisted in terminal buffer for scrolling
+    scrollback: 10000,
 
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
