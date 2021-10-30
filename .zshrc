@@ -8,7 +8,7 @@ source ~/.zsh/antigen/antigen.zsh
 
 # define the plugins
 antigen bundle jimhester/per-directory-history
-antigen bundle olivierverdier/zsh-git-prompt
+antigen bundle zsh-git-prompt/zsh-git-prompt
 antigen bundle nviennot/zsh-vim-plugin
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -375,10 +375,7 @@ bindkey '^Z' fancy-ctrl-z
 # PROMPT
 
 # [zsh-git-prompt] location
-export __GIT_PROMPT_DIR=~/.zsh/bundles/olivierverdier/zsh-git-prompt
-
-# use Haskell's version of zsh-git-prompt (if available)
-if [[ -f $__GIT_PROMPT_DIR/src/.bin/gitstatus ]]; then GIT_PROMPT_EXECUTABLE="haskell"; fi
+export __GIT_PROMPT_DIR=~/.zsh/bundles/zsh-git-prompt/zsh-git-prompt
 
 # result of last command displays either a happy or sad face as the prompt
 smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
