@@ -481,13 +481,17 @@ done
 
 
 
-# CHRUBY / RVM (load either one conditionally)
+# chruby / rvm (load either one conditionally)
 if [ -d /usr/local/opt/chruby/share/chruby ]; then
-  # CHRUBY (load conditionally if exists)
+  # chruby (amd64)
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   source /usr/local/opt/chruby/share/chruby/auto.sh
+elif [ -d /opt/homebrew/share/chruby ]; then
+  # chruby (arm64)
+  source /opt/homebrew/share/chruby/chruby.sh
+  source /opt/homebrew/share/chruby/auto.sh
 elif [ -x "$HOME/.rvm/scripts/rvm" ]; then
-  # RVM (load conditionally if exists)
+  # rvm
   source ~/.rvm/scripts/rvm
   export PATH=$PATH:$HOME/.rvm/bin
 fi
@@ -506,7 +510,7 @@ function setup_binstubs {
     export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
 
     # restore GEM_HOME / GEM_ROOT when using chruby (using wrapper)
-    if [ -d /usr/local/opt/chruby/share/chruby ]; then
+    if [[ -d /usr/local/opt/chruby/share/chruby || -d /opt/homebrew/share/chruby ]]; then
       export GEM_HOME=~/.gem/ruby/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')
       export GEM_ROOT=~/.rubies/ruby-$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')/lib/ruby/gems/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION.gsub(/\d$/, "0")')
     fi
@@ -533,7 +537,7 @@ function setup_binstubs {
 autoload -U add-zsh-hook
 
 # setup chruby on cd
-if [ -d /usr/local/opt/chruby/share/chruby ]; then
+if [[ -d /usr/local/opt/chruby/share/chruby || -d /opt/homebrew/share/chruby ]]; then
   # remove the preexec hook added by chruby (we will be using chruby_auto in a chpwd hook)
   add-zsh-hook -d preexec chruby_auto
 
