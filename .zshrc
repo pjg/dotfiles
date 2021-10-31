@@ -463,10 +463,10 @@ done
 
 
 # chruby / rvm (load either one conditionally)
-if [ -d /usr/local/opt/chruby/share/chruby ]; then
+if [ -d /usr/local/share/chruby ]; then
   # chruby (amd64)
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/opt/chruby/share/chruby/auto.sh
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
 elif [ -d /opt/homebrew/share/chruby ]; then
   # chruby (arm64)
   source /opt/homebrew/share/chruby/chruby.sh
