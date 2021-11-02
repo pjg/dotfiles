@@ -1,7 +1,7 @@
 ---
 BUNDLE_PATH: ".bundle"
 BUNDLE_BIN: ".bundle/bin"
-BUNDLE_JOBS: "4"
+BUNDLE_JOBS: "10"
 BUNDLE_GEM__COC: "false"
 BUNDLE_GEM__MIT: "false"
 BUNDLE_GEM__TEST: "rspec"
