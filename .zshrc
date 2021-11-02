@@ -374,8 +374,10 @@ bindkey '^Z' fancy-ctrl-z
 
 # PROMPT
 
-# [zsh-git-prompt] location
+# zsh-git-prompt
 export __GIT_PROMPT_DIR=~/.zsh/bundles/zsh-git-prompt/zsh-git-prompt
+export ZSH_THEME_GIT_PROMPT_PREFIX="("
+export ZSH_THEME_GIT_PROMPT_SUFFIX=")"
 
 # result of last command displays either a happy or sad face as the prompt
 smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
