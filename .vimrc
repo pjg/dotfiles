@@ -351,9 +351,6 @@ autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,less,javascript,javascript.jsx,javascript.tsx,coffee,yaml setlocal iskeyword+=-,$,#
 autocmd FileType scss,sass,less,ruby,eruby setlocal iskeyword+=@
 
-" set shiftwidth separately for SVG files
-autocmd FileType svg setlocal softtabstop=2 tabstop=2 shiftwidth=2
-
 augroup filetypedetect
   " YAML files read as Ruby
   autocmd BufNewFile,BufRead *.yml setfiletype eruby
@@ -362,7 +359,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.arb setfiletype ruby
 
   " 2 spaces for TAB in JS/CSS/HTML files
-  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx,*.tsx} setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html,*.js,*.jsx,*.tsx,*.svg} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
   " explicitly set filetype to Ruby for some well-known files
   autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
