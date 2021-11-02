@@ -734,6 +734,9 @@ let g:rainbow_conf = {
   \    }
   \  }
 
+" [vim-styled-components]
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+
 " [coc.nvim]
 let g:coc_global_extensions = [
   \ 'coc-css',
