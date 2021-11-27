@@ -40,8 +40,8 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 
-" code completion
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" code completion (pinned to a working version; https://github.com/neoclide/coc-prettier/issues/134)
+Plug 'neoclide/coc.nvim', { 'commit': 'f8e339d0', 'do': 'yarn install --frozen-lockfile' }
 
 " grepping files from vim
 Plug 'mileszs/ack.vim'
@@ -737,7 +737,7 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 " [coc.nvim]
 let g:coc_global_extensions = [
   \ 'coc-css',
-  \ 'coc-eslint',
+  \ 'coc-eslint8',
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-prettier',

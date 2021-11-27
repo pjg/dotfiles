@@ -1,19 +1,20 @@
 {
   "coc.preferences.extensionUpdateCheck": "daily",
-  "coc.preferences.formatOnSaveFiletypes": [],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "javascript.jsx", "javascript.tsx"],
   "coc.preferences.willSaveHandlerTimeout": 5000,
   "codeLens.enable": false,
   "diagnostic.messageTarget": "echo",
   "eslint.autoFixOnSave": true,
+  "eslint.run": "onType",
   "eslint.validate": ["javascript", "javascriptreact", "javascript.jsx", "javascript.tsx"],
-  "eslint.run": "onSave",
-  "prettier.eslintIntegration": true,
-  "javascript.format.enabled": true,
+  "javascript.format.enabled": false,
+  "prettier.disableSuccessMessage": true,
+  "prettier.eslintIntegration": false,
   "signature.target": "echo",
   "solargraph.autoformat": true,
   "solargraph.checkGemVersion": false,
   "solargraph.promptDownload": false,
   "suggest.floatEnable": false,
   "suggest.timeout": 2000,
-  "tsserver.formatOnType": false
+  "tsserver.formatOnType": true
 }
