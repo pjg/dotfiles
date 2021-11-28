@@ -1,4 +1,4 @@
-# Common MacOS folders
+# MacOS folders
 Applications/
 Desktop/
 Documents/
@@ -8,3 +8,44 @@ Movies/
 Music/
 Pictures/
 Public/
+.Trash
+
+# Folders
+BACKUP/
+DATA/
+Dropbox/
+github/
+www
+
+# Config directories
+.aws/
+.cache/
+.config/
+.cups/
+.directory_history/
+.dropbox/
+.gem/
+.gnupg/
+.hyper_plugins/
+.local/
+.npm/
+.rubies/
+.solargraph/
+.ssh/
+.subversion/
+.vim/
+.zsh/
+.zsh_sessions/
+
+# Config files
+.CFUserTextEncoding
+.fzf*
+.guard_history
+.irb-history
+.lesshst
+.node_repl_history
+.psql_history-jkl
+.viminfo
+.yarnrc
+.zshrc.zwc
+.zsh_history
