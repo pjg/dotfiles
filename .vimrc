@@ -964,9 +964,6 @@ endif
 
 " INSERT MODE KEY MAPPINGS
 
-" Ruby: bind control-l to hashrocket
-imap <C-l> <Space>=><Space>'
-
 " Ruby: convert word into Ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
 
