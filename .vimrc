@@ -474,7 +474,7 @@ let g:rails_projections = {
     \     "test":      "spec/core/{}_spec.rb",
     \     "template":  "class {camelcase|capitalize|colons}\nend"
     \   },
-    \   "app/gateways/*.rb": {
+    \   "app/gateways/*_gateway.rb": {
     \     "command":   "gateway",
     \     "affinity":  "collection",
     \     "test":      "spec/gateways/{}_spec.rb",
