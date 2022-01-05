@@ -737,7 +737,7 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 " [coc.nvim]
 let g:coc_global_extensions = [
   \ 'coc-css',
-  \ 'coc-eslint8',
+  \ 'coc-eslint',
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-prettier',
