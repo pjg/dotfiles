@@ -40,8 +40,8 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 
-" code completion (pinned to a working version; https://github.com/neoclide/coc-prettier/issues/134)
-Plug 'neoclide/coc.nvim', { 'commit': 'f8e339d0', 'do': 'yarn install --frozen-lockfile' }
+" code completion
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " grepping files from vim
 Plug 'mileszs/ack.vim'
