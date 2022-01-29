@@ -16,5 +16,6 @@
   "solargraph.promptDownload": false,
   "suggest.floatEnable": false,
   "suggest.timeout": 2000,
-  "tsserver.formatOnType": true
+  "tsserver.formatOnType": true,
+  "tsserver.implicitProjectConfig.experimentalDecorators": true
 }
