@@ -272,7 +272,7 @@ set noautowriteall
 set noautoread
 
 " write swap files after some inactivity [ms] (will trigger coc)
-set updatetime=300
+set updatetime=100
 
 " global directory for .swp files
 set directory=$HOME/.vim/tmp/
