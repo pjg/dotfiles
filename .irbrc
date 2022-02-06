@@ -9,6 +9,9 @@ IRB.conf[:EVAL_HISTORY] = 10000
 IRB.conf[:SAVE_HISTORY] = 10000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
 
+# show full object on assignment (Ruby 3+)
+IRB.conf[:ECHO_ON_ASSIGNMENT] = true
+
 # require console enhancement gems (you need to have them in the Gemfile)
 %w(amazing_print interactive_editor hirb wirble).each do |gem|
   begin
