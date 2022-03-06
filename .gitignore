@@ -43,6 +43,7 @@ www
 .guard_history
 .irb-history
 .lesshst
+.mysql_history
 .node_repl_history
 .psql_history-jkl
 .viminfo
