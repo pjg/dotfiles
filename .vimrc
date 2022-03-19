@@ -359,7 +359,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.arb setfiletype ruby
 
   " 2 spaces for TAB in JS/CSS/HTML files
-  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.js,*.jsx,*.tsx,*.svg} setlocal softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html.erb,*.js,*.jsx,*.tsx,*.svg} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
   " explicitly set filetype to Ruby for some well-known files
   autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
