@@ -8,8 +8,6 @@
   "eslint.run": "onType",
   "eslint.validate": ["javascript", "javascriptreact", "javascript.jsx", "javascript.tsx"],
   "javascript.format.enabled": false,
-  "prettier.disableSuccessMessage": true,
-  "prettier.eslintIntegration": false,
   "signature.target": "echo",
   "solargraph.autoformat": true,
   "solargraph.useBundler": true,
