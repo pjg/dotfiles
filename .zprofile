@@ -36,6 +36,83 @@ fi
 
 
 
+# RUBY version switching
+
+# chruby / rvm (load either one conditionally)
+if [ -d /usr/local/share/chruby ]; then
+  # chruby (amd64)
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+elif [ -d /opt/homebrew/share/chruby ]; then
+  # chruby (arm64)
+  source /opt/homebrew/share/chruby/chruby.sh
+  source /opt/homebrew/share/chruby/auto.sh
+elif [ -x "$HOME/.rvm/scripts/rvm" ]; then
+  # rvm
+  source ~/.rvm/scripts/rvm
+  export PATH=$PATH:$HOME/.rvm/bin
+fi
+
+# chruby + binstubs
+# http://hmarr.com/2012/nov/08/rubies-and-bundles/
+# http://code.jjb.cc/2012/11/09/putting-your-rbenv-managed-bundler-specified-executables-in-your-path-more-securely/
+# http://stackoverflow.com/questions/13881608/issues-installing-gems-when-using-bundlers-binstubs
+# https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
+# https://github.com/postmodern/chruby/wiki/Implementing-an-'after-use'-hook
+function setup_binstubs {
+  if [ -r $OLDPWD/Gemfile.lock ] && [ -d $OLDPWD/.bundle/bin ]; then
+    # delete from $OLDPWD (.bin/ and .bundle/bin/ from $PATH, .bundle/ from $GEM_PATH)
+    export PATH=${PATH//$OLDPWD\/bin:}
+    export PATH=${PATH//$OLDPWD\/\.bundle\/bin:}
+    export GEM_PATH=${GEM_PATH//$OLDPWD\/\.bundle:}
+
+    # restore GEM_HOME / GEM_ROOT when using chruby (using wrapper)
+    if [[ -d /usr/local/opt/chruby/share/chruby || -d /opt/homebrew/share/chruby ]]; then
+      export GEM_HOME=~/.gem/ruby/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')
+      export GEM_ROOT=~/.rubies/ruby-$(~/bin/chruby-wrapper -e 'print RUBY_VERSION')/lib/ruby/gems/$(~/bin/chruby-wrapper -e 'print RUBY_VERSION.gsub(/\d$/, "0")')
+    fi
+  fi
+
+  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/.bundle/bin ]; then
+    # add .bundle/bin to $PATH and .bundle/ to $GEM_PATH (deleting existing entries first) AND set a new $GEM_HOME
+    export PATH=$PWD/.bundle/bin:${PATH//$PWD\/\.bundle\/bin:}
+    export GEM_PATH=$PWD/.bundle:${GEM_PATH//$PWD\/\.bundle:}
+
+    # set GEM_HOME
+    export GEM_HOME=$PWD/.bundle
+
+    # set GEM_ROOT
+    export GEM_ROOT=$PWD/.bundle
+  fi
+
+  if [ -r $PWD/Gemfile.lock ] && [ -d $PWD/bin ]; then
+    # add bin/ to $PATH (Rails 4+) (has precedence over .bundle/bin)
+    export PATH=$PWD/bin:${PATH//$PWD\/bin:}
+  fi
+}
+
+autoload -U add-zsh-hook
+
+# setup chruby on cd
+if [[ -d /usr/local/opt/chruby/share/chruby || -d /opt/homebrew/share/chruby ]]; then
+  # remove the preexec hook added by chruby (we will be using chruby_auto in a chpwd hook)
+  add-zsh-hook -d preexec chruby_auto
+
+  # add chruby_auto and calls for every directory change (needed so that prompt works)
+  add-zsh-hook chpwd chruby_auto
+
+  # execute on first run, so that we have everything setup correctly regardless of the directory we open new terminal window in
+  chruby_auto
+fi
+
+# add setup_binstubs calls for every directory change (needed so that zsh prompt works)
+add-zsh-hook chpwd setup_binstubs
+
+# execute on first run, so that we have everything setup correctly regardless of the directory we open new terminal window in
+setup_binstubs
+
+
+
 # MISC STUFF
 
 # [RUBY] (make GC speedier by using more memory) (sources: https://gist.github.com/1688857, https://gist.github.com/jjb/7389552/)
