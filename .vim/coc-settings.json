@@ -12,6 +12,7 @@
   "prettier.eslintIntegration": false,
   "signature.target": "echo",
   "solargraph.autoformat": true,
+  "solargraph.useBundler": true,
   "solargraph.checkGemVersion": false,
   "solargraph.promptDownload": false,
   "suggest.floatEnable": false,
