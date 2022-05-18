@@ -71,8 +71,8 @@ Plug 'lambdalisue/suda.vim'
 Plug 'nelstrom/vim-visual-star-search'
 
 " statusline (and related)
-Plug 'mhinz/vim-signify'
 Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
 
 " syntax files
 Plug 'sheerun/vim-polyglot'
@@ -682,14 +682,12 @@ let g:rails_gem_projections = {
     \   },
     \ }
 
-" [vim-signify]
-let g:signify_vcs_list = ['git']
-let g:signify_sign_delete = '-'
+" [vim-gitgutter]
+highlight GitGutterAdd    guibg=NONE ctermbg=NONE ctermfg=46  guifg=#339933
+highlight GitGutterChange guibg=NONE ctermbg=NONE ctermfg=76  guifg=#BB9933
+highlight GitGutterDelete guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 
-" [vim-signify] custom highlighting
-highlight SignifySignAdd    guibg=NONE ctermbg=NONE ctermfg=46  guifg=#339933
-highlight SignifySignDelete guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
-highlight SignifySignChange guibg=NONE ctermbg=NONE ctermfg=76  guifg=#BB9933
+let g:gitgutter_sign_removed = '-'
 
 " Recently vim can merge signcolumn and number column into one
 if has("patch-8.1.1564")
@@ -1101,7 +1099,7 @@ nmap <leader>4 :set wrap!<cr>
 nmap <leader>6 :GundoToggle<cr>
 
 " turn off the highlight search & redraw screen, sign column and statusline
-nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:SignifyRefresh<cr>
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>
 
 " toggle the paste mode (when vim either adds or not spaces in the front of lines)
 set pastetoggle=<leader>0
