@@ -10,9 +10,6 @@ export LANG=en_US.UTF-8
 
 export PATH=$HOME/bin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 
-# fpath (for zsh-completions)
-fpath=(~/.zsh/bundles/olivierverdier/zsh-git-prompt/src $fpath)
-
 # Brew (amd64)
 if [[ -f /usr/local/bin/brew ]]; then
   export HOMEBREW_PREFIX="/usr/local";
