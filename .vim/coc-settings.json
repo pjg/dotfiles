@@ -9,6 +9,7 @@
   "eslint.validate": ["javascript", "javascriptreact", "javascript.jsx", "javascript.tsx"],
   "javascript.format.enabled": false,
   "signature.target": "echo",
+  "solargraph.shell": "/opt/homebrew/bin/zsh",
   "solargraph.autoformat": true,
   "solargraph.useBundler": true,
   "solargraph.checkGemVersion": false,
