@@ -21,3 +21,6 @@ workbench.xmi
 
 # Node modules
 node_modules
+
+# Custom husky hooks (npm)
+.husky
