@@ -142,6 +142,9 @@
   default = current
   followTags = true
 
+  # Automatically set 'origin' as upstream when doing first push of a branch
+  autoSetupRemote = true
+
 [rebase]
   # will add --autosquash setting to rebases
   autosquash = true
