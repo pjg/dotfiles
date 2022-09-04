@@ -688,7 +688,11 @@ highlight GitGutterAdd    guibg=NONE ctermbg=NONE ctermfg=46  guifg=#339933
 highlight GitGutterChange guibg=NONE ctermbg=NONE ctermfg=76  guifg=#BB9933
 highlight GitGutterDelete guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 
+" customize vim-gitgutter sign for removed line
 let g:gitgutter_sign_removed = '-'
+
+" do not let vim-gitgutter overwrite keymappings (<leader>h especially)
+let g:gitgutter_map_keys = 0
 
 " Recently vim can merge signcolumn and number column into one
 if has("patch-8.1.1564")
