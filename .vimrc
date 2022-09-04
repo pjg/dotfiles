@@ -750,25 +750,33 @@ let g:coc_global_extensions = [
   \ 'coc-yaml'
   \ ]
 
-" use <tab> to trigger completion (coc)
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" <cr> to 1) confirm and close pum when item is selected or 2) enter newline when no item is selected
+" \<C-g>u is used to break undo level
+inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<c-g>u\<cr>"
 
-" handles issue with `coc.nvim` and `vim-endwise` both remapping <cr> to handle completion
-" https://github.com/tpope/vim-endwise/issues/125
-" and https://github.com/tpope/vim-endwise/issues/22#issuecomment-652621302
-inoremap <silent> <cr> <C-r>=<SID>coc_confirm()<cr>
-function! s:coc_confirm() abort
-  return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-endfunction
+" remap completion to use tab/s-tab and <cr>
+inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#next(1): CheckBackSpace() ? "\<Tab>" : coc#refresh()
+inoremap <expr><s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<c-h>"
 
-function! s:check_back_space() abort
+" <c-space> to refresh available completions
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" refresh completions list on <backspace>
+inoremap <silent><expr> <backspace> coc#pum#visible() ? "\<bs>\<c-r>=coc#start()\<CR>" : "\<bs>"
+
+function! CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" completions popup colors (normal/unselected items)
+highlight CocFloating ctermbg=240 ctermfg=247 guibg=#585858 guifg=#9E9E9E
+
+" completions popup colors (selected item)
+highlight CocMenuSel ctermbg=214 guibg=Yellow
+
+" highlight for error signs
+highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -790,8 +798,6 @@ function! s:show_documentation()
     call CocActionAsync('doHover')
   endif
 endfunction
-
-highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 
 " [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
 let g:sneak#map_netrw = 0

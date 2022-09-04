@@ -14,8 +14,11 @@
   "solargraph.useBundler": true,
   "solargraph.checkGemVersion": false,
   "solargraph.promptDownload": false,
-  "suggest.floatEnable": false,
+  "suggest.noselect": true,
   "suggest.timeout": 2000,
+  "suggest.floatConfig": {
+    "borderhighlight": "CocFloating" // controls completions popup colors
+  },
   "tsserver.formatOnType": true,
   "tsserver.implicitProjectConfig.experimentalDecorators": true
 }
