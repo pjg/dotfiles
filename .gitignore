@@ -13,7 +13,7 @@ Public/
 # Folders
 BACKUP/
 DATA/
-Dropbox/
+Dropbox
 github/
 www
 
@@ -23,6 +23,7 @@ www
 .config/
 .cups/
 .directory_history/
+.docker/
 .dropbox/
 .gem/
 .gnupg/
