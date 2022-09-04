@@ -273,7 +273,7 @@ set noautoread
 
 " write swap files after some inactivity [ms] (will trigger coc)
 " cannot be too low, otherwise eslint messages will be disappearing
-set updatetime=1000
+set updatetime=500
 
 " global directory for .swp files
 set directory=$HOME/.vim/tmp/
