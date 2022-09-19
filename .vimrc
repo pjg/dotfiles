@@ -50,6 +50,7 @@ Plug 'mileszs/ack.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'suy/vim-context-commentstring'
 Plug 'tpope/vim-commentary'
 Plug 'itspriddle/vim-stripper'
 
