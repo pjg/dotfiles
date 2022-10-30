@@ -355,31 +355,31 @@ autocmd FileType scss,sass,less,ruby,eruby setlocal iskeyword+=@
 
 augroup filetypedetect
   " YAML files read as Ruby
-  autocmd BufNewFile,BufRead *.yml setfiletype eruby
+  autocmd BufNewFile,BufRead {*.yml} setfiletype eruby
 
   " ActiveAdmin views read as Ruby
-  autocmd BufNewFile,BufRead *.arb setfiletype ruby
+  autocmd BufNewFile,BufRead {*.arb} setfiletype ruby
 
   " 2 spaces for TAB in JS/CSS/HTML files
   autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html.erb,*.js,*.jsx,*.tsx,*.svg} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
   " explicitly set filetype to Ruby for some well-known files
-  autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set ft=ruby
+  autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set filetype=ruby
 
-  " explicitly set filetype to shell for dotenv's sample file
-  autocmd BufRead,BufNewFile .env.sample setfiletype sh
+  " explicitly set filetype to shell for dotenv's files
+  autocmd BufRead,BufNewFile {.env.development.local,.env.production,.env.sample,.env.test} set filetype=sh
 
   " explicitly set filetype to slim for slim view files (not sure why it's needed...)
   autocmd BufNewFile,BufRead {*.html.slim} set filetype=slim
 
   " explicitly set filetype to JSON for some well-known files
-  autocmd BufNewFile,BufRead {.prettierrc} set ft=json
+  autocmd BufNewFile,BufRead {.prettierrc} set filetype=json
 
   " set filetype for React files
-  autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+  autocmd BufNewFile,BufRead {*.jsx} set filetype=javascript.jsx
 
   " set filetype for Typescript files
-  autocmd BufNewFile,BufRead *.tsx set filetype=javascript.tsx
+  autocmd BufNewFile,BufRead {*.tsx} set filetype=javascript.tsx
 augroup END
 
 
