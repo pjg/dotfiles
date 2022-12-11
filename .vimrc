@@ -801,6 +801,9 @@ endfunction
 " [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
 let g:sneak#map_netrw = 0
 
+" [auto-pairs] delete brackets and quotes in pair
+let g:AutoPairsMapBS = 1
+
 " [auto-pairs] compatbility mode
 let g:AutoPairsCompatibleMaps = 0
 
