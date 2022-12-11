@@ -60,6 +60,7 @@ Plug 'sickill/vim-pasta'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
+Plug 'alvan/vim-closetag'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-ragtag'
@@ -810,8 +811,22 @@ let g:AutoPairsCompatibleMaps = 0
 " [auto-pairs] custom pairs
 let g:AutoPairs = autopairs#AutoPairsDefine([
   \   {"open": "<%", "close": "%>", "filetype": ["eruby"]},
-  \   {"open": "<", "close": ">", "filetype": ["eruby", "javascript.jsx", "javascript.tsx", "javascript", "html"]}
   \ ])
+
+" [vim-closetag] filetypes where vim-closetag should be enabled
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.html.erb'
+let g:closetag_filetypes = 'html,xhtml,phtml,eruby'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
+let g:closetag_xhtml_filetypes = 'xhtml,javascript.jsx,javascript.tsx'
+
+" [vim-closetag] enables closing tags for React fragments
+let g:closetag_enable_react_fragment = 1
+
+" [vim-closetag] disables auto-close if not in a valid region of the file
+let g:closetag_regions = {
+  \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+  \ 'javascript.jsx': 'jsxRegion',
+  \ }
 
 
 
