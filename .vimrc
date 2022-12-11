@@ -72,6 +72,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'lambdalisue/suda.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'bogado/file-line'
+Plug 'chrisbra/Colorizer'
 
 " statusline (and related)
 Plug 'itchyny/lightline.vim'
@@ -827,6 +828,9 @@ let g:closetag_regions = {
   \ 'typescript.tsx': 'jsxRegion,tsxRegion',
   \ 'javascript.jsx': 'jsxRegion',
   \ }
+
+" [Colorizer] automatically enable when certain filetype is loaded
+let g:colorizer_auto_filetype='css,html,eruby,javascript,javascript.jsx,vim'
 
 
 
