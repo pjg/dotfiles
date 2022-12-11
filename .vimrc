@@ -55,7 +55,7 @@ Plug 'tpope/vim-commentary'
 Plug 'itspriddle/vim-stripper'
 
 " general vim improvements
-Plug 'adelarsq/vim-matchit'
+Plug 'andymass/vim-matchup'
 Plug 'sickill/vim-pasta'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-abolish'
@@ -385,9 +385,6 @@ augroup END
 
 
 " ADVANCED SETTINGS
-
-" % should also match if/else/begin/end/etc.
-runtime macros/matchit.vim
 
 " reposition the cursor in the buffer after reopening vim
 autocmd BufReadPost *

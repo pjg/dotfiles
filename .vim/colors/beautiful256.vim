@@ -117,3 +117,6 @@ hi diffRemoved ctermfg=1 guifg=#800000
 hi Regexp guifg=#df00df ctermfg=13
 hi railsUserClass guifg=#5f0000 ctermfg=52
 hi Function guifg=#5f0000 ctermfg=52
+
+" vim-matchup
+hi MatchWord ctermbg=254 guibg=#e4e4e4 cterm=NONE gui=NONE
