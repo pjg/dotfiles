@@ -42,7 +42,7 @@ hi StatusLineNC guifg=#829db9 guibg=Black ctermfg=8 ctermbg=188
 hi VertSplit gui=bold guifg=#9ca6af guibg=Black cterm=bold ctermfg=231 ctermbg=8
 hi Wildmenu guifg=Black guibg=#ffdf00 ctermfg=0 ctermbg=11
 "hi CursorLine ctermbg=255
-hi Pmenu guibg=Grey65 guifg=Black gui=NONE ctermfg=250 ctermbg=238
+hi Pmenu guifg=#444444 guibg=#f2f5f2 ctermfg=237 ctermbg=255 gui=NONE cterm=NONE
 hi PmenuSbar guibg=Grey50 guifg=fg gui=NONE ctermbg=214
 hi PmenuSel guibg=Yellow guifg=Black gui=NONE ctermbg=214 ctermfg=16
 hi PmenuThumb guibg=Grey75 guifg=fg gui=NONE cterm=reverse
@@ -63,7 +63,6 @@ hi Todo gui=bold guifg=Black guibg=#ffaf00 ctermfg=214 ctermbg=232
 hi Type gui=bold guifg=#5f5fdf ctermfg=62
 hi Underlined gui=underline
 hi Directory guifg=#af5f87 ctermfg=132
-hi Pmenu ctermfg=250 ctermbg=238
 hi PmenuSel ctermbg=214 ctermfg=16
 
 hi Boolean gui=bold guifg=#df8700 ctermfg=172

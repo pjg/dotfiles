@@ -73,6 +73,7 @@ Plug 'lambdalisue/suda.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'bogado/file-line'
 Plug 'chrisbra/Colorizer'
+Plug 'pechorin/any-jump.vim'
 
 " statusline (and related)
 Plug 'itchyny/lightline.vim'
