@@ -70,6 +70,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'justinmk/vim-sneak'
 Plug 'lambdalisue/suda.vim'
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'bogado/file-line'
 
 " statusline (and related)
 Plug 'itchyny/lightline.vim'
