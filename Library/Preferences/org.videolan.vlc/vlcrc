@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 3.0.16
+###  vlc 3.0.18
 ###
 
 ###
@@ -551,7 +551,7 @@ macosx-black=1
 #sout-avi-subject=
 
 # Encoder (string)
-#sout-avi-encoder=VLC Media Player - 3.0.16 Vetinari
+#sout-avi-encoder=VLC Media Player - 3.0.18 Vetinari
 
 # Keywords (string)
 #sout-avi-keywords=
@@ -860,13 +860,13 @@ macosx-black=1
 # Frames Threads (integer)
 dav1d-thread-frames=2
 
-# Tiles Threads (integer)
-dav1d-thread-tiles=2
-
 [cdda] # Audio CD input
 
 # Audio CD device (string)
 #cd-audio=/dev/cdrom
+
+# Musicbrainz Server (string)
+#musicbrainz-server=musicbrainz.org
 
 # CDDB Server (string)
 #cddb-server=freedb.videolan.org
@@ -1330,20 +1330,26 @@ prefetch-seek-threshold=12000
 
 [access_output_srt] # SRT stream output
 
-# SRT chunk size (bytes) (integer)
-#chunk-size=1316
-
 # Return poll wait after timeout milliseconds (-1 = infinite) (integer)
-#poll-timeout=100
+#poll-timeout=-1
 
 # SRT latency (ms) (integer)
-#latency=125
+#latency=120
 
 # Password for stream encryption (string)
 #passphrase=
 
+# SRT maximum payload size (bytes) (integer)
+#payload-size=1316
+
+# SRT maximum bandwidth ceiling (bytes) (integer)
+#bandwidth-overhead-limit=25
+
 # Crypto key length in bytes (integer)
 #key-length=16
+
+#  SRT Stream ID (string)
+#streamid=
 
 [rss] # RSS and Atom feed display
 
@@ -3198,20 +3204,20 @@ glconv=any
 
 [access_srt] # SRT input
 
-# SRT chunk size (bytes) (integer)
-#chunk-size=1316
-
 # Return poll wait after timeout milliseconds (-1 = infinite) (integer)
 #poll-timeout=-1
 
 # SRT latency (ms) (integer)
-#latency=125
+#latency=120
 
 # Password for stream encryption (string)
 #passphrase=
 
 # Crypto key length in bytes (integer)
 #key-length=16
+
+#  SRT Stream ID (string)
+#streamid=
 
 [scaletempo_pitch] # Pitch Shifter
 
