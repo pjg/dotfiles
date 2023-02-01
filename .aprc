@@ -1,4 +1,4 @@
 AmazingPrint.defaults = {
   index: false,
-  indent: 2
+  indent: -2
 }
