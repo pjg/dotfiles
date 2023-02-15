@@ -1,8 +1,8 @@
 " Beautiful256 - a vim 256 colors scheme
 " Based on Beauty256 by Mahmoud Sahebi Afzal
 " Maintainer: Paweł Gościcki <pawel.goscicki@gmail.com>
-" Last Change: 11 October 2016
-" Version: 0.5
+" Last Change: 15 February 2023
+" Version: 0.6
 
 " check for t_Co
 if &t_Co != 256 && ! has("gui_running")
@@ -112,7 +112,13 @@ hi link javascriptNull          Constant
 hi diffAdded ctermfg=2 guifg=#008000
 hi diffRemoved ctermfg=1 guifg=#800000
 
-" additional colors definitions (apart from those from beauty256)
+" git diff: added lines, changed lines, deleted lines and changed text inside a changed line
+hi DiffAdd guifg=NONE ctermfg=NONE guibg=#e7ffe7 ctermbg=193 gui=NONE cterm=NONE
+hi DiffChange guifg=NONE ctermfg=NONE guibg=#ccffd3 ctermbg=121 gui=NONE cterm=NONE
+hi DiffDelete guifg=#f3614f ctermfg=198 guibg=#ffe9e4 ctermbg=217 gui=NONE cterm=NONE
+hi DiffText guifg=NONE ctermfg=NONE guibg=#87efa2 ctermbg=77 gui=NONE cterm=NONE
+
+" additional color definitions (apart from those from beauty256)
 hi Regexp guifg=#df00df ctermfg=13
 hi railsUserClass guifg=#5f0000 ctermfg=52
 hi Function guifg=#5f0000 ctermfg=52
