@@ -122,17 +122,21 @@
   clean = git-media-clean %f
   smudge = git-media-smudge %f
 
-[mergetool "vimdiff"]
-  # 3-way, 4-screens merge
-  conflictstyle = diff3
-  path = vim
-
 [mergetool]
   # automatically launch merge tool without displaying a prompt
   prompt = false
 
+[mergetool "vimdiff"]
+  # 3-way, 4-screens merge (left here to be able to go back to it easily)
+  conflictstyle = diff3
+  path = vim
+
+[mergetool "vim"]
+  # 3-screens fugitive.vim conflict resolution
+  cmd = vim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+
 [merge]
-  tool = vimdiff
+  tool = vim
 
 [rerere]
   enabled = 1
