@@ -122,13 +122,17 @@
   clean = git-media-clean %f
   smudge = git-media-smudge %f
 
-[merge]
-  conflictstyle = diff3
-  tool = vimdiff3
-
 [mergetool "vimdiff"]
-  path = nvim
+  # 3-way, 4-screens merge
+  conflictstyle = diff3
+  path = vim
+
+[mergetool]
+  # automatically launch merge tool without displaying a prompt
   prompt = false
+
+[merge]
+  tool = vimdiff
 
 [rerere]
   enabled = 1
