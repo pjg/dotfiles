@@ -831,7 +831,7 @@ let g:closetag_regions = {
   \ }
 
 " [Colorizer] automatically enable when certain filetype is loaded
-let g:colorizer_auto_filetype='css,html,eruby,javascript,javascript.jsx,vim'
+let g:colorizer_auto_filetype='css,html,eruby,javascript,javascript.jsx'
 
 
 
