@@ -1,13 +1,17 @@
 {
   "coc.preferences.extensionUpdateCheck": "daily",
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "javascript.jsx", "javascript.tsx"],
+  "coc.preferences.formatOnSave": true,
   "coc.preferences.willSaveHandlerTimeout": 5000,
   "codeLens.enable": false,
   "diagnostic.messageTarget": "echo",
   "eslint.autoFixOnSave": true,
   "eslint.run": "onType",
-  "eslint.validate": ["javascript", "javascriptreact", "javascript.jsx", "javascript.tsx"],
-  "javascript.format.enabled": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "javascript.tsx"
+  ],
   "signature.target": "echo",
   "solargraph.shell": "/opt/homebrew/bin/zsh",
   "solargraph.autoformat": true,
@@ -19,6 +23,5 @@
   "suggest.floatConfig": {
     "borderhighlight": "CocFloating" // controls completions popup colors
   },
-  "tsserver.formatOnType": true,
   "tsserver.implicitProjectConfig.experimentalDecorators": true
 }
