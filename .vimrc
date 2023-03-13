@@ -32,6 +32,7 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
+Plug 'neovim/nvim-lspconfig'
 
 " text objects
 Plug 'kana/vim-textobj-user'
@@ -746,7 +747,6 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-prettier',
-  \ 'coc-solargraph',
   \ 'coc-styled-components',
   \ 'coc-tsserver',
   \ 'coc-yaml'

@@ -12,12 +12,28 @@
     "javascript.jsx",
     "javascript.tsx"
   ],
+  "languageserver": {
+    "ruby-lsp": {
+      "command": "ruby-lsp",
+      "initializationOptions": {
+        "enabledFeatures": [
+          "codeActions",
+          "diagnostics",
+          "documentHighlights",
+          "documentLink",
+          "documentSymbols",
+          "foldingRanges",
+          "formatting",
+          "hover",
+          "inlayHint",
+          "onTypeFormatting",
+          "selectionRanges"
+        ]
+      },
+      "filetypes": ["ruby"]
+    }
+  },
   "signature.target": "echo",
-  "solargraph.shell": "/opt/homebrew/bin/zsh",
-  "solargraph.autoformat": true,
-  "solargraph.useBundler": true,
-  "solargraph.checkGemVersion": false,
-  "solargraph.promptDownload": false,
   "suggest.noselect": true,
   "suggest.timeout": 2000,
   "suggest.floatConfig": {
