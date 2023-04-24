@@ -43,6 +43,7 @@ Plug 'wellle/targets.vim'
 
 " code completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'github/copilot.vim'
 
 " grepping files from vim
 Plug 'mileszs/ack.vim'
@@ -810,6 +811,9 @@ let g:AutoPairsMapBS = 1
 " [auto-pairs] compatbility mode
 let g:AutoPairsCompatibleMaps = 0
 
+" [auto-pairs] change default prefix
+let g:AutoPairsPrefix = "<C-a>"
+
 " [auto-pairs] custom pairs
 let g:AutoPairs = autopairs#AutoPairsDefine([
   \   {"open": "<%", "close": "%>", "filetype": ["eruby"]},
@@ -832,6 +836,13 @@ let g:closetag_regions = {
 
 " [Colorizer] automatically enable when certain filetype is loaded
 let g:colorizer_auto_filetype='css,html,eruby,javascript,javascript.jsx'
+
+" [copilot] remap keybinding from <Tab> to <C-p> (to match zsh autocomplete suggestions behaviour)
+imap <silent><script><expr> <C-p> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+" [copilot] remap <C-n> to request next Copilot suggestion
+imap <silent> <C-n> <Plug>(copilot-next)
 
 
 
@@ -1001,9 +1012,6 @@ imap <C-k> <C-o>b:<Esc>Ea
 " basic readline shortcuts
 inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
-
-" map Ctrl+p to ESC (common misstype when you press Ctrl+[ for ESC)
-inoremap <c-p> <esc>
 
 
 " VISUAL MODE KEY MAPPINGS
