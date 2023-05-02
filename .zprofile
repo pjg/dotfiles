@@ -10,7 +10,7 @@ export LANG=en_US.UTF-8
 
 export PATH=$HOME/bin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 
-# Brew (amd64)
+# Brew (Intel; amd64)
 if [[ -f /usr/local/bin/brew ]]; then
   export HOMEBREW_PREFIX="/usr/local";
   export HOMEBREW_CELLAR="/usr/local/Cellar";
@@ -21,7 +21,7 @@ if [[ -f /usr/local/bin/brew ]]; then
   export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 fi
 
-# Brew (arm64)
+# Brew (M1; arm64)
 if [[ -f /opt/homebrew/bin/brew ]]; then
   export HOMEBREW_PREFIX="/opt/homebrew";
   export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
