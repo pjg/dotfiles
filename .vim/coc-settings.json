@@ -15,6 +15,9 @@
   "languageserver": {
     "ruby-lsp": {
       "command": "ruby-lsp",
+      "initializationOptions": {
+        "formatter": "auto"
+      },
       "filetypes": ["ruby"]
     }
   },
