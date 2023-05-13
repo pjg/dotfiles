@@ -812,7 +812,7 @@ let g:AutoPairsMapBS = 1
 let g:AutoPairsCompatibleMaps = 0
 
 " [auto-pairs] change default prefix
-let g:AutoPairsPrefix = "<C-a>"
+let g:AutoPairsPrefix = "<C-1>"
 
 " [auto-pairs] custom pairs
 let g:AutoPairs = autopairs#AutoPairsDefine([
