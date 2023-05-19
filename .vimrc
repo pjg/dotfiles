@@ -74,7 +74,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'lambdalisue/suda.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'bogado/file-line'
-Plug 'chrisbra/Colorizer'
+Plug 'BourgeoisBear/clrzr'
 Plug 'pechorin/any-jump.vim'
 
 " statusline (and related)
@@ -831,9 +831,6 @@ let g:closetag_regions = {
   \ 'javascript.jsx': 'jsxRegion',
   \ }
 
-" [Colorizer] automatically enable when certain filetype is loaded
-let g:colorizer_auto_filetype='css,html,eruby,javascript,javascript.jsx'
-
 " [copilot] remap keybinding from <Tab> to <C-p> (to match zsh autocomplete suggestions behaviour)
 imap <silent><script><expr> <C-p> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
@@ -1136,8 +1133,8 @@ nmap <leader>4 :set wrap!<cr>
 " gundo
 nmap <leader>6 :GundoToggle<cr>
 
-" turn off the highlight search & redraw screen, sign column and statusline
-nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>
+" turn off the highlight search & redraw screen, sign column, statusline, colors
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ClrzrRefresh<cr>
 
 " toggle the paste mode (when vim either adds or not spaces in the front of lines)
 set pastetoggle=<leader>0
