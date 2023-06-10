@@ -74,8 +74,11 @@ Plug 'justinmk/vim-sneak'
 Plug 'lambdalisue/suda.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'bogado/file-line'
-Plug 'BourgeoisBear/clrzr'
 Plug 'pechorin/any-jump.vim'
+
+if !has("nvim")
+  Plug 'BourgeoisBear/clrzr'
+endif
 
 " statusline (and related)
 Plug 'itchyny/lightline.vim'
