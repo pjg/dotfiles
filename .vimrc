@@ -246,11 +246,11 @@ set wildmenu
 " have TAB-completion behave similarly to a shell (i.e. complete the longest part, then cycle through the matches)
 set wildmode=longest:full,full
 
-" ignore these files when completing names and in Explorer
+" ignore these files and directories when completing names and in Explorer
 set wildignore=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem                 " output & scm files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz                      " archive files
 set wildignore+=*.jpg,*.jpeg,*.png,*.xpm,*.gif,*.bmp                         " pictures
-set wildignore+=*/public/*                                                   " rails/gatsby public
+set wildignore+=public/*                                                     " rails/gatsby public
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/* " bundler and sass
 set wildignore+=*/node_modules/*                                             " node modules
 set wildignore+=*/log/*,*.log,*/coverage/*                                   " logs and rcov
