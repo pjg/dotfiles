@@ -513,22 +513,24 @@ let g:rails_projections = {
 let g:rails_gem_projections = {
     \   "factory_bot": {
     \     "test/factories/*.rb": {
-    \       "command":   "factory",
-    \       "affinity":  "collection",
-    \       "alternate": "app/models/{singular}.rb",
-    \       "related":   "db/schema.rb#{}",
-    \       "test":      "test/models/{singular}_test.rb",
-    \       "template":  "FactoryBot.define do\n  factory :{singular} do\n  end\nend",
-    \       "keywords":  "factory sequence"
+    \       "command":    "factory",
+    \       "affinity":   "collection",
+    \       "alternate":  "app/models/{singular}.rb",
+    \       "collection": "model",
+    \       "related":    "db/schema.rb#{}",
+    \       "test":       "test/models/{singular}_test.rb",
+    \       "template":   "FactoryBot.define do\n  factory :{singular} do\n  end\nend",
+    \       "keywords":   "factory sequence"
     \     },
     \     "spec/factories/*.rb": {
-    \       "command":   "factory",
-    \       "affinity":  "collection",
-    \       "alternate": "app/models/{singular}.rb",
-    \       "related":   "db/schema.rb#{}",
-    \       "test":      "spec/models/{singular}_test.rb",
-    \       "template":  "FactoryBot.define do\n  factory :{singular} do\n  end\nend",
-    \       "keywords":  "factory sequence"
+    \       "command":    "factory",
+    \       "affinity":   "collection",
+    \       "alternate":  "app/models/{singular}.rb",
+    \       "collection": "model",
+    \       "related":    "db/schema.rb#{}",
+    \       "test":       "spec/models/{singular}_test.rb",
+    \       "template":   "FactoryBot.define do\n  factory :{singular} do\n  end\nend",
+    \       "keywords":   "factory sequence"
     \     }
     \   },
     \   "factory_girl": {
