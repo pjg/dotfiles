@@ -28,6 +28,7 @@ Plug 'tpope/vim-git'
 Plug 'luochen1990/rainbow'
 
 " Ruby related
+Plug 'vim-ruby/vim-ruby'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
@@ -343,9 +344,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " syntax highlight on
 syntax on
 
-" faster Ruby syntax highlighting
-let ruby_no_expensive=1
-
 
 
 " FILE TYPES
@@ -450,6 +448,10 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " [vim-multiple-cursors]
 let g:multi_cursor_exit_from_insert_mode = 1
+
+" [vim-ruby] compatibility with standardrb
+let g:ruby_indent_assignment_style = 'variable'
+let g:ruby_indent_hanging_elements = 0
 
 " [vim-rails / rails.vim] custom commands
 command! Ecircle edit .circleci/config.yml
