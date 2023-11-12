@@ -12,6 +12,7 @@
     "javascript.jsx",
     "javascript.tsx"
   ],
+  "html.format.templating": true,
   "languageserver": {
     "ruby-lsp": {
       "command": "ruby-lsp",
