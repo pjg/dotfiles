@@ -4,6 +4,8 @@
   "coc.preferences.willSaveHandlerTimeout": 5000,
   "codeLens.enable": false,
   "diagnostic.messageTarget": "echo",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": true,
   "eslint.autoFixOnSave": true,
   "eslint.run": "onType",
   "eslint.validate": [
