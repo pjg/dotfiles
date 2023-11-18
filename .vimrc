@@ -42,9 +42,22 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 
-" code completion
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" AI code completion
 Plug 'github/copilot.vim'
+
+if has("nvim")
+  " code completion (nvim only)
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
+else
+  " code completion
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+endif
 
 " grepping files from vim
 Plug 'mileszs/ack.vim'
@@ -92,6 +105,15 @@ Plug 'M4R7iNP/vim-inky'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 call plug#end()
+
+
+
+" NVIM LUA INITIALIZER
+
+if has("nvim")
+  " if we're running nvim, execute nvim specific initializer [lua]
+  lua require('init')
+endif
 
 
 
@@ -748,66 +770,68 @@ let g:rainbow_conf = {
 " [vim-styled-components]
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 
-" [coc.nvim]
-let g:coc_global_extensions = [
-  \ 'coc-css',
-  \ 'coc-eslint',
-  \ 'coc-json',
-  \ 'coc-html',
-  \ 'coc-prettier',
-  \ 'coc-styled-components',
-  \ 'coc-tsserver',
-  \ 'coc-yaml'
-  \ ]
+" [coc.nvim] (conditionally)
+if &rtp =~ 'coc.nvim'
+  let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-eslint',
+    \ 'coc-json',
+    \ 'coc-html',
+    \ 'coc-prettier',
+    \ 'coc-styled-components',
+    \ 'coc-tsserver',
+    \ 'coc-yaml'
+    \ ]
 
-" <cr> to 1) confirm and close pum when item is selected or 2) enter newline when no item is selected
-" \<C-g>u is used to break undo level
-inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<c-g>u\<cr>"
+  " <cr> to 1) confirm and close pum when item is selected or 2) enter newline when no item is selected
+  " \<C-g>u is used to break undo level
+  inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<c-g>u\<cr>"
 
-" remap completion to use tab/s-tab and <cr>
-inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#next(1): CheckBackSpace() ? "\<Tab>" : coc#refresh()
-inoremap <expr><s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<c-h>"
+  " remap completion to use tab/s-tab and <cr>
+  inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#next(1): CheckBackSpace() ? "\<Tab>" : coc#refresh()
+  inoremap <expr><s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<c-h>"
 
-" <c-space> to refresh available completions
-inoremap <silent><expr> <c-space> coc#refresh()
+  " <c-space> to refresh available completions
+  inoremap <silent><expr> <c-space> coc#refresh()
 
-" refresh completions list on <backspace>
-inoremap <silent><expr> <backspace> coc#pum#visible() ? "\<bs>\<c-r>=coc#start()\<CR>" : "\<bs>"
+  " refresh completions list on <backspace>
+  inoremap <silent><expr> <backspace> coc#pum#visible() ? "\<bs>\<c-r>=coc#start()\<CR>" : "\<bs>"
 
-function! CheckBackSpace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+  function! CheckBackSpace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
 
-" completions popup colors (normal/unselected items)
-highlight CocFloating ctermbg=240 ctermfg=247 guibg=#585858 guifg=#9E9E9E
+  " completions popup colors (normal/unselected items)
+  highlight CocFloating ctermbg=240 ctermfg=247 guibg=#585858 guifg=#9E9E9E
 
-" completions popup colors (selected item)
-highlight CocMenuSel ctermbg=214 guibg=Yellow
+  " completions popup colors (selected item)
+  highlight CocMenuSel ctermbg=214 guibg=Yellow
 
-" highlight for error signs
-highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
+  " highlight for error signs
+  highlight CocErrorSign guibg=NONE ctermbg=NONE ctermfg=196 guifg=#BB3333
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  " Use `[g` and `]g` to navigate diagnostics
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+  " Remap keys for gotos
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<cr>
+  " Use K to show documentation in preview window
+  nnoremap <silent> K :call <SID>show_documentation()<cr>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
-  endif
-endfunction
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocActionAsync('doHover')
+    endif
+  endfunction
+endif
 
 " [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
 let g:sneak#map_netrw = 0
