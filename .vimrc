@@ -292,10 +292,13 @@ set directory=$HOME/.vim/tmp/
 " yes/no/cancel prompt if closing with unsaved changes
 set confirm
 
-" persistent undo (preserved after restarting vim)
-if v:version >= 703
-  set undofile
-  set undodir=$HOME/.vim/tmp/
+" persistent undo (preserved after restarting vim) (separate between vim/nvim due to incompatibilities)
+set undofile
+
+if has("nvim")
+  set undodir=$HOME/.vim/undo-nvim/
+else
+  set undodir=$HOME/.vim/undo-vim/
 endif
 
 " mouse support in xterm
