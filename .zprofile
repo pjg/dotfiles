@@ -50,6 +50,10 @@ elif [ -x "$HOME/.rvm/scripts/rvm" ]; then
   export PATH=$PATH:$HOME/.rvm/bin
 fi
 
+# Automatically switch to the ruby version specified in the .ruby-version file
+# present in the current directory; This is required for goneovim/VimR
+chruby_auto
+
 # rubygems config telling it to activate gems found in the Gemfile file
 # which is found in the current directory (or any parent directory)
 # in order to never have to type `bundle exec` again
