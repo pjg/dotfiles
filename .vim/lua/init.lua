@@ -30,6 +30,7 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
 
+  -- setup keys for nvim-cmp
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -76,38 +77,6 @@ cmp.setup.filetype('gitcommit', {
   })
 })
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'buffer' }
-  },
-    { name = 'cmdline' }
-  ),
-
-  enabled = function()
-    -- Set of commands where cmp will be disabled
-    local disabled = {
-        cd = true,
-        IncRename = true
-    }
-    -- Get first word of cmdline
-    local cmd = vim.fn.getcmdline():match("%S+")
-    -- Return true if cmd isn't disabled
-    -- else call/return cmp.close(), which returns false
-    return not disabled[cmd] or cmp.close()
-  end
-})
 
 ----------------------
 -- [nvim-lspconfig] --
