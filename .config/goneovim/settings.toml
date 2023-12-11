@@ -1,0 +1,11 @@
+# goneovim settings
+
+[Editor]
+# Default/classic vim mode
+ExtCmdline   = false
+ExtPopupmenu = false
+ExtTabline   = false
+ExtMessages  = false
+
+# Restore last window gemoetry on startup (doesn't seem to work)
+RestoreWindowGeometry = true
