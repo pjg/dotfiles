@@ -87,15 +87,17 @@ local lspconfig = require("lspconfig")
 -- nvim-cmp almost supports LSP's capabilities so it should be advertised to LSP servers
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- configures/enables ruby diagnostics
 lspconfig.ruby_ls.setup({
   capabilities = capabilities,
-  cmd = { "bundle", "exec", "ruby-lsp" },
+  cmd = { "ruby-lsp" },
 })
 
+-- starts rubocop in LSP mode for diagnostics and formatting
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rubocop
 lspconfig.rubocop.setup({
   capabilities = capabilities,
-  cmd = { "bundle", "exec", "rubocop", "--lsp" },
+  cmd = { "rubocop", "--lsp" },
 })
 
 -- make Ruby LSP diagnostics available
@@ -152,5 +154,49 @@ end
 lspconfig.ruby_ls.setup({
   on_attach = function(client, buffer)
     setup_diagnostics(client, buffer)
+  end,
+})
+
+
+
+--------------------
+-- [conform.nvim] --
+--------------------
+
+require("conform").setup({
+  formatters_by_ft = {
+    ruby = { "rubyfmt" },
+  },
+
+  -- enable sync formatting
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_fallback = false,
+  },
+
+  -- tweak formatter's configuration
+  formatters = {
+    -- disable rubyfmt for spec files
+    -- https://github.com/fables-tales/rubyfmt/pull/410#issuecomment-1849027463
+    rubyfmt ={
+      condition = function(ctx)
+        return string.find(vim.fs.basename(ctx.filename), "%a_spec.rb") == nil
+      end,
+    },
+  }
+})
+
+
+
+-------------------------------
+-- [nvim-lspconfig]: rubocop --
+-------------------------------
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.rb",
+  callback = function()
+    -- enable on-save formatting via rubocop
+    -- must be defined after conform.nvim's autocmd, so that rubocop formatting runs after rubyfmt
+    vim.lsp.buf.format()
   end,
 })

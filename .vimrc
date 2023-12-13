@@ -53,6 +53,9 @@ if has("nvim")
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
+
+  " code formatting
+  Plug 'stevearc/conform.nvim'
 else
   " code completion (vim only)
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
