@@ -1013,6 +1013,9 @@ cnoremap <D-v> <C-r>+
 nnoremap <D-t> :tabnew<cr>
 inoremap <D-t> <C-o>:tabnew<cr>
 
+" F10 to wipe buffer
+nnoremap <F10> :bwipeout<cr>
+
 " polish letters (goneovim requires those mappings)
 if exists('g:goneovim')
   inoremap <M-a> ą
