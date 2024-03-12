@@ -38,6 +38,14 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
+    -- let copilot.vim handle the <C-p> and <C-n> mapppings
+    ['<C-p>'] = cmp.mapping(function(fallback)
+      fallback()
+    end, { "i", "s" }),
+    ['<C-n>'] = cmp.mapping(function(fallback)
+      fallback()
+    end, { "i", "s" }),
+
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -46,7 +54,7 @@ cmp.setup({
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback() -- The fallback function sends an already mapped key. In this case, it's probably `<Tab>`.
       end
     end, { "i", "s" }),
 
