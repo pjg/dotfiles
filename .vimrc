@@ -1196,7 +1196,7 @@ function! CleanupFileConvertToUnixUtf8()
   execute '%s/\s\+$//e'
 endfunction
 
-" netrw overrides
+" vim-vinegar/netrw overrides
 
 augroup netrw_mapping
   autocmd!
@@ -1204,8 +1204,11 @@ augroup netrw_mapping
 augroup END
 
 function! NetrwMapping()
-  " move right
-  noremap <buffer> <c-l> <c-w>l
+  " <C-l> to move right
+  noremap <buffer> <C-l> <C-w>l
+
+  " <C-^> to quit netrw / return to the previous buffer
+  nnoremap <buffer> <C-^> :Rexplore<cr>
 endfunction
 
 
