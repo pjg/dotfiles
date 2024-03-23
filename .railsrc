@@ -22,6 +22,8 @@ if (rails_env = ENV['RAILS_ENV']) || (rails_env = Rails.env)
 
   # Called after the irb session is initialized and Rails has been loaded
   IRB.conf[:IRB_RC] = Proc.new do
+    next unless defined?(ActiveRecord::Base)
+
     # [] acts as find()
     ActiveRecord::Base.instance_eval { alias :[] :find }
 
