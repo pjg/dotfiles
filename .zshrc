@@ -437,7 +437,7 @@ function ssh_prompt_color() {
 vim_mode="N/A"
 
 PROMPT='
-%(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(ruby --disable=gems,did_you_mean -e "print \"ruby-#{RUBY_VERSION}\"")%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
+%(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(ruby --disable=gems -e "print \"ruby-#{RUBY_VERSION}\"")%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
 ${smiley} %{$reset_color%}'
 
 RPROMPT='$(prompt_online) %{$fg[white]%}%T%{$reset_color%}'
