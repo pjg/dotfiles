@@ -398,7 +398,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead {*.css,*.scss,*.sass,*.html,*.html.erb,*.js,*.jsx,*.tsx,*.svg} setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
   " explicitly set filetype to Ruby for some well-known files
-  autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,.railsrc,.irbrc,.pryrc} set filetype=ruby
+  autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Guardfile,.Guardfile,config.ru,importmap,.railsrc,.irbrc,.pryrc} set filetype=ruby
 
   " explicitly set filetype to shell for dotenv's files
   autocmd BufRead,BufNewFile {.env.development.local,.env.production,.env.sample,.env.test} set filetype=sh
