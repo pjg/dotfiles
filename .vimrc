@@ -75,7 +75,7 @@ Plug 'itspriddle/vim-stripper'
 " general vim improvements
 Plug 'andymass/vim-matchup'
 Plug 'sickill/vim-pasta'
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
 Plug 'alvan/vim-closetag'
@@ -1172,8 +1172,8 @@ nmap <silent> <leader>2 :t.<CR>Vr=
 " turn line wrap on/off
 nmap <leader>4 :set wrap!<cr>
 
-" gundo
-nmap <leader>6 :GundoToggle<cr>
+" Undotree
+nmap <leader>6 :UndotreeToggle<cr>
 
 " turn off the highlight search & redraw screen, sign column, statusline, colors
 nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ClrzrRefresh<cr>
