@@ -836,6 +836,18 @@ if &rtp =~ 'coc.nvim'
       call CocActionAsync('doHover')
     endif
   endfunction
+
+  " Function to toggle Coc
+  function! ToggleCoc()
+    if g:coc_enabled
+      CocDisable
+    else
+      CocEnable
+    endif
+  endfunction
+
+  " Map F2 to toggle Coc
+  nnoremap <F2> :call ToggleCoc()<cr>
 endif
 
 " [vim-sneak] disable in netrw buffers (fixes <leader>s mapping)
