@@ -96,7 +96,7 @@ local lspconfig = require("lspconfig")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- configures/enables ruby diagnostics
-lspconfig.ruby_ls.setup({
+lspconfig.ruby_lsp.setup({
   capabilities = capabilities,
   cmd = { "ruby-lsp" },
 })
@@ -159,7 +159,7 @@ local function setup_diagnostics(client, buffer)
   })
 end
 
-lspconfig.ruby_ls.setup({
+lspconfig.ruby_lsp.setup({
   on_attach = function(client, buffer)
     setup_diagnostics(client, buffer)
   end,
