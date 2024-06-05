@@ -102,7 +102,6 @@ Plug 'airblade/vim-gitgutter'
 
 " syntax files
 Plug 'sheerun/vim-polyglot'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'M4R7iNP/vim-inky'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
