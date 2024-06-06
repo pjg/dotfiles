@@ -39,7 +39,8 @@ hi ColorColumn guibg=#fefefe ctermbg=255
 hi Folded guifg=Black guibg=#bbbbbb  ctermbg=7 ctermfg=244
 hi StatusLine guifg=#ddddff guibg=#220088 ctermfg=5 ctermbg=231
 hi StatusLineNC guifg=#829db9 guibg=Black ctermfg=8 ctermbg=188
-hi VertSplit gui=bold guifg=#9ca6af guibg=Black cterm=bold ctermfg=231 ctermbg=8
+hi VertSplit gui=bold guifg=black guibg=black cterm=bold ctermfg=231 ctermbg=8
+hi WinSeparator guibg=black
 hi Wildmenu guifg=Black guibg=#ffdf00 ctermfg=0 ctermbg=11
 "hi CursorLine ctermbg=255
 hi Pmenu guifg=#444444 guibg=#f2f5f2 ctermfg=237 ctermbg=255 gui=NONE cterm=NONE
