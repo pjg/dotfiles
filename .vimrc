@@ -120,6 +120,10 @@ endif
 " no vi compatible mode
 set nocompatible
 
+" syntax highlight on
+syntax on
+syntax sync minlines=100
+
 " you can change buffers without saving
 set hidden
 
@@ -362,13 +366,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " set ruby for neovim/goneovim/VimR using chruby
 let g:ruby_host_prog = '~/bin/chruby-wrapper'
-
-
-
-" SYNTAX HIGHLIGHTING
-
-" syntax highlight on
-syntax on
 
 
 
@@ -770,6 +767,7 @@ let g:rainbow_conf = {
 
 " [vim-styled-components]
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " [coc.nvim] (conditionally)
 if &rtp =~ 'coc.nvim'
