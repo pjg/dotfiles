@@ -24,8 +24,9 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 
-" parentheses coloring
+" colors (parenthesis, css colors, etc.)
 Plug 'luochen1990/rainbow'
+Plug 'chrisbra/Colorizer'
 
 " Ruby related
 Plug 'vim-ruby/vim-ruby'
@@ -91,10 +92,6 @@ Plug 'lambdalisue/suda.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'bogado/file-line'
 Plug 'pechorin/any-jump.vim'
-
-if !has("nvim")
-  Plug 'BourgeoisBear/clrzr'
-endif
 
 " statusline (and related)
 Plug 'itchyny/lightline.vim'
@@ -888,6 +885,10 @@ let g:copilot_no_tab_map = v:true
 " [copilot] remap <C-n> to request next Copilot suggestion
 imap <silent> <C-n> <Plug>(copilot-next)
 
+" [Colorizer] enable for various file types and disable buffer leave
+let g:colorizer_auto_filetype='css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml'
+let g:colorizer_disable_bufleave = 1
+
 
 
 " ABBREVIATIONS
@@ -1187,7 +1188,7 @@ nmap <leader>4 :set wrap!<cr>
 nmap <leader>6 :UndotreeToggle<cr>
 
 " turn off the highlight search & redraw screen, sign column, statusline, colors
-nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ClrzrRefresh<cr>
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ColorHighlight!<cr>
 
 " toggle the paste mode (when vim either adds or not spaces in the front of lines)
 set pastetoggle=<leader>0
