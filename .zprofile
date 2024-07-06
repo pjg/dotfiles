@@ -50,6 +50,12 @@ elif [ -x "$HOME/.rvm/scripts/rvm" ]; then
   export PATH=$PATH:$HOME/.rvm/bin
 fi
 
+# also add chruby_auto to precmd_functions so that zsh prompt is always up-to-date
+# this fixes https://github.com/postmodern/chruby/issues/465
+if [[ ! "$precmd_functions" == *chruby_auto* ]]; then
+  precmd_functions+=("chruby_auto")
+fi
+
 if typeset -f chruby_auto > /dev/null; then
   # Automatically switch to the ruby version specified in the .ruby-version file
   # present in the current directory; This is required for goneovim/VimR
