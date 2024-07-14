@@ -388,7 +388,9 @@ vim_replace_mode="%{$fg[red]%}[REP]%{$reset_color%}"
 vim_visual_mode="%{$fg[blue]%}[VIS]%{$reset_color%}"
 vim_normal_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
 
-function zvm_after_select_vi_mode() {
+vim_mode=$vim_insert_mode
+
+function zvm_after_select_vi_mode {
   case $ZVM_MODE in
     $ZVM_MODE_NORMAL)
       vim_mode=$vim_normal_mode
@@ -432,9 +434,6 @@ function ssh_prompt_color() {
     echo '%{%F{green}%}'
   fi
 }
-
-
-vim_mode="N/A"
 
 PROMPT='
 %(!.%{$fg[red]%}.%{$fg[green]%})%n$(ssh_prompt_color)@%m%{$reset_color%}: %{$fg[blue]%}%~%{$reset_color%} $(git_super_status) %{$fg[white]%}$(ruby --disable=gems -e "print \"ruby-#{RUBY_VERSION}\"")%{$reset_color%} ${vim_mode} %{$fg[white]%}$(background_jobs)
