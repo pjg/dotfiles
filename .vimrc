@@ -209,6 +209,11 @@ if has("gui_running")
     set columns=248
     set lines=87
 
+    " special font configuration for neovide
+    if exists("g:neovide")
+      set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14:#e-subpixelantialias:#h-full
+    endif
+
   " Unix/Linux
   elseif has("unix")
     " font
@@ -369,6 +374,15 @@ set fillchars+=vert:▊
 
 " set ruby for neovim/goneovim/VimR using chruby
 let g:ruby_host_prog = '~/bin/chruby-wrapper'
+
+" neovide.dev
+if exists("g:neovide")
+  " disable all animations
+  let g:neovide_position_animation_length = 0
+  let g:neovide_cursor_animation_length = 0
+  let g:neovide_scroll_animation_far_lines = 0
+  let g:neovide_scroll_animation_length = 0
+endif
 
 
 
