@@ -29,12 +29,10 @@ Plug 'luochen1990/rainbow'
 Plug 'chrisbra/Colorizer'
 
 " Ruby related
-Plug 'vim-ruby/vim-ruby'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
-Plug 'neovim/nvim-lspconfig'
 
 " text objects
 Plug 'kana/vim-textobj-user'
@@ -47,6 +45,8 @@ Plug 'wellle/targets.vim'
 Plug 'github/copilot.vim'
 
 if has("nvim")
+  Plug 'neovim/nvim-lspconfig'
+
   " code completion (nvim only)
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -58,9 +58,18 @@ if has("nvim")
   " code formatting
   Plug 'stevearc/conform.nvim'
 else
+  " Regular VIM
+
   " code completion (vim only)
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 endif
+
+" syntax highlighting (vim/nvim)
+Plug 'vim-ruby/vim-ruby'
+Plug 'keith/rspec.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'AndrewRadev/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " grepping files from vim
 Plug 'mileszs/ack.vim'
@@ -97,11 +106,6 @@ Plug 'pechorin/any-jump.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 
-" syntax files
-Plug 'sheerun/vim-polyglot'
-Plug 'M4R7iNP/vim-inky'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
 call plug#end()
 
 
@@ -122,7 +126,12 @@ set nocompatible
 
 " syntax highlight on
 syntax on
-syntax sync minlines=100
+
+" look backwards that many lines when determining syntax highlighting for current line
+syntax sync minlines=2000
+
+" syntax coloring up until column number
+set synmaxcol=300
 
 " you can change buffers without saving
 set hidden
@@ -424,8 +433,10 @@ augroup filetypedetect
 
   " set filetype for Typescript files
   autocmd BufNewFile,BufRead {*.tsx} set filetype=javascript.tsx
-augroup END
 
+  " [rspec.vim] fix filetype set by rspec.vim
+  autocmd BufNewFile,BufRead *_spec.rb,*_shared_examples.rb,*_shared_context.rb set filetype=ruby syntax=rspec
+augroup END
 
 
 " ADVANCED SETTINGS
@@ -752,10 +763,6 @@ endif
 " [suda.vim] will ask for sudo password when editing a non-writeable file
 let g:suda_smart_edit = 1
 
-" CSS3 syntax (vendor prefixes highlighting)
-highlight VendorPrefix guifg=#880000 gui=BOLD
-match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
-
 " [rainbow]
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -781,10 +788,6 @@ let g:rainbow_conf = {
   \      'sass': 0
   \    }
   \  }
-
-" [vim-styled-components]
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " [coc.nvim] (conditionally)
 if &rtp =~ 'coc.nvim'
@@ -900,7 +903,7 @@ let g:copilot_no_tab_map = v:true
 " [copilot] remap <C-n> to request next Copilot suggestion
 imap <silent> <C-n> <Plug>(copilot-next)
 
-" [Colorizer] enable for various file types and disable buffer leave
+" [Colorizer] enable for various file types and disable removing of colors on buffer leave
 let g:colorizer_auto_filetype='css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml'
 let g:colorizer_disable_bufleave = 1
 
