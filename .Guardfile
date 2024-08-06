@@ -100,7 +100,7 @@ if Gem::Specification.find_all_by_name('guard-spork').any?
 end
 
 if Gem::Specification.find_all_by_name('guard-rspec').any?
-  zeus = File.exists?('.zeus.sock')
+  zeus = File.exist?('.zeus.sock')
   spork = Gem::Specification.find_all_by_name('spork').any?
   spring = Gem::Specification.find_all_by_name('spring').any?
 
