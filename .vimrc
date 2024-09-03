@@ -996,8 +996,8 @@ imap <c-q> <esc><c-q>
 nnoremap / /\v
 vnoremap / /\v
 
-" don't move on *
-nnoremap * *<c-o>
+" don't move on star search (*)
+nnoremap * :keepjumps normal! mi*`i<CR>
 
 " keep search matches in the middle of the window
 nnoremap n nzzzv
