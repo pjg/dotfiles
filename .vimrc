@@ -910,6 +910,25 @@ imap <silent> <C-n> <Plug>(copilot-next)
 let g:colorizer_auto_filetype='css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml'
 let g:colorizer_disable_bufleave = 1
 
+" [any-jump.vim] Preserve cursor position when closing the AnyJump window
+" https://github.com/pechorin/any-jump.vim/issues/88#issuecomment-853323352
+function! Preserve(command)
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  " do the business:
+  execute a:command
+
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+nnoremap <leader>j :call Preserve("AnyJump")<CR>
+xnoremap <leader>j :call Preserve("AnyJump")<CR>
+
 
 
 " ABBREVIATIONS
