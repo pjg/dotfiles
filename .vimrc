@@ -1,6 +1,6 @@
 " VIM-PLUG
 
-" automatic installation
+" automatic installation of vim-plug if it's not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -127,8 +127,11 @@ set nocompatible
 " syntax highlight on
 syntax on
 
-" look backwards that many lines when determining syntax highlighting for current line
-syntax sync minlines=2000
+" when determining syntax highlighting for the current line, always look at the entire file
+augroup ResetSyntaxHighlighting
+  autocmd!
+  autocmd BufNewFile,BufRead,BufEnter * syntax sync fromstart
+augroup END
 
 " syntax coloring up until column number
 set synmaxcol=300
