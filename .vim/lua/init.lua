@@ -1,18 +1,44 @@
-----------------
--- [cmp.nvim] --
-----------------
+------------
+-- [nvim] --
+------------
+
+-- [copilot.lua]
+
+require('copilot').setup({
+  suggestion= {
+    enabled = true,
+    auto_trigger = true, -- automatically/always request copilot completion when in insert mode
+
+    keymap = {
+      accept = '<C-p>',
+      next = '<C-n>',
+      prev = '<C-N>',
+      dismiss = '<C-]>',
+    },
+  },
+
+  panel = {
+    enabled = false,
+  },
+})
+
+local copilotSuggestion = require('copilot.suggestion')
+
+
+
+-- [cmp.nvim]
 
 local has_words_before = function()
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 cmp.setup({
   performance = {
@@ -21,13 +47,8 @@ cmp.setup({
 
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      vim.fn['vsnip#anonymous'](args.body)
     end,
-  },
-
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
   },
 
   -- setup keys for nvim-cmp
@@ -36,35 +57,41 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
     -- let copilot.vim handle the <C-p> and <C-n> mapppings
     ['<C-p>'] = cmp.mapping(function(fallback)
-      fallback()
-    end, { "i", "s" }),
+      -- check if Copilot suggestion is visible and then accept it; otherwise do nothing
+      if copilotSuggestion.is_visible() then
+        copilotSuggestion.accept()
+      end
+    end, { 'i', 's' }),
     ['<C-n>'] = cmp.mapping(function(fallback)
-      fallback()
-    end, { "i", "s" }),
+      -- next suggestion
+      if copilotSuggestion.is_visible() then
+        copilotSuggestion.next()
+      end
+    end, { 'i', 's' }),
 
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
+        -- automaticaly inserts highlighted item into buffer
         cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+        cmp.mapping.confirm({ select = false })
+      elseif vim.fn['vsnip#available'](1) == 1 then
+        feedkey('<Plug>(vsnip-expand-or-jump)', '')
       elseif has_words_before() then
         cmp.complete()
-      else
-        fallback() -- The fallback function sends an already mapped key. In this case, it's probably `<Tab>`.
       end
-    end, { "i", "s" }),
+    end, { 'i', 's' }),
 
-    ["<S-Tab>"] = cmp.mapping(function()
+    ['<S-Tab>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
+      elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+        feedkey('<Plug>(vsnip-jump-prev)', '')
       end
-    end, { "i", "s" }),
+    end, { 'i', 's' }),
   }),
 
   sources = cmp.config.sources({

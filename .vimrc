@@ -41,9 +41,6 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 
-" AI code completion
-Plug 'github/copilot.vim'
-
 if has("nvim")
   Plug 'neovim/nvim-lspconfig'
 
@@ -57,11 +54,18 @@ if has("nvim")
 
   " code formatting
   Plug 'stevearc/conform.nvim'
+
+  " AI code completion
+  Plug 'zbirenbaum/copilot.lua'
+  Plug 'nvim-lua/plenary.nvim'
 else
   " Regular VIM
 
   " code completion (vim only)
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+  " AI code completion
+  Plug 'github/copilot.vim'
 endif
 
 " syntax highlighting (vim/nvim)
@@ -904,12 +908,15 @@ let g:closetag_regions = {
   \ 'javascript.jsx': 'jsxRegion',
   \ }
 
-" [copilot] remap keybinding from <Tab> to <C-p> (to match zsh autocomplete suggestions behaviour)
-imap <silent><script><expr> <C-p> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+" [copilot.vim]
+if !has("nvim")
+  " remap keybinding from <Tab> to <C-p> (to match zsh autocomplete suggestions behaviour)
+  imap <silent><script><expr> <C-p> copilot#Accept("\<CR>")
+  let g:copilot_no_tab_map = v:true
 
-" [copilot] remap <C-n> to request next Copilot suggestion
-imap <silent> <C-n> <Plug>(copilot-next)
+  " remap <C-n> to request next Copilot suggestion
+  imap <silent> <C-n> <Plug>(copilot-next)
+end
 
 " [Colorizer] enable for various file types, disable removing of colors on buffer leave, disable for large files
 let g:colorizer_auto_color = 0
