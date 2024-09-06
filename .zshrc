@@ -509,6 +509,9 @@ if _has fzf && _has ag; then
   export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
 fi
 
+# when using prettierd, always use local prettier installation/config
+export PRETTIERD_LOCAL_PRETTIER_ONLY=true
+
 # [zsh-vi-mode]
 
 # readkey engine
