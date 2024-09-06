@@ -387,6 +387,11 @@ set fillchars+=vert:▊
 " set ruby for neovim/goneovim/VimR using chruby
 let g:ruby_host_prog = '~/bin/chruby-wrapper'
 
+" set python3 for neovim
+if executable('/opt/homebrew/bin/python3')
+  let g:python3_host_prog = '/opt/homebrew/bin/python3'
+endif
+
 " neovide.dev
 if exists("g:neovide")
   " disable all animations
