@@ -114,15 +114,6 @@ call plug#end()
 
 
 
-" NVIM LUA INITIALIZER
-
-if has("nvim")
-  " if we're running nvim, execute nvim specific initializer [lua]
-  lua require('init')
-endif
-
-
-
 " BASIC SETTINGS
 
 " no vi compatible mode
@@ -1357,3 +1348,12 @@ let s:palette.insert.left = old_normal_left
 
 " update on write
 autocmd BufWritePost * call lightline#update()
+
+
+
+" NVIM LUA INITIALIZER
+
+if has("nvim")
+  " if we're running nvim, execute nvim specific initializer [lua]
+  lua require('init')
+endif
