@@ -911,9 +911,15 @@ let g:copilot_no_tab_map = v:true
 " [copilot] remap <C-n> to request next Copilot suggestion
 imap <silent> <C-n> <Plug>(copilot-next)
 
-" [Colorizer] enable for various file types and disable removing of colors on buffer leave
-let g:colorizer_auto_filetype='css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml'
+" [Colorizer] enable for various file types, disable removing of colors on buffer leave, disable for large files
+let g:colorizer_auto_color = 0
 let g:colorizer_disable_bufleave = 1
+let g:colorizer_maxlines = 300
+
+augroup auto_colorize
+  autocmd!
+  autocmd FileType css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml :ColorHighlight
+augroup END
 
 " [any-jump.vim] Preserve cursor position when closing the AnyJump window
 " https://github.com/pechorin/any-jump.vim/issues/88#issuecomment-853323352
@@ -1233,7 +1239,7 @@ nmap <leader>4 :set wrap!<cr>
 nmap <leader>6 :UndotreeToggle<cr>
 
 " turn off the highlight search & redraw screen, sign column, statusline, colors
-nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ColorHighlight!<cr>
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>
 
 " toggle the paste mode (when vim either adds or not spaces in the front of lines)
 set pastetoggle=<leader>0
