@@ -103,104 +103,44 @@ cmp.setup({
   })
 })
 
--- Set configuration for specific filetype.
+-- configuration for specific filetypes
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-  }, {
     { name = 'buffer' },
   })
 })
 
 
-----------------------
--- [nvim-lspconfig] --
-----------------------
 
-local lspconfig = require("lspconfig")
+-- [nvim-lspconfig]
+
+local lspconfig = require('lspconfig')
 
 -- nvim-cmp almost supports LSP's capabilities so it should be advertised to LSP servers
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- configures/enables ruby diagnostics
+-- configures/enables ruby diagnostics and formatting via rubocop/ruby-lsp
 lspconfig.ruby_lsp.setup({
   capabilities = capabilities,
-  cmd = { "ruby-lsp" },
-})
-
--- starts rubocop in LSP mode for diagnostics and formatting
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rubocop
-lspconfig.rubocop.setup({
-  capabilities = capabilities,
-  cmd = { "rubocop", "--lsp" },
-})
-
--- make Ruby LSP diagnostics available
--- https://github.com/Shopify/ruby-lsp/blob/main/EDITORS.md#neovim-lsp
-_timers = {}
-
-local function setup_diagnostics(client, buffer)
-  if require("vim.lsp.diagnostic")._enable then
-    return
-  end
-
-  local diagnostic_handler = function()
-    local params = vim.lsp.util.make_text_document_params(buffer)
-
-    client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-      if err then
-        local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
-        vim.lsp.log.error(err_msg)
-      end
-
-      local diagnostic_items = {}
-
-      if result then
-        diagnostic_items = result.items
-      end
-
-      vim.lsp.diagnostic.on_publish_diagnostics(
-        nil,
-        vim.tbl_extend("keep", params, { diagnostics = diagnostic_items }),
-        { client_id = client.id }
-      )
-    end)
-  end
-
-  diagnostic_handler() -- to request diagnostics on buffer when first attaching
-
-  vim.api.nvim_buf_attach(buffer, false, {
-    on_lines = function()
-      if _timers[buffer] then
-        vim.fn.timer_stop(_timers[buffer])
-      end
-
-      _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
-    end,
-
-    on_detach = function()
-      if _timers[buffer] then
-        vim.fn.timer_stop(_timers[buffer])
-      end
-    end,
-  })
-end
-
-lspconfig.ruby_lsp.setup({
-  on_attach = function(client, buffer)
-    setup_diagnostics(client, buffer)
-  end,
+  cmd = { 'ruby-lsp' },
+  settings = {
+    rubocop = {
+      enabled = true,
+      -- automatically apply RuboCop autocorrections on save
+      autocorrect = true,
+    }
+  }
 })
 
 
 
---------------------
--- [conform.nvim] --
---------------------
+-- [conform.nvim]
 
-require("conform").setup({
+require('conform').setup({
   formatters_by_ft = {
-    ruby = { "rubyfmt" },
+    javascript = { 'prettierd', 'prettier', stop_after_first = true },
+    -- ruby = { 'rubyfmt' }, -- temporarily disabled
   },
 
   -- enable sync formatting
@@ -215,7 +155,7 @@ require("conform").setup({
     -- https://github.com/fables-tales/rubyfmt/pull/410#issuecomment-1849027463
     rubyfmt ={
       condition = function(ctx)
-        return string.find(vim.fs.basename(ctx.filename), "%a_spec.rb") == nil
+        return string.find(vim.fs.basename(ctx.filename), '%a_spec.rb') == nil
       end,
     },
   }
@@ -223,15 +163,25 @@ require("conform").setup({
 
 
 
--------------------------------
--- [nvim-lspconfig]: rubocop --
--------------------------------
+-- [nvim-lspconfig]: rubocop
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.rb",
+-- rubyfmt and then rubocop on rubyfmt's output
+-- must be defined after conform.nvim, so that rubocop formatting runs after rubyfmt
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.rb',
   callback = function()
-    -- enable on-save formatting via rubocop
-    -- must be defined after conform.nvim's autocmd, so that rubocop formatting runs after rubyfmt
+    -- on-save formatting via rubocop
     vim.lsp.buf.format()
+  end,
+})
+
+-- prettier and then eslint on prettier's output
+-- must be defined after conform.nvim's autocmd, so that eslint formatting runs after prettier
+lspconfig.eslint.setup({
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = bufnr,
+      command = 'EslintFixAll',
+    })
   end,
 })
