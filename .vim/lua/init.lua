@@ -184,7 +184,6 @@ lspconfig.ruby_lsp.setup({
 require('conform').setup({
   formatters_by_ft = {
     javascript = { 'prettierd', 'prettier', stop_after_first = true },
-    -- ruby = { 'rubyfmt' }, -- temporarily disabled
   },
 
   -- enable sync formatting
@@ -192,29 +191,16 @@ require('conform').setup({
     timeout_ms = 500,
     lsp_fallback = false,
   },
-
-  -- tweak formatter's configuration
-  formatters = {
-    -- disable rubyfmt for spec files
-    -- https://github.com/fables-tales/rubyfmt/pull/410#issuecomment-1849027463
-    rubyfmt ={
-      condition = function(ctx)
-        return string.find(vim.fs.basename(ctx.filename), '%a_spec.rb') == nil
-      end,
-    },
-  }
 })
 
 
 
 -- [nvim-lspconfig]: rubocop
 
--- rubyfmt and then rubocop on rubyfmt's output
--- must be defined after conform.nvim, so that rubocop formatting runs after rubyfmt
+-- before save formatting via rubocop
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.rb',
   callback = function()
-    -- on-save formatting via rubocop
     vim.lsp.buf.format()
   end,
 })
