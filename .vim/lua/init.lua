@@ -43,6 +43,8 @@ local cmp = require('cmp')
 cmp.setup({
   performance = {
     max_view_entries = 15, -- limit the number of items to display in the completion menu
+    debounce = 0, -- default is 60ms
+    throttle = 0, -- default is 30ms
   },
 
   snippet = {
