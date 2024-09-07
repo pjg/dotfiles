@@ -211,7 +211,18 @@ lspconfig.eslint.setup({
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
-      command = 'EslintFixAll',
+      callback = function()
+        -- schedule eslint to run after prettier
+        vim.schedule(function()
+          vim.cmd('EslintFixAll')
+
+          -- schedule, so eslint can run after file has been saved already
+          -- check if modified, and save (again)
+          if vim.bo.modified then
+            vim.cmd('write')
+          end
+        end)
+      end,
     })
   end,
 })
