@@ -26,6 +26,48 @@ local copilotSuggestion = require('copilot.suggestion')
 
 
 
+-- [CopilotChat.nvim]
+
+local chat = require('CopilotChat')
+
+-- disable default <tab> complete mapping for copilot chat when doing this
+chat.setup({
+  mappings = {
+    complete = {
+      insert = '',
+    },
+  },
+})
+
+-- code related commands
+vim.keymap.set({ 'n', 'x' }, '<leader>ae', '<cmd>CopilotChatExplain<cr>', { desc = 'CopilotChat - Explain code', noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>at', '<cmd>CopilotChatTests<cr>', { desc = 'CopilotChat - Generate tests', noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>ar', '<cmd>CopilotChatReview<cr>', { desc = 'CopilotChat - Review code', noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>ao', '<cmd>CopilotChatOptimize<cr>', { desc = 'CopilotChat - Refactor code', noremap = true, silent = true })
+
+-- reset chat
+vim.keymap.set({ 'n', 'x' }, '<leader>al', '<cmd>CopilotChatReset<cr>', { desc = 'CopilotChat - Clear buffer and chat history', noremap = true, silent = true })
+
+-- toggle Copilot Chat Vsplit
+vim.keymap.set({ 'n', 'x' }, '<leader>av', '<cmd>CopilotChatToggle<cr>', { desc = 'CopilotChat - Toggle', noremap = true, silent = true })
+
+-- generate commit message for all changes
+vim.keymap.set({ 'n', 'x' }, '<leader>am', '<cmd>CopilotChatCommit<cr>', { desc = 'CopilotChat - Generate commit message for all changes', noremap = true, silent = true })
+
+-- inline chat
+vim.keymap.set({ 'n', 'x' }, '<leader>ai', function()
+  local input = vim.fn.input("Quick Copilot chat: ")
+
+  if input ~= "" then
+    chat.ask(input, { selection = require("CopilotChat.select").buffer })
+  end
+end, { desc = "CopilotChat - Quick chat", noremap = true, silent = true })
+
+-- registers copilot-chat as cmp source and enables it for copilot-chat filetype (copilot chat window)
+require('CopilotChat.integrations.cmp').setup()
+
+
+
 -- [cmp.nvim]
 
 local has_words_before = function()

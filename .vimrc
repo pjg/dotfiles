@@ -58,6 +58,7 @@ if has("nvim")
   " AI code completion
   Plug 'zbirenbaum/copilot.lua'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 else
   " Regular VIM
 
@@ -935,6 +936,9 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
+" disable global keymappings for AnyJump
+let g:any_jump_disable_default_keybindings = 1
+
 nnoremap <leader>j :call Preserve("AnyJump")<CR>
 xnoremap <leader>j :call Preserve("AnyJump")<CR>
 
@@ -1162,7 +1166,7 @@ let mapleader = "\<space>"
 let localmapleader = "\\"
 
 " select all text in current buffer
-nmap <leader>a ggVG
+nmap <leader>A ggVG
 
 " upper/lower word
 nmap <leader>u mQviwU'Q
