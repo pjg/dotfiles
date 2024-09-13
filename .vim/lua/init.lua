@@ -2,6 +2,26 @@
 -- [nvim] --
 ------------
 
+-- [substitute.nvim]
+
+require('substitute').setup()
+
+-- substitute operator
+vim.keymap.set('n', 's', require('substitute').operator, { noremap = true })
+vim.keymap.set('n', 'ss', require('substitute').line, { noremap = true })
+vim.keymap.set('n', 'S', require('substitute').eol, { noremap = true })
+vim.keymap.set('x', 's', require('substitute').visual, { noremap = true })
+
+-- exchange operator
+vim.keymap.set('n', 'sx', require('substitute.exchange').operator, { noremap = true })
+vim.keymap.set('n', 'sxx', require('substitute.exchange').line, { noremap = true })
+vim.keymap.set('x', 'X', require('substitute.exchange').visual, { noremap = true })
+vim.keymap.set('n', 'sxc', require('substitute.exchange').cancel, { noremap = true })
+
+
+
+-- [nvim-treesitter]
+
 require('nvim-treesitter.configs').setup {
   -- list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = { 'lua', 'vim', 'vimdoc', 'ruby', 'javascript', 'markdown', 'markdown_inline' },
@@ -39,6 +59,7 @@ require('nvim-treesitter.configs').setup {
     enable = true,
   },
 }
+
 
 
 -- [copilot.lua]

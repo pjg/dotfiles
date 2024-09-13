@@ -60,7 +60,11 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 
+  " Syntax highlighting
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+  " text editing improvements
+  Plug 'gbprod/substitute.nvim'
 else
   " Regular VIM
 
@@ -81,7 +85,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " grepping files from vim
 Plug 'mileszs/ack.vim'
 
-" general text-editing improvements
+" text editing improvements
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
