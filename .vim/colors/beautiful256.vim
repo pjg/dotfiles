@@ -126,3 +126,21 @@ hi Function guifg=#5f0000 ctermfg=52
 
 " vim-matchup
 hi MatchWord ctermbg=254 guibg=#e4e4e4 cterm=NONE gui=NONE
+
+" treesitter tweaks [WIP]
+if has("nvim")
+  hi clear @string.special.symbol.ruby " symbols
+  hi link @string.special.symbol.ruby Constant
+
+  hi clear @constant.builtin.ruby " constants
+  hi link @constant.builtin.ruby Constant
+
+  hi clear @function.call.ruby " method call
+  hi link @function.call.ruby Normal
+
+  hi clear @variable.member.ruby " instance variable
+  hi link @variable.member.ruby Identifier
+
+  hi clear @variable.builtin.ruby " like .self
+  hi link @variable.builtin.ruby Constant
+endif

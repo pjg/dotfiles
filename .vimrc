@@ -59,6 +59,8 @@ if has("nvim")
   Plug 'zbirenbaum/copilot.lua'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
   " Regular VIM
 

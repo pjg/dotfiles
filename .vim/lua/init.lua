@@ -2,6 +2,45 @@
 -- [nvim] --
 ------------
 
+require('nvim-treesitter.configs').setup {
+  -- list of parser names, or "all" (the listed parsers MUST always be installed)
+  ensure_installed = { 'lua', 'vim', 'vimdoc', 'ruby', 'javascript', 'markdown', 'markdown_inline' },
+
+  -- install parsers synchronously (applies to `ensure_installed`)
+  sync_install = true,
+
+  -- automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  -- syntax highlighting
+  highlight = {
+    -- disable syntax highlighting; it is inferior to regular vim syntax highlighting
+    enable = false,
+
+    -- setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- using this option may slow down your editor, and you may see some duplicate highlights.
+    -- instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = 'gnn', -- set to `false` to disable one of the mappings
+      node_incremental = 'grn',
+      scope_incremental = 'grc',
+      node_decremental = 'grm',
+    },
+  },
+
+  -- enables vim-matchup integration
+  matchup = {
+    enable = true,
+  },
+}
+
+
 -- [copilot.lua]
 
 require('copilot').setup({
@@ -174,6 +213,10 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 lspconfig.ruby_lsp.setup({
   capabilities = capabilities,
   cmd = { 'ruby-lsp' },
+  on_attach = function(client, bufnr)
+    -- Disable semantic tokens (syntax highlighting via LSP)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
   settings = {
     rubocop = {
       enabled = true,
