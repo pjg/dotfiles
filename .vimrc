@@ -942,6 +942,38 @@ let g:any_jump_disable_default_keybindings = 1
 nnoremap <leader>j :call Preserve("AnyJump")<CR>
 xnoremap <leader>j :call Preserve("AnyJump")<CR>
 
+" [vim-matchup] custom mapping for matching quotes
+" https://github.com/andymass/vim-matchup/issues/341
+let s:quotes = ['"', '''', '`']
+
+function! s:matchquote()
+  normal! m'
+
+  " character_at_cursor
+  let c = matchstr(getline('.'), '\%'.col('.').'c.')
+
+  if index(s:quotes, c) >= 0
+    let num = len(split(getline('.'), c, 1)) - 1
+
+    if num % 2 == 1
+      return
+    endif
+
+    " is quotation mark under cursor odd or even?
+    let col = getpos('.')[2]
+    let num = len(split(getline('.')[0:col-1], c, 1)) - 1
+
+    let mvmt = num % 2 == 0 ? 'F' : 'f'
+    execute 'normal!' mvmt.c
+  else
+    " fallback
+    execute "normal \<plug>(matchup-%)"
+  endif
+endfunction
+
+nnoremap <silent> <Plug>(MatchMetaN) :call <SID>matchquote()<CR>
+nmap % <Plug>(MatchMetaN)
+
 
 
 " ABBREVIATIONS
