@@ -455,6 +455,417 @@ autocmd BufReadPost *
 
 
 
+" ABBREVIATIONS
+
+abbreviate apge page
+abbreviate glboal global
+abbreviate ilke like
+abbreviate invitaion invitation
+abbreviate invitaiton invitation
+abbreviate invitatoin invitation
+abbreviate pgae page
+abbreviate recieve receive
+abbreviate sgined signed
+abbreviate taht that
+abbreviate teh the
+abbreviate tewak tweak
+abbreviate upadting updating
+abbreviate coudln couldn
+
+" Rails specific
+abbreviate bpr binding.pry;
+abbreviate brp binding.pry;
+
+
+
+" KEY MAPPINGS
+
+" have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
+noremap Y y$
+
+" swap ` with ' (so that ' will jump to line *and* column)
+nnoremap ' `
+nnoremap ` '
+
+" scroll faster & move cursor too
+nnoremap <c-e> 3<c-e>3j
+nnoremap <c-y> 3<c-y>3k
+vnoremap <c-e> 3<c-e>3j
+vnoremap <c-y> 3<c-y>3k
+
+" move faster between windows
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
+
+" improve movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+nnoremap $ g$
+nnoremap ^ g^
+nnoremap 0 g0
+vnoremap j gj
+vnoremap k gk
+vnoremap $ g$
+vnoremap ^ g^
+vnoremap 0 g0
+
+" go to home/end using capitalized directions
+noremap H ^
+noremap L $
+
+" make g$/g^/g0 go to 'true' home/end
+nnoremap g$ $
+nnoremap g^ ^
+nnoremap g0 0
+vnoremap g$ $
+vnoremap g^ ^
+vnoremap g0 0
+
+" gw to swap the current word with the one next to it
+nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>'':nohlsearch<cr>
+
+" CTRL+s always saves file
+nmap <c-s> :w<cr>
+vmap <c-s> <esc><c-s>
+imap <c-s> <esc><c-s>
+
+" CTRL+q quits
+nmap <c-q> :q<cr>
+imap <c-q> <esc><c-q>
+
+" use sane regexes
+nnoremap / /\v
+vnoremap / /\v
+
+" don't move on star search (*)
+nnoremap * :keepjumps normal! mi*`i<CR>
+
+" keep search matches in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+
+" gi already moves to 'last place you exited insert mode', so we'll map gI to something similar: move to last change
+nnoremap gI `.
+
+" lists navigation
+nnoremap <left> :cprev<cr>zvzz
+nnoremap <right> :cnext<cr>zvzz
+nnoremap <up> :lprev<cr>zvzz
+nnoremap <down> :lnext<cr>zvzz
+
+" quickselect tabs with CMD + #
+nnoremap <D-1> :tabn 1<CR>
+nnoremap <D-2> :tabn 2<CR>
+nnoremap <D-3> :tabn 3<CR>
+nnoremap <D-4> :tabn 4<CR>
+nnoremap <D-5> :tabn 5<CR>
+nnoremap <D-6> :tabn 6<CR>
+nnoremap <D-7> :tabn 7<CR>
+nnoremap <D-8> :tabn 8<CR>
+nnoremap <D-9> :tabn 9<CR>
+
+inoremap <D-1> <C-o>:tabn 1<cr><Esc>
+inoremap <D-2> <C-o>:tabn 2<cr><Esc>
+inoremap <D-3> <C-o>:tabn 3<cr><Esc>
+inoremap <D-4> <C-o>:tabn 4<cr><Esc>
+inoremap <D-5> <C-o>:tabn 5<cr><Esc>
+inoremap <D-6> <C-o>:tabn 6<cr><Esc>
+inoremap <D-7> <C-o>:tabn 7<cr><Esc>
+inoremap <D-8> <C-o>:tabn 8<cr><Esc>
+inoremap <D-9> <C-o>:tabn 9<cr><Esc>
+
+" pasting
+nnoremap <D-v> a<C-r>+<Esc>
+inoremap <D-v> <C-r>+
+cnoremap <D-v> <C-r>+
+
+" new tab
+nnoremap <D-t> :tabnew<cr>
+inoremap <D-t> <C-o>:tabnew<cr>
+
+" F10 to wipe buffer
+nnoremap <F10> :bwipeout<cr>
+
+" polish letters (goneovim requires those mappings)
+if exists('g:goneovim')
+  inoremap <M-a> ą
+  inoremap <M-c> ć
+  inoremap <M-e> ę
+  inoremap <M-l> ł
+  inoremap <M-n> ń
+  inoremap <M-o> ó
+  inoremap <M-s> ś
+  inoremap <M-x> ź
+  inoremap <M-z> ż
+  inoremap <M-A> Ą
+  inoremap <M-C> Ć
+  inoremap <M-E> Ę
+  inoremap <M-L> Ł
+  inoremap <M-N> Ń
+  inoremap <M-O> Ó
+  inoremap <M-S> Ś
+  inoremap <M-X> Ź
+  inoremap <M-Z> Ż
+endif
+
+
+
+" INSERT MODE KEY MAPPINGS
+
+" Ruby: convert word into Ruby symbol
+imap <C-k> <C-o>b:<Esc>Ea
+
+" basic readline shortcuts
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
+
+
+" VISUAL MODE KEY MAPPINGS
+
+" reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" press Shift+P while in visual mode to replace the selection without overwriting the default register
+vmap P p :call setreg('"', getreg('0')) <cr>
+
+" make backspace work sanely in visual mode
+vnoremap <bs> x
+
+" select entire buffer
+nnoremap vaa ggvGg_
+nnoremap Vaa ggVG
+
+" fix linewise visual selection of various text objects
+nnoremap VV V
+nnoremap Vit vitVkoj
+nnoremap Vat vatV
+nnoremap Vab vabV
+nnoremap VaB vaBV
+
+
+" COMMAND LINE KEY MAPPINGS
+
+" bash like keys for the command line
+cnoremap <c-a> <Home>
+cnoremap <c-e> <End>
+cnoremap <c-p> <Up>
+cnoremap <c-n> <Down>
+cnoremap <c-b> <Left>
+cnoremap <c-f> <Right>
+cnoremap <c-d> <Del>
+cnoremap <c-k> <C-\>estrpart(getcmdline(), 0, getcmdpos()-1)<cr>
+
+" swap <Up>/<Down> with <PageUp>/<PageDown>
+cnoremap <Up> <S-Up>
+cnoremap <PageUp> <Up>
+cnoremap <Down> <S-Down>
+cnoremap <PageDown> <Down>
+
+
+
+" LEADER KEY MAPPINGS
+
+" leader/localleader mappings
+let mapleader = "\<space>"
+let localmapleader = "\\"
+
+" select all text in current buffer
+nmap <leader>A ggVG
+
+" upper/lower word
+nmap <leader>u mQviwU'Q
+nmap <leader>l mQviwu'Q
+
+" upper/lower first char of word
+nmap <leader>U mQgewvU'Q
+nmap <leader>L mQgewvu'Q
+
+" fugitive.vim
+nmap <leader>gb :Git blame<cr>
+nmap <leader>gc :Git commit<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gl :!git l<cr>
+nmap <leader>gp :Git push<cr>
+nmap <leader>gr :GRemove!<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gw :Gwrite<cr>
+
+" vimdiff conflict resolution for 3-way merge
+map <Leader>g1 :diffget LOCAL<CR>
+map <Leader>g2 :diffget BASE<CR>
+map <Leader>g3 :diffget REMOTE<CR>
+
+" fzf.vim
+map <leader>t :Files<cr>
+map <leader>b :Buffers<cr>
+map <leader>h :History<cr>
+
+" delete current buffer
+noremap <leader>c :bdelete<cr>
+
+" quit
+nmap <leader>q :q<cr>
+
+" save file / all files
+map <leader>w :w<cr>
+map <leader>W :wall<cr>
+
+" [vim-rails] Rake
+map <leader>rr :.Rake<cr>
+
+" system clipboard interaction
+noremap <leader>d "*d
+noremap <leader>D "*d$
+noremap <leader>y "*y
+noremap <leader>Y "*y$
+nnoremap <leader>p :set paste<cr>"*p:set nopaste<cr>
+nnoremap <leader>P :set paste<cr>"*P:set nopaste<cr>
+
+" select just pasted text
+noremap <leader>V V`]
+
+" easier splits
+noremap <leader>s <C-w>s
+noremap <leader>v <C-w>v
+
+" adjust viewports to the same size
+map <leader>= <C-w>=
+
+" make current window max height
+noremap <leader>- <C-w>_
+
+" underline the current line
+nmap <silent> <leader>1 :t.<CR>Vr-
+nmap <silent> <leader>2 :t.<CR>Vr=
+
+" turn line wrap on/off
+nmap <leader>4 :set wrap!<cr>
+
+" Undotree
+nmap <leader>6 :UndotreeToggle<cr>
+
+" turn off the highlight search & redraw screen, sign column, statusline, colors
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>
+
+" toggle the paste mode (when vim either adds or not spaces in the front of lines)
+set pastetoggle=<leader>0
+
+
+" quick insertion of newline in normal mode
+nnoremap <silent> <cr> :-1put=''<cr><down>
+
+" convert file to utf-8 and cleanup whitespace garbage
+map <leader>xx :call CleanupFileConvertToUnixUtf8()<cr>
+
+function! CleanupFileConvertToUnixUtf8()
+  " insert 'tabstop' characters instead of <TAB>s
+  execute '%retab!'
+  " UNIX fileformat
+  set fileformat=unix
+  " UTF-8 encoding by default
+  set fileencoding=utf-8
+  " cleanup trailing whitespace
+  execute '%s/\s\+$//e'
+endfunction
+
+" vim-vinegar/netrw overrides
+
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+  " <C-l> to move right
+  noremap <buffer> <C-l> <C-w>l
+
+  " <C-^> to quit netrw / return to the previous buffer
+  nnoremap <buffer> <C-^> :Rexplore<cr>
+endfunction
+
+
+
+" STATUSLINE
+
+" always show the status line
+set laststatus=2
+
+" don't show mode text (which vim shows below the statusline)
+set noshowmode
+
+" [lightline.vim]
+fun! WhitespaceStatus() abort
+  let elements = []
+
+  " empty lines at the EOF
+  let s:contains_empty_lines = search('\v($\n\s*)+%$', 'nw')
+
+  " mixed indentation
+  if &expandtab
+    " If spaces are being used and we find a line starting with tab.
+    let s:contains_mixed_indent = search('\v(^( +)?\t+)', 'nw')
+  el
+    " We only check mixed indents (tabs + spaces)
+    let s:contains_mixed_indent = search('\v(^\t+ +)|(^ +\t+)', 'nw')
+  en
+
+  " trailing whitespace
+  let s:contains_trailing_whitespaces = search('\v\s+$', 'nw')
+
+  if s:contains_empty_lines > 0
+    let elements = elements + ['empty-lines' . ':' . s:contains_empty_lines]
+  en
+
+  if s:contains_mixed_indent > 0
+    let elements = elements + ['mixed-indent' . ':' . s:contains_mixed_indent]
+  en
+
+  if s:contains_trailing_whitespaces > 0
+    let elements = elements + ['trailing' . ':' . s:contains_trailing_whitespaces]
+  en
+
+  return join(elements, ' ')
+endf
+
+let g:lightline = {
+  \   'colorscheme': 'wombat',
+  \   'active': {
+  \     'left': [['mode', 'paste'], ['filename', 'readonly', 'modified']],
+  \     'right': [['lineinfo'], ['percent'], ['whitespace_status'], ['fileformat', 'fileencoding', 'filetype']]
+  \   },
+  \   'inactive': {
+  \     'left': [['filename'], ['modified']],
+  \     'right': [['lineinfo'], ['percent']]
+  \   },
+  \   'component_expand': {
+  \     'whitespace_status': 'WhitespaceStatus'
+  \   },
+  \   'component_type': {
+  \     'whitespace_status': 'warning'
+  \   }
+  \ }
+
+" in wombat colorscheme swap normal/insert colors
+let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+
+let old_normal_left = s:palette.normal.left
+let old_insert_left = s:palette.insert.left
+
+let s:palette.normal.left = old_insert_left
+let s:palette.insert.left = old_normal_left
+
+" update on write
+autocmd BufWritePost * call lightline#update()
+
+
+
 " PLUGINS
 
 " [ack.vim] (using ag aka 'the_silver_searcher')
@@ -941,8 +1352,8 @@ endfunction
 " disable global keymappings for AnyJump
 let g:any_jump_disable_default_keybindings = 1
 
-nnoremap <leader>j :call Preserve("AnyJump")<CR>
-xnoremap <leader>j :call Preserve("AnyJump")<CR>
+nnoremap <leader>j :call Preserve("AnyJump")<cr>
+xnoremap <leader>j :call Preserve("AnyJump")<cr>
 
 " [vim-matchup] custom mapping for matching quotes
 " https://github.com/andymass/vim-matchup/issues/341
@@ -975,417 +1386,6 @@ endfunction
 
 nnoremap <silent> <Plug>(MatchMetaN) :call <SID>matchquote()<CR>
 nmap % <Plug>(MatchMetaN)
-
-
-
-" ABBREVIATIONS
-
-abbreviate apge page
-abbreviate glboal global
-abbreviate ilke like
-abbreviate invitaion invitation
-abbreviate invitaiton invitation
-abbreviate invitatoin invitation
-abbreviate pgae page
-abbreviate recieve receive
-abbreviate sgined signed
-abbreviate taht that
-abbreviate teh the
-abbreviate tewak tweak
-abbreviate upadting updating
-abbreviate coudln couldn
-
-" Rails specific
-abbreviate bpr binding.pry;
-abbreviate brp binding.pry;
-
-
-
-" KEY MAPPINGS
-
-" have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
-noremap Y y$
-
-" swap ` with ' (so that ' will jump to line *and* column)
-nnoremap ' `
-nnoremap ` '
-
-" scroll faster & move cursor too
-nnoremap <c-e> 3<c-e>3j
-nnoremap <c-y> 3<c-y>3k
-vnoremap <c-e> 3<c-e>3j
-vnoremap <c-y> 3<c-y>3k
-
-" move faster between windows
-nmap <c-h> <c-w>h
-nmap <c-j> <c-w>j
-nmap <c-k> <c-w>k
-nmap <c-l> <c-w>l
-
-" improve movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
-nnoremap $ g$
-nnoremap ^ g^
-nnoremap 0 g0
-vnoremap j gj
-vnoremap k gk
-vnoremap $ g$
-vnoremap ^ g^
-vnoremap 0 g0
-
-" go to home/end using capitalized directions
-noremap H ^
-noremap L $
-
-" make g$/g^/g0 go to 'true' home/end
-nnoremap g$ $
-nnoremap g^ ^
-nnoremap g0 0
-vnoremap g$ $
-vnoremap g^ ^
-vnoremap g0 0
-
-" gw to swap the current word with the one next to it
-nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr>'':nohlsearch<cr>
-
-" CTRL+s always saves file
-nmap <c-s> :w<cr>
-vmap <c-s> <esc><c-s>
-imap <c-s> <esc><c-s>
-
-" CTRL+q quits
-nmap <c-q> :q<cr>
-imap <c-q> <esc><c-q>
-
-" use sane regexes
-nnoremap / /\v
-vnoremap / /\v
-
-" don't move on star search (*)
-nnoremap * :keepjumps normal! mi*`i<CR>
-
-" keep search matches in the middle of the window
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" same when jumping around
-nnoremap g; g;zz
-nnoremap g, g,zz
-
-" gi already moves to 'last place you exited insert mode', so we'll map gI to something similar: move to last change
-nnoremap gI `.
-
-" lists navigation
-nnoremap <left> :cprev<cr>zvzz
-nnoremap <right> :cnext<cr>zvzz
-nnoremap <up> :lprev<cr>zvzz
-nnoremap <down> :lnext<cr>zvzz
-
-" quickselect tabs with CMD + #
-nnoremap <D-1> :tabn 1<CR>
-nnoremap <D-2> :tabn 2<CR>
-nnoremap <D-3> :tabn 3<CR>
-nnoremap <D-4> :tabn 4<CR>
-nnoremap <D-5> :tabn 5<CR>
-nnoremap <D-6> :tabn 6<CR>
-nnoremap <D-7> :tabn 7<CR>
-nnoremap <D-8> :tabn 8<CR>
-nnoremap <D-9> :tabn 9<CR>
-
-inoremap <D-1> <C-o>:tabn 1<cr><Esc>
-inoremap <D-2> <C-o>:tabn 2<cr><Esc>
-inoremap <D-3> <C-o>:tabn 3<cr><Esc>
-inoremap <D-4> <C-o>:tabn 4<cr><Esc>
-inoremap <D-5> <C-o>:tabn 5<cr><Esc>
-inoremap <D-6> <C-o>:tabn 6<cr><Esc>
-inoremap <D-7> <C-o>:tabn 7<cr><Esc>
-inoremap <D-8> <C-o>:tabn 8<cr><Esc>
-inoremap <D-9> <C-o>:tabn 9<cr><Esc>
-
-" pasting
-nnoremap <D-v> a<C-r>+<Esc>
-inoremap <D-v> <C-r>+
-cnoremap <D-v> <C-r>+
-
-" new tab
-nnoremap <D-t> :tabnew<cr>
-inoremap <D-t> <C-o>:tabnew<cr>
-
-" F10 to wipe buffer
-nnoremap <F10> :bwipeout<cr>
-
-" polish letters (goneovim requires those mappings)
-if exists('g:goneovim')
-  inoremap <M-a> ą
-  inoremap <M-c> ć
-  inoremap <M-e> ę
-  inoremap <M-l> ł
-  inoremap <M-n> ń
-  inoremap <M-o> ó
-  inoremap <M-s> ś
-  inoremap <M-x> ź
-  inoremap <M-z> ż
-  inoremap <M-A> Ą
-  inoremap <M-C> Ć
-  inoremap <M-E> Ę
-  inoremap <M-L> Ł
-  inoremap <M-N> Ń
-  inoremap <M-O> Ó
-  inoremap <M-S> Ś
-  inoremap <M-X> Ź
-  inoremap <M-Z> Ż
-endif
-
-
-
-" INSERT MODE KEY MAPPINGS
-
-" Ruby: convert word into Ruby symbol
-imap <C-k> <C-o>b:<Esc>Ea
-
-" basic readline shortcuts
-inoremap <c-a> <esc>I
-inoremap <c-e> <esc>A
-
-
-" VISUAL MODE KEY MAPPINGS
-
-" reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-
-" press Shift+P while in visual mode to replace the selection without overwriting the default register
-vmap P p :call setreg('"', getreg('0')) <cr>
-
-" make backspace work sanely in visual mode
-vnoremap <bs> x
-
-" select entire buffer
-nnoremap vaa ggvGg_
-nnoremap Vaa ggVG
-
-" fix linewise visual selection of various text objects
-nnoremap VV V
-nnoremap Vit vitVkoj
-nnoremap Vat vatV
-nnoremap Vab vabV
-nnoremap VaB vaBV
-
-
-" COMMAND LINE KEY MAPPINGS
-
-" bash like keys for the command line
-cnoremap <c-a> <Home>
-cnoremap <c-e> <End>
-cnoremap <c-p> <Up>
-cnoremap <c-n> <Down>
-cnoremap <c-b> <Left>
-cnoremap <c-f> <Right>
-cnoremap <c-d> <Del>
-cnoremap <c-k> <C-\>estrpart(getcmdline(), 0, getcmdpos()-1)<cr>
-
-" swap <Up>/<Down> with <PageUp>/<PageDown>
-cnoremap <Up> <S-Up>
-cnoremap <PageUp> <Up>
-cnoremap <Down> <S-Down>
-cnoremap <PageDown> <Down>
-
-
-
-" LEADER KEY MAPPINGS
-
-" leader/localleader mappings
-let mapleader = "\<space>"
-let localmapleader = "\\"
-
-" select all text in current buffer
-nmap <leader>A ggVG
-
-" upper/lower word
-nmap <leader>u mQviwU'Q
-nmap <leader>l mQviwu'Q
-
-" upper/lower first char of word
-nmap <leader>U mQgewvU'Q
-nmap <leader>L mQgewvu'Q
-
-" fugitive.vim
-nmap <leader>gb :Git blame<cr>
-nmap <leader>gc :Git commit<cr>
-nmap <leader>gd :Gdiff<cr>
-nmap <leader>gl :!git l<cr>
-nmap <leader>gp :Git push<cr>
-nmap <leader>gr :GRemove!<cr>
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gw :Gwrite<cr>
-
-" vimdiff conflict resolution for 3-way merge
-map <Leader>g1 :diffget LOCAL<CR>
-map <Leader>g2 :diffget BASE<CR>
-map <Leader>g3 :diffget REMOTE<CR>
-
-" fzf.vim
-map <leader>t :Files<cr>
-map <leader>b :Buffers<cr>
-map <leader>h :History<cr>
-
-" delete current buffer
-noremap <leader>c :bdelete<cr>
-
-" quit
-nmap <leader>q :q<cr>
-
-" save file / all files
-map <leader>w :w<cr>
-map <leader>W :wall<cr>
-
-" [vim-rails] Rake
-map <leader>rr :.Rake<cr>
-
-" system clipboard interaction
-noremap <leader>d "*d
-noremap <leader>D "*d$
-noremap <leader>y "*y
-noremap <leader>Y "*y$
-nnoremap <leader>p :set paste<cr>"*p:set nopaste<cr>
-nnoremap <leader>P :set paste<cr>"*P:set nopaste<cr>
-
-" select just pasted text
-noremap <leader>V V`]
-
-" easier splits
-noremap <leader>s <C-w>s
-noremap <leader>v <C-w>v
-
-" adjust viewports to the same size
-map <leader>= <C-w>=
-
-" make current window max height
-noremap <leader>- <C-w>_
-
-" underline the current line
-nmap <silent> <leader>1 :t.<CR>Vr-
-nmap <silent> <leader>2 :t.<CR>Vr=
-
-" turn line wrap on/off
-nmap <leader>4 :set wrap!<cr>
-
-" Undotree
-nmap <leader>6 :UndotreeToggle<cr>
-
-" turn off the highlight search & redraw screen, sign column, statusline, colors
-nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>
-
-" toggle the paste mode (when vim either adds or not spaces in the front of lines)
-set pastetoggle=<leader>0
-
-
-" quick insertion of newline in normal mode
-nnoremap <silent> <cr> :-1put=''<cr><down>
-
-" convert file to utf-8 and cleanup whitespace garbage
-map <leader>xx :call CleanupFileConvertToUnixUtf8()<cr>
-
-function! CleanupFileConvertToUnixUtf8()
-  " insert 'tabstop' characters instead of <TAB>s
-  execute '%retab!'
-  " UNIX fileformat
-  set fileformat=unix
-  " UTF-8 encoding by default
-  set fileencoding=utf-8
-  " cleanup trailing whitespace
-  execute '%s/\s\+$//e'
-endfunction
-
-" vim-vinegar/netrw overrides
-
-augroup netrw_mapping
-  autocmd!
-  autocmd filetype netrw call NetrwMapping()
-augroup END
-
-function! NetrwMapping()
-  " <C-l> to move right
-  noremap <buffer> <C-l> <C-w>l
-
-  " <C-^> to quit netrw / return to the previous buffer
-  nnoremap <buffer> <C-^> :Rexplore<cr>
-endfunction
-
-
-
-" STATUSLINE
-
-" always show the status line
-set laststatus=2
-
-" don't show mode text (which vim shows below the statusline)
-set noshowmode
-
-" [lightline.vim]
-fun! WhitespaceStatus() abort
-  let elements = []
-
-  " empty lines at the EOF
-  let s:contains_empty_lines = search('\v($\n\s*)+%$', 'nw')
-
-  " mixed indentation
-  if &expandtab
-    " If spaces are being used and we find a line starting with tab.
-    let s:contains_mixed_indent = search('\v(^( +)?\t+)', 'nw')
-  el
-    " We only check mixed indents (tabs + spaces)
-    let s:contains_mixed_indent = search('\v(^\t+ +)|(^ +\t+)', 'nw')
-  en
-
-  " trailing whitespace
-  let s:contains_trailing_whitespaces = search('\v\s+$', 'nw')
-
-  if s:contains_empty_lines > 0
-    let elements = elements + ['empty-lines' . ':' . s:contains_empty_lines]
-  en
-
-  if s:contains_mixed_indent > 0
-    let elements = elements + ['mixed-indent' . ':' . s:contains_mixed_indent]
-  en
-
-  if s:contains_trailing_whitespaces > 0
-    let elements = elements + ['trailing' . ':' . s:contains_trailing_whitespaces]
-  en
-
-  return join(elements, ' ')
-endf
-
-let g:lightline = {
-  \   'colorscheme': 'wombat',
-  \   'active': {
-  \     'left': [['mode', 'paste'], ['filename', 'readonly', 'modified']],
-  \     'right': [['lineinfo'], ['percent'], ['whitespace_status'], ['fileformat', 'fileencoding', 'filetype']]
-  \   },
-  \   'inactive': {
-  \     'left': [['filename'], ['modified']],
-  \     'right': [['lineinfo'], ['percent']]
-  \   },
-  \   'component_expand': {
-  \     'whitespace_status': 'WhitespaceStatus'
-  \   },
-  \   'component_type': {
-  \     'whitespace_status': 'warning'
-  \   }
-  \ }
-
-" in wombat colorscheme swap normal/insert colors
-let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
-
-let old_normal_left = s:palette.normal.left
-let old_insert_left = s:palette.insert.left
-
-let s:palette.normal.left = old_insert_left
-let s:palette.insert.left = old_normal_left
-
-" update on write
-autocmd BufWritePost * call lightline#update()
 
 
 
