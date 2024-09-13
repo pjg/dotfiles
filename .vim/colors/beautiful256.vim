@@ -58,7 +58,7 @@ hi WarningMsg gui=bold guifg=#df0000
 hi Comment gui=italic guifg=#a8a8a8 ctermfg=248
 hi Error gui=NONE guifg=White guibg=#df0000 ctermfg=15 ctermbg=197
 hi Identifier gui=NONE guifg=#875f00 ctermfg=94
-hi Special gui=NONE guifg=#5f87ff ctermfg=69
+hi Special gui=NONE guifg=#4f77ef ctermfg=69
 hi PreProc gui=NONE guifg=#0000df ctermfg=12
 hi Todo gui=bold guifg=Black guibg=#ffaf00 ctermfg=214 ctermbg=232
 hi Type gui=bold guifg=#5f5fdf ctermfg=62
@@ -69,7 +69,7 @@ hi PmenuSel ctermbg=214 ctermfg=16
 hi Boolean gui=bold guifg=#df8700 ctermfg=172
 hi Constant gui=NONE guifg=#af0000 ctermfg=124
 hi Number gui=bold guifg=#df8700 ctermfg=172
-hi String gui=NONE guifg=#008000 ctermfg=2
+hi String gui=NONE guifg=#007000 ctermfg=2
 hi helpNote guifg=#eeeeee guibg=#444444 ctermbg=220 ctermfg=16
 
 hi Label gui=bold,underline guifg=Sienna4
