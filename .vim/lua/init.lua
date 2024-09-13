@@ -126,6 +126,9 @@ cmp.setup({
         feedkey('<Plug>(vsnip-expand-or-jump)', '')
       elseif has_words_before() then
         cmp.complete()
+      else
+        -- fallback function sends an already mapped key
+        fallback()
       end
     end, { 'i', 's' }),
 
@@ -134,6 +137,9 @@ cmp.setup({
         cmp.select_prev_item()
       elseif vim.fn['vsnip#jumpable'](-1) == 1 then
         feedkey('<Plug>(vsnip-jump-prev)', '')
+      else
+        -- fallback function sends an already mapped key
+        fallback()
       end
     end, { 'i', 's' }),
   }),
