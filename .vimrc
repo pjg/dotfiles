@@ -593,6 +593,11 @@ cnoremap <D-v> <C-r>+
 nnoremap <D-t> :tabnew<cr>
 inoremap <D-t> <C-o>:tabnew<cr>
 
+" disable F1 binding for help
+nnoremap <F1> <Nop>
+inoremap <F1> <Nop>
+vnoremap <F1> <Nop>
+
 " F10 to wipe buffer
 nnoremap <F10> :bwipeout<cr>
 
