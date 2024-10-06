@@ -153,8 +153,10 @@ alias fswatch-rspec='fswatch -0 -e ".*" -i "\\.rb$" . | xargs -0 -n 1 -I {} rspe
 # htop
 if [[ -x `which htop` ]]; then alias top="sudo htop"; fi
 
-# vim
-alias v=vim
+# vim / goneovim
+alias v=nvim
+alias gn=goneovim
+alias gv=goneovim
 
 # ack
 if [[ -x `which ack-grep` ]]; then alias ack='ack-grep'; fi
