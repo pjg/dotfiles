@@ -503,6 +503,12 @@ nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
+" resize window
+nmap <C-S-h> <C-w><
+nmap <C-S-l> <C-w>>
+nmap <C-S-k> <C-w>+
+nmap <C-S-j> <C-w>-
+
 " improve movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -538,6 +544,10 @@ imap <c-s> <esc><c-s>
 " CTRL+q quits
 nmap <c-q> :q<cr>
 imap <c-q> <esc><c-q>
+
+" tab/s-tab to move between tabs
+nnoremap <silent> <tab> :tabnext<cr>
+nnoremap <silent> <s-tab> :tabprevious<cr>
 
 " use sane regexes
 nnoremap / /\v
