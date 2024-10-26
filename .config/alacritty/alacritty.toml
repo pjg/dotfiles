@@ -19,6 +19,10 @@ size = 14
 background = "#fef7ec"
 foreground = "#000000"
 
+[colors.normal]
+black = "#181818"
+green = "#2a9710"
+
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 save_to_clipboard = true
