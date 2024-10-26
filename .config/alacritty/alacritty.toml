@@ -1,0 +1,27 @@
+[general]
+live_config_reload = true
+
+[window]
+position = { x = 0, y = 0 }
+dynamic_title = true
+decorations = "Full"
+startup_mode = "Maximized"
+decorations_theme_variant = "Light"
+
+[scrolling]
+history = 100000
+
+[font]
+normal = { family = "DejaVu Sans Mono for Powerline" }
+size = 14
+
+[colors.primary]
+background = "#fef7ec"
+foreground = "#000000"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
