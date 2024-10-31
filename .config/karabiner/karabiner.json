@@ -81,6 +81,15 @@
                             "to": [{ "key_code": "grave_accent_and_tilde" }]
                         }
                     ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 591,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false
                 }
             ],
             "fn_function_keys": [
