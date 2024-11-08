@@ -65,6 +65,7 @@ if has("nvim")
 
   " text editing improvements
   Plug 'gbprod/substitute.nvim'
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 else
   " Regular VIM
 
