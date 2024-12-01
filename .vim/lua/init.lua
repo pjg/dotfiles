@@ -124,7 +124,7 @@ vim.keymap.set({ 'n', 'x' }, '<leader>ai', function()
 end, { desc = "CopilotChat - Quick chat", noremap = true, silent = true })
 
 -- registers copilot-chat as cmp source and enables it for copilot-chat filetype (copilot chat window)
-require('CopilotChat.integrations.cmp').setup()
+chat.config.chat_autocomplete = true
 
 
 
