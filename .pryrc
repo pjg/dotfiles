@@ -43,10 +43,8 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   elsif Rails.version[0..0].in?(['3', '4', '5', '6'])
     require 'rails/console/app'
     require 'rails/console/helpers'
-  elsif Rails.version[0..0].in?(['7', '8'])
+  elsif Rails.version[0..0].in?(['7'])
     require 'rails/console/methods'
-  else
-    warn "[WARN] cannot load Rails console commands (Not using Rails v2-8?)"
   end
 
   # Rails' pry prompt
