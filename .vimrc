@@ -775,8 +775,9 @@ nmap <leader>6 :UndotreeToggle<cr>
 nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>
 
 " toggle the paste mode (when vim either adds or not spaces in the front of lines)
-set pastetoggle=<leader>0
-
+if !has('nvim')
+  set pastetoggle=<leader>0
+endif
 
 " quick insertion of newline in normal mode
 nnoremap <silent> <cr> :-1put=''<cr><down>
