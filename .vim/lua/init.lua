@@ -65,6 +65,16 @@ require('nvim-treesitter.configs').setup {
 -- [copilot.lua]
 
 require('copilot').setup({
+  copilot_model = 'gemini-2.5-pro',
+  filetypes = {
+    sh = function ()
+      if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
+        -- disable for .env files
+        return false
+      end
+      return true
+    end,
+  },
   suggestion= {
     enabled = true,
     auto_trigger = true, -- automatically/always request copilot completion when in insert mode
@@ -92,6 +102,7 @@ local chat = require('CopilotChat')
 
 -- disable default <tab> complete mapping for copilot chat when doing this
 chat.setup({
+  model = 'gemini-2.5-pro',
   mappings = {
     complete = {
       insert = '',
