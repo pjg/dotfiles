@@ -2,6 +2,18 @@
 -- [nvim] --
 ------------
 
+-- native nvim LSP support
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+
+
 -- [substitute.nvim]
 
 require('substitute').setup()
