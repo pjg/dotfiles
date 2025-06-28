@@ -4,8 +4,8 @@
 
 -- native nvim LSP support
 vim.diagnostic.config({
-  virtual_text = false,
-  virtual_lines = true,
+  virtual_text = true,
+  virtual_lines = false,
   signs = true,
   underline = true,
   update_in_insert = false,
