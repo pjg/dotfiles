@@ -30,5 +30,8 @@
   "suggest.floatConfig": {
     "borderhighlight": "CocFloating"
   },
-  "tsserver.implicitProjectConfig.experimentalDecorators": true
+  "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
