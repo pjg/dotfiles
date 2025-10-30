@@ -77,7 +77,6 @@ require('nvim-treesitter.configs').setup {
 -- [copilot.lua]
 
 require('copilot').setup({
-  copilot_model = 'gemini-2.5-pro',
   filetypes = {
     sh = function ()
       if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
@@ -283,7 +282,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 
 
--- [conform.nvim]
+-- [conform.nvim] prettier formatting for javascript
 
 require('conform').setup({
   formatters_by_ft = {
@@ -309,16 +308,25 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
+-- loads ESLint LSP server config from lspconfig
+vim.lsp.enable('eslint')
+
 -- prettier and then eslint on prettier's output
 -- must be defined after conform.nvim's autocmd, so that eslint formatting runs after prettier
-vim.lsp.config['eslint'] = {
+local base_on_attach = vim.lsp.config.eslint.on_attach
+
+vim.lsp.config('eslint', {
   on_attach = function(client, bufnr)
+    if not base_on_attach then return end
+
+    base_on_attach(client, bufnr)
+
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
       callback = function()
         -- schedule eslint to run after prettier
         vim.schedule(function()
-          vim.cmd('EslintFixAll')
+          vim.cmd('LspEslintFixAll')
 
           -- schedule, so eslint can run after file has been saved already
           -- check if modified, and save (again)
@@ -329,4 +337,4 @@ vim.lsp.config['eslint'] = {
       end,
     })
   end,
-}
+})
