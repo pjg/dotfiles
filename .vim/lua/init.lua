@@ -247,16 +247,14 @@ cmp.setup.filetype('gitcommit', {
 
 -- [nvim-lspconfig]
 
-local lspconfig = require('lspconfig')
-
 -- nvim-cmp almost supports LSP's capabilities so it should be advertised to LSP servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- configures/enables ruby diagnostics and formatting via rubocop/ruby-lsp
-lspconfig.ruby_lsp.setup({
-  capabilities = capabilities,
+vim.lsp.config['ruby_lsp'] = {
   cmd = { 'ruby-lsp' },
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Disable semantic tokens (syntax highlighting via LSP)
     client.server_capabilities.semanticTokensProvider = nil
@@ -273,6 +271,14 @@ lspconfig.ruby_lsp.setup({
       autocorrect = true,
     }
   }
+}
+
+-- start per Ruby buffer
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'ruby', 'eruby', 'rake', 'rbs' },
+  callback = function()
+    vim.lsp.start(vim.lsp.config['ruby_lsp'])
+  end,
 })
 
 
@@ -305,7 +311,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 -- prettier and then eslint on prettier's output
 -- must be defined after conform.nvim's autocmd, so that eslint formatting runs after prettier
-lspconfig.eslint.setup({
+vim.lsp.config['eslint'] = {
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
@@ -323,4 +329,4 @@ lspconfig.eslint.setup({
       end,
     })
   end,
-})
+}
