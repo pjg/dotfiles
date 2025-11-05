@@ -463,11 +463,14 @@ autocmd BufReadPost *
 " ABBREVIATIONS
 
 abbreviate apge page
+abbreviate coudln couldn
 abbreviate glboal global
 abbreviate ilke like
 abbreviate invitaion invitation
 abbreviate invitaiton invitation
 abbreviate invitatoin invitation
+abbreviate onwed owned
+abbreviate onwer owner
 abbreviate pgae page
 abbreviate recieve receive
 abbreviate sgined signed
@@ -475,7 +478,6 @@ abbreviate taht that
 abbreviate teh the
 abbreviate tewak tweak
 abbreviate upadting updating
-abbreviate coudln couldn
 
 " Rails specific
 abbreviate bpr binding.pry;
