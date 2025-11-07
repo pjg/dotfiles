@@ -113,7 +113,7 @@ local chat = require('CopilotChat')
 
 -- disable default <tab> complete mapping for copilot chat when doing this
 chat.setup({
-  model = 'gemini-2.5-pro',
+  model = 'claude-sonnet-4.5',
   mappings = {
     complete = {
       insert = '',
