@@ -24,3 +24,7 @@ node_modules
 
 # Custom husky hooks (npm)
 .husky
+
+# Claude Code
+.claude
+CLAUDE.md
