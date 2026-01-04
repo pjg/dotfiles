@@ -34,7 +34,7 @@ vim.keymap.set('n', 'sxc', require('substitute.exchange').cancel, { noremap = tr
 
 -- [nvim-treesitter]
 
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter').setup {
   -- list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = { 'lua', 'vim', 'vimdoc', 'ruby', 'javascript', 'markdown', 'markdown_inline' },
 
