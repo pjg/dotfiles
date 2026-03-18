@@ -1353,7 +1353,10 @@ let g:colorizer_maxlines = 300
 
 augroup auto_colorize
   autocmd!
-  autocmd FileType css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml :ColorHighlight
+  autocmd FileType css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml
+    \ if line('$') <= 5000 |
+    \   ColorHighlight |
+    \ endif
 augroup END
 
 " [any-jump.vim] Preserve cursor position when closing the AnyJump window
