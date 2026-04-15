@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 3.0.20
+###  vlc 3.0.23
 ###
 
 ###
@@ -551,7 +551,7 @@ macosx-black=1
 #sout-avi-subject=
 
 # Encoder (string)
-#sout-avi-encoder=VLC Media Player - 3.0.20 Vetinari
+#sout-avi-encoder=VLC Media Player - 3.0.23 Vetinari
 
 # Keywords (string)
 #sout-avi-keywords=
@@ -859,6 +859,9 @@ macosx-black=1
 
 # Frames Threads (integer)
 dav1d-thread-frames=2
+
+# All Layers (boolean)
+#dav1d-all-layers=0
 
 [cdda] # Audio CD input
 
@@ -1688,11 +1691,6 @@ postproc-q=1
 #mkv-preload-clusters=0
 
 [motion] # motion control interface
-
-[dca] # DTS Coherent Acoustics audio decoder
-
-# DTS dynamic range compression (boolean)
-#dts-dynrng=1
 
 [udp] # UDP input
 
@@ -2806,9 +2804,6 @@ subsdec-encoding=UTF-8
 
 [upnp] # Universal Plug'n'Play
 
-# SAT>IP channel list (string)
-satip-channelist=Auto
-
 # Custom SAT>IP channel list URL (string)
 #satip-channellist-url=
 
@@ -2834,11 +2829,6 @@ satip-channelist=Auto
 
 # Recording ratio (integer)
 #scene-ratio=50
-
-[a52] # ATSC A/52 (AC-3) audio decoder
-
-# A/52 dynamic range compression (boolean)
-#a52-dynrng=1
 
 [vdr] # VDR recordings
 
