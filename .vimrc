@@ -1421,3 +1421,11 @@ if has("nvim")
   " if we're running nvim, execute nvim specific initializer [lua]
   lua require('init')
 endif
+
+
+
+" MACHINE-LOCAL OVERRIDES
+
+if filereadable(expand('~/.vim/local.vim'))
+  source ~/.vim/local.vim
+endif
