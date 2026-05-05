@@ -26,5 +26,4 @@ node_modules
 .husky
 
 # Claude Code
-.claude
-CLAUDE.md
+.claude/settings.local.json
