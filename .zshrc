@@ -548,3 +548,6 @@ function zvm_after_lazy_keybindings() {
   zvm_bindkey vicmd '^a' beginning-of-line
   zvm_bindkey vicmd '^e' end-of-line
 }
+
+# set claude code's default effort level
+export CLAUDE_CODE_EFFORT_LEVEL=max
