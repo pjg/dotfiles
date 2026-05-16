@@ -773,8 +773,8 @@ nmap <leader>4 :set wrap!<cr>
 " Undotree
 nmap <leader>6 :UndotreeToggle<cr>
 
-" turn off the highlight search & redraw screen, sign column, statusline, colors
-nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ColorHighlight<cr>
+" turn off the highlight search & redraw screen, sign column, statusline, colors (double; off+on)
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ColorToggle<cr>:ColorToggle<cr>
 
 " toggle the paste mode (when vim either adds or not spaces in the front of lines)
 if !has('nvim')
