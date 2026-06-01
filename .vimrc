@@ -989,8 +989,12 @@ let g:rails_projections = {
     \     "test":      "spec/controllers/api/{}_controller_spec.rb",
     \     "template":  "class Api::{camelcase|capitalize|colons}Controller < Api::ApplicationController\nend"
     \   },
+    \   "app/controllers/*_controller.rb": {
+    \     "alternate": "spec/requests/{}_spec.rb"
+    \   },
     \   "spec/requests/*_spec.rb": {
     \     "command":   "request",
+    \     "alternate": "app/controllers/{}_controller.rb",
     \     "template":  "describe '{underscore|capitalize|blank}' do\n\nend"
     \   },
     \   "spec/support/*.rb": {
