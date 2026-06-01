@@ -606,6 +606,12 @@ cnoremap <D-v> <C-r>+
 nnoremap <D-t> :tabnew<cr>
 inoremap <D-t> <C-o>:tabnew<cr>
 
+" move current tab left/right with CMD+SHIFT+arrow, same as iTerm2 (GUI: Neovide/goneovim/MacVim)
+nnoremap <D-S-Left>  :silent! tabmove -1<cr>
+nnoremap <D-S-Right> :silent! tabmove +1<cr>
+inoremap <D-S-Left>  <C-o>:silent! tabmove -1<cr>
+inoremap <D-S-Right> <C-o>:silent! tabmove +1<cr>
+
 " disable F1 binding for help
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>
