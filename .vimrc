@@ -24,9 +24,8 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 
-" colors (parenthesis, css colors, etc.)
+" colors (parenthesis)
 Plug 'luochen1990/rainbow'
-Plug 'chrisbra/Colorizer'
 
 " Ruby related
 Plug 'ecomba/vim-ruby-refactoring'
@@ -66,6 +65,9 @@ if has("nvim")
   " text editing improvements
   Plug 'gbprod/substitute.nvim'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  " css colors highlighting (nvim only)
+  Plug 'catgoose/nvim-colorizer.lua'
 else
   " Regular VIM
 
@@ -779,8 +781,8 @@ nmap <leader>4 :set wrap!<cr>
 " Undotree
 nmap <leader>6 :UndotreeToggle<cr>
 
-" turn off the highlight search & redraw screen, sign column, statusline, colors (double; off+on)
-nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>:ColorToggle<cr>:ColorToggle<cr>
+" turn off the highlight search & redraw screen, sign column, statusline
+nmap <leader>8 :syntax sync fromstart<cr>:nohlsearch<cr>:redrawstatus!<cr>:redraw!<cr>:GitGutter<cr>
 
 " toggle the paste mode (when vim either adds or not spaces in the front of lines)
 if !has('nvim')
@@ -1355,19 +1357,6 @@ if !has("nvim")
   " remap <C-n> to request next Copilot suggestion
   imap <silent> <C-n> <Plug>(copilot-next)
 end
-
-" [Colorizer] enable for various file types, disable removing of colors on buffer leave, disable for large files
-let g:colorizer_auto_color = 0
-let g:colorizer_disable_bufleave = 1
-let g:colorizer_maxlines = 300
-
-augroup auto_colorize
-  autocmd!
-  autocmd FileType css,html,eruby,scss,sass,less,javascript,javascript.jsx,javascript.tsx,yaml
-    \ if line('$') <= 5000 |
-    \   ColorHighlight |
-    \ endif
-augroup END
 
 " [any-jump.vim] Preserve cursor position when closing the AnyJump window
 " https://github.com/pechorin/any-jump.vim/issues/88#issuecomment-853323352

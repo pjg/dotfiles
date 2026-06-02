@@ -74,6 +74,12 @@ require('nvim-treesitter').setup {
 
 
 
+-- [nvim-colorizer.lua]
+
+require('colorizer').setup()
+
+
+
 -- [copilot.lua]
 
 require('copilot').setup({
