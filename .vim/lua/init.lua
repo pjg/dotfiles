@@ -76,7 +76,13 @@ require('nvim-treesitter').setup {
 
 -- [nvim-colorizer.lua]
 
-require('colorizer').setup()
+require('colorizer').setup({
+  options = {
+    parsers = {
+      hex = { default = true },
+    },
+  },
+})
 
 
 
