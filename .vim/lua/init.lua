@@ -34,43 +34,30 @@ vim.keymap.set('n', 'sxc', require('substitute.exchange').cancel, { noremap = tr
 
 -- [nvim-treesitter]
 
-require('nvim-treesitter').setup {
-  -- list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { 'lua', 'vim', 'vimdoc', 'ruby', 'javascript', 'markdown', 'markdown_inline' },
+require('nvim-treesitter').install({
+  'javascript',
+  'lua',
+  'markdown',
+  'markdown_inline',
+  'ruby',
+  'vim',
+  'vimdoc',
+})
 
-  -- install parsers synchronously (applies to `ensure_installed`)
-  sync_install = true,
+-- Don't use treesitter's highlighting; use vim's built-in one; Has to be done
+-- via FileType autocmd because ftplugins call `vim.treesitter.start()`
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function(ev)
+    vim.schedule(function()
+      local buf = ev.buf
 
-  -- automatically install missing parsers when entering buffer
-  auto_install = true,
-
-  -- syntax highlighting
-  highlight = {
-    -- disable syntax highlighting; it is inferior to regular vim syntax highlighting
-    enable = false,
-
-    -- setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- using this option may slow down your editor, and you may see some duplicate highlights.
-    -- instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = 'gnn', -- set to `false` to disable one of the mappings
-      node_incremental = 'grn',
-      scope_incremental = 'grc',
-      node_decremental = 'grm',
-    },
-  },
-
-  -- enables vim-matchup integration
-  matchup = {
-    enable = true,
-  },
-}
+      if vim.api.nvim_buf_is_valid(buf) and vim.treesitter.highlighter.active[buf] then
+        vim.treesitter.stop(buf)
+        vim.bo[buf].syntax = 'ON'
+      end
+    end)
+  end,
+})
 
 
 
