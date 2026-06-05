@@ -1,0 +1,7 @@
+{
+  "trustedtaps": [
+    "cesarferreira/tap",
+    "lokalise/cli-2",
+    "oven-sh/bun"
+  ]
+}
