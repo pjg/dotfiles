@@ -296,7 +296,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 require('conform').setup({
   formatters_by_ft = {
-    javascript = { 'prettierd', 'prettier', stop_after_first = true },
+    css = { 'stylelint', 'prettierd' },
+    scss = { 'stylelint', 'prettierd' },
+    javascript = { 'stylelint', 'prettierd' },
+    javascriptreact = { 'stylelint', 'prettierd' },
     json = { 'prettierd', 'prettier', stop_after_first = true },
     markdown = { 'prettierd', 'prettier', stop_after_first = true },
     yaml = { 'prettierd', 'prettier', stop_after_first = true },
@@ -304,7 +307,7 @@ require('conform').setup({
 
   -- sync formatting before each write
   format_on_save = {
-    timeout_ms = 500,
+    timeout_ms = 1000,
   },
 })
 
