@@ -292,11 +292,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
--- [conform.nvim] prettier formatting for javascript
+-- [conform.nvim] prettier formatting for javascript, json, markdown and yaml
 
 require('conform').setup({
   formatters_by_ft = {
     javascript = { 'prettierd', 'prettier', stop_after_first = true },
+    json = { 'prettierd', 'prettier', stop_after_first = true },
+    markdown = { 'prettierd', 'prettier', stop_after_first = true },
+    yaml = { 'prettierd', 'prettier', stop_after_first = true },
   },
 
   -- sync formatting before each write
