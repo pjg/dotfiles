@@ -205,7 +205,7 @@ alias -g S='&> /dev/null'
 
 # zsh history
 export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=10000
+export HISTSIZE=100000
 export SAVEHIST=${HISTSIZE}
 
 # make some commands not show up in history
@@ -217,8 +217,11 @@ setopt inc_append_history
 # purge duplicates first
 setopt hist_expire_dups_first
 
-# if a new command line being added to the history list duplicates an older one, the older command is removed from the list
-setopt hist_ignore_all_dups
+# ignore a command if it duplicates the previous one
+setopt hist_ignore_dups
+
+# don't show non-contiguous duplicates when searching history in the line editor
+setopt hist_find_no_dups
 
 # prefix a command with a space to keep it out of the history
 setopt hist_ignore_space
