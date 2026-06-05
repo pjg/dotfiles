@@ -281,6 +281,17 @@ vim.api.nvim_create_autocmd('FileType', {
 
 
 
+-- eslint and then prettier on eslint's output on save;
+-- must be defined before conform.nvim's format_on_save autocmd, so that
+-- prettier runs after eslint and formats eslint's output
+vim.api.nvim_create_autocmd('BufWritePre', {
+  callback = function()
+    if vim.fn.exists(':LspEslintFixAll') == 2 then
+      vim.cmd('LspEslintFixAll')
+    end
+  end,
+})
+
 -- [conform.nvim] prettier formatting for javascript
 
 require('conform').setup({
@@ -288,10 +299,9 @@ require('conform').setup({
     javascript = { 'prettierd', 'prettier', stop_after_first = true },
   },
 
-  -- enable sync formatting
+  -- sync formatting before each write
   format_on_save = {
     timeout_ms = 500,
-    lsp_fallback = false,
   },
 })
 
@@ -307,33 +317,5 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
--- loads ESLint LSP server config from lspconfig
+-- loads ESLint LSP server config from lspconfig and registers :LspEslintFixAll command
 vim.lsp.enable('eslint')
-
--- prettier and then eslint on prettier's output
--- must be defined after conform.nvim's autocmd, so that eslint formatting runs after prettier
-local base_on_attach = vim.lsp.config.eslint.on_attach
-
-vim.lsp.config('eslint', {
-  on_attach = function(client, bufnr)
-    if not base_on_attach then return end
-
-    base_on_attach(client, bufnr)
-
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      buffer = bufnr,
-      callback = function()
-        -- schedule eslint to run after prettier
-        vim.schedule(function()
-          vim.cmd('LspEslintFixAll')
-
-          -- schedule, so eslint can run after file has been saved already
-          -- check if modified, and save (again)
-          if vim.bo.modified then
-            vim.cmd('write')
-          end
-        end)
-      end,
-    })
-  end,
-})
