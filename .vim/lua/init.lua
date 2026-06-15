@@ -252,6 +252,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- configures/enables ruby diagnostics and formatting via rubocop/ruby-lsp
 vim.lsp.config['ruby_lsp'] = {
   cmd = { 'ruby-lsp' },
+  cmd_env = { DISABLE_SPRING = 'true' }, -- disable spring with ruby-lsp (issues)
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Disable semantic tokens (syntax highlighting via LSP)
