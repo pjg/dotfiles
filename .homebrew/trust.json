@@ -3,5 +3,8 @@
     "cesarferreira/tap",
     "lokalise/cli-2",
     "oven-sh/bun"
+  ],
+  "trustedformulae": [
+    "lokalise/cli-2/lokalise2"
   ]
 }
