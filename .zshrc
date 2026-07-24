@@ -158,15 +158,6 @@ alias v=nvim
 alias gn=goneovim
 alias gv=goneovim
 
-# claude — bare invocation starts an ultracode session; any args pass through unchanged
-function claude {
-  if (( $# == 0 )); then
-    command claude "/effort ultracode"
-  else
-    command claude "$@"
-  fi
-}
-
 # ack
 if [[ -x `which ack-grep` ]]; then alias ack='ack-grep'; fi
 
