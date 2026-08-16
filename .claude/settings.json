@@ -1,0 +1,69 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "Edit",
+      "WebSearch",
+      "WebFetch(domain:recurly.github.io)",
+      "Bash(bundle exec rspec:*)",
+      "Bash(bundle exec rails runner:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(bundle exec rubocop:*)",
+      "Bash(lokalise2 key create:*)",
+      "Bash(bundle exec rake:*)",
+      "Bash(ruby -e:*)",
+      "Bash(ruby -c:*)",
+      "Bash(bin/rails generate:*)",
+      "Bash(bin/rails db:migrate:*)",
+      "Bash(RAILS_ENV=test bin/rails:*)",
+      "Bash(RAILS_ENV=test bundle exec rake:*)",
+      "Bash(spring stop:*)",
+      "Bash(iconv:*)",
+      "Bash(xxd:*)",
+      "Bash(awk:*)",
+      "Bash(ls:*)",
+      "Bash(RAILS_ENV=test bundle exec rails db:migrate 2>&1)"
+    ],
+    "deny": [],
+    "ask": [],
+    "defaultMode": "auto"
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "exit 0"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "i-have-adhd@i-have-adhd": true
+  },
+  "extraKnownMarketplaces": {
+    "i-have-adhd": {
+      "source": {
+        "source": "github",
+        "repo": "ayghri/i-have-adhd"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
+  "skipWorkflowUsageWarning": true,
+  "theme": "light",
+  "editorMode": "vim",
+  "preferredNotifChannel": "notifications_disabled",
+  "voiceEnabled": true
+}

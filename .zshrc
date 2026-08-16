@@ -473,6 +473,9 @@ done
 # set GitHub credentials
 [[ -e ~/.github_credentials ]] && source ~/.github_credentials
 
+# set Lokalise credentials (LOKALISE_API_TOKEN, used by the claude lokalise skill)
+[[ -e ~/.lokalise_credentials ]] && source ~/.lokalise_credentials
+
 # alias hub to git (https://github.com/defunkt/hub)
 function git() { hub "$@" }
 

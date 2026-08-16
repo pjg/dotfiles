@@ -51,3 +51,16 @@ www
 .yarnrc
 .zshrc.zwc
 .zsh_history
+
+# Credentials
+.github_credentials
+.lokalise_credentials
+
+# Claude Code (track config, ignore machine state)
+.claude/*
+!.claude/CLAUDE.md
+!.claude/settings.json
+!.claude/skills
+!.claude/.i-have-adhd-always
+.claude.json
+.claude.json.backup

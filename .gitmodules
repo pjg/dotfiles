@@ -6,3 +6,6 @@
         path = .zsh/antigen
         url = https://github.com/zsh-users/antigen.git
         ignore = dirty
+[submodule ".claude/skills/asd-ste100"]
+	path = .claude/skills/asd-ste100
+	url = https://github.com/danyuchn/asd-ste100-skill
