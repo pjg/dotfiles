@@ -31,7 +31,7 @@
     "ask": [],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "claude-fable-5",
   "hooks": {
     "Notification": [
       {
