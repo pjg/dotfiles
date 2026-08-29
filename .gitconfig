@@ -91,9 +91,13 @@
   # Glogal git attributes file
   attributesfile = ~/.gitattributes
 
-  # Custom pager (wrapping long lines); Either `diff-highlight` (from
-  # git-contrib) or custom `diff-so-fancy` (if available)
-  pager = "if type diff-so-fancy >/dev/null 2>&1; then diff-so-fancy | less --tabs=4 -RFX; else diff-highlight | less -r; fi"
+  # Delta: diff pager with syntax highlighting (see [delta] section)
+  pager = delta
+
+[delta]
+  navigate = true
+  line-numbers = true
+  syntax-theme = GitHub
 
 [diff]
   # Detect renames of files
@@ -109,6 +113,10 @@
 [grep]
   lineNumber = true
   extendedRegexp = true
+
+[interactive]
+  # Delta colors interactive hunks (git add -p)
+  diffFilter = delta --color-only
 
 [init]
   # Default git hooks (will be copied over to each newly cloned repo)
@@ -137,6 +145,9 @@
 
 [merge]
   tool = vim
+
+  # Show base version in conflict markers, minus lines both sides changed
+  conflictStyle = zdiff3
 
 [rerere]
   enabled = 1
