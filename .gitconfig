@@ -99,9 +99,9 @@
   line-numbers = true
   syntax-theme = GitHub
   # Lighter backgrounds for removed/added lines (defaults are too saturated)
-  minus-style = normal "#fff0f0"
+  minus-style = normal "#ffe7e7"
   minus-emph-style = normal "#ffd8d8"
-  plus-style = syntax "#ecffec"
+  plus-style = syntax "#e6ffe6"
   plus-emph-style = syntax "#c8f5c8"
 
 [diff]
