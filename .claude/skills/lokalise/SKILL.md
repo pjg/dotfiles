@@ -100,8 +100,14 @@ print(data)  # {"keys_removed": true, "keys_locked": 0}
 
 ---
 
+## Changing a key's value
+
+Do not update a key's value in place. Delete the key (see "Removing keys"), then re-add it with the new value (see "Adding keys"). Re-adding makes every locale re-translate from the new English source, so no translation of the old meaning lingers.
+
+---
+
 ## Notes
 
-- The `lokalise2` CLI `key delete` requires numeric IDs (not names) and deletes one at a time — use the REST API for bulk operations instead.
-- The `lokalise2` CLI `key list --filter-keys` returns 404 (CLI bug) — use the REST API for lookups too.
+- The `lokalise2` CLI `key delete` takes one numeric `--key-id` per call (verified 2026-09-02, lokalise2 3.1.7) — use the REST API for bulk deletes.
+- `lokalise2 key list --filter-keys` works (verified 2026-09-02, lokalise2 3.1.7). The REST lookup above is kept because it batches names and returns IDs in the shape the delete step needs.
 - After adding keys, run `./scripts/lokalise` to pull updated translations into `src/locales/`.
