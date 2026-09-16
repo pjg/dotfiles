@@ -229,9 +229,6 @@ setopt hist_ignore_space
 # reduce unnecessary blanks from commands being written to history
 setopt hist_reduce_blanks
 
-# import new commands from history (mostly)
-setopt share_history
-
 
 
 # COMMAND COMPLETION
