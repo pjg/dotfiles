@@ -513,8 +513,8 @@ export DISABLE_OPENCOLLECTIVE=true
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Load FZF shell integration (if available)
-if _has fzf && _has ag; then
-  export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=public/pictures --ignore-dir=tmp --ignore-dir=vendor/plugins -g ""'
+if _has fzf && _has rg; then
+  export FZF_DEFAULT_COMMAND="rg --files -g '!public/pictures/' -g '!tmp/' -g '!vendor/plugins/'"
 fi
 
 # when using prettierd, always use local prettier installation/config

@@ -899,9 +899,9 @@ autocmd BufWritePost * call lightline#update()
 
 " PLUGINS
 
-" [ack.vim] (using ag aka 'the_silver_searcher')
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case'
+" [ack.vim] (using rg aka 'ripgrep')
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --smart-case'
   cnoreabbrev ag Ack
   cnoreabbrev aG Ack
   cnoreabbrev Ag Ack
@@ -921,7 +921,7 @@ let g:fzf_buffers_jump = 0
 let g:fzf_layout = { 'down': '10' }
 
 " required for VimR/MacVim (MacOS)
-let $FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore-dir=./public --ignore-dir=./node_modules --ignore-dir=./.cache --ignore-dir=./tmp --ignore-dir=./vendor/bundle --ignore-dir=./vendor/plugins --ignore=''*.jpg'' --ignore=''*.png'' --ignore=''*.svg'' -g ""'
+let $FZF_DEFAULT_COMMAND = "rg --files -g '!/public/' -g '!/node_modules/' -g '!/.cache/' -g '!/tmp/' -g '!/vendor/bundle/' -g '!/vendor/plugins/' -g '!*.jpg' -g '!*.png' -g '!*.svg'"
 
 " hl  (non matched lines, matched letters fg)
 " fg+ (first matched line fg)
