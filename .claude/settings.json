@@ -14,8 +14,6 @@
       "Bash(bundle exec rubocop:*)",
       "Bash(lokalise2 key create:*)",
       "Bash(bundle exec rake:*)",
-      "Bash(ruby -e:*)",
-      "Bash(ruby -c:*)",
       "Bash(bin/rails generate:*)",
       "Bash(bin/rails db:migrate:*)",
       "Bash(RAILS_ENV=test bin/rails:*)",
@@ -64,5 +62,33 @@
   "theme": "light",
   "editorMode": "vim",
   "preferredNotifChannel": "notifications_disabled",
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: assume private unless the remote host and repo name indicate otherwise, or a visibility check in the transcript shows public",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine or CI runner with open internet",
+      "**Source control**: The trusted repo and its remote(s) only (no additional orgs configured) — as scoped by the Trusted repo and Repository visibility entries above",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: None configured",
+      "**Internal package registry**: Lokalise (via `./scripts/lokalise`, per CLAUDE.md — localization sync only)",
+      "**Sensitive data locations & audiences**: `.env`, `.env.production`, `.env.test`, and `secrets/*` (gitignored) — credentials/config, share only with audiences cleared at the [named+specifics] bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (Ruby on Rails, React/Capacitor)",
+      "**Trusted repo**: The git repository the agent started in (its working directory) and its configured remote(s). When the repo's public/private visibility is given — by the Repository visibility entry or the user's own message — use it to scope what is OK to commit or push there: confidential material is fine in a private repo; in a public one, only that repo's own work is — and content ported, repointed, or first read from outside this session's repo is not its own work, whoever directed the port. Visibility scopes confidential material only: secrets and sensitive data (personal & entrusted) are never cleared into any repo by its visibility (see Definitions).",
+      "**Org-specific CLIs**: `lokalise2` (translation sync, per CLAUDE.md)",
+      "**routine under user/ prefix**: none identified"
+    ]
+  },
   "voiceEnabled": true
 }
