@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 3.0.23
+###  vlc 3.0.24
 ###
 
 ###
@@ -130,6 +130,9 @@
 
 # ? (integer)
 #sout-chromecast-port=8009
+
+# ? (string)
+#sout-chromecast-device-name=
 
 # ? (boolean)
 #sout-chromecast-video=1
@@ -383,32 +386,65 @@ macosx-black=1
 
 [rist] # RIST input
 
-# RIST maximum packet size (bytes) (integer)
-#packet-size=1472
-
 # RIST demux/decode maximum jitter (default is 5ms) (integer)
-#maximum-jitter=5
-
-# RIST latency (ms) (integer)
-#latency=1000
-
-# RIST nack retry interval (ms) (integer)
-#retry-interval=132
-
-# RIST reorder buffer (ms) (integer)
-#reorder-buffer=70
-
-# RIST maximum retry count (integer)
-#max-retries=10
+#rist-maximum-jitter=5
 
 # RIST nack type, 0 = range, 1 = bitmask. Default is range (integer)
-#nack-type=0
+#rist-nack-type=0
 
-# Disable NACK output packets (boolean)
-#disable-nacks=0
+# Virtual Destination Port Filter (integer)
+#rist-virt-dst-port=0
 
-# Do not check for a valid rtcp message from the encoder (boolean)
-#mcast-blind-nacks=0
+# RIST maximum packet size (bytes) (integer)
+#rist-packet-size=10000
+
+# Second peer URL (string)
+#rist-peer-url2=
+
+# Third peer URL (string)
+#rist-peer-url3=
+
+# Fourth peer URL (string)
+#rist-peer-url4=
+
+# Max bitrate in Kbps (integer)
+#rist-bandwidth=100000
+
+# RIST nack minimum retry interval (ms) (integer)
+#rist-retry-interval=5
+
+# RIST reorder buffer size (ms) (integer)
+#rist-reorder-buffer=15
+
+# RIST maximum retry count (integer)
+#rist-max-retries=20
+
+# Verbose level (integer)
+#rist-verbose-level=6
+
+# RIST retry-buffer queue size (ms) (integer)
+#rist-latency=0
+
+# Peer cname (string)
+#rist-cname=
+
+# Rist Profile (integer)
+#rist-profile=2
+
+# Shared Secret (string)
+#rist-secret=
+
+# Encryption type (integer)
+#rist-aes-type=0
+
+# Timing mode (integer)
+#rist-timing-mode=0
+
+# Username used for stream authentication (string)
+#rist-username=
+
+# Password used for stream authentication (string)
+#rist-password=
 
 [audiobargraph_v] # Audio Bar Graph Video sub source
 
@@ -551,108 +587,10 @@ macosx-black=1
 #sout-avi-subject=
 
 # Encoder (string)
-#sout-avi-encoder=VLC Media Player - 3.0.23 Vetinari
+#sout-avi-encoder=VLC Media Player - 3.0.24 Vetinari
 
 # Keywords (string)
 #sout-avi-keywords=
-
-[schroedinger] # Dirac video decoder using libschroedinger
-
-# Rate control method (string)
-#sout-schro-rate-control=
-
-# Constant quality factor (float)
-#sout-schro-quality=-1.000000
-
-# Noise Threshold (float)
-#sout-schro-noise-threshold=-1.000000
-
-# CBR bitrate (kbps) (integer)
-#sout-schro-bitrate=-1
-
-# Maximum bitrate (kbps) (integer)
-#sout-schro-max-bitrate=-1
-
-# Minimum bitrate (kbps) (integer)
-#sout-schro-min-bitrate=-1
-
-# GOP structure (string)
-#sout-schro-gop-structure=
-
-# GOP length (integer)
-#sout-schro-gop-length=-1
-
-# Chroma format (string)
-#sout-schro-chroma-fmt=420
-
-# Picture coding mode (string)
-#sout-schro-coding-mode=auto
-
-# Motion Vector precision (string)
-#sout-schro-mv-precision=
-
-# Size of motion compensation blocks (string)
-#sout-schro-motion-block-size=
-
-# Overlap of motion compensation blocks (string)
-#sout-schro-motion-block-overlap=
-
-# Three component motion estimation (integer)
-#sout-schro-me-combined=-1
-
-# Enable hierarchical Motion Estimation (integer)
-#sout-schro-enable-hierarchical-me=-1
-
-# Number of levels of downsampling (integer)
-#sout-schro-downsample-levels=-1
-
-# Enable Global Motion Estimation (integer)
-#sout-schro-enable-global-me=-1
-
-# Enable Phase Correlation Estimation (integer)
-#sout-schro-enable-phasecorr-me=-1
-
-# Intra picture DWT filter (string)
-#sout-schro-intra-wavelet=
-
-# Inter picture DWT filter (string)
-#sout-schro-inter-wavelet=
-
-# Number of DWT iterations (integer)
-#sout-schro-transform-depth=-1
-
-# Enable multiple quantizers (integer)
-#sout-schro-enable-multiquant=-1
-
-# Size of code blocks in each subband (string)
-#sout-schro-codeblock-size=
-
-# Prefilter (string)
-#sout-schro-filtering=
-
-# Amount of prefiltering (float)
-#sout-schro-filter-value=-1.000000
-
-# Enable Scene Change Detection (integer)
-#sout-schro-enable-scd=-1
-
-# perceptual weighting method (string)
-#sout-schro-perceptual-weighting=
-
-# perceptual distance (float)
-#sout-schro-perceptual-distance=-1.000000
-
-# Disable arithmetic coding (integer)
-#sout-schro-enable-noarith=-1
-
-# Horizontal slices per frame (integer)
-#sout-schro-horiz-slices=-1
-
-# Vertical slices per frame (integer)
-#sout-schro-vert-slices=-1
-
-# Force Profile (string)
-#sout-schro-force-profile=
 
 [deinterlace] # Deinterlacing video filter
 
@@ -1145,20 +1083,62 @@ sout-x264-preset=ultrafast
 
 [access_output_rist] # RIST stream output
 
-# RIST target packet size (bytes) (integer)
-#sout-rist-packet-size=1328
+# RIST target payload size (bytes) (integer)
+#sout-rist-packet-size=1316
 
-# RIST data output caching size (ms) (integer)
-#sout-rist-caching=50
+# Virtual Source Port (integer)
+#sout-rist-virt-src-port=1971
+
+# Virtual Destination Port (integer)
+#sout-rist-virt-dst-port=1968
+
+# Multipeer mode (integer)
+#sout-rist-multipeer-mode=0
+
+# Second peer URL (string)
+#sout-rist-peer-url2=
+
+# Third peer URL (string)
+#sout-rist-peer-url3=
+
+# Fourth peer URL (string)
+#sout-rist-peer-url4=
+
+# Max bitrate in Kbps (integer)
+#sout-rist-bandwidth=100000
+
+# RIST nack minimum retry interval (ms) (integer)
+#sout-rist-retry-interval=5
+
+# RIST reorder buffer size (ms) (integer)
+#sout-rist-reorder-buffer=15
+
+# RIST maximum retry count (integer)
+#sout-rist-max-retries=20
+
+# Verbose level (integer)
+#sout-rist-verbose-level=6
 
 # RIST retry-buffer queue size (ms) (integer)
-#sout-rist-buffer-size=0
+#sout-rist-latency=1000
 
-# SSRC used in RTP output (default is random, i.e. 0) (integer)
-#sout-rist-ssrc=0
+# Peer cname (string)
+#sout-rist-cname=
 
-# Stream name (string)
-#sout-rist-stream-name=
+# Rist Profile (integer)
+#sout-rist-profile=2
+
+# Shared Secret (string)
+#sout-rist-secret=
+
+# Encryption type (integer)
+#sout-rist-aes-type=0
+
+# Username used for stream authentication (string)
+#sout-rist-username=
+
+# Password used for stream authentication (string)
+#sout-rist-password=
 
 [svcdsub] # Philips OGT (SVCD subtitle) decoder
 
@@ -1942,6 +1922,9 @@ canvas-height=1080
 
 # Password (string)
 #sftp-pwd=
+
+# Private key file (string)
+#sftp-privatekey=
 
 [wall] # Wall video filter
 
@@ -3206,8 +3189,11 @@ glconv=any
 # Crypto key length in bytes (integer)
 #key-length=16
 
-#  SRT Stream ID (string)
+# SRT Stream ID (string)
 #streamid=
+
+# SRT mode (integer)
+#mode=0
 
 [scaletempo_pitch] # Pitch Shifter
 
