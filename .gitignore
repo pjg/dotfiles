@@ -61,6 +61,7 @@ www
 !.claude/CLAUDE.md
 !.claude/settings.json
 !.claude/skills
+.claude/skills/synced/
 !.claude/.i-have-adhd-always
 .claude.json
 .claude.json.backup
