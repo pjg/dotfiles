@@ -551,3 +551,6 @@ function zvm_after_lazy_keybindings() {
   zvm_bindkey vicmd '^a' beginning-of-line
   zvm_bindkey vicmd '^e' end-of-line
 }
+
+# 1Password shell plugins (aws -> op plugin run -- aws)
+[[ -f ~/.config/op/plugins.sh ]] && source ~/.config/op/plugins.sh
