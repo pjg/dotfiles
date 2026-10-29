@@ -65,3 +65,16 @@ www
 !.claude/.i-have-adhd-always
 .claude.json
 .claude.json.backup
+
+# Shell / REPL history
+.bash_history
+.psql_history-*
+
+# Machine state
+.cdk/
+.forward
+.rnd
+.offline
+.homebrew/*.lock
+.swiftpm/
+.terminfo/
