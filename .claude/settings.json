@@ -189,5 +189,6 @@
     ]
   },
   "voiceEnabled": true,
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "awaySummaryEnabled": false
 }
