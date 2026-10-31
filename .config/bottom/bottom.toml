@@ -1,0 +1,24 @@
+# bottom (btm) config.
+# Docs: https://clementtsang.github.io/bottom/nightly/configuration/config-file/
+
+[disk]
+# Show disk read/write throughput instead of only usage.
+# Available: Disk, Mount, Used, Free, Total, Used%, Free%, R/s, W/s
+columns = ["Disk", "Mount", "R/s", "W/s", "Used%"]
+# Busiest writer first.
+default_sort = "W/s"
+sort_order = "Descending"
+
+[styles.widgets]
+# One colour for table text, widget frames and frame titles.
+# Accepts a named colour, "#rrggbb", or "r, g, b".
+text = { colour = "dark gray" }
+border_colour = "dark gray"
+widget_title = { colour = "dark gray" }
+# The frame of the selected widget keeps the default colour (light blue).
+
+[styles.graphs]
+# Graph axes and their tick labels (time, percent).
+graph_colour = "dark gray"
+# Legend text inside graphs (for example "RAM: 45%") keeps its default colour.
+# Uncomment to match: legend_text = { colour = "dark gray" }
