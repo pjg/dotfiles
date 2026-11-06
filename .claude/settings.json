@@ -156,6 +156,8 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "awaySummaryEnabled": false,
+  "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "light",
   "editorMode": "vim",
@@ -188,7 +190,5 @@
       "**routine under user/ prefix**: none identified"
     ]
   },
-  "voiceEnabled": true,
-  "tui": "fullscreen",
-  "awaySummaryEnabled": false
+  "voiceEnabled": true
 }
