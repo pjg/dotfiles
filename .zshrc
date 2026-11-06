@@ -96,6 +96,10 @@ alias rmorig='git status --short | grep "??" | grep "\.orig$" | cut -d " " -f 2 
 # grep
 alias grep='grep --color=auto'
 
+# claude code (model applies only to this session)
+alias fable='claude --model fable'
+alias opus='claude --model opus'
+
 # uses git blame to calculate code ownership (source: http://stackoverflow.com/questions/4589731/git-blame-statistics)
 function fame {
   git ls-tree -r -z --name-only HEAD | xargs -0 -n1 git blame --line-porcelain HEAD \
