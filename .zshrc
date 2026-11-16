@@ -555,3 +555,10 @@ function zvm_after_lazy_keybindings() {
 
 # 1Password shell plugins (aws -> op plugin run -- aws)
 [[ -f ~/.config/op/plugins.sh ]] && source ~/.config/op/plugins.sh
+
+# cdk: run through npx with AWS credentials from 1Password
+cdk() {
+  AWS_ACCESS_KEY_ID="op://employee/AWS Access Key/access key id" \
+  AWS_SECRET_ACCESS_KEY="op://employee/AWS Access Key/secret access key" \
+  op run -- npx cdk "$@"
+}
