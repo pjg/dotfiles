@@ -190,5 +190,8 @@
       "**routine under user/ prefix**: none identified"
     ]
   },
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "sandbox": {
+    "enabled": true
+  }
 }
